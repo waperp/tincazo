@@ -1,0 +1,21 @@
+/*
+File Name: 		custom.css
+Description:  You can add your custom CSS here and it will overwrite template styles
+*/
+
+
+.post__content {
+ color: #000000b5;
+}
+.post__content > h5{
+	color: #38a9ff;
+
+}
+.post__content > h3{
+	color: black;
+
+}
+.post__content > h3  >  span{
+	color: #38a9ff;
+
+}

@@ -1417,7 +1417,7 @@
                                             Ingrese a su cuenta
                                         </button>
                                     </div>
-                                    {{-- <div class="modal-form--social">
+                                    <div class="modal-form--social">
                                         <h6>
                                             o Inicia sesión con tu perfil social:
                                         </h6>
@@ -1430,7 +1430,7 @@
                                             </li>
                                             
                                         </ul>
-                                    </div> --}}
+                                    </div> 
                                 </form>
                                 <!-- Login Form / End -->
                             </div>

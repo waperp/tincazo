@@ -29,10 +29,11 @@ class LoginController extends Controller
 
         // dd($user);
         $secusr = secusr::where('secusrtmail', $user->email)->orWhere('secusrtface', $user->id)->first();
+            $plainf = plainf::where('plainficode', $secusr->plainficode)->first();
+        
         $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
 
         if ($secusr) {
-            $plainf = plainf::where('plainficode', $secusr->plainficode)->first();
             Session::put('secusrtmail', $secusr->secusrtmail);
             Session::put('secusricode', $secusr->secusricode);
             Session::put('plainficode', $plainf->plainficode);

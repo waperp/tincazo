@@ -16,7 +16,7 @@
 // Route::get('inicio', 'HomeController@inicio')->middleware('isadminMiddleware');
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home.index');
 // Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
 

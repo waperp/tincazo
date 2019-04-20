@@ -30,7 +30,7 @@ class LoginController extends Controller
         // dd($user);
         $secusr = secusr::where('secusrtmail', $user->email)->orWhere('secusrtface', $user->id)->first();
             $plainf = plainf::where('plainficode', $secusr->plainficode)->first();
-        
+
         $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
 
         if ($secusr) {
@@ -40,7 +40,7 @@ class LoginController extends Controller
             Session::put('plainftnick', $plainf->plainftnick);
             Session::put('conmemscode', $plainf->conmemscode);
             Session::put('conmemvimgm', $conmem->conmemvimgm);
-            return redirect('/');
+            return redirect()->route('home.index');
         } else {
             return Redirect::route('editarPerfil')
                 ->with('secusrtmails', $user->email)

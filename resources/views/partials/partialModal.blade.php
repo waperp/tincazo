@@ -1156,6 +1156,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                        
+
                         <div class="modal-account-holder">
                            {{--  <button data-toggle="modal" type="button" data-target="#modal-login-nuevo-grupo" class="btn btn-primary-inverse btn-sm btn-block">Agregar</button> --}}
                             <div class="modal-account__item" style="flex-basis: 100%;">
@@ -1163,7 +1165,15 @@
                                 <div class="tab-content">
                                     <input type="hidden" id="filtre-touinfscode" value="0">
                                         <h5>GESTIONAR PLANTEL</h5>
-                    
+                                    <div class="form-group">
+                    <select class="select2 form-control" id="select-torneo-admin-torneos" style="width: 100%">
+                                                @foreach($listaTouinf as $objTorneosEquipos)
+                                                    <option  value="{{$objTorneosEquipos->touinfscode}}">
+                                                        {{$objTorneosEquipos->touinftname}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                </div>
                                     <table id="table-admin-equipo" class="table table-hover table-standings" style="width: 100%">
                                     <thead>
                                           <tr style="background-color: #80808099;">

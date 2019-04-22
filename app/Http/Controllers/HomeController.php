@@ -375,7 +375,9 @@ group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.tou
     }
     public function tablaAdminEquipos(Request $request)
     {
-        $data = DB::table('toutea')
+        $data = DB::table('toutte')->select('toutea.*')
+            ->join('toutea', 'toutea.touteascode', 'toutte.touteascode')
+            ->join('touinf', 'touinf.touinfscode', 'toutte.touinfscode')
             ->join('contyp', 'contyp.contypscode', 'toutea.contypscode')
             ->where('contyp.confrmicode', 2)->get();
         return Datatables::of($data)->make(true);

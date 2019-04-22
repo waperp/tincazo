@@ -1166,7 +1166,7 @@
                                     
                                     <input type="hidden" id="filtre-touinfscode" value="0">
                                         <h5>GESTIONAR PLANTEL</h5>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                     <select class="select2 form-control" id="select-torneo-admin-torneos" style="width: 100%">
                                                 @foreach($listaTouinf as $objTorneosEquipos)

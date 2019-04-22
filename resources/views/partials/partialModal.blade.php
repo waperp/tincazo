@@ -1163,9 +1163,9 @@
                             <div class="modal-account__item" style="flex-basis: 100%;">
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <input type="hidden" id="filtre-touinfscode" value="0">
-                                        <h5>GESTIONAR PLANTEL</h5>
-                                    <div class="form-group">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="form-group">
                     <select class="select2 form-control" id="select-torneo-admin-torneos" style="width: 100%">
                                                 @foreach($listaTouinf as $objTorneosEquipos)
                                                     <option  value="{{$objTorneosEquipos->touinfscode}}">
@@ -1174,6 +1174,11 @@
                                                 @endforeach
                                             </select>
                 </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="filtre-touinfscode" value="0">
+                                        <h5>GESTIONAR PLANTEL</h5>
+                                    
                                     <table id="table-admin-equipo" class="table table-hover table-standings" style="width: 100%">
                                     <thead>
                                           <tr style="background-color: #80808099;">

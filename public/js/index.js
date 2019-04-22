@@ -235,6 +235,10 @@
          placeholder: "Filtrar Torneos",
          allowClear: true,
      });
+     $("#select-modal-nuevo-equipo").select2({
+         placeholder: "Filtrar Torneos",
+         allowClear: true,
+     });
      $("#contypscode1").select2({
          placeholder: "Filtrar Tipo",
          allowClear: true,
@@ -245,6 +249,7 @@
      });
      $('#selectTorneosEquipos').val(0).trigger('change');
      $('#select-torneo-admin-torneos').val(0).trigger('change');
+     $('#select-modal-nuevo-equipo').val(0).trigger('change');
      $('#contypscode1').val(null).trigger('change');
      // $('#selectconmemscode').val(1).trigger('change');
      $('#select-torneo-fixture').val(null).trigger('change');
@@ -266,6 +271,9 @@
      });
      $('#select-torneo-admin-torneos').change(function() {
          $('#table-admin-gestionar-grupos').DataTable().ajax.reload();
+     });
+     $('#select-modal-nuevo-equipo').change(function() {
+         $('#table-admin-equipo').DataTable().ajax.reload();
      });
       $('#select-torneo-fixture').change(function() {
          $('#table-fixture').DataTable().ajax.reload();
@@ -1063,7 +1071,14 @@
          processing: true,
          serverSide: true,
          buttons: [],
-         ajax: '/tablaAdminEquipos',
+         ajax: {
+            url: '/tablaAdminEquipos',
+            data: function(d) {
+                 var touinfscode = $('#select-torneo-admin-torneos').val();
+                 d.touinfscode = touinfscode;
+            }
+
+        },
          columns: [{
              width: 35,
              className: 'widthtable',

@@ -164,7 +164,10 @@ class HomeController extends Controller
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
-        $listaTorneosMenu = DB::table('touinf')->get();
+        $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
+        JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
+        JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
+WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode',Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')

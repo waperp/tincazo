@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
     public function inicio()
     {
-        $listaTouinf = DB::table('touinf')->get();
+        $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
 
         return view('indexOfline', compact('listaTouinf'));
     }
@@ -163,7 +163,7 @@ class HomeController extends Controller
         // return $request->all();
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
-        $listaTouinf     = DB::table('touinf')->get();
+        $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode',Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')

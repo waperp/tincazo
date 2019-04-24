@@ -1782,7 +1782,7 @@
                          closeOnConfirm: true
                      });
                  } else {
-                     /*window.location.href = "/";*/
+                     window.location.href = "/";
                      // document.getElementById('form-button-register').disabled = 0;
                  }
              },

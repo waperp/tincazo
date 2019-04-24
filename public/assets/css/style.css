@@ -17333,7 +17333,7 @@ th.team-leader__goals, td.team-leader__goals {
     font-family: "Montserrat", sans-serif;
     font-size: 9px;
     line-height: 1.2em;
-    color: #6b6d70;
+    color: white;
     vertical-align: top;
     -webkit-transition: color 0.25s cubic-bezier(0.3, 0.1, 0.55, 1);
     transition: color 0.25s cubic-bezier(0.3, 0.1, 0.55, 1);

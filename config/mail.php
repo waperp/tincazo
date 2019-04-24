@@ -15,7 +15,9 @@ return [
     |            "sparkpost", "log", "array"
     |
     */
-
+'sparkpost' => [
+    'secret' => 'your-sparkpost-key',
+],
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*

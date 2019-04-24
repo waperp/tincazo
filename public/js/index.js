@@ -1410,7 +1410,7 @@
          ajax: {
              url: '/tableGestionarFixture',
              data: function(d) {
-                debugger
+                
                  var toufixdplay = $('#date-toufixdplay').val();
                  var touinfscode = $('#select-torneo-fixture').val();
                  d.toufixdplay = toufixdplay;
@@ -1769,6 +1769,7 @@
              processData: false,
              data: formData,
              success: function(data) {
+                debugger
                  if (data.mail == true) {
                      document.getElementById('form-button-register').disabled = 0;
                      swal({
@@ -1781,7 +1782,7 @@
                          closeOnConfirm: true
                      });
                  } else {
-                     window.location.href = "/";
+                     /*window.location.href = "/";*/
                      // document.getElementById('form-button-register').disabled = 0;
                  }
              },
@@ -2510,7 +2511,7 @@
      formData.append("tougrpsminp", tougrpsminp);
      formData.append("tougrpsxval", tougrpsxval);
      var actionurl = e.currentTarget.action;
-     // debugger
+     // 
      $.ajax({
          url: actionurl,
          type: 'post',
@@ -2528,7 +2529,7 @@
          //     tougrpicode: tougrpicode
          // },
          success: function(data) {
-             debugger
+             
              window.location.reload();
          },
      });
@@ -2606,7 +2607,7 @@
      toufixsscr2 = $('#agregar-toufixsscr2-tincazo').val();
      toufixicode = $('#agregar-toufixicode-hidden').val();
      plapreicode = $('#agregar-plapreicode-hidden').val();
-     debugger
+     
      $.ajax({
          url: '/plapre',
          type: 'post',
@@ -2621,7 +2622,7 @@
              toufixsscr2: toufixsscr2
          },
          success: function(data) {
-             debugger
+             
              if (data.message == 1 && data.error == true && data.success == false && data.types == "constascode") {
                  $('#modal-nuevo-agregar-tinzaso').modal('hide');
                  swal({
@@ -3015,7 +3016,7 @@
              tougrpicode: tougrpicode,
          },
          success: function(data) {
-             debugger
+             
              $('#jugadores').empty();
              var text = "";
              for (var i = 0; i < data.length; i++) {
@@ -3321,7 +3322,7 @@
  }
 
  function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicode, plainficode, tougrpsxval) {
-     debugger
+     
      var _token = $('input[name=_token]').val();
      $.ajax({
          url: '/sessionLink',
@@ -3379,7 +3380,7 @@
  });
 
  function info_player(plainficode,name) {
-    debugger
+    
      $('#modal-info-player-tinzaso-plainficode').val(plainficode);
      $('#modal-info-player-tinzaso-player-name').text(name);
      $('#table-info-player-grupo').DataTable().ajax.reload();

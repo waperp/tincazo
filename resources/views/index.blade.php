@@ -212,7 +212,7 @@
                             @endif
                 </li>
                  @if(Session::has('plainficode') )
-                    <li class=""><a href="javascript:void(0)">MIS TORNEOS ( {{ count($listaTorneosMenu) }} )</a>
+                    <li class=""><a href="javascript:void(0)">MIS TORNEOS <span style="color:#c2ff1f">( {{ count($listaTorneosMenu) }} )</span></a>
                                   <div id="main-nav-torneos" class="main-nav__megamenu clearfix" style="width:unset; left: unset; padding: 20px 20px ">
                   
                             <div class="col-lg-12 col-md-12 col-xs-12">
@@ -241,7 +241,7 @@
                               </li>
                               @endif 
                             @if(Session::has('plainficode') )
-                              <li class=""><a href="javascript:void(0)">MIS GRUPOS ( {{ count($listaTorneos) }} )</a>
+                              <li class=""><a href="javascript:void(0)">MIS GRUPOS <span style="color:#c2ff1f">( {{ count($listaTorneos) }} )</span></a>
                             @endif
                               @if(count($listaTorneos) <= 0 )
                               @else

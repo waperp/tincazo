@@ -164,6 +164,7 @@ class HomeController extends Controller
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+        $listaTorneosMenu = DB::table('touinf')->get();
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode',Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')
@@ -210,7 +211,7 @@ class HomeController extends Controller
 
         return view('index', compact('listaConmen', 'listaTouinf', 'listaTorneos', 'listaInvitaciones',
             'listaContypEquipos', 'listaToutea', 'listaEquiposElegir', 'miCampeon', 'estadisticas',
-            'listaEditPerfil', 'fechaValidar','validarTougrpbchva'));
+            'listaEditPerfil', 'fechaValidar','validarTougrpbchva','listaTorneosMenu'));
 
     }
 

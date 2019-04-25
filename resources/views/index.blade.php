@@ -173,7 +173,7 @@
                     </div>
                     <nav class="main-nav clearfix">
                         <ul class="main-nav__list">
-                            <li class="active"><a href="/">Inicio</a></li>
+                            <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
                             <li ><a onclick="removemenu()" href="/#instrucciones">Instrucciones</a></li>
                                  @if(Session::has('plainficode') )
                               <li class=""><a id="enlace-invitacion" href="javascript:void(0)">INVITACIONES ( {{ count($listaInvitaciones) }} )</a>

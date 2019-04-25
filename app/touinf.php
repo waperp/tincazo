@@ -10,7 +10,8 @@ class touinf extends Model
     protected $primaryKey = 'touinfscode';
 	protected $table = 'touinf';
 	protected $fillable = [
-        'touinftname', 
+        'touinftname',
+        'secconnuuid', 
         'touinfdcrea', 
         'touinfthour', 
         'touinfsnumt',

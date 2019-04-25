@@ -47,6 +47,7 @@ class tougrpController extends Controller
                 $tougrp->tougrpsmedp = 1;
                 $tougrp->tougrpsminp = 1;
                 $tougrp->tougrpsxval = 1;
+                $tougrp->tougrpbchva = 1;
                 $tougrp->plainficode = Session::get('plainficode');
                 $tougrp->save();
 

@@ -1878,6 +1878,7 @@
          processData: false,
          data: formData,
          success: function(data) {
+            debugger
              if (data == false) {
                  swal({
                      // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
@@ -1889,7 +1890,7 @@
                      closeOnConfirm: true
                  });
              } else {
-                 window.location.href = "/";
+                /* window.location.href = "/";*/
              }
              document.getElementById('crear-grupo-btn-subtmit').disabled = 0;
          },

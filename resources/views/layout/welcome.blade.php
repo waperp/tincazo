@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="es" >
     <head>
-        <title>
-            TINCAZO
-        </title>
+        <title>TINCAZO</title>
         <meta charset="utf-8"/>
         <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
         <meta content="TINCAZO Todos los derechos reservados" name="description"/>
         <meta content="TINCAZO" name="author"/>
         <meta content="TINCAZO Todos los derechos reservados" name="keywords"/>
         <meta content="{{ csrf_token() }}" name="_token"/>
-
         <link href="favicon.ico" rel="shortcut icon"/>
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
       <!-- Preloader CSS -->
   <link href="assets/css/preloader.css" rel="stylesheet">
         <link href="/css/googleFont.css" rel="stylesheet"/>
-
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
   <!-- Vendor CSS -->
-
       <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link href="assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
       <link href="assets/fonts/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
       <link href="assets/vendor/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
       <link href="assets/vendor/slick/slick.css" rel="stylesheet">
-
-
         <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css?vercss1={{ time() }}"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/select.dataTables.min.css"/>
@@ -38,24 +31,19 @@
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/dataTables.colVis.css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/extensions/sweetalert.css"/>
-
         <!-- Custom CSS-->
-
-<!-- Google Tag Manager -->
-{{-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WLKH8LT');</script> --}}
-<!-- End Google Tag Manager -->
-  <!-- Template CSS-->
+        <!-- Google Tag Manager -->
+        {{-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WLKH8LT');</script> --}}
+        <!-- End Google Tag Manager -->
+        <!-- Template CSS-->
 <link href="assets/css/style.css?vercss={{ time() }}" rel="stylesheet"/>
-
   <!-- Custom CSS-->
         <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css"/>
   <link href="assets/css/custom.css" rel="stylesheet"/>
-
-    
     </head>
     <body  {{-- oncontextmenu="return false" --}} class="template-soccer">
         <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}"/>
@@ -90,8 +78,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                   <div class="row">
                                       @yield('content')
                                   </div>
-                              
-                              
                           </div>
                       </div>
                     @endif
@@ -110,21 +96,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                 <div class="post__content">
                   <h3 style="text-align: center" > <u> COMO FUNCIONA </u> <span>TINCAZO.COM</span> </h3>
-
                   <p >Con 5 sencillos pasos puedes jugar y colocar tu TINCAZO</p>
-
                   <h5>1ER PASO – Crearse un Usuario</h5>
                   <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo, nombre, fecha de nacimiento, etc. <br>{{-- 
                   Validaremos tu correo enviándote un PIN el cual debes colocar y luego presionar VALIDAR. --}}
                   Elige la membresía disponible, en este caso MEMBRESIA PLATA, la cual te permite jugar siempre y cuando seas invitado a un grupo.
                   </p>
-
-    
-
                   <h5>2DO PASO – Invitaciones</h5>
                   <p> Recibirás en tu cuenta una INVITACION de algún grupo la cual podrás ver en la opción INVITACIONES. Presiona ACEPTAR para ingresar a dicho grupo y jugar, o puedes RECHAZAR si no deseas ingresar a dicho grupo.</p>
-    
-
                   <h5>3ER PASO – Elige tu Grupo</h5>
                 <p> Una vez seas parte de 1 o más grupos, debes seleccionar el grupo para empezar a colocar TU CAMPEON y TUS TINCAZOS.</p>
 
@@ -150,27 +129,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <li>Los penales NO SE CONTABILIZAN como parte del resultado final, porque solo determinan quien clasifica a la siguiente ronda.</li>
               </ul>
               <p>A DISFRUTAR DEL JUEGO !!!</p>
-
-               
-
-                
               </div>
             </article>
             <!-- Article / End -->
-
-
-
           </div>
           <!-- Content / End -->
-
         </div>
-
       </div>
     </div>
-                @endif
+    @endif
                 <footer class="footer" id="footer" >
                     <div class="footer-widgets">
-                      
                         <!-- Sponsors / End -->
                     </div>
                     <!-- Footer Widgets / End -->

@@ -6,6 +6,7 @@ use App\touinf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class touinfController extends Controller
 {
@@ -27,6 +28,16 @@ class touinfController extends Controller
     public function create()
     {
         //
+    }
+    public function selectTournament(Request $request, $secconnuuid)
+    {
+        $touinf = touinf::where('secconnuuid',$secconnuuid)->first();
+        if($touinf){
+            Session::put('session_link_tournament',$touinf);
+        }else{
+            Session::forget('session_link_tournament');
+        }
+        return redirect()->route('home.index');
     }
 
     /**

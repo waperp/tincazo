@@ -81,6 +81,7 @@ Route::post('insertarCampeon', 'touteaController@insertarCampeon');
 Route::get('editarPerfil/', array('as' => 'editarPerfil', 'uses' => 'secusrController@editarPerfil'));
 Route::get('obtenerPredicciones', 'HomeController@obtenerPredicciones');
 
+Route::get('mainnav/tournament/{secconnuuid}','touinfController@selectTournament')->name('touinf.tournament');
 
 // Route::get('editarPerfil/{nick}', array('as' => 'user', function($nick) { 
 // 	return view('editarPerfil',compact('nick')); 

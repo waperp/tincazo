@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
+use App\Observers\UuidObserver;
+use App\touinf;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,11 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        $this->registerUuidObservers();
+    }
+
+    public function registerUuidObservers()
+    {
+        touinf::observe(app(UuidObserver::class));
     }
 }

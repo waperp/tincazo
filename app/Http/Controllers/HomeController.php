@@ -154,6 +154,7 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
+        $listaTorneos  = null;
         $date = Carbon::now();
         // return  dd$request->ajax();
         if (!$request->has('q')) {
@@ -175,11 +176,15 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
             ->where('plainf.plainficode', Session::get('plainficode'))
             ->first();
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
+        if(Session::has('session_link_tournament')){
+            $touinf_link_tournament = Session::get('session_link_tournament');
         $listaTorneos       = DB::select('select tougrp.*,touinf.*, tougpl.tougplicode
         from tougrp
         join touinf on tougrp.touinfscode = touinf.touinfscode
         join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2', [Session::get('plainficode')]);
+        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'),$touinf_link_tournament->touinfscode]);
+        }
+        
 
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
@@ -237,7 +242,7 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         // }
         $data = DB::select('Select RANK() OVER (Order By tougpl.tougplipwin desc) as POS, plainf.plainficode , plainf.plainfvimgp, plainf.plainftnick JUGADOR,
 tougpl.tougplsmaxp TA, tougpl.tougplsmedp TM, tougpl.tougplslowp TB, tougpl.tougplipwin PTOS from tougpl join plainf on tougpl.plainficode =
-plainf.plainficode where tougpl.tougrpicode = ? and tougpl.constascode = 2 order by tougpl.tougplipwin desc, plainf.plainftnick asc ', 
+plainf.plainficode where tougpl.tougrpicode = ? and tougpl.constascode = 2 order by tougpl.tougplipwin desc, plainf.plainftnick asc', 
 [Session::get('select-tougrpicode')]);
             return Datatables::of($data)->make(true);
 

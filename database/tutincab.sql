@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v13.1.1 (64 bit)
-MySQL - 10.1.29-MariaDB-6ubuntu2 : Database - tutincadb
+MySQL - 10.1.38-MariaDB : Database - tutincadb
 *********************************************************************
 */
 
@@ -21,7 +21,7 @@ USE `tutincadb`;
 DROP TABLE IF EXISTS `conmem`;
 
 CREATE TABLE `conmem` (
-  `conmemscode` smallint(6) NOT NULL,
+  `conmemscode` smallint(6) NOT NULL AUTO_INCREMENT,
   `conmemtname` varchar(50) NOT NULL,
   `conmemtdesc` varchar(500) NOT NULL,
   `conmemfvalm` decimal(9,2) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `conmem` (
   `conmemsnump` smallint(6) NOT NULL,
   `conmemvimgm` longtext NOT NULL,
   PRIMARY KEY (`conmemscode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `conmem` */
 
@@ -44,20 +44,22 @@ insert  into `conmem`(`conmemscode`,`conmemtname`,`conmemtdesc`,`conmemfvalm`,`c
 DROP TABLE IF EXISTS `consta`;
 
 CREATE TABLE `consta` (
-  `constascode` smallint(6) NOT NULL,
+  `constascode` smallint(6) NOT NULL AUTO_INCREMENT,
   `confrmicode` int(11) NOT NULL,
-  `constatdesc` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `constatdesc` varchar(20) NOT NULL,
+  KEY `constascode` (`constascode`),
+  KEY `constascode_2` (`constascode`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `consta` */
 
 insert  into `consta`(`constascode`,`confrmicode`,`constatdesc`) values 
 (1,1,'Habilitado'),
-(0,1,'Inhabilitado'),
-(0,2,'Rechazada'),
+(2,1,'Inhabilitado'),
+(3,2,'Rechazada'),
 (1,2,'Pendiente'),
 (2,2,'Aceptado'),
-(0,3,'Suspendido'),
+(4,3,'Suspendido'),
 (1,3,'Pendiente'),
 (2,3,'En Juego'),
 (3,3,'Finalizado');
@@ -67,11 +69,11 @@ insert  into `consta`(`constascode`,`confrmicode`,`constatdesc`) values
 DROP TABLE IF EXISTS `contyp`;
 
 CREATE TABLE `contyp` (
-  `contypscode` smallint(6) NOT NULL,
+  `contypscode` smallint(6) NOT NULL AUTO_INCREMENT,
   `confrmicode` int(11) NOT NULL,
   `contyptdesc` varchar(20) NOT NULL,
   PRIMARY KEY (`contypscode`,`confrmicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `contyp` */
 
@@ -144,13 +146,13 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 DROP TABLE IF EXISTS `plachm`;
 
 CREATE TABLE `plachm` (
-  `plachmicode` int(11) NOT NULL,
+  `plachmicode` int(11) NOT NULL AUTO_INCREMENT,
   `plachmdcrea` date NOT NULL,
   `plachmthour` varchar(8) NOT NULL,
   `touttescode` smallint(6) NOT NULL,
   `tougplicode` int(11) NOT NULL,
   PRIMARY KEY (`plachmicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 /*Data for the table `plachm` */
 
@@ -271,7 +273,7 @@ insert  into `plachm`(`plachmicode`,`plachmdcrea`,`plachmthour`,`touttescode`,`t
 DROP TABLE IF EXISTS `plainf`;
 
 CREATE TABLE `plainf` (
-  `plainficode` int(11) NOT NULL,
+  `plainficode` int(11) NOT NULL AUTO_INCREMENT,
   `plainftname` varchar(100) NOT NULL,
   `plainftnick` varchar(100) NOT NULL,
   `plainftgder` varchar(1) NOT NULL,
@@ -280,7 +282,7 @@ CREATE TABLE `plainf` (
   `conmemscode` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`plainficode`),
   UNIQUE KEY `UQ__plainf__A07E1D74F85EC457` (`plainficode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=latin1;
 
 /*Data for the table `plainf` */
 
@@ -424,14 +426,15 @@ insert  into `plainf`(`plainficode`,`plainftname`,`plainftnick`,`plainftgder`,`p
 (159,'Hans Zizold','Hans Zizold','M','1982-03-24','defaultm.jpg',1),
 (160,'Carlos Roberto Miranda Rocha','Carlos Roberto Miranda Rocha','M','1995-05-22','defaultm.jpg',1),
 (161,'Puberto18','Puberto18','M','2000-07-10','defaultm.jpg',1),
-(162,'test','test','M','1980-01-01','defaultm.jpg',1);
+(162,'test','test','M','1980-01-01','defaultm.jpg',1),
+(165,'miguel','miguel','M','2019-04-24','fV9s6WLWYsmi1rgTjNmjxbFLBcPy30.png',1);
 
 /*Table structure for table `plapre` */
 
 DROP TABLE IF EXISTS `plapre`;
 
 CREATE TABLE `plapre` (
-  `plapreicode` int(11) NOT NULL,
+  `plapreicode` int(11) NOT NULL AUTO_INCREMENT,
   `plapredcrea` date NOT NULL,
   `plaprethour` varchar(8) NOT NULL,
   `tougplicode` int(11) NOT NULL,
@@ -441,8 +444,10 @@ CREATE TABLE `plapre` (
   `plapresxval` smallint(6) NOT NULL,
   `plapresptos` smallint(6) NOT NULL,
   `plaprebenbl` tinyint(1) NOT NULL,
-  PRIMARY KEY (`tougplicode`,`toufixicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`tougplicode`,`toufixicode`),
+  KEY `plapreicode` (`plapreicode`),
+  KEY `plapreicode_2` (`plapreicode`)
+) ENGINE=InnoDB AUTO_INCREMENT=5853 DEFAULT CHARSET=latin1;
 
 /*Data for the table `plapre` */
 
@@ -6418,7 +6423,7 @@ CREATE TABLE `secusr` (
   `plainficode` int(11) NOT NULL,
   PRIMARY KEY (`secusricode`),
   UNIQUE KEY `UQ__secusr__0C9925B0F8328E5F` (`secusricode`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=latin1;
 
 /*Data for the table `secusr` */
 
@@ -6562,7 +6567,8 @@ insert  into `secusr`(`secusricode`,`secusrtmail`,`secusrtface`,`secusrtpass`,`s
 (158,'hzizold@hotmail.com',NULL,'toto-kka','2018-06-26','2018-06-26',2,1,159),
 (159,'carlosmiranda2295@gmail.com',NULL,'asd123**123','2018-07-03','2018-07-03',2,1,160),
 (160,'cibercom@live.com',NULL,'123456789','2018-07-10','2018-07-10',2,1,161),
-(161,'test@gmail.com',NULL,'password','2018-07-27','2018-07-27',2,1,162);
+(161,'test@gmail.com',NULL,'password','2018-07-27','2018-07-27',2,1,162),
+(164,'fromhell.wtc@gmail.com',NULL,'123','2019-04-24','2019-04-24',2,1,165);
 
 /*Table structure for table `sysdiagrams` */
 
@@ -6588,7 +6594,7 @@ insert  into `sysdiagrams`(`name`,`principal_id`,`diagram_id`,`version`,`definit
 DROP TABLE IF EXISTS `toufix`;
 
 CREATE TABLE `toufix` (
-  `toufixicode` int(11) NOT NULL,
+  `toufixicode` int(11) NOT NULL AUTO_INCREMENT,
   `toufixdplay` date NOT NULL,
   `toufixthour` varchar(8) NOT NULL,
   `constascode` smallint(6) NOT NULL,
@@ -6601,7 +6607,7 @@ CREATE TABLE `toufix` (
   `toufixspen2` smallint(6) DEFAULT NULL,
   `toufixyxval` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`toufixicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toufix` */
 
@@ -6676,7 +6682,7 @@ insert  into `toufix`(`toufixicode`,`toufixdplay`,`toufixthour`,`constascode`,`t
 DROP TABLE IF EXISTS `tougpl`;
 
 CREATE TABLE `tougpl` (
-  `tougplicode` int(11) NOT NULL,
+  `tougplicode` int(11) NOT NULL AUTO_INCREMENT,
   `tougrpicode` int(11) NOT NULL,
   `constascode` smallint(6) NOT NULL,
   `plainficode` int(11) NOT NULL,
@@ -6685,7 +6691,7 @@ CREATE TABLE `tougpl` (
   `tougplsmedp` int(11) NOT NULL,
   `tougplslowp` int(11) NOT NULL,
   PRIMARY KEY (`tougplicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougpl` */
 
@@ -6828,14 +6834,16 @@ insert  into `tougpl`(`tougplicode`,`tougrpicode`,`constascode`,`plainficode`,`t
 (140,6,2,155,10,0,3,1),
 (141,6,2,158,24,1,5,4),
 (142,6,2,159,33,1,7,7),
-(143,6,2,160,0,0,0,0);
+(143,6,2,160,0,0,0,0),
+(144,12,2,1,0,0,0,0);
 
 /*Table structure for table `tougrp` */
 
 DROP TABLE IF EXISTS `tougrp`;
 
 CREATE TABLE `tougrp` (
-  `tougrpicode` int(11) NOT NULL,
+  `tougrpicode` int(11) NOT NULL AUTO_INCREMENT,
+  `secconnuuid` char(36) DEFAULT NULL,
   `tougrptname` varchar(50) NOT NULL,
   `tougrpdcrea` date NOT NULL,
   `touinfscode` smallint(6) NOT NULL,
@@ -6848,21 +6856,22 @@ CREATE TABLE `tougrp` (
   `tougrpvimgg` longtext NOT NULL,
   `tougrpbenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`tougrpicode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougrp` */
 
-insert  into `tougrp`(`tougrpicode`,`tougrptname`,`tougrpdcrea`,`touinfscode`,`plainficode`,`tougrpsmaxp`,`tougrpsmedp`,`tougrpsminp`,`tougrpbchva`,`tougrpsxval`,`tougrpvimgg`,`tougrpbenbl`) values 
-(1,'Flia Goytia 2018','2018-06-03',1,1,5,3,1,1,1,'GdMvo7zj72oMhU1H8YNSq2vLk1TyOM.jpeg',1),
-(2,'Mundial DBI/INFOARCH','2018-06-04',1,1,5,3,1,0,3,'6XuzOxm17FJVLkKKlE70SZaSLlnLGq.png',1),
-(3,'Mundial Misticos 2018','2018-06-04',1,1,5,3,1,1,2,'4AxseS3QaeA7O55N0oJ1FOlEEQrQ2E.jpg',1),
-(4,'GTV Mundial 2018','2018-06-07',1,1,5,3,1,1,1,'p249UStJwWbMR3S8NsR82dH5ZjYHTf.jpeg',1),
-(5,'Larefi Rusia 2018','2018-06-08',1,28,5,3,1,1,1,'fsPCuJjS8llbbYnPAdeTWGJS0ityd1.jpg',1),
-(6,'Mundial Rusia Tigo 2018','2018-06-11',1,4,5,3,1,1,1,'nrorWgVc2WEKDTicplLbk38W2YZlHi.jpeg',1),
-(7,'Futebol Rusia 2018','2018-06-11',1,24,5,3,1,0,3,'edP1BeDW03TclVfrCcrQPXkPf6OlaD.png',1),
-(8,'MUNDIAL 2018','2018-06-11',1,30,3,2,1,1,1,'default.jpg',1),
-(9,'EL DEBER','2018-06-12',1,2,3,2,1,1,1,'default.jpg',1),
-(10,'MUNDIAL 2018 MOL','2018-06-13',1,30,1,1,1,1,1,'default.jpg',1);
+insert  into `tougrp`(`tougrpicode`,`secconnuuid`,`tougrptname`,`tougrpdcrea`,`touinfscode`,`plainficode`,`tougrpsmaxp`,`tougrpsmedp`,`tougrpsminp`,`tougrpbchva`,`tougrpsxval`,`tougrpvimgg`,`tougrpbenbl`) values 
+(1,'82170761-862b-4fa7-9840-3c9937be08bc','Flia Goytia 2018','2018-06-03',1,1,5,3,1,1,1,'GdMvo7zj72oMhU1H8YNSq2vLk1TyOM.jpeg',1),
+(2,'82170761-862b-4fa7-9840-3c1137ae08bc','Mundial DBI/INFOARCH','2018-06-04',1,1,5,3,1,0,3,'6XuzOxm17FJVLkKKlE70SZaSLlnLGq.png',1),
+(3,'82170761-862b-4fa7-9840-3c2237ae08bc','Mundial Misticos 2018','2018-06-04',1,1,5,3,1,1,2,'4AxseS3QaeA7O55N0oJ1FOlEEQrQ2E.jpg',1),
+(4,'82170761-862b-4fa7-5540-3c9937ae08bc','GTV Mundial 2018','2018-06-07',1,1,5,3,1,1,1,'p249UStJwWbMR3S8NsR82dH5ZjYHTf.jpeg',1),
+(5,'82170761-862b-4aa7-9840-3c9937ae08bc','Larefi Rusia 2018','2018-06-08',1,28,5,3,1,1,1,'fsPCuJjS8llbbYnPAdeTWGJS0ityd1.jpg',1),
+(6,'82170761-862b-4fa7-9840-3c9937ae08ac','Mundial Rusia Tigo 2018','2018-06-11',1,4,5,3,1,1,1,'nrorWgVc2WEKDTicplLbk38W2YZlHi.jpeg',1),
+(7,'82170761-862b-4fa7-9840-3c9937ae08fc','Futebol Rusia 2018','2018-06-11',1,24,5,3,1,0,3,'edP1BeDW03TclVfrCcrQPXkPf6OlaD.png',1),
+(8,'82170761-862b-4fa7-9840-3c9937ae28bc','MUNDIAL 2018','2018-06-11',1,30,3,2,1,1,1,'default.jpg',1),
+(9,'82170761-862b-4fa7-9840-3c3337ae08bc','EL DEBER','2018-06-12',1,2,3,2,1,1,1,'default.jpg',1),
+(10,'82110761-862b-4fa7-9840-3c9937ae08bc','MUNDIAL 2018 MOL','2018-06-13',1,30,1,1,1,1,1,'default.jpg',1),
+(12,NULL,'adsd','2019-04-25',2,1,1,1,1,1,1,'default.jpg',1);
 
 /*Table structure for table `touinf` */
 
@@ -6870,6 +6879,7 @@ DROP TABLE IF EXISTS `touinf`;
 
 CREATE TABLE `touinf` (
   `touinfscode` smallint(6) NOT NULL AUTO_INCREMENT,
+  `secconnuuid` char(36) DEFAULT NULL,
   `touinftname` varchar(50) NOT NULL,
   `touinfdcrea` date NOT NULL,
   `touinfthour` varchar(8) NOT NULL,
@@ -6883,22 +6893,22 @@ CREATE TABLE `touinf` (
 
 /*Data for the table `touinf` */
 
-insert  into `touinf`(`touinfscode`,`touinftname`,`touinfdcrea`,`touinfthour`,`touinfsnumt`,`touinfdstat`,`touinfdendt`,`touinfvlogt`,`touinfbenbl`) values 
-(1,'Copa del Mundo Rusia 2018','2018-05-01','10:00:00',32,'2018-06-14','2018-07-15','fifa20181.jpg',1),
-(2,'Copa America Brasil 2019','2019-04-22','15:39:50',12,'2019-06-14','2019-07-07','3Wauv8yd2MsGJdZXFnjK5emIHht1a6.jpeg',1);
+insert  into `touinf`(`touinfscode`,`secconnuuid`,`touinftname`,`touinfdcrea`,`touinfthour`,`touinfsnumt`,`touinfdstat`,`touinfdendt`,`touinfvlogt`,`touinfbenbl`) values 
+(1,'82170761-862b-4fa7-9840-3c9957ae08bc','Copa del Mundo Rusia 2018','2018-05-01','10:00:00',32,'2018-06-14','2018-07-15','fifa20181.jpg',1),
+(2,'22170761-862b-4fa7-9840-3c9937ae08bc','Copa America Brasil 2019','2019-04-22','15:39:50',12,'2019-06-14','2019-07-07','3Wauv8yd2MsGJdZXFnjK5emIHht1a6.jpeg',1);
 
 /*Table structure for table `toutea` */
 
 DROP TABLE IF EXISTS `toutea`;
 
 CREATE TABLE `toutea` (
-  `touteascode` smallint(6) NOT NULL,
+  `touteascode` smallint(6) NOT NULL AUTO_INCREMENT,
   `touteatname` varchar(50) NOT NULL,
   `contypscode` smallint(6) NOT NULL,
   `touteavimgt` longtext NOT NULL,
   `touteatabrv` varchar(5) NOT NULL,
   PRIMARY KEY (`touteascode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toutea` */
 
@@ -6941,12 +6951,12 @@ insert  into `toutea`(`touteascode`,`touteatname`,`contypscode`,`touteavimgt`,`t
 DROP TABLE IF EXISTS `toutte`;
 
 CREATE TABLE `toutte` (
-  `touttescode` smallint(6) NOT NULL,
+  `touttescode` smallint(6) NOT NULL AUTO_INCREMENT,
   `touinfscode` smallint(6) NOT NULL,
   `touteascode` smallint(6) NOT NULL,
   `touttebenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`touttescode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toutte` */
 

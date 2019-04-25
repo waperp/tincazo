@@ -154,7 +154,7 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-        $listaTorneos  = null;
+        $listaTorneos = [] ;
         $date = Carbon::now();
         // return  dd$request->ajax();
         if (!$request->has('q')) {
@@ -184,7 +184,6 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
         where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'),$touinf_link_tournament->touinfscode]);
         }
-        
 
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))

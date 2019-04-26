@@ -159,7 +159,7 @@
                             <use xlink:href="assets/images/icons-soccer.svg#soccer-ball"/>
                         </svg>
                         <h6 class="info-block__heading">Contactenos</h6>
-                        <a class="info-block__link" {{-- href="mailto:info@alchemists.com" --}}>tincazo.info@gmail.com</a>
+                        <a class="info-block__link" {{-- href="mailto:info@alchemists.com" --}}>soporte@tincazo.com</a>
                     </li>
                 </ul>
             </div>

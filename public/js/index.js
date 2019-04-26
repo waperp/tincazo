@@ -204,7 +204,7 @@
      } else {
          // $('#site-content-intrucciones').show();
          // $('#row-container').hide();
-         $('.mitorneo').hide();
+         $('.mitorneo_li').hide();
          // $('#grupo-li-player-group').hide();
      }
      $("#selecttorneo").select2({

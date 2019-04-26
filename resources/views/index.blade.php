@@ -88,7 +88,6 @@
     </div>
   @endif
 @endsection
-
 @section('header')
  <header class="header">
   
@@ -98,20 +97,15 @@
   
                 <!-- Account Navigation -->
                 <ul class="nav-account">
-
                 @if(Session::has('plainficode') and Session::has('secusricode') and Session::has('plainftnick') 
                 and Session::has('secusrtmail'))
                     
                     @if(Session::get('contypscode') == 1)
-
-
                        <li class="nav-account__item has-children">
                         <span class="main-nav__toggle"></span>
-
                         <a href="javascript:void(0)">Administrar <span class="highlight"></span></a>
                                         <ul class="main-nav__sub">
                                             <li><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-admin-gestionar-grupo" >Gestionar Grupos</a></li>
-
                                             <li><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-nuevo-torneo" >Gestionar Torneos</a></li>
                                             <li><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-nuevo-equipo">Gestionar Plantel</a></li>
                                             <li><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-nuevo-torneo-equipo">Torneo & Plantel</a></li>
@@ -119,13 +113,11 @@
                                         </ul>
                                     </li>
                     @else
-
                     @endif
                     
 <li class="nav-account__item">
                       <a href="javascript:void(0)"> INVITACIONES ( {{ count($listaInvitaciones) }} ) </a>
                     </li>
-
                        <li class="nav-account__item has-children"><span class="main-nav__toggle"></span><a href="javascript:void(0)">Mi Cuenta <span class="highlight"></span></a>
                             <ul class="main-nav__sub">
                                 @if (Session::get('conmemscode') != 1)
@@ -140,7 +132,6 @@
                     </li>
                 @else
                     <li class="nav-account__item">
-
                         <a  href="javascript:void(0)" data-toggle="modal" data-target="#modal-login-register-tabs">Iniciar Sesion</a>
                          {{-- <li class="nav-account__item"><a  data-toggle="modal" data-target="#modal-login-register">Crear Cuenta</a></li> --}}
                     </li>
@@ -286,7 +277,7 @@
                            
 
                                  @if (Session::get('session-admin-tougrp')== true)
-                              <li class="mitorneo">
+                              <li class="mitorneo_li">
                                 <a class="mitorneo" >{{ Session::get('select-tougrptname') }}</a>
                                 <ul class="main-nav__sub">
                                     <li><a href="javascript:void(0)" id="modal-config-open" data-toggle="modal" data-target="#modal-config-grupo">Configurar</a></li>
@@ -296,7 +287,7 @@
                                 </ul>
                               </li>
                               @else
-                                <li >
+                                <li class="mitorneo_li">
                                   <a class="mitorneo" >{{ Session::get('select-tougrptname') }}</a>
 
                                  <ul class="main-nav__sub">

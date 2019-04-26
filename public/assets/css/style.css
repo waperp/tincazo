@@ -117,6 +117,10 @@ Description:  Styles for displaying content with some of the most commonly used 
 */
 
 /* Headings */
+
+.mitorneo[style='display: block;'] + table {
+  filter: blur(3px);
+}
 .team-meta__logo_right {
     width: 25px;
     height: 20px;

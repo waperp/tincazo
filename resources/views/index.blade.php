@@ -122,6 +122,10 @@
 
                     @endif
                     
+<li class="nav-account__item">
+                      <a href="javascript:void(0)"> INVITACIONES ( {{ count($listaInvitaciones) }} ) </a>
+                    </li>
+
                        <li class="nav-account__item has-children"><span class="main-nav__toggle"></span><a href="javascript:void(0)">Mi Cuenta <span class="highlight"></span></a>
                             <ul class="main-nav__sub">
                                 @if (Session::get('conmemscode') != 1)
@@ -174,7 +178,7 @@
                     <nav class="main-nav clearfix">
                         <ul class="main-nav__list">
                             <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-                            <li ><a onclick="removemenu()" href="/#instrucciones">Instrucciones</a></li>
+                            <li ><a onclick="removemenu()" href="/#instrucciones">GUIA</a></li>
                                  @if(Session::has('plainficode') )
                               <li class=""><a id="enlace-invitacion" href="javascript:void(0)">INVITACIONES ( {{ count($listaInvitaciones) }} )</a>
                             @endif

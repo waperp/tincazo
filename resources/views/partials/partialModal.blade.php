@@ -754,7 +754,7 @@
                                                     <button class="btn btn-primary-inverse btn-block" type="submit">
                                                        PROCESAR
                                                     </button>
-                                                    <button class="btn btn-danger btn-block"  type="button">
+                                                    <button  data-toggle="modal" data-target="#modal-nuevo-torneo-equipo" data-dismiss="modal" class="btn btn-danger btn-block"  type="button">
                                                        CANCELAR
                                                     </button>
                                                 </div>

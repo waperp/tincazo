@@ -386,7 +386,7 @@ group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.tou
     {
         $data = DB::table('toutea')->select('toutea.*','contyp.*')
             ->join('contyp', 'contyp.contypscode', 'toutea.contypscode')
-            ->where('contyp.confrmicode', 2)->where('contyp.contypscode',$request->contypscode)->get();
+            ->where('contyp.confrmicode', 2)->where('contyp.contypscode',$request->contypscode)->orderBy('toutea.touteatname')->get();
         return Datatables::of($data)->make(true);
 
     }

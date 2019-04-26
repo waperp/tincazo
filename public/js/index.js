@@ -236,7 +236,7 @@
          allowClear: true,
      });
      $("#select-modal-nuevo-equipo").select2({
-         placeholder: "Filtrar Torneos",
+         placeholder: "Filtrar Tipos",
          allowClear: true,
      });
      $("#contypscode1").select2({
@@ -1074,8 +1074,9 @@
          ajax: {
             url: '/tablaAdminEquipos',
             data: function(d) {
-                 var touinfscode = $('#select-modal-nuevo-equipo').val();
-                 d.touinfscode = touinfscode;
+                 var contypscode = $('#select-modal-nuevo-equipo').val();
+                 d.contypscode = contypscode;
+                 $('#contypscode').val(contypscode).trigger('change');
             }
 
         },

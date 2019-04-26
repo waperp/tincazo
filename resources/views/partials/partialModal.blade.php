@@ -1170,9 +1170,9 @@
                                         <div class="row">
                                             <div class="form-group">
                     <select class="select2 form-control" id="select-modal-nuevo-equipo" style="width: 100%">
-                                                @foreach($listaTouinf as $objTorneosEquipos)
-                                                    <option  value="{{$objTorneosEquipos->touinfscode}}">
-                                                        {{$objTorneosEquipos->touinftname}}
+                                                @foreach($listaTipoPlantel as $onjListaTipoPlante)
+                                                    <option  value="{{$onjListaTipoPlante->contypscode}}">
+                                                        {{$onjListaTipoPlante->contyptdesc}}
                                                     </option>
                                                 @endforeach
                                             </select>

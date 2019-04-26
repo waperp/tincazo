@@ -165,6 +165,7 @@ class HomeController extends Controller
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->get();
+        $listaTipoPlantel = DB::table('contyp')->where('confrmicode',2)->get();
         $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
         JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
         JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
@@ -216,7 +217,7 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         from tougrp join tougpl on tougrp.tougrpicode = tougpl.tougrpicode join touinf on tougrp.touinfscode = touinf.touinfscode
         where tougpl.plainficode = ? and tougpl.constascode = 1', [Session::get('plainficode')]);
 
-        return view('index', compact('listaConmen', 'listaTouinf', 'listaTorneos', 'listaInvitaciones',
+        return view('index', compact('listaConmen', 'listaTouinf','listaTipoPlantel', 'listaTorneos', 'listaInvitaciones',
             'listaContypEquipos', 'listaToutea', 'listaEquiposElegir', 'miCampeon', 'estadisticas',
             'listaEditPerfil', 'fechaValidar','validarTougrpbchva','listaTorneosMenu'));
 
@@ -383,11 +384,9 @@ group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.tou
     }
     public function tablaAdminEquipos(Request $request)
     {
-        $data = DB::table('toutte')->select('toutea.*','contyp.*')
-            ->join('toutea', 'toutea.touteascode', 'toutte.touteascode')
-            ->join('touinf', 'touinf.touinfscode', 'toutte.touinfscode')
+        $data = DB::table('toutea')->select('toutea.*','contyp.*')
             ->join('contyp', 'contyp.contypscode', 'toutea.contypscode')
-            ->where('contyp.confrmicode', 2)->where('touinf.touinfscode',$request->touinfscode)->get();
+            ->where('contyp.confrmicode', 2)->where('contyp.contypscode',$request->contypscode)->get();
         return Datatables::of($data)->make(true);
 
     }

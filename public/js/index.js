@@ -1221,6 +1221,10 @@
              action: function(e, dt, node, config) {
                  $('#modal-nuevo-torneo-equipo').modal('hide');
                  $('#modal-admin-add-torneo-equipo').modal('show');
+                 $('#select-torneo-equipo').empty();
+/*$("#selectMultiple").select2('destroy');*/
+                 
+
              },
              titleAttr: 'AGREGAR EQUIPO'
          }]

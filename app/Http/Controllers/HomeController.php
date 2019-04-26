@@ -459,14 +459,14 @@ from tougrp join plainf on tougrp.plainficode = plainf.plainficode where tougrp.
 
             $data = DB::table('toutea')->select("toutea.touteascode", "toutea.touteatname")
                 ->whereNotIn('toutea.touteascode', function ($toutte) use ($touinfscode) {
-                    $toutte->select('toutte.touteascode ')->from('toutte')->where('toutte.touinfscode', $touinfscode);
+                    $toutte->select('toutte.touteascode')->from('toutte')->where('toutte.touinfscode', $touinfscode);
                 })->where('toutea.contypscode', $contypscode)
-                ->where('toutea.touteatname', 'LIKE', "%$search%")
+                ->where('toutea.touteatname','LIKE', "%$search%")
                 ->get();
         } else {
             $data = DB::table('toutea')->select("toutea.touteascode", "toutea.touteatname")
                 ->whereNotIn('toutea.touteascode', function ($toutte) use ($touinfscode) {
-                    $toutte->select('toutte.touteascode ')->from('toutte')->where('toutte.touinfscode', $touinfscode);
+                    $toutte->select('toutte.touteascode')->from('toutte')->where('toutte.touinfscode', $touinfscode);
                 })->where('toutea.contypscode', $contypscode)
                 ->get();
         }

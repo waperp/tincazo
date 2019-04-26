@@ -226,7 +226,9 @@
   margin-right: auto; }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
-  border: solid black 1px;
+  background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
   outline: 0; }
 
 .select2-container--default.select2-container--disabled .select2-selection--multiple {

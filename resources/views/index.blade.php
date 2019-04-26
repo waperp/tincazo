@@ -115,9 +115,15 @@
                     @else
                     @endif
                     
-<li class="nav-account__item">
-                      <a href="javascript:void(0)"> INVITACIONES ( {{ count($listaInvitaciones) }} ) </a>
+  @if (COUNT($listaInvitaciones) > 0)
+                     <li class="nav-account__item">
+                      <a href="javascript:void(0)" DATA-toggle="modal" DATA-target="#modal-invitaciones">INVITACIONES <span style="color:#c2ff1f">  ( {{ COUNT($listaInvitaciones) }} )</span></a>
                     </li>
+                    @else
+                    <li class="nav-account__item">
+                      <a href="javascript:void(0)" > INVITACIONES <span style="color:#c2ff1f">( {{ COUNT($listaInvitaciones) }} )</span> </a>
+                    </li>
+                     @endif
                        <li class="nav-account__item has-children"><span class="main-nav__toggle"></span><a href="javascript:void(0)">Mi Cuenta <span class="highlight"></span></a>
                             <ul class="main-nav__sub">
                                 @if (Session::get('conmemscode') != 1)
@@ -170,7 +176,7 @@
                         <ul class="main-nav__list">
                             <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
                             <li ><a onclick="removemenu()" href="/#instrucciones">GUIA</a></li>
-                                 @if(Session::has('plainficode') )
+                       {{--           @if(Session::has('plainficode') )
                               <li class=""><a id="enlace-invitacion" href="javascript:void(0)">INVITACIONES ( {{ count($listaInvitaciones) }} )</a>
                             @endif
                               @if(count($listaInvitaciones) <= 0 )
@@ -204,8 +210,9 @@
                       </ul>
                     </div>
                   </div>
-                            @endif
+                          
                 </li>
+                  @endif --}}
                  @if(Session::has('plainficode') )
                     <li class=""><a href="javascript:void(0)">MIS TORNEOS <span style="color:#c2ff1f">( {{ count($listaTorneosMenu) }} )</span></a>
                                   <div id="main-nav-torneos" class="main-nav__megamenu clearfix" style="width:unset; left: unset; padding: 20px 20px ">

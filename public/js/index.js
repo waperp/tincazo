@@ -1891,7 +1891,7 @@
                      closeOnConfirm: true
                  });
              } else {
-                /* window.location.href = "/";*/
+                 window.location.href = "/";
              }
              document.getElementById('crear-grupo-btn-subtmit').disabled = 0;
          },

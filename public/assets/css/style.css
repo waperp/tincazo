@@ -5582,7 +5582,7 @@ input.header-mobile__search-control:focus {
 .main-nav__list>li>.mitorneo {
     display: block;
     position: relative;
-    color: #c2ff1f !important;
+    color: orange !important;
     padding: 0 34px;
     line-height: 62px;
     text-decoration: none;

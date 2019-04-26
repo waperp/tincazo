@@ -1074,7 +1074,7 @@
          ajax: {
             url: '/tablaAdminEquipos',
             data: function(d) {
-                 var touinfscode = $('#select-torneo-admin-torneos').val();
+                 var touinfscode = $('#select-modal-nuevo-equipo').val();
                  d.touinfscode = touinfscode;
             }
 

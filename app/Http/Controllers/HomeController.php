@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
     public function inicio()
     {
-        $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+        $listaTouinf = DB::table('touinf')->get();
 
         return view('indexOfline', compact('listaTouinf'));
     }
@@ -164,7 +164,7 @@ class HomeController extends Controller
         // return $request->all();
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
-        $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+        $listaTouinf = DB::table('touinf')->get();
         $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
         JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
         JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
@@ -387,7 +387,7 @@ group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.tou
             ->join('toutea', 'toutea.touteascode', 'toutte.touteascode')
             ->join('touinf', 'touinf.touinfscode', 'toutte.touinfscode')
             ->join('contyp', 'contyp.contypscode', 'toutea.contypscode')
-            ->where('contyp.confrmicode', 2)->get();
+            ->where('contyp.confrmicode', 2)->where('touinf.touinfscode',$request->touinfscode)->get();
         return Datatables::of($data)->make(true);
 
     }

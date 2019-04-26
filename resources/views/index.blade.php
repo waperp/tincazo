@@ -115,15 +115,7 @@
                     @else
                     @endif
                     
-  @if (COUNT($listaInvitaciones) > 0)
-                     <li class="nav-account__item">
-                      <a href="javascript:void(0)" DATA-toggle="modal" DATA-target="#modal-invitaciones">INVITACIONES <span style="color:#c2ff1f">  ( {{ COUNT($listaInvitaciones) }} )</span></a>
-                    </li>
-                    @else
-                    <li class="nav-account__item">
-                      <a href="javascript:void(0)" > INVITACIONES <span style="color:#c2ff1f">( {{ COUNT($listaInvitaciones) }} )</span> </a>
-                    </li>
-                     @endif
+
                        <li class="nav-account__item has-children"><span class="main-nav__toggle"></span><a href="javascript:void(0)">Mi Cuenta <span class="highlight"></span></a>
                             <ul class="main-nav__sub">
                                 @if (Session::get('conmemscode') != 1)
@@ -133,6 +125,15 @@
                                 <li><a href="/logout">Cerrar Sesion</a></li>
                                 </ul>
                             </li>
+                              @if (COUNT($listaInvitaciones) > 0)
+                     <li class="nav-account__item">
+                      <a href="javascript:void(0)" DATA-toggle="modal" DATA-target="#modal-invitaciones"><span style="color:orange">INVITACIONES</span> <span >  ( {{ COUNT($listaInvitaciones) }} )</span></a>
+                    </li>
+                    @else
+                    <li class="nav-account__item">
+                      <a href="javascript:void(0)" ><span style="color:orange">INVITACIONES</span> <span style="color:#c2ff1f">( {{ COUNT($listaInvitaciones) }} )</span> </a>
+                    </li>
+                     @endif
                     <li class="nav-account__item">
                       <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-edit-perfil"><img src="images/{{ Session::get('conmemvimgm') }}" style="height:25px; width: 25px" alt=""> &nbsp; {{ Session::get('plainftnick') }} </a>
                     </li>
@@ -176,43 +177,7 @@
                         <ul class="main-nav__list">
                             <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
                             <li ><a onclick="removemenu()" href="/#instrucciones">GUIA</a></li>
-                       {{--           @if(Session::has('plainficode') )
-                              <li class=""><a id="enlace-invitacion" href="javascript:void(0)">INVITACIONES ( {{ count($listaInvitaciones) }} )</a>
-                            @endif
-                              @if(count($listaInvitaciones) <= 0 )
-                              @else
-                            <div class="main-nav__megamenu clearfix" style="width:unset; left: unset; padding: 23px 25px;">
-                  
-                            <div class="col-lg-12 col-md-12 col-xs-12">
-                              <ul class="posts posts--simple-list">
-                                <!-- //torneo -->
-                                  @foreach($listaInvitaciones as $objInvitacionesTorneos)
-                                  
-                                <li class="posts__item posts__item--category-1">
-                                  <figure class="posts__thumb">
-                                    <a >
-                                      <img  name="image-torneo-{{ $objInvitacionesTorneos->tougrpicode }}"  
-                                      style="width: 70px ; height: 70px" src="/images/{{ $objInvitacionesTorneos->tougrpvimgg  }}" >
-                                    </a>
-                                  </figure>
-                                  <div class="posts__inner">
-                                    <div class="posts__cat">
-                                     <span class="label posts__cat-label" style="background-color: #ff7e1f !important;"><a style="color: white;font-size: 10px;">{{ $objInvitacionesTorneos->tougrptname }}</a></span>
 
-                                    </div>
-                                    <h6 style="font-size: 10px;" class="posts__title"> <a>{{ $objInvitacionesTorneos->touinftname }}</a></h6>
-
-                                    <span id="aceptarInvitacion{{ $objInvitacionesTorneos->tougrpicode }}" onclick="aceptarInvitacion(2,{{ $objInvitacionesTorneos->tougrpicode }})" class="label label-success" onmouseover="" style="cursor: pointer;">Aceptar</span>
-                                    <span id="rechazarInvitacion{{ $objInvitacionesTorneos->tougrpicode }}" onclick="aceptarInvitacion(0,{{ $objInvitacionesTorneos->tougrpicode }})" class="label label-danger" onmouseover="" style="cursor: pointer;">Rechazar</span>
-                                  </div>
-                        </li>
-                        @endforeach
-                      </ul>
-                    </div>
-                  </div>
-                          
-                </li>
-                  @endif --}}
                  @if(Session::has('plainficode') )
                     <li class=""><a href="javascript:void(0)">MIS TORNEOS <span style="color:#c2ff1f">( {{ count($listaTorneosMenu) }} )</span></a>
                                   <div id="main-nav-torneos" class="main-nav__megamenu clearfix" style="width:unset; left: unset; padding: 20px 20px ">

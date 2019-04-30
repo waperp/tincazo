@@ -13,7 +13,7 @@
    <div id="slider-index" class="hero-slider-wrapper">
     
       <div class="hero-slider">
-        @foreach ($listaTouinf as $objSlideTouinf)
+        @foreach ($listaTouinfSlider as $objSlideTouinf)
            <div class="hero-slider__item" style="background-image: url(/images/{{  $objSlideTouinf->touinfvlogt}})">
     
           <div class="container hero-slider__item-container">
@@ -67,7 +67,7 @@
       <div class="hero-slider-thumbs-wrapper" >
         <div class="container">
           <div class="hero-slider-thumbs posts posts--simple-list">
-            @foreach ($listaTouinf as $objSlideTouinf1)
+            @foreach ($listaTouinfSlider as $objSlideTouinf1)
             <div class="hero-slider-thumbs__item">
               <div class="posts__item posts__item--category-{{ $objSlideTouinf1->touinfscode }}">
                 <div class="posts__inner">
@@ -171,7 +171,7 @@
   
                     <!-- Header Logo -->
                     <div class="header-logo">
-                        <a href="/"><img src="assets/images/soccer/tincaso.png" style="widows: 150px; height: 170px"  alt="Alchemists" class="header-logo__img"></a>
+                        <a href="/"><img src="assets/images/soccer/tincaso.png" style="width: 150px; height: 150px"  alt="Alchemists" class="header-logo__img"></a>
                     </div>
                     <nav class="main-nav clearfix">
                         <ul class="main-nav__list">

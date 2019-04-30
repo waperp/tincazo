@@ -1496,8 +1496,6 @@
                                                         <a OnClick="validateMail()">Olvidastes tu contraseña?</a>
                                                       </div>
                                     <div class="form-group form-group--submit">
-                                        <!-- 
-                        <a href="shop-account.html" class="btn btn-primary-inverse btn-block"></a> -->
                                         <button id="form-login-button-submit" class="btn btn-primary-inverse btn-block" type="submit">
                                             Ingrese a su cuenta
                                         </button>

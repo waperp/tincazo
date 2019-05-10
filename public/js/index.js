@@ -141,8 +141,7 @@
      // });
      estadisticas();
      tusTincazosPendientes("");
-     combo1();
-     combo2();
+     
      selectResponsable();
      tusTincazosJuego("");
      tusTincazosFinalizados("");
@@ -1383,6 +1382,8 @@
                          closeOnConfirm: true
                      });
                  } else {
+                    combo1();
+     combo2();
                      $('#select-touinfscode-hidden').val(touinfscode);
                      $('#dates-toufixdplay').val(toufixdplay);
                      $('#select-toufixdplay-hidden').val(touinfscode);

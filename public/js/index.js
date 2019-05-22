@@ -2688,6 +2688,7 @@
      toufixdplay = $('#dates-toufixdplay').val();
      toufixthour = $('#dates-toufixthour').val();
      toufixyxval = $('#toufix-toufixyxval').val();
+     debugger;
      tipo = $('#toufixicode-tipo').val();
      $.ajax({
          url: '/toufix',
@@ -3269,7 +3270,7 @@
                          return {
                              image: item.touteavimgt,
                              text: item.touteatname,
-                             id: item.touteascode
+                             id: item.touttescode
                          }
                      })
                  };

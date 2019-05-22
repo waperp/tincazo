@@ -164,7 +164,7 @@ class toufixController extends Controller
     public function show1($toufixicode)
     {
 
-        $toufix = toufix::select('toufix.toufixicode', 'toutea1.touteascode', 'toutea1.touteatname', 'toutea1.touteavimgt',
+        $toufix = toufix::select('toutte1.touttescode as touttescode1','toutte2.touttescode as touttescode2','toufix.toufixicode', 'toutea1.touteascode', 'toutea1.touteatname', 'toutea1.touteavimgt',
             DB::raw('toutea2.touteascode as touteascode2'), DB::raw('toutea2.touteatname as touteatname2'), DB::raw('toutea2.touteavimgt as touteavimgt2'), 'toufix.toufixsscr1', 'toufix.toufixsscr2', 'toufix.toufixyxval', 'toufix.toufixthour', 'toufix.toufixdplay')
             ->join(DB::raw('toutte toutte1'), 'toufix.touttescod1', 'toutte1.touttescode')
             ->join(DB::raw('toutte toutte2'), 'toufix.touttescod2', 'toutte2.touttescode')

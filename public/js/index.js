@@ -2093,10 +2093,13 @@
              toufixicode: toufixicode
          },
          success: function(data) {
+            debugger
              $('#select-touteascode1').empty();
              $('#select-touteascode2').empty();
-             $('#select-touteascode1').append('<option value="' + data.touteascode + '">' + data.touteatname + '</option>');
-             $('#select-touteascode2').append('<option value="' + data.touteascode2 + '">' + data.touteatname2 + '</option>');
+                    combo1();
+     combo2();
+             $('#select-touteascode1').append('<option value="' + data.touttescode1 + '">' + data.touteatname + '</option>');
+             $('#select-touteascode2').append('<option value="' + data.touttescode2 + '">' + data.touteatname2 + '</option>');
              $('#toufixicode-hidden').val(data.toufixicode);
              // $('#datetimepicker-toufixdplay').data("DateTimePicker").date(data.toufixdplay)
              $('#dates-toufixthour').val(data.toufixthour);

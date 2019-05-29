@@ -171,6 +171,7 @@ class touteaController extends Controller
             $data = DB::table('toutte')->insert([
                 'touinfscode' => $request->touinfscode,
                 'touteascode' => $value,
+                'touttebenbl' => 1,
 
             ]);
         }

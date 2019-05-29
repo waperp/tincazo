@@ -284,7 +284,7 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
-
+    
     public function show($id)
     {
         $data = tougrp::

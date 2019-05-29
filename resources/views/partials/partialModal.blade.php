@@ -1710,8 +1710,6 @@
                         <label for="">Nombre del torneo</label>
                         <input type="text"  class="form-control" required="" name="tougrptname" id="tougrptname-edit"  >
                       </div>
-
-
                       <div class="form-group">
                         <label for=""> TINCAZO mayor (Resultado y Marcador)</label>
                         <input type="number" min="3" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif  data-max="100" data-min_max data-min="3" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpsmaxp-edit" name="tougrpsmaxp" >

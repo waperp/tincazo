@@ -40,7 +40,7 @@ class AuthController extends Controller
         $Secusr1->secusrtpass = Hash::make('Tincazo.com123.');
         $Secusr1->save();*/
         /*return secusr::paginate(10);*/
-        return Hash::make('123');
+        return Hash::make('Tincazo.com123.');
 
     }
     public function tableGroupInvitations(Request $request)

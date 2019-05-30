@@ -2557,6 +2557,7 @@
              'password': $('#password').val()
          },
          success: function(data) {
+            
              if (data.success == 0) {
                  $('#false').show();
                  $('#true').hide();

@@ -106,7 +106,7 @@ class LoginController extends Controller
                 $credentials = $request->only($this->username(), $this->userpassword());
                 if (!Auth::attempt($credentials)) {
                     return response()->json([
-                        ['mensaje' => 'Estas credenciales no coinciden con nuestros registros', 'success' => 0],
+                        'mensaje' => 'Estas credenciales no coinciden con nuestros registros', 'success' => 0,
                     ]);
                 } else {
                     $date = Carbon::now();

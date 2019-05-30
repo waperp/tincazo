@@ -8,9 +8,10 @@ use App\secusr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Session;
-
 class secusrController extends Controller
 {
     /**
@@ -101,14 +102,25 @@ class secusrController extends Controller
     }
     public function store(Request $request)
     {
-        // return response()->json($request->all());
-
+       /* return response()->json($request->all());*/
+         $validator = Validator::make($request->all(),[
+            'plainftname' => 'required|string',
+            'secusrtmail' => 'required|string|email',
+            'secusrtpass' => 'required|string',
+            'conmemscode' => 'required',
+        ]);
+  if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Failed created user!',
+            ], 401);
+        }else{
+/* return   response()->json(Carbon::parse($request->plainfddobp)->format('Y-m-d'));*/
         DB::beginTransaction();
         try {
             $date = Carbon::now();
 
             // return response()->json(!$existMail);
-            if ($request->tipo == 0) {
+            if (true) {
                 $existMail = DB::table('secusr')->where('secusrtmail', $request->secusrtmail)->first();
                 if (!$existMail) {
                     if ($request->hasFile('plainfvimgp')) {
@@ -134,7 +146,7 @@ class secusrController extends Controller
                     $plainf->plainftgder = $request->plainftgder;
                     $plainf->save();
                     $secusr->secusrtmail = $request->secusrtmail;
-                    $secusr->secusrtpass = $request->secusrtpass;
+                    $secusr->secusrtpass = Hash::make($request->secusrtpass);
                     $secusr->secusrdregu = $date->toDateString();
                     $secusr->secusrdvalu = $date->toDateString();
                     $secusr->contypscode = 2;
@@ -143,22 +155,23 @@ class secusrController extends Controller
                     $secusr->save();
                     $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
 
-                    Session::put('secusrtmail', $secusr->secusrtmail);
+                   /* Session::put('secusrtmail', $secusr->secusrtmail);
                     Session::put('secusricode', $secusr->secusricode);
                     Session::put('contypscode', $secusr->contypscode);
                     Session::put('plainficode', $plainf->plainficode);
                     Session::put('plainftnick', $plainf->plainftnick);
                     Session::put('conmemscode', $plainf->conmemscode);
-                    Session::put('conmemvimgm', $conmem->conmemvimgm);
+                    Session::put('conmemvimgm', $conmem->conmemvimgm);*/
                     Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
                     DB::commit();
-                    return response()->json(['success' => true, 'mail' => false, 'type' => 'create']);
+                    return response()->json(['success' => true, 'mail' => false, 'type' => 'create', 
+                        'plainf' => $plainf, 'conmem' => $conmem]);
 
                 } else {
                     return response()->json(['success' => false, 'mail' => true, 'type' => 'validate']);
                 }
 
-            } else if ($request->tipo == 1) {
+            } /*else if ($request->tipo == 1) {
                 $plainf = plainf::find(Session::get('plainficode'));
                 $secusr = secusr::find(Session::get('secusricode'));
 
@@ -184,15 +197,17 @@ class secusrController extends Controller
                 $secusr->save();
                 DB::commit();
                 return response()->json(['success' => true, 'mail' => false, 'type' => 'update']);
-            } else {
+            }*/ else {
                 return response()->json(['success' => false, 'mail' => false, 'type' => 'error']);
             }
 
         } catch (\Exception $e) {
 
             DB::rollback();
-            return response()->json($e->getMessage());
+            return response()->json($e);
         }
+        }
+       
     }
 
     /**

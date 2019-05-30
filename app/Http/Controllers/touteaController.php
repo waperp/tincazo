@@ -171,7 +171,6 @@ class touteaController extends Controller
             $data = DB::table('toutte')->insert([
                 'touinfscode' => $request->touinfscode,
                 'touteascode' => $value,
-                'touttebenbl' => 1,
 
             ]);
         }
@@ -182,6 +181,61 @@ class touteaController extends Controller
     }
 
     public function insertarCampeon(Request $request)
+    {
+        // $validar = DB::select('Select count(plachm.plachmicode) from plachm
+        //     join toutte on plachm.touttescode = toutte.touttescode
+        //     join tougrp on toutte.touinfscode =
+        //     tougrp.touinfscode where plachm.plainficode = ? and tougrp.tougrpicode = ?', [Session::get('plainficode'), $request->tougrpicode]);
+        DB::beginTransaction();
+        try {
+
+            $date        = Carbon::now();
+            // $validTorneo = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
+            //     ->where('touinf.touinfscode', $request->touinfscode)
+            //     ->where('touinf.touinfdstat', '>', $request->touinfdstat)
+            //     ->first();
+             $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+            ->join('toutte','toufix.touttescod1','toutte.touttescode')
+            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toufix.constascode', '>', 1)
+            ->first();
+            $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
+                ->join('toutte', 'plachm.touttescode', 'toutte.touttescode ')
+                ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
+                ->where('plachm.tougplicode', $request->tougplicode)
+                ->where('tougrp.tougrpicode', $request->tougrpicode)->groupBy('plachm.plachmicode')->first();
+
+            // return response()->json($validar);
+            if ($validTorneo->fecha <= 0) {
+                if ($validar != null) {
+                    // return response()->json("si");
+
+                    $data = DB::table('plachm')
+                        ->where('plachmicode', $validar->plachmicode)
+                        ->update([
+                            'touttescode' => $request->touttescode,
+                        ]);
+
+                } else {
+                    $data = DB::table('plachm')
+                        ->insert([
+                            'plachmdcrea' => $date->toDateString(),
+                            'plachmthour' => $date->toTimeString(),
+                            'touttescode' => $request->touttescode,
+                            'tougplicode' => $request->tougplicode,
+                        ]);
+                }
+            }
+
+            DB::commit();
+            return response()->json($validTorneo);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
+     public function pushChampions(Request $request)
     {
         // $validar = DB::select('Select count(plachm.plachmicode) from plachm
         //     join toutte on plachm.touttescode = toutte.touttescode
@@ -226,9 +280,23 @@ class touteaController extends Controller
                             'tougplicode' => $request->tougplicode,
                         ]);
                 }
+                DB::commit();
+                return response()->json([
+                    'success' => true,
+                    'message' =>"Campeon insertado"
+
+                ]);
+            }
+            else{
+                DB::commit();
+
+                return response()->json([
+                    'success' => false,
+                    'message' =>"No se puede elegir el campeon por que el torneo ya ha comenzado"
+
+                ],401);
             }
 
-            DB::commit();
             return response()->json($validTorneo);
         } catch (\Exception $e) {
 

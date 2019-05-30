@@ -2554,7 +2554,7 @@
          data: {
              '_token': $('input[name=_token]').val(),
              'secusrtmail': $('#secusrtmail').val(),
-             'secusrtpass': $('#secusrtpass').val()
+             'password': $('#password').val()
          },
          success: function(data) {
              if (data.success == 0) {

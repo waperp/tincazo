@@ -113,12 +113,51 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
+     public function invitarJugadorApi(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $menbresia = DB::select('Select conmem.conmemsnump - count(tougpl.tougplicode) as value from conmem join plainf on conmem.conmemscode = plainf.conmemscode left join tougrp
+                on plainf.plainficode = tougrp.plainficode left join tougpl on tougrp.tougrpicode = tougpl.tougrpicode where
+                tougrp.plainficode = ? and
+                tougpl.tougrpicode = ? group by conmem.conmemsnump', [$request->user()->plainficode, $request->tougrpicode]);
+            $valueMensabresia = "";
+            foreach ($menbresia as $key) {
+                $valueMensabresia = $key->value;
+            }
+            $validateValue = (int) $valueMensabresia;
+
+            if ($validateValue > 0) {
+                $tougpl              = new tougpl;
+                $tougpl->tougrpicode = $request->tougrpicode;
+                $tougpl->constascode = 1;
+                $tougpl->plainficode = $request->plainficode;
+                $tougpl->tougplipwin = 0;
+                $tougpl->tougplsmaxp = 0;
+                $tougpl->tougplsmedp = 0;
+                $tougpl->tougplslowp = 0;
+                $tougpl->save();
+                DB::commit();
+                return response()->json($validateValue);
+
+            } else {
+                return response()->json(false);
+
+            }
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
     public function aceptarInvitacion(Request $request)
     {
         DB::beginTransaction();
         try {
 
-            $tougpl              = tougpl::where('tougrpicode', $request->tougrpicode)->where('plainficode', Session::get('plainficode'))->first();
+            $tougpl              = tougpl::where('tougrpicode', $request->tougrpicode)
+            ->where('plainficode', Session::get('plainficode'))->first();
             $tougpl->constascode = $request->constascode;
             $tougpl->save();
 
@@ -130,7 +169,23 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
+public function acceptInvitationApi(Request $request)
+    {
+        DB::beginTransaction();
+        try {
 
+            $tougpl              = tougpl::where('tougrpicode', $request->tougrpicode)
+            ->where('plainficode', $request->user()->plainficode)->first();
+            $tougpl->constascode = $request->constascode;
+            $tougpl->save();
+            DB::commit();
+            return response()->json($tougpl);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
     public function adminUpdateTougrp(Request $request)
     {
         DB::beginTransaction();
@@ -284,7 +339,81 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
-    
+public function updateTougrpApi(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $date = Carbon::now();
+            if ($request->hasFile('tougrpvimgg')) {
+                $imageName = str_random(30) . '.' . $request->file('tougrpvimgg')->getClientOriginalExtension();
+                $request->file('tougrpvimgg')->move(base_path() . '/public/images/', $imageName);
+            } else {
+                $imageName = null;
+            }
+            // return response()->json($request->all());
+            $validator = Validator::make($request->all(), [
+                'tougrpicode' => 'required',
+                'tougrptname' => 'required',
+                'touinfscode' => 'required',
+                'tougrpsmaxp' => 'required|numeric|min:3|max:100',
+                'tougrpsmedp' => 'required|numeric|min:2|max:100',
+                'tougrpsminp' => 'required|numeric|min:1|max:100',
+                'tougrpsxval' => 'required|numeric|min:1|max:10',
+            ]);
+            $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
+                ->where('touinf.touinfscode', $request->touinfscode)
+                ->where('touinf.touinfdstat', '>', $date->toDateString())
+                ->first();
+            $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', $request->tougrpicode)->first();
+            // return response()->json($validarTougrpbchva->tougrpbchva);
+            if ($validator->passes()) {
+                if ($validarTougrpbchva->tougrpbchva == 1) {
+                    if ($fechaValidar->fecha > 0) {
+                        $tougrp              = tougrp::find($request->tougrpicode);
+                        $tougrp->tougrptname = $request->tougrptname;
+                        $tougrp->touinfscode = $request->touinfscode;
+                        $tougrp->tougrpsmaxp = $request->tougrpsmaxp;
+                        $tougrp->tougrpsmedp = $request->tougrpsmedp;
+                        $tougrp->tougrpsminp = $request->tougrpsminp;
+                        $tougrp->tougrpsxval = $request->tougrpsxval;
+                        $tougrp->tougrpbchva = 0;
+                        if ($imageName == null) {
+                        } else {
+                            $tougrp->tougrpvimgg = $imageName;
+                        }
+                        $tougrp->save();
+                    } else {
+                        $tougrp              = tougrp::find($request->tougrpicode);
+                        $tougrp->tougrptname = $request->tougrptname;
+                        $tougrp->touinfscode = $request->touinfscode;
+                        $tougrp->tougrpsxval = $request->tougrpsxval;
+                        
+                        if ($imageName == null) {
+                        } else {
+                            $tougrp->tougrpvimgg = $imageName;
+                        }
+                        $tougrp->save();
+                       
+                    }
+                }else{
+                     return response()->json(
+                    ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                }
+
+            } else {
+                return response()->json(
+                    ['message' => 0, 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+            }
+
+            DB::commit();
+            return response()->json(
+                ['message' => $tougrp, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
     public function show($id)
     {
         $data = tougrp::

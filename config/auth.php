@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'secusr',
     ],
 
     /*
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'secusr',
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'passport',
+            'provider' => 'secusr',
         ],
     ],
 
@@ -65,14 +65,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'secusr' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\secusr::class,
         ],
 
-        // 'users' => [
+        // 'secusr' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'table' => 'secusr',
         // ],
     ],
 
@@ -92,8 +92,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'secusr' => [
+            'provider' => 'secusr',
             'table' => 'password_resets',
             'expire' => 60,
         ],

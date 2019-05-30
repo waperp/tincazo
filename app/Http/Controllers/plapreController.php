@@ -40,6 +40,7 @@ class plapreController extends Controller
      */
     public function store(Request $request)
     {
+        /*return $request->all();*/
         DB::beginTransaction();
         try {
             $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
@@ -53,6 +54,8 @@ class plapreController extends Controller
                 $date = Carbon::now();
                 if ($toufix->constascode == 1) {
                     if ($request->plapreicode == null) {
+                    
+
                         $plapre              = new plapre;
                         $plapre->plapredcrea = $date->toDateString();
                         $plapre->plaprethour = $date->toTimeString();
@@ -98,10 +101,75 @@ class plapreController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(
-                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'server']);
+                ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']);
         }
     }
+public function store_app(Request $request)
+    {
+        /*return $request->all();*/
+        DB::beginTransaction();
+        try {
+            $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
+            $validator = Validator::make($request->all(), [
+                'toufixsscr2' => 'required|numeric|min:0',
+                'toufixsscr1' => 'required|numeric|min:0',
+                'toufixicode' => 'required',
+                'tougplicode' => 'required',
+            ]);
+            if ($validator->passes()) {
+                $date = Carbon::now();
+                if ($toufix->constascode == 1) {
+                    if ($request->plapreicode == null) {
+                    
+                        
+                        $plapre              = new plapre;
+                        $plapre->plapredcrea = $date->toDateString();
+                        $plapre->plaprethour = $date->toTimeString();
+                        $plapre->tougplicode = $request->tougplicode;
+                        $plapre->toufixicode = $request->toufixicode;
+                        $plapre->plapresscr1 = $request->toufixsscr1;
+                        $plapre->plapresscr2 = $request->toufixsscr2;
+                        $plapre->plapresxval = $request->tougrpsxval;
+                        $plapre->plapresptos = 0;
+                        $plapre->plaprebenbl = 1;
+                        $plapre->save();
+                        DB::commit();
+                        return response()->json(
+                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'insert']);
+                    } else {
+                        $plapre = plapre::where('plapreicode', $request->plapreicode)
+                            ->where('toufixicode', $request->toufixicode)
+                            ->where('tougplicode', $request->tougplicode)
+                            ->first();
 
+                        if ($plapre) {
+                            $plapre->plapresscr1 = $request->toufixsscr1;
+                            $plapre->plapresscr2 = $request->toufixsscr2;
+                            $plapre->plapredcrea = $date->toDateString();
+                            $plapre->plaprethour = $date->toTimeString();
+                            $plapre->save();
+                            DB::commit();
+                        } else {
+                            return response()->json(
+                                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update']);
+                        }
+                        return response()->json(
+                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+
+                    }
+                } else {
+                    return response()->json(['message' => 1, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode']);
+                }
+            } else {
+                return response()->json(
+                    ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate']);
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(
+                ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']);
+        }
+    }
     /**
      * Display the specified resource.
      *

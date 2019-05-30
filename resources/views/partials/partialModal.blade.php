@@ -1478,7 +1478,7 @@
                                        
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" id="secusrtpass" name="secusrtpass" placeholder="Ingrese su contraseña ..." required="" type="password">
+                                        <input class="form-control" id="password" name="password" placeholder="Ingrese su contraseña ..." required="" type="password">
                                         </input>
                                     </div>
                                     <div class="alert alert-danger" id="false" style="display: none;">

@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v13.1.1 (64 bit)
+SQLyog Community v13.1.1 (64 bit)
 MySQL - 10.3.14-MariaDB-1:10.3.14+maria~bionic : Database - tutincadb
 *********************************************************************
 */
@@ -6690,7 +6690,7 @@ CREATE TABLE `tougpl` (
   `tougplsmedp` int(11) NOT NULL,
   `tougplslowp` int(11) NOT NULL,
   PRIMARY KEY (`tougplicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougpl` */
 
@@ -6833,7 +6833,8 @@ insert  into `tougpl`(`tougplicode`,`tougrpicode`,`constascode`,`plainficode`,`t
 (140,6,2,155,10,0,3,1),
 (141,6,2,158,24,1,5,4),
 (142,6,2,159,33,1,7,7),
-(143,6,2,160,0,0,0,0);
+(143,6,2,160,0,0,0,0),
+(144,11,2,1,0,0,0,0);
 
 /*Table structure for table `tougrp` */
 
@@ -6854,7 +6855,7 @@ CREATE TABLE `tougrp` (
   `tougrpvimgg` longtext NOT NULL,
   `tougrpbenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`tougrpicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougrp` */
 
@@ -6868,7 +6869,8 @@ insert  into `tougrp`(`tougrpicode`,`secconnuuid`,`tougrptname`,`tougrpdcrea`,`t
 (7,NULL,'Futebol Rusia 2018','2018-06-11',1,24,5,3,1,0,3,'edP1BeDW03TclVfrCcrQPXkPf6OlaD.png',1),
 (8,NULL,'MUNDIAL 2018','2018-06-11',1,30,3,2,1,1,1,'default.jpg',1),
 (9,NULL,'EL DEBER','2018-06-12',1,2,3,2,1,1,1,'default.jpg',1),
-(10,NULL,'MUNDIAL 2018 MOL','2018-06-13',1,30,1,1,1,1,1,'default.jpg',1);
+(10,NULL,'MUNDIAL 2018 MOL','2018-06-13',1,30,1,1,1,1,1,'default.jpg',1),
+(11,NULL,'Copa America OSBolivia 2019','2019-04-26',2,1,5,3,1,1,1,'OdYTdRlzUS26v7FPlj5TuUcWwEuWjk.jpeg',1);
 
 /*Table structure for table `touinf` */
 
@@ -6905,7 +6907,7 @@ CREATE TABLE `toutea` (
   `touteavimgt` longtext NOT NULL,
   `touteatabrv` varchar(5) NOT NULL,
   PRIMARY KEY (`touteascode`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toutea` */
 
@@ -6941,7 +6943,13 @@ insert  into `toutea`(`touteascode`,`touteatname`,`contypscode`,`touteavimgt`,`t
 (29,'Polonia',1,'htSlt5CNfrdSzuRPNI4pzBpN3utp7c.jpg','POL'),
 (30,'Senegal',1,'eFCcS5d8GwpI920QLl5wVAazKumer8.jpg','SEN'),
 (31,'Colombia',1,'YaYPhxbHHHzqJnz670SEYHBStrvVpa.jpg','COL'),
-(32,'Japon',1,'40AghWx6frjkLw5OfxaI3EkWhuMsq9.jpg','JAP');
+(32,'Japon',1,'40AghWx6frjkLw5OfxaI3EkWhuMsq9.jpg','JAP'),
+(33,'Bolivia',1,'WhRVynzKq2NEdWXeEYyuZP6qy825Gh.jpg','BOL'),
+(34,'Catar',1,'MxYaWQATv6vbJxmDnSaLMUfcncEgx5.jpg','CAT'),
+(35,'Chile',1,'wF1MC4AJk4sE4gsdtDW8ukLVZF8fWD.jpg','CHI'),
+(36,'Ecuador',1,'2o6jIITAkEx50FSrKwx8uXSOqXST9h.jpg','ECU'),
+(37,'Paraguay',1,'5iOQOzyl84PONfUGabxsMopLOPmd6b.png','PAR'),
+(38,'Venezuela',1,'mSvgAVNxyv6xORhvvqznK1vHrj5COM.jpg','VEN');
 
 /*Table structure for table `toutte` */
 
@@ -6953,7 +6961,7 @@ CREATE TABLE `toutte` (
   `touteascode` smallint(6) NOT NULL,
   `touttebenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`touttescode`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toutte` */
 
@@ -6989,7 +6997,12 @@ insert  into `toutte`(`touttescode`,`touinfscode`,`touteascode`,`touttebenbl`) v
 (29,1,29,0),
 (30,1,30,0),
 (31,1,31,0),
-(32,1,32,0);
+(32,1,32,0),
+(33,2,2,0),
+(34,2,33,0),
+(35,2,3,0),
+(37,2,34,0),
+(38,2,31,0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

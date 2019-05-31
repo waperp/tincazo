@@ -69,7 +69,7 @@
          formData.append("plainftnick", plainftnick);
          formData.append("plainficode", plainficode);
          formData.append("secusrtmail", secusrtmail);
-         formData.append("secusrtpass", secusrtpass);
+         formData.append("password", secusrtpass);
          formData.append("plainfddobp", plainfddobp);
          formData.append("plainftgder", plainftgder);
          formData.append("plainfvimgp", plainfvimgp);
@@ -1761,7 +1761,7 @@
          formData.append("_token", _token);
          formData.append("plainftname", plainftname);
          formData.append("secusrtmail", secusrtmail);
-         formData.append("secusrtpass", secusrtpass);
+         formData.append("password", secusrtpass);
          formData.append("plainfddobp", plainfddobp);
          formData.append("plainftgder", plainftgder);
          formData.append("plainfvimgp", plainfvimgp);
@@ -1776,8 +1776,9 @@
              data: formData,
              success: function(data) {
                 debugger
+                document.getElementById('form-button-register').disabled = 0;
                  if (data.mail == true) {
-                     document.getElementById('form-button-register').disabled = 0;
+                     
                      swal({
                          // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
                          title: "CORREO DUPLICADO",
@@ -1793,8 +1794,7 @@
                  }
              },
              error: function(xhr, status, error) {
-                 var err = eval("(" + xhr.responseText + ")");
-                 alert(err.error);
+                debugger
              }
          });
      }
@@ -2557,7 +2557,7 @@
              'password': $('#password').val()
          },
          success: function(data) {
-            
+
              if (data.success == 0) {
                  $('#false').show();
                  $('#true').hide();

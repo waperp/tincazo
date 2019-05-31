@@ -7,11 +7,13 @@ use App\plainf;
 use App\secusr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Session;
+
 class secusrController extends Controller
 {
     /**
@@ -100,114 +102,138 @@ class secusrController extends Controller
             return response()->json($e);
         }
     }
+    public function username()
+    {
+        return 'secusrtmail';
+    }
+    public function userpassword()
+    {
+        return 'password';
+    }
     public function store(Request $request)
     {
-       /* return response()->json($request->all());*/
-         $validator = Validator::make($request->all(),[
-            'plainftname' => 'required|string',
-            'secusrtmail' => 'required|string|email',
-            'secusrtpass' => 'required|string',
-            'conmemscode' => 'required',
-        ]);
-  if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Failed created user!',
-            ], 401);
-        }else{
-/* return   response()->json(Carbon::parse($request->plainfddobp)->format('Y-m-d'));*/
+        /* return response()->json($request->all());*/
+
         DB::beginTransaction();
         try {
             $date = Carbon::now();
 
-            // return response()->json(!$existMail);
-            if (true) {
-                $existMail = DB::table('secusr')->where('secusrtmail', $request->secusrtmail)->first();
-                if (!$existMail) {
-                    if ($request->hasFile('plainfvimgp')) {
+            if ($request->tipo == 0) {
+                $validator = Validator::make($request->all(), [
+                    'plainftname' => 'required|string',
+                    'secusrtmail' => 'required|string|email',
+                    'password' => 'required|string',
+                    'conmemscode' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'message' => $validator->errors()->all(),
+                    ], 401);
+                } else {
 
-                        $imageName = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
-                        $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageName);
-                    } else {
-                        if ($request->plainftgder == "M") {
-                            $imageName = "defaultm.jpg";
+                    $existMail = DB::table('secusr')->where('secusrtmail', $request->secusrtmail)->first();
+                    if (!$existMail) {
+                        if ($request->hasFile('plainfvimgp')) {
 
+                            $imageName = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
+                            $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageName);
                         } else {
-                            $imageName = "defaultf.jpg";
+                            if ($request->plainftgder == "M") {
+                                $imageName = "defaultm.jpg";
 
+                            } else {
+                                $imageName = "defaultf.jpg";
+
+                            }
                         }
+                        $plainf              = new plainf;
+                        $secusr              = new secusr;
+                        $plainf->plainftname = $request->plainftname;
+                        $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
+                        $plainf->plainftnick = $request->plainftname;
+                        $plainf->plainfvimgp = $imageName;
+                        $plainf->conmemscode = $request->conmemscode;
+                        $plainf->plainftgder = $request->plainftgder;
+                        $plainf->save();
+                        $secusr->secusrtmail = $request->secusrtmail;
+                        $secusr->secusrtpass = Hash::make($request->password);
+                        $secusr->secusrdregu = $date->toDateString();
+                        $secusr->secusrdvalu = $date->toDateString();
+                        $secusr->contypscode = 2;
+                        $secusr->secusrbenbl = 1;
+                        $secusr->plainficode = $plainf->plainficode;
+                        $secusr->save();
+                        $conmem      = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
+                        $credentials = $request->only($this->username(), $this->userpassword());
+                        if (!Auth::attempt($credentials)) {
+                            return response()->json(['success' => false, 'mail' => true, 'type' => 'validate']);
+                        } else {
+                            Session::put('secusrtmail', $secusr->secusrtmail);
+                            Session::put('secusricode', $secusr->secusricode);
+                            Session::put('contypscode', $secusr->contypscode);
+                            Session::put('plainficode', $plainf->plainficode);
+                            Session::put('plainftnick', $plainf->plainftnick);
+                            Session::put('conmemscode', $plainf->conmemscode);
+                            Session::put('conmemvimgm', $conmem->conmemvimgm);
+                            Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
+                            DB::commit();
+                            return response()->json(['success' => true, 'mail'      => false, 'type' => 'create',
+                                'plainf'                           => $plainf, 'conmem' => $conmem]);
+                        }
+
+                    } else {
+                        return response()->json(['success' => false, 'mail' => true, 'type' => 'validate']);
                     }
-                    $plainf              = new plainf;
-                    $secusr              = new secusr;
-                    $plainf->plainftname = $request->plainftname;
+                }
+
+            } else if ($request->tipo == 1) {
+                $validator = Validator::make($request->all(), [
+                    'plainftname' => 'required|string',
+                    'secusrtmail' => 'required|string|email',
+                    'password' => 'required|string',
+                ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'message' => $validator->errors()->all(),
+                    ], 401);
+                } else {
+                    $plainf = plainf::find(Session::get('plainficode'));
+                    $secusr = secusr::find(Session::get('secusricode'));
+
+                    if ($request->hasFile('plainfvimgp')) {
+                        $imageNames = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
+                        $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageNames);
+                    } else {
+                        $imageNames = "null";
+                    }
+
                     $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
-                    $plainf->plainftnick = $request->plainftname;
-                    $plainf->plainfvimgp = $imageName;
-                    $plainf->conmemscode = $request->conmemscode;
+                    $plainf->plainftnick = $request->plainftnick;
+                    if ($imageNames != "null") {
+                        $plainf->plainfvimgp = $imageNames;
+                    }
                     $plainf->plainftgder = $request->plainftgder;
                     $plainf->save();
-                    $secusr->secusrtmail = $request->secusrtmail;
-                    $secusr->secusrtpass = Hash::make($request->secusrtpass);
-                    $secusr->secusrdregu = $date->toDateString();
-                    $secusr->secusrdvalu = $date->toDateString();
-                    $secusr->contypscode = 2;
-                    $secusr->secusrbenbl = 1;
-                    $secusr->plainficode = $plainf->plainficode;
+
+                    if ($request->password != null) {
+                        $secusr->secusrtpass = Hash::make($request->password);
+                    }
+
                     $secusr->save();
-                    $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
-
-                   /* Session::put('secusrtmail', $secusr->secusrtmail);
-                    Session::put('secusricode', $secusr->secusricode);
-                    Session::put('contypscode', $secusr->contypscode);
-                    Session::put('plainficode', $plainf->plainficode);
-                    Session::put('plainftnick', $plainf->plainftnick);
-                    Session::put('conmemscode', $plainf->conmemscode);
-                    Session::put('conmemvimgm', $conmem->conmemvimgm);*/
-                    Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
                     DB::commit();
-                    return response()->json(['success' => true, 'mail' => false, 'type' => 'create', 
-                        'plainf' => $plainf, 'conmem' => $conmem]);
-
-                } else {
-                    return response()->json(['success' => false, 'mail' => true, 'type' => 'validate']);
                 }
 
-            } /*else if ($request->tipo == 1) {
-                $plainf = plainf::find(Session::get('plainficode'));
-                $secusr = secusr::find(Session::get('secusricode'));
-
-                if ($request->hasFile('plainfvimgp')) {
-                    $imageNames = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
-                    $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageNames);
-                } else {
-                    $imageNames = "null";
-                }
-
-                $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
-                $plainf->plainftnick = $request->plainftnick;
-                if ($imageNames != "null") {
-                    $plainf->plainfvimgp = $imageNames;
-                }
-                $plainf->plainftgder = $request->plainftgder;
-                $plainf->save();
-
-                if ($request->secusrtpass != null) {
-                    $secusr->secusrtpass = $request->secusrtpass;
-                }
-
-                $secusr->save();
-                DB::commit();
                 return response()->json(['success' => true, 'mail' => false, 'type' => 'update']);
-            }*/ else {
+            } else {
                 return response()->json(['success' => false, 'mail' => false, 'type' => 'error']);
             }
 
         } catch (\Exception $e) {
 
             DB::rollback();
-            return response()->json($e);
+            return response()->json($e->getMessage());
         }
-        }
-       
+
     }
 
     /**

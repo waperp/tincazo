@@ -1401,12 +1401,12 @@
                                                         </label>
                                                     </div>
                                                     <div class="form-group">
-                                                    <div class="input-group">
+                                                   {{--  <div class="input-group">
                                                       <input type="password" readonly="" class="form-control pwd" id="edit-perfil-secusrtpass" value="{{ $listaEditPerfil->secusrtpass }}">
                                                       <span class="input-group-btn">
                                                         <button style="padding:11px 42px" class="btn btn-primary reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
                                                       </span>          
-                                                    </div>
+                                                    </div> --}}
 
                                                      </div>
                                                      <div class="form-group">

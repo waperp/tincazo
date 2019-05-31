@@ -7,7 +7,6 @@
 @component('mail::message')
 # CAMBIAR TU CONTRASEÑA <br>
 {{ $data->secusrtmail }}
-@endcomponent
 
 Has click en el enlace para proceder a cambiar tu contraseña.
 
@@ -19,3 +18,4 @@ Has click Aqui
 
 Gracias,<br>
 {{ config('app.name') }}
+@endcomponent

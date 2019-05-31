@@ -1,16 +1,13 @@
 <?php
-    Route::get('upss', 'Auth\AuthController@up');
-
+Route::get('upss', 'Auth\AuthController@up');
 Route::group([
     'prefix' => 'auth',
 ], function () {
     Route::post('login', 'Auth\AuthController@login')->name('login');
     Route::post('register', 'Auth\AuthController@register');
     Route::resource('secusr', 'secusrController');
-
     Route::post('sendValidateMailApi', 'Auth\AuthController@sendValidateMailApi');
     Route::post('validateMailApi', 'Auth\AuthController@validateMailApi');
-
     Route::group([
         'middleware' => 'auth:api',
     ], function () {
@@ -36,9 +33,8 @@ Route::group([
         Route::post('acceptInvitationApi', 'tougrpController@acceptInvitationApi');
         Route::get('tincazosApi', 'Auth\AuthController@tincazosApi');
         Route::post('validateTournamentApi', 'Auth\AuthController@validateTournamentApi');
-	Route::post('updateTougrpApi', 'tougrpController@updateTougrpApi')->name('tougrp.updateTougrp');
-
+        Route::post('updateTougrpApi', 'tougrpController@updateTougrpApi')->name('tougrp.updateTougrp');
+        Route::post('updatePerfilApi', 'secusrController@updatePerfilApi');
     });
     Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
-
 });

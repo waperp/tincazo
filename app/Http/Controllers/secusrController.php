@@ -110,6 +110,39 @@ class secusrController extends Controller
     {
         return 'password';
     }
+    public function updatePerfilApi(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $validator = Validator::make($request->all(), [
+                'plainftnick' => 'required|string',
+                'plainftgder'    => 'required|string',
+                'plainfddobp'    => 'required|string',
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => $validator->errors()->all(),
+                ], 401);
+            } else {
+                $plainf = plainf::find($request->user()->plainficode);
+                    $secusr = secusr::find($request->user()->secusricode);
+                $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
+                $plainf->plainftnick = $request->plainftnick;
+                $plainf->plainftgder = $request->plainftgder;
+                if ($request->secusrtpass != null) {
+                    $secusr->secusrtpass = Hash::make($request->secusrtpass);
+                }
+                $plainf->save();
+                $secusr->save();
+                DB::commit();
+            }
+            return response()->json(['success' => true, 'mail' => false, 'type' => 'update']);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
     public function store(Request $request)
     {
         /* return response()->json($request->all());*/
@@ -122,7 +155,7 @@ class secusrController extends Controller
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
                     'secusrtmail' => 'required|string|email',
-                    'password' => 'required|string',
+                    'password'    => 'required|string',
                     'conmemscode' => 'required',
                 ]);
                 if ($validator->fails()) {
@@ -190,7 +223,7 @@ class secusrController extends Controller
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
                     'secusrtmail' => 'required|string|email',
-                    'password' => 'required|string',
+                    'password'    => 'required|string',
                 ]);
                 if ($validator->fails()) {
                     return response()->json([

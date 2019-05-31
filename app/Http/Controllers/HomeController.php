@@ -11,10 +11,11 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Session;
-use Yajra\DataTables\Facades\DataTables;
 use Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class HomeController extends Controller
 {
@@ -87,7 +88,7 @@ class HomeController extends Controller
                     ->where('secpin.secusricode', $secusricode)->first();
                 if ($existMail) {
                     $secusr              = secusr::where('secusrtmail', $secusrtmail)->first();
-                    $secusr->secusrtpass = $request->confirmPassword;
+                    $secusr->secusrtpass = Hash::make($request->confirmPassword);
                     $secusr->save();
                     $plainf = plainf::find($secusr->plainficode);
                     Session::put('secusrtmail', $secusr->secusrtmail);
@@ -314,14 +315,33 @@ t2 on toufix.touttescod2 = t2.touttescode
     public function tusTincazosPendientes(Request $request)
     {
         // return $request->all();
-        $listaPartidosPendiente = DB::select("Select toufix.toufixicode, toutea1.touteavimgt, toutea1.touteatname, toufix.toufixsscr1, toufix.toufixspen1, toutea2.touteavimgt as
-            touteavimgt2, toutea2.touteatname as touteatname2, toufix.toufixsscr2, toufix.toufixspen2, toufix.toufixbpnlt, consta.constatdesc,
-            toufix.toufixdplay,toufix.toufixthour, consta.constascode, consta.constatdesc, plapre.plapreicode, plapre.plapresscr1, plapre.plapresscr2
-            from toufix join toutte toutte1 on toufix.touttescod1 = toutte1.touttescode join toutte toutte2 on toufix.touttescod2 = toutte2.touttescode
-            join toutea toutea1 on toutte1.touteascode = toutea1.touteascode join toutea toutea2 on toutte2.touteascode = toutea2.touteascode join consta
-            on toufix.constascode = consta.constascode and consta.confrmicode = 3 left join plapre on toufix.toufixicode = plapre.toufixicode and
-            plapre.tougplicode = ? Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
+        $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
+toutea1.touteavimgt, 
+toutea1.touteatname, 
+toufix.toufixsscr1, 
+toufix.toufixspen1, 
+toutea2.touteavimgt AS touteavimgt2, 
+toutea2.touteatname AS touteatname2, 
+toufix.toufixsscr2, 
+toufix.toufixspen2, 
+toufix.toufixbpnlt, 
+consta.constatdesc,
+toufix.toufixdplay,
+toufix.toufixthour, 
+consta.constascode, 
+consta.constatdesc, plapre.plapreicode, plapre.plapresscr1, plapre.plapresscr2
+FROM toufix 
+JOIN toutte toutte1 ON toufix.touttescod1 = toutte1.touttescode 
+JOIN toutte toutte2 ON toufix.touttescod2 = toutte2.touttescode
+JOIN toutea toutea1 ON toutte1.touteascode = toutea1.touteascode 
+JOIN toutea toutea2 ON toutte2.touteascode = toutea2.touteascode 
+JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
+LEFT JOIN plapre ON toufix.toufixicode = plapre.toufixicode AND plapre.tougplicode = ? 
+WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
             [$request->tougplicode, $request->touinfscode, $request->touinfscode]);
+
+
+
         return response()->json([
             'listaPartidosPendiente' => $listaPartidosPendiente,
         ]);

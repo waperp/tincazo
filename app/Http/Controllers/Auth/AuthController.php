@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\sendPinMail;
 use App\Mail\sendValidateMail;
 use App\plainf;
 use App\secpin;
@@ -61,10 +62,59 @@ class AuthController extends Controller
         return response()->json($data);
 
     }
+    public function sendPinMailApi(Request $request)
+    {
+
+        $secpin              = new secpin;
+        $secpin->secpininump = mt_rand(10000, 99999);
+        $secpin->secusricode = $request->secusricode;
+        $secpin->secusrtmail = $request->secusrtmail;
+        $secpin->save();
+
+        Mail::to($request->secusrtmail)->send(new sendPinMail($secpin));
+        return response()->json($secpin);
+
+    }
+    public function updateResetPasswordApi(Request $request)
+    {
+        if ($request->has('password') && $request->has('password')) {
+            try {
+                $existMail = secpin::where('secusrtmail', $request->secusrtmail)
+                    ->where('secpin.secpininump', $request->secpininump)
+                    ->where('secpin.secusricode', $request->secusricode)->first();
+                if ($existMail) {
+                    $secusr              = secusr::where('secusrtmail', $request->secusrtmail)->first();
+                    $secusr->secusrtpass = Hash::make($request->password);
+                    $secusr->save();
+                    $plainf = plainf::find($secusr->plainficode);
+                    $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
+                    return response()->json([
+                        'error' => false,
+                        'message' => 'Se hace cambiado Correcamente su contraseña',
+                        'secusr'       => $secusr,
+                        'plainf'       => $plainf,
+                        'conmem'       => $conmem,
+                    ], 200);
+
+                } else {
+                    return response()->json(['error' => true, 'message' => 'El PIN ingresado no coincide, intente con otro PIN'],401);
+                }
+            } catch (DecryptException $e) {
+                return response()->json(['error' => true, 'message' => 'Estas credenciales no coinciden con nuestros registros'],401);
+            }
+
+        } else {
+            return response()->json(['error' => true, 'message' =>  'Estas credenciales no coinciden con nuestros registros'],401);
+        }
+
+    }
     public function validateMailApi(Request $request)
     {
         if ($request->has('secusrtmail') || $request->secusrtmail != null) {
-            $existMail = DB::table('secusr')->where('secusrtmail', $request->secusrtmail)->first();
+            $existMail = DB::table('secusr')
+                ->join('plainf', 'plainf.plainficode', 'secusr.plainficode')
+                ->join('conmem', 'plainf.conmemscode', 'conmem.conmemscode')
+                ->where('secusrtmail', $request->secusrtmail)->first();
             if ($existMail) {
                 return response()->json(['secusr' => $existMail, 'mail' => true]);
             }

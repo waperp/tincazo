@@ -116,6 +116,7 @@ class HomeController extends Controller
         }
 
     }
+   
     public function resetPassword(Request $request)
     {
         $secusrtmail = $request->utm_ref;

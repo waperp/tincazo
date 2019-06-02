@@ -1,5 +1,4 @@
 <?php
-Route::get('upss', 'Auth\AuthController@up');
 Route::group([
     'prefix' => 'auth',
 ], function () {
@@ -7,7 +6,9 @@ Route::group([
     Route::post('register', 'Auth\AuthController@register');
     Route::resource('secusr', 'secusrController');
     Route::post('sendValidateMailApi', 'Auth\AuthController@sendValidateMailApi');
+    Route::post('sendPinMailApi', 'Auth\AuthController@sendPinMailApi');
     Route::post('validateMailApi', 'Auth\AuthController@validateMailApi');
+    Route::post('updateResetPasswordApi', 'Auth\AuthController@updateResetPasswordApi');
     Route::group([
         'middleware' => 'auth:api',
     ], function () {

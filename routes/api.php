@@ -9,13 +9,16 @@ Route::group([
     Route::post('sendPinMailApi', 'Auth\AuthController@sendPinMailApi');
     Route::post('validateMailApi', 'Auth\AuthController@validateMailApi');
     Route::post('updateResetPasswordApi', 'Auth\AuthController@updateResetPasswordApi');
+        Route::get('membership', 'Auth\AuthController@membership');
+
     Route::group([
         'middleware' => 'auth:api',
     ], function () {
         Route::get('logout', 'Auth\AuthController@logout');
+        Route::post('isAdminGroup', 'Auth\AuthController@isAdminGroup');
         Route::get('user', 'Auth\AuthController@user');
-        Route::get('membership', 'Auth\AuthController@membership');
         Route::get('tournament', 'Auth\AuthController@tournament');
+        Route::get('tournamentDay', 'Auth\AuthController@tournamentDay');
         Route::post('groups', 'Auth\AuthController@groups');
         Route::get('tablePositionsGeneral', 'Auth\AuthController@tablePositionsGeneral');
         Route::get('tablePositionsDay', 'Auth\AuthController@tablePositionsDay');
@@ -27,6 +30,7 @@ Route::group([
         Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
         Route::resource('plapre', 'plapreController');
         Route::post('storeApp', 'plapreController@store_app');
+        Route::post('createGroupApi', 'tougrpController@createGroupApi');
         Route::post('pushChampions', 'touteaController@pushChampions');
         Route::post('invitarJugador', 'tougrpController@invitarJugadorApi');
         Route::post('myInvitationsCount', 'Auth\AuthController@myInvitationsCount');

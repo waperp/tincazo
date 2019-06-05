@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Observers\UuidObserver;
+use App\tougrp;
 use App\touinf;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -35,5 +36,6 @@ class EventServiceProvider extends ServiceProvider
     public function registerUuidObservers()
     {
         touinf::observe(app(UuidObserver::class));
+        tougrp::observe(app(UuidObserver::class));
     }
 }

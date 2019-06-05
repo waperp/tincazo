@@ -75,6 +75,84 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
+    public function createGroupApi(Request $request)
+    {
+
+        DB::beginTransaction();
+        try {
+            $date = Carbon::now();
+            /*return response()->json($request->all());*/
+            $menbresia = DB::select('Select conmem.conmemsnumg - count(tougrp.tougrpicode) as value from conmem join plainf on conmem.conmemscode = plainf.conmemscode left join tougrp on plainf.plainficode = tougrp.plainficode where plainf.plainficode = ?
+                group by conmem.conmemsnumg', [$request->user()->plainficode]);
+            $valueMensabresia = "";
+            foreach ($menbresia as $key) {
+                $valueMensabresia = $key->value;
+            }
+            $validateValue = (int) $valueMensabresia;
+            // return response()->json($validateValue);
+
+            if ($validateValue > 0) {
+                if ($request->hasFile('tougrpvimgg')) {
+
+                    $imageName = str_random(30) . '.' . $request->file('tougrpvimgg')->getClientOriginalExtension();
+                    $request->file('tougrpvimgg')->move(base_path() . '/public/images/', $imageName);
+                } else {
+                    $imageName = "default.jpg";
+                }
+
+                $tougrp              = new tougrp;
+                $tougpl              = new tougpl;
+                $tougrp->tougrptname = $request->tougrptname;
+                $tougrp->tougrpdcrea = $date->toDateString();
+                $tougrp->touinfscode = $request->touinfscode;
+                $tougrp->tougrpvimgg = $imageName;
+                $tougrp->tougrpbenbl = 1;
+                $tougrp->tougrpsmaxp = 1;
+                $tougrp->tougrpsmedp = 1;
+                $tougrp->tougrpsminp = 1;
+                $tougrp->tougrpsxval = 1;
+                $tougrp->tougrpbchva = 1;
+                $tougrp->plainficode = $request->user()->plainficode;
+                $tougrp->save();
+
+                $tougpl->tougrpicode = $tougrp->tougrpicode;
+                $tougpl->plainficode = $request->user()->plainficode;
+                $tougpl->tougplipwin = 0;
+                $tougpl->tougplsmaxp = 0;
+                $tougpl->constascode = 2;
+                $tougpl->tougplsmedp = 0;
+                $tougpl->tougplslowp = 0;
+
+                $tougpl->save();
+                DB::commit();
+                $touinf = DB::table('touinf')->select('touinf.*')
+                    ->join('tougrp', 'touinf.touinfscode', 'tougrp.touinfscode')
+                    ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+                    ->where('tougpl.plainficode', $request->user()->plainficode)
+                    ->where('touinf.touinfscode', $request->touinfscode)
+                    ->distinct('touinf.touinfscode')
+                    ->first();
+                $tougrp = DB::table('tougrp')->select('tougrp.*', 'touinf.*', 'tougpl.tougplicode')
+                    ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
+                    ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+                    ->where('tougrp.tougrpbenbl', 1)
+                    ->where('tougpl.constascode', 2)
+                    ->where('touinf.touinfscode', $request->touinfscode)
+                    ->where('tougrp.tougrpicode', $tougrp->tougrpicode)
+                    ->where('tougpl.plainficode', $request->user()->plainficode)->first();
+                return response()->json(['touinf' => $touinf, 'tougrp' => $tougrp]);
+
+            } else {
+                return response()->json(false);
+
+            }
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
+    }
     public function invitarJugador(Request $request)
     {
         DB::beginTransaction();
@@ -113,7 +191,7 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
-     public function invitarJugadorApi(Request $request)
+    public function invitarJugadorApi(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -156,8 +234,8 @@ class tougrpController extends Controller
         DB::beginTransaction();
         try {
 
-            $tougpl              = tougpl::where('tougrpicode', $request->tougrpicode)
-            ->where('plainficode', Session::get('plainficode'))->first();
+            $tougpl = tougpl::where('tougrpicode', $request->tougrpicode)
+                ->where('plainficode', Session::get('plainficode'))->first();
             $tougpl->constascode = $request->constascode;
             $tougpl->save();
 
@@ -169,13 +247,13 @@ class tougrpController extends Controller
             return response()->json($e->getMessage());
         }
     }
-public function acceptInvitationApi(Request $request)
+    public function acceptInvitationApi(Request $request)
     {
         DB::beginTransaction();
         try {
 
-            $tougpl              = tougpl::where('tougrpicode', $request->tougrpicode)
-            ->where('plainficode', $request->user()->plainficode)->first();
+            $tougpl = tougpl::where('tougrpicode', $request->tougrpicode)
+                ->where('plainficode', $request->user()->plainficode)->first();
             $tougpl->constascode = $request->constascode;
             $tougpl->save();
             DB::commit();
@@ -311,7 +389,7 @@ public function acceptInvitationApi(Request $request)
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->touinfscode = $request->touinfscode;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
-                        
+
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;
@@ -320,9 +398,9 @@ public function acceptInvitationApi(Request $request)
                         Session::forget('select-tougrpsxval');
                         Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
                     }
-                }else{
-                     return response()->json(
-                    ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                } else {
+                    return response()->json(
+                        ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
                 }
 
             } else {
@@ -339,7 +417,7 @@ public function acceptInvitationApi(Request $request)
             return response()->json($e->getMessage());
         }
     }
-public function updateTougrpApi(Request $request)
+    public function updateTougrpApi(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -387,17 +465,17 @@ public function updateTougrpApi(Request $request)
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->touinfscode = $request->touinfscode;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
-                        
+
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
-                       
+
                     }
-                }else{
-                     return response()->json(
-                    ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                } else {
+                    return response()->json(
+                        ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
                 }
 
             } else {

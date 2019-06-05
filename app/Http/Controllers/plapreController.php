@@ -111,11 +111,9 @@ public function store_app(Request $request)
         try {
             $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
             $validator = Validator::make($request->all(), [
-                'toufixsscr2' => 'required|numeric|min:0',
-                'toufixsscr1' => 'required|numeric|min:0',
-                'toufixicode' => 'required',
-                'tougplicode' => 'required',
-            ]);
+                'toufixsscr2' => 'required|numeric|integer|min:0',
+                'toufixsscr1' => 'required|numeric|integer|min:0',
+            ])->setAttributeNames(['toufixsscr1' => 'tincazo Equipo 1', 'toufixsscr2' => 'tincazo Equipo 2']);
             if ($validator->passes()) {
                 $date = Carbon::now();
                 if ($toufix->constascode == 1) {
@@ -151,23 +149,24 @@ public function store_app(Request $request)
                             DB::commit();
                         } else {
                             return response()->json(
-                                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update']);
+                                ['message' => 'Algo paso mal, intente de nuevo', 
+                                'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update'],401);
                         }
                         return response()->json(
-                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+                            ['message' => 'Tincazo registrado correctamente', 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
 
                     }
                 } else {
-                    return response()->json(['message' => 1, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode']);
+                    return response()->json(['message' => 'Algo paso mal, intente de nuevo', 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode'],401);
                 }
             } else {
                 return response()->json(
-                    ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                    ['message' => 'Algo paso mal, intente de nuevo', 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate'],401);
             }
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(
-                ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']);
+                ['message' => 'Algo paso mal, intente de nuevo', 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server'],401);
         }
     }
     /**

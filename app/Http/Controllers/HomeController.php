@@ -166,7 +166,7 @@ class HomeController extends Controller
         // return $request->all();
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
-        $listaTouinf = DB::table('touinf')->get();
+        $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode',2)->get();
         $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
@@ -526,10 +526,10 @@ from tougrp join plainf on tougrp.plainficode = plainf.plainficode where tougrp.
         $data = [];
         if ($request->has('q')) {
             $search = $request->q;
-            $data   = DB::table('conmem')->where('conmem.conmemtname', 'LIKE', "%$search%")->where('conmem.conmemscode', 1)->get();
+            $data   = DB::table('conmem')->where('conmem.conmemtname', 'LIKE', "%$search%")->where('conmem.conmemscode', 2)->get();
 
         } else {
-            $data = DB::table('conmem')->where('conmem.conmemscode', 1)->get();
+            $data = DB::table('conmem')->where('conmem.conmemscode', 2)->get();
         }
 
         return response()->json($data);

@@ -232,7 +232,7 @@ class AuthController extends Controller
     public function membership(Request $request)
     {
 
-        $data = DB::table('conmem')->where('conmem.conmemscode', 1)->get();
+        $data = DB::table('conmem')->where('conmem.conmemscode', 2)->get();
         return response()->json($data);
     }
     public function tournament(Request $request)
@@ -245,7 +245,13 @@ class AuthController extends Controller
 
         return response()->json($data);
     }
+public function tournamentDay(Request $request)
+    {
 
+        $data =  DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+
+        return response()->json($data);
+    }
     public function groups(Request $request)
     {
 
@@ -257,6 +263,18 @@ class AuthController extends Controller
             [\Auth::user()->plainficode, $request->touinfscode]);
 
         return response()->json($data);
+    }
+     public function isAdminGroup(Request $request)
+    {
+
+        $data = DB::table('tougrp')
+        ->select(DB::raw('COUNT(tougrp.plainficode) as isAdmin'))
+        ->where('tougrp.plainficode',$request->user()->plainficode)
+        ->where('tougrp.tougrpicode',$request->tougrpicode)
+        ->first();
+
+
+        return response()->json($data->isAdmin);
     }
     public function tablePositionsGeneral(Request $request)
     {

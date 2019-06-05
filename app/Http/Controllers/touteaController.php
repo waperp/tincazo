@@ -200,7 +200,7 @@ class touteaController extends Controller
             ->where('toufix.constascode', '>', 1)
             ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
-                ->join('toutte', 'plachm.touttescode', 'toutte.touttescode ')
+                ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
                 ->where('plachm.tougplicode', $request->tougplicode)
                 ->where('tougrp.tougrpicode', $request->tougrpicode)->groupBy('plachm.plachmicode')->first();

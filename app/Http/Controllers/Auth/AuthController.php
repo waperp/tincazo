@@ -241,7 +241,7 @@ class AuthController extends Controller
         $data = DB::table('touinf')->select('touinf.*')
             ->join('tougrp', 'touinf.touinfscode', 'tougrp.touinfscode')
             ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
-            ->where('tougpl.plainficode', \Auth::user()->plainficode)->distinct('touinf.touinfscode')->get();
+            ->where('tougpl.plainficode', $request->user()->plainficode)->distinct('touinf.touinfscode')->get();
 
         return response()->json($data);
     }

@@ -55,7 +55,7 @@ class AuthController extends Controller
         return Datatables::of($data)->make(true);*/
 
         $data = DB::table('plainf')->selectRaw('plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick,(Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
-        plainf.plainficode) as constascode  ', [$request->tougrpicode])
+            plainf.plainficode) as constascode  ', [$request->tougrpicode])
             ->join('secusr', 'plainf.plainficode', 'secusr.plainficode')
             ->where('secusr.secusrbenbl', 1)
             ->paginate(5);

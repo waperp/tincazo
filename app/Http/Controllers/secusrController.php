@@ -145,13 +145,14 @@ class secusrController extends Controller
     }
     public function store(Request $request)
     {
-        /* return response()->json($request->all());*/
+        
 
         DB::beginTransaction();
         try {
             $date = Carbon::now();
 
             if ($request->tipo == 0) {
+                 return response()->json($request->tipo);
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
                     'secusrtmail' => 'required|string|email',

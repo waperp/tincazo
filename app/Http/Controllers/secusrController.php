@@ -152,7 +152,7 @@ class secusrController extends Controller
             $date = Carbon::now();
 
             if ($request->tipo == 0) {
-                 return response()->json($request->tipo);
+                 
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
                     'secusrtmail' => 'required|string|email',

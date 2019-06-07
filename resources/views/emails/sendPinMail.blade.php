@@ -55,13 +55,8 @@
                                                                         <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                                                                             <tr>
                                                                                 <td>
-                                                                                    <input class="button button-primary" type="button" 
-                                                                                    value="{{ $data->secpininump }}"/>
-                                                                                    {{--
-                                                                                    <a class="button button-primary" href="http://tincazo.com/reset/password?utm_ref={{ $data->secusrtmail }}&utm_source={{encrypt( $data->secusricode )}}&utm_value={{encrypt( $ )}}" target="_blank">
-                                                                                        Has click Aqui
-                                                                                    </a>
-                                                                                    --}}
+                                                                                    <strong>{{ $data->secpininump }}</strong>
+                                                                                   
                                                                                 </td>
                                                                             </tr>
                                                                         </table>

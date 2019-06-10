@@ -162,6 +162,7 @@
      var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
      var tougrpsminp = $('#tougrpsminp' + tougrpicode).val();
      var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
+     var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
      $('#tablepociciones_filter lable input').addClass('modify'); // <-- add this line
      // <-- add this line
      $("#edit-perfil-image-preview").css("background-image", "url('images/" + $('#edit-perfil-image-src').val() + "')");
@@ -195,6 +196,7 @@
          $('#tougrpsmedp-edit').val(tougrpsmedp);
          $('#tougrpsminp-edit').val(tougrpsminp);
          $('#tougrpsxval-edit').val(tougrpsxval);
+         $('#tougrpschpt-edit').val(tougrpschpt);
          $('#tougrptname-edit').val(torneo);
          $('#touinfscode-edit-hidden').val(touinfscode);
          $('#tougrpicode-edit-hidden').val(tougrpicode);
@@ -2510,6 +2512,7 @@
      var tougrpsmedp = $('input[name=tougrpsmedp]').val();
      var tougrpsminp = $('input[name=tougrpsminp]').val();
      var tougrpsxval = $('input[name=tougrpsxval]').val();
+     var tougrpschpt = $('input[name=tougrpschpt]').val();
      // var touinfscode = $('#selecttorneo-edit').val();
      var tougrpvimgg = $('input[name=tougrpvimgg2').prop('files')[0];
      formData.append("tougrptname", tougrptname);
@@ -2520,6 +2523,7 @@
      formData.append("tougrpsmedp", tougrpsmedp);
      formData.append("tougrpsminp", tougrpsminp);
      formData.append("tougrpsxval", tougrpsxval);
+     formData.append("tougrpschpt", tougrpschpt);
      var actionurl = e.currentTarget.action;
      // 
      $.ajax({
@@ -2539,7 +2543,7 @@
          //     tougrpicode: tougrpicode
          // },
          success: function(data) {
-             
+             debugger
              window.location.reload();
          },
      });

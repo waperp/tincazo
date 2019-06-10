@@ -219,7 +219,7 @@
                                       <input type="hidden" id="tougrpsmedp{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpsmedp}}">
                                       <input type="hidden" id="tougrpsminp{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpsminp}}">
                                       <input type="hidden" id="tougrpsxval{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpsxval}}">
-                                  
+                                  <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpschpt}}">
                                 <li class="posts__item posts__item--category-1">
                                   <figure class="posts__thumb">
                                     <a href="javascript:void(0)" data-id="{{ $objTorneosUsers->tougrpicode }}" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }})">

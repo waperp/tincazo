@@ -1693,19 +1693,13 @@
                     <!-- Register Form -->
                       <div class="form-group">
                       <h5>CONFIGURAR GRUPO</h5>
-                      
                         <div class="form-group">
                            <select class="select2 form-control"  id="selecttorneo-edit" style="width: 100%" name="touinfscode" required="">
                             @foreach($listaTouinf as $objTouinf)
                                <option  value="{{$objTouinf->touinfscode}}" data-image="/{{$objTouinf->touinfvlogt}}" > {{$objTouinf->touinftname }} </option>
                             @endforeach
-                     
                         </select>
                       </div>
-                       
-                    
-
-
                        <div class="form-group">
                         <label for="">Nombre del torneo</label>
                         <input type="text"  class="form-control" required="" name="tougrptname" id="tougrptname-edit"  >
@@ -1716,37 +1710,30 @@
                       </div>
                       <div class="form-group">
                         <label for=""> TINCAZO medio (Solo Resultado)</label>
-
                         <input type="number" min="2" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="100" data-min_max data-min="2" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpsmedp-edit" name="tougrpsmedp"">
                       </div>
                       <div class="form-group">
                         <label for=""> TINCAZO menor (Uno de los marcadores)</label>
-
                         <input type="number"  min="1" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="100" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpsminp-edit" name="tougrpsminp" >
                       </div>
                      <div class="form-group">
-                        <label for=""> Valor x Partido <span style="color: red">de 1 a 10</span></label>
-
+                        <label for=""> Valor x Partido <strong  style="color: red">(0 a 10)</strong></label>
                         <input type="number" @if($validarTougrpbchva) @if($validarTougrpbchva->tougrpbchva == 0) readonly @else @endif @endif min="1" data-toggle="just_number"  data-max="10" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" max="10" id="tougrpsxval-edit" name="tougrpsxval" >
+                      </div>
+                      <div class="form-group">
+                          <label for=""> Puntos x Campeon <strong  style="color: red">(0 a 50)</strong></label>
+                        <input type="number"  min="1" max="50" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="50" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt" >
                       </div>
                       <div class="form-group form-group--submit">
                          <button type="submit" class="btn btn-primary-inverse btn-block">LISTO!</button>
                       </div>
-                      
                     </form>
-                    <!-- Register Form / End -->
-    
                   </div>
-                  <!-- Tab: Register / End -->
-    
                 </div>
-    
-    
               </div>
             </div>
           </div>
-</div>
-
+        </div>
             @break
          @endif
      @endforeach

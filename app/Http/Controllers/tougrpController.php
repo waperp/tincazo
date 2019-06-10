@@ -355,20 +355,21 @@ class tougrpController extends Controller
                 'tougrpicode' => 'required',
                 'tougrptname' => 'required',
                 'touinfscode' => 'required',
-                'tougrpsmaxp' => 'required|numeric|min:3|max:100',
-                'tougrpsmedp' => 'required|numeric|min:2|max:100',
-                'tougrpsminp' => 'required|numeric|min:1|max:100',
-                'tougrpsxval' => 'required|numeric|min:1|max:10',
+                'tougrpsmaxp' => 'required|numeric|integer|min:3|max:100',
+                'tougrpsmedp' => 'required|numeric|integer|min:2|max:100',
+                'tougrpsminp' => 'required|numeric|integer|min:1|max:100',
+                'tougrpsxval' => 'required|numeric|integer|min:1|max:10',
+                'tougrpschpt' => 'required|numeric|integer|min:1|max:50',
             ]);
             $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
                 ->where('touinf.touinfscode', Session::get('select-touinfscode'))
                 ->where('touinf.touinfdstat', '>', $date->toDateString())
                 ->first();
             $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
-            // return response()->json($validarTougrpbchva->tougrpbchva);
             if ($validator->passes()) {
                 if ($validarTougrpbchva->tougrpbchva == 1) {
                     if ($fechaValidar->fecha <= 0) {
+                        
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->touinfscode = $request->touinfscode;
@@ -376,6 +377,7 @@ class tougrpController extends Controller
                         $tougrp->tougrpsmedp = $request->tougrpsmedp;
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
+                        $tougrp->tougrpschpt = $request->tougrpschpt;
                         $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {
@@ -454,6 +456,7 @@ class tougrpController extends Controller
                         $tougrp->tougrpsmedp = $request->tougrpsmedp;
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
+                        $tougrp->tougrpschpt = $request->tougrpschpt;
                         $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {

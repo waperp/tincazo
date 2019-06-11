@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.1 (64 bit)
-MySQL - 10.3.14-MariaDB-1:10.3.14+maria~bionic : Database - tutincadb
+MySQL - 10.3.14-MariaDB : Database - tutincadb
 *********************************************************************
 */
 
@@ -94,9 +94,12 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `failed_jobs` */
+
+insert  into `failed_jobs`(`id`,`connection`,`queue`,`payload`,`exception`,`failed_at`) values 
+(31,'database','default','{\"displayName\":\"App\\\\Mail\\\\sendPinMail\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"delay\":null,\"timeout\":null,\"timeoutAt\":null,\"data\":{\"commandName\":\"Illuminate\\\\Mail\\\\SendQueuedMailable\",\"command\":\"O:34:\\\"Illuminate\\\\Mail\\\\SendQueuedMailable\\\":3:{s:8:\\\"mailable\\\";O:20:\\\"App\\\\Mail\\\\sendPinMail\\\":23:{s:4:\\\"data\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:10:\\\"App\\\\secpin\\\";s:2:\\\"id\\\";i:170;s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:6:\\\"locale\\\";N;s:4:\\\"from\\\";a:0:{}s:2:\\\"to\\\";a:1:{i:0;a:2:{s:4:\\\"name\\\";N;s:7:\\\"address\\\";s:25:\\\"miguelhangelh@hotmail.com\\\";}}s:2:\\\"cc\\\";a:0:{}s:3:\\\"bcc\\\";a:0:{}s:7:\\\"replyTo\\\";a:0:{}s:7:\\\"subject\\\";N;s:11:\\\"\\u0000*\\u0000markdown\\\";N;s:7:\\\"\\u0000*\\u0000html\\\";N;s:4:\\\"view\\\";N;s:8:\\\"textView\\\";N;s:8:\\\"viewData\\\";a:0:{}s:11:\\\"attachments\\\";a:0:{}s:14:\\\"rawAttachments\\\";a:0:{}s:15:\\\"diskAttachments\\\";a:0:{}s:9:\\\"callbacks\\\";a:0:{}s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:5:\\\"delay\\\";N;s:7:\\\"chained\\\";a:0:{}}s:5:\\\"tries\\\";N;s:7:\\\"timeout\\\";N;}\"}}','Illuminate\\Database\\Eloquent\\ModelNotFoundException: No query results for model [App\\secpin]. in C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:454\nStack trace:\n#0 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\SerializesAndRestoresModelIdentifiers.php(85): Illuminate\\Database\\Eloquent\\Builder->firstOrFail()\n#1 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\SerializesAndRestoresModelIdentifiers.php(55): App\\Mail\\sendPinMail->restoreModel(Object(Illuminate\\Contracts\\Database\\ModelIdentifier))\n#2 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\SerializesModels.php(45): App\\Mail\\sendPinMail->getRestoredPropertyValue(Object(Illuminate\\Contracts\\Database\\ModelIdentifier))\n#3 [internal function]: App\\Mail\\sendPinMail->__wakeup()\n#4 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(42): unserialize(\'O:34:\"Illuminat...\')\n#5 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Jobs\\Job.php(88): Illuminate\\Queue\\CallQueuedHandler->call(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Array)\n#6 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(327): Illuminate\\Queue\\Jobs\\Job->fire()\n#7 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(277): Illuminate\\Queue\\Worker->process(\'database\', Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(Illuminate\\Queue\\WorkerOptions))\n#8 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(118): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), \'database\', Object(Illuminate\\Queue\\WorkerOptions))\n#9 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(102): Illuminate\\Queue\\Worker->daemon(\'database\', \'default\', Object(Illuminate\\Queue\\WorkerOptions))\n#10 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(86): Illuminate\\Queue\\Console\\WorkCommand->runWorker(\'database\', \'default\')\n#11 [internal function]: Illuminate\\Queue\\Console\\WorkCommand->handle()\n#12 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)\n#13 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()\n#14 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))\n#15 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(576): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)\n#16 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)\n#17 C:\\xampp\\htdocs\\tincazo\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))\n#18 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(170): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))\n#19 C:\\xampp\\htdocs\\tincazo\\vendor\\symfony\\console\\Application.php(917): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#20 C:\\xampp\\htdocs\\tincazo\\vendor\\symfony\\console\\Application.php(269): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#21 C:\\xampp\\htdocs\\tincazo\\vendor\\symfony\\console\\Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#22 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(90): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#23 C:\\xampp\\htdocs\\tincazo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(133): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#24 C:\\xampp\\htdocs\\tincazo\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))\n#25 {main}','2019-06-07 09:01:16');
 
 /*Table structure for table `jobs` */
 
@@ -112,9 +115,12 @@ CREATE TABLE `jobs` (
   `created_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_queue_index` (`queue`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=latin1;
 
 /*Data for the table `jobs` */
+
+insert  into `jobs`(`id`,`queue`,`payload`,`attempts`,`reserved_at`,`available_at`,`created_at`) values 
+(98,'default','{\"displayName\":\"App\\\\Mail\\\\WelcomeUser\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"delay\":null,\"timeout\":null,\"timeoutAt\":null,\"data\":{\"commandName\":\"Illuminate\\\\Mail\\\\SendQueuedMailable\",\"command\":\"O:34:\\\"Illuminate\\\\Mail\\\\SendQueuedMailable\\\":3:{s:8:\\\"mailable\\\";O:20:\\\"App\\\\Mail\\\\WelcomeUser\\\":23:{s:4:\\\"data\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:10:\\\"App\\\\plainf\\\";s:2:\\\"id\\\";i:166;s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:6:\\\"locale\\\";N;s:4:\\\"from\\\";a:0:{}s:2:\\\"to\\\";a:1:{i:0;a:2:{s:4:\\\"name\\\";N;s:7:\\\"address\\\";s:21:\\\"learm10llar@gmail.com\\\";}}s:2:\\\"cc\\\";a:0:{}s:3:\\\"bcc\\\";a:0:{}s:7:\\\"replyTo\\\";a:0:{}s:7:\\\"subject\\\";N;s:11:\\\"\\u0000*\\u0000markdown\\\";N;s:7:\\\"\\u0000*\\u0000html\\\";N;s:4:\\\"view\\\";N;s:8:\\\"textView\\\";N;s:8:\\\"viewData\\\";a:0:{}s:11:\\\"attachments\\\";a:0:{}s:14:\\\"rawAttachments\\\";a:0:{}s:15:\\\"diskAttachments\\\";a:0:{}s:9:\\\"callbacks\\\";a:0:{}s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:5:\\\"delay\\\";N;s:7:\\\"chained\\\";a:0:{}}s:5:\\\"tries\\\";N;s:7:\\\"timeout\\\";N;}\"}}',0,NULL,1559912657,1559912657);
 
 /*Table structure for table `migrations` */
 
@@ -161,16 +167,33 @@ CREATE TABLE `oauth_access_tokens` (
 insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`revoked`,`created_at`,`updated_at`,`expires_at`) values 
 ('014d1f078ebdd86ed53e82611406b3390b22d46083b8f535e479410083fbe18d67c303f75ea65abc',1,6,'tincazo','[]',0,'2019-06-06 12:10:41','2019-06-06 12:10:41','2020-06-06 12:10:41'),
 ('025edb7ba8fb1ec93aac15af8d750968db40d0eb3ba07739eacace0942209efe77a5203bbc15cfeb',1,3,'tincazo','[]',0,'2019-05-31 09:37:17','2019-05-31 09:37:17','2020-05-31 09:37:17'),
+('029b852d58ae01fb6176575c753f7588cebd3a4c250b743941c7b871b57f52f08bef90f70da4b34f',1,6,'tincazo','[]',0,'2019-06-10 23:43:39','2019-06-10 23:43:39','2020-06-10 23:43:39'),
 ('03ad6b225c7eb64ef3da90fefe92d0604d6e8281d63f081765edc1f0b99598ecab24ca59bdb534b2',1,6,'tincazo','[]',1,'2019-06-05 21:50:58','2019-06-05 21:50:58','2020-06-05 21:50:58'),
 ('04584a6e04e4751b3c8073ff76261fa902394f6d594e4e3ac08ddc891e3a0726df03c3dda546da58',6,6,'tincazo','[]',1,'2019-06-02 13:45:18','2019-06-02 13:45:18','2020-06-02 13:45:18'),
+('053580b5b5099c956bdf663db020b2ef7e0d6ad1463d5c8a371f97af36455f172e7d9e6cade583c9',1,6,'tincazo','[]',0,'2019-06-11 11:55:39','2019-06-11 11:55:39','2020-06-11 11:55:39'),
+('057c72f4cdb15cff0f43ac8a3a65481e95802c12cc9c09e3070c1d9e88c268883c2031ca7d02458d',1,6,'tincazo','[]',0,'2019-06-11 15:56:26','2019-06-11 15:56:26','2020-06-11 15:56:26'),
+('05c48813b7f3a5f1af3f80445700571d0d779c1354b9c857d5f42127f8ac9b60ea69e79b943fbe68',1,6,'tincazo','[]',1,'2019-06-11 11:58:05','2019-06-11 11:58:05','2020-06-11 11:58:05'),
+('06338a043dd23d432bf02f9cdc0c4f3a8f85862f54d6cf622f41d0be1c993ed5bb8b4914ea0d5bb6',1,6,'tincazo','[]',0,'2019-06-11 16:08:37','2019-06-11 16:08:37','2020-06-11 16:08:37'),
 ('06644028bce19e9b01c40625cb2a8ec9666e61ae75bdc6f1b0fe1d407b0ac6be393e232f145dc8db',1,6,'tincazo','[]',0,'2019-06-02 17:23:49','2019-06-02 17:23:49','2020-06-02 17:23:49'),
+('071bb0da25802a5e1edda54ad0ebd13941fb0d9af8f2ce46a3048f8174b9ff6ead99bfc55ddf81bf',6,6,'tincazo','[]',0,'2019-06-07 13:48:45','2019-06-07 13:48:45','2020-06-07 13:48:45'),
 ('0858f4299fb44d5e2606f7338632ec1fb54e063d352bf4877e4a5c37596551502319aeacecf74e54',1,6,'tincazo','[]',0,'2019-06-06 10:29:39','2019-06-06 10:29:39','2020-06-06 10:29:39'),
+('0a214a4585e089402731c5b79f76fe9b613b6229425c34ace49263216e01b250bf1a057298c131e3',6,6,'tincazo','[]',1,'2019-06-07 14:30:36','2019-06-07 14:30:36','2020-06-07 14:30:36'),
+('0cdac198f3a3e8d9ad6cffe35a92bdd7cb2f36bc654e550cba3120b17fa8f053847d89ffd6a70cfa',6,6,'tincazo','[]',0,'2019-06-07 12:27:39','2019-06-07 12:27:39','2020-06-07 12:27:39'),
 ('0e97fadd292fdb8c1409ba2a7f80f8681f622c91a357a4ca2aeaf77f25557fed2851a2a05b43d029',1,3,'tincazo','[]',0,'2019-05-31 09:35:35','2019-05-31 09:35:35','2020-05-31 09:35:35'),
+('0ee4da494db6b4ef207a302d2e4c0cbcac8e38e191b3be71fefef30a7e568691d053f42e074b896c',6,6,'tincazo','[]',0,'2019-06-07 13:52:12','2019-06-07 13:52:12','2020-06-07 13:52:12'),
+('0f03a7e733f6495fe5bc33d3db522e61ec7d1b2c43a35210f72f7f8ab2013a4f2e69faf313a9d466',6,6,'tincazo','[]',0,'2019-06-07 13:33:42','2019-06-07 13:33:42','2020-06-07 13:33:42'),
+('0fa229b576c5a76fd84d8ced0b91888f02e43ad44feecd741ab8a71dbe65e3520d689ea2965eb3fc',6,6,'tincazo','[]',0,'2019-06-07 14:56:05','2019-06-07 14:56:05','2020-06-07 14:56:05'),
 ('121b7ac554438e8beea83a1894e88566b002342f5c3bc0280d918df97e7ded80546072c482c6e636',1,3,'tincazo','[]',0,'2019-05-31 09:56:31','2019-05-31 09:56:31','2020-05-31 09:56:31'),
+('14cd895cdb0b17660f755439975653d135e67dd38198a2b82b7e80ab42da375035956090b2b84dec',1,6,'tincazo','[]',0,'2019-06-11 11:58:46','2019-06-11 11:58:46','2020-06-11 11:58:46'),
+('1586b86e28c492e21df76e7f57db858d562bc5ae1dd3b2710e655a02ee7d9c8ec89bef95e2785288',1,6,'tincazo','[]',0,'2019-06-11 15:58:27','2019-06-11 15:58:27','2020-06-11 15:58:27'),
 ('16d5f76d7f529f1931ee2bd374f78660f317543e3405c1caae87651e2eebb62cb198a7a9978c06fc',1,6,'tincazo','[]',0,'2019-06-06 12:10:05','2019-06-06 12:10:05','2020-06-06 12:10:05'),
 ('17d715e223fe4e72c0a83c2219f62c05c3ee09d52a8a3443bb21d23648206bf41656356739935720',1,6,'tincazo','[]',0,'2019-06-06 10:18:17','2019-06-06 10:18:17','2020-06-06 10:18:17'),
+('1a7f1be9842b5806ef41a0c1d38283db196aeb19b6ca31e619d91c541b2cc4e5f6f9afb400c0045e',1,6,'tincazo','[]',0,'2019-06-11 11:48:56','2019-06-11 11:48:56','2020-06-11 11:48:56'),
+('1af40ac959065f378b67e4c110c9ad0d87fa2b8799e15b1d09d4196fda11ccedfd75770aeeaa5d67',6,6,'tincazo','[]',0,'2019-06-07 14:03:50','2019-06-07 14:03:50','2020-06-07 14:03:50'),
 ('1c09ccb0522ceb073bc2ddd806e616e8732176a4703ac79f793d1583fa817ffbe3dcee11f35931ae',1,6,'tincazo','[]',1,'2019-06-06 10:21:26','2019-06-06 10:21:26','2020-06-06 10:21:26'),
+('1d0050bc80f281ab066db55ed809a8a7bc0594b2d9dfbec2c1b92b4030a8cb454ae4eed4d08bd2c6',6,6,'tincazo','[]',0,'2019-06-07 13:33:01','2019-06-07 13:33:01','2020-06-07 13:33:01'),
 ('1d1106ba20845e42e53f64ff35614d25a4b5598f967ce7c48ac22888a4db087e38a0eeccc500b0a3',6,6,'tincazo','[]',1,'2019-06-06 11:26:43','2019-06-06 11:26:43','2020-06-06 11:26:43'),
+('1d4ce9c177e31bd6b5044d0e76293bf43267726106be7edbd457d11fbad2aa2bfdc31d5b56a6507d',6,6,'tincazo','[]',0,'2019-06-07 12:03:28','2019-06-07 12:03:28','2020-06-07 12:03:28'),
 ('1d5f16f4becebd0043843ff4aa38af63856e8e75ce20c2eb59ee63c788bcd95a16922aea9c74a597',1,6,'tincazo','[]',0,'2019-06-02 17:03:56','2019-06-02 17:03:56','2020-06-02 17:03:56'),
 ('1dd65c2f4b79a957e8b209c44cc043b1dd6c200919794c1ad9ab417da17d068227d466f4ab4b2a96',6,6,'tincazo','[]',0,'2019-06-06 11:16:24','2019-06-06 11:16:24','2020-06-06 11:16:24'),
 ('1e096857448e694c13db1de84c1c517e314a6b6be0a04ba9d427f66c03cbf81b6c6df56da111713d',6,6,'tincazo','[]',1,'2019-06-06 18:03:42','2019-06-06 18:03:42','2020-06-06 18:03:42'),
@@ -179,102 +202,170 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('239d83bf95951a07bc7f01aeff3c6a81664a7a8e57323052a653035c76882b79cb56a38f39e89cf6',1,6,'tincazo','[]',0,'2019-06-06 11:17:12','2019-06-06 11:17:12','2020-06-06 11:17:12'),
 ('23e92b7b5a64f535271869891a37fd8552e8d40c40493c954dee5e535da4d9eaeee57b0c7fb9b106',2,6,'tincazo','[]',0,'2019-06-05 13:32:45','2019-06-05 13:32:45','2020-06-05 13:32:45'),
 ('281021cfd117df6ca782015d194a24dc7119b2b05ee10243053f601e78528c24adb41aa12183e148',6,6,'tincazo','[]',1,'2019-06-06 16:35:48','2019-06-06 16:35:48','2020-06-06 16:35:48'),
+('28b97250f985c27024fc2cddfbd1654b4c4f2a50979a68f5d0e09a93f2efa3b720857433fcdbfaae',6,6,'tincazo','[]',0,'2019-06-07 12:24:09','2019-06-07 12:24:09','2020-06-07 12:24:09'),
 ('2a7d8e98de3e8501fbda1ea7f8bd7e6cdee39459b493620b9a83348e69fcb3f8c47893c1b77eb4dd',6,6,'tincazo','[]',0,'2019-06-06 11:22:59','2019-06-06 11:22:59','2020-06-06 11:22:59'),
 ('2c8dd3c277f078ea7211ed73e6152c9675c78512558006c73a24f80ecced28e05d2639e533d65fde',6,6,'tincazo','[]',1,'2019-06-05 15:34:36','2019-06-05 15:34:36','2020-06-05 15:34:36'),
+('2d2759905e1e80e38cd3df7757736f8ee0eb92a408aab8b9f851c0b406af295dcc5feeee8157d1fa',6,6,'tincazo','[]',0,'2019-06-07 13:09:22','2019-06-07 13:09:22','2020-06-07 13:09:22'),
+('2dbeb04b11042366f52f5f37feceb1127350fd1da586cb3e2ee2e0cab56ba582bed0fb592d78aa02',6,6,'tincazo','[]',1,'2019-06-07 14:52:12','2019-06-07 14:52:12','2020-06-07 14:52:12'),
 ('2ede0172c6ace68ae0bf948c511b2faec6efe63a23498a57a5555441aed57a4cf19025881e80c751',6,6,'tincazo','[]',0,'2019-06-05 15:31:38','2019-06-05 15:31:38','2020-06-05 15:31:38'),
 ('2fb2b8a81b2b1343198341b8ebf8bbdbacb837e65da3cdd4ac4d9906e25bd02cb681f0eb015320c4',1,6,'tincazo','[]',1,'2019-06-04 10:50:57','2019-06-04 10:50:57','2020-06-04 10:50:57'),
 ('2fcb6c9f39b2fc0f60f5f6c22f7997cf71a587b22092068d4fe43168661b3b34934bda5a5c59bfc4',6,6,'tincazo','[]',0,'2019-06-05 15:33:47','2019-06-05 15:33:47','2020-06-05 15:33:47'),
+('2ff56ee124f23aff21f1ae1149e4e27971c3f7d5f5e333068d3956e25ab201b1a0356d9e900e7763',6,6,'tincazo','[]',0,'2019-06-07 11:46:29','2019-06-07 11:46:29','2020-06-07 11:46:29'),
+('30bba54a68cbc6362d3c6c867fbb141d2ca9878ea301f0d065d5eccb9b7f2ae6e8da1378220c41bd',6,6,'tincazo','[]',0,'2019-06-07 11:48:57','2019-06-07 11:48:57','2020-06-07 11:48:57'),
 ('330c127e5732b8924f397cc4250c9eedae108e5ee9b0a6eef0b59c33f657957ebf6cf2a6d3ae089b',1,6,'tincazo','[]',0,'2019-06-05 15:38:13','2019-06-05 15:38:13','2020-06-05 15:38:13'),
 ('3415e4d3219c431b776e6050462770af6f363e84e98076132d7487425b941e35af8dbce5eb6d5c20',1,6,'tincazo','[]',1,'2019-06-06 11:10:38','2019-06-06 11:10:38','2020-06-06 11:10:38'),
+('34a5e42803a2fd13117c2382674e70432f13659408c195bc0156a8a303dbad29b77f23b1686020df',6,6,'tincazo','[]',0,'2019-06-07 12:21:40','2019-06-07 12:21:40','2020-06-07 12:21:40'),
+('35e88516ab957353ee1052918f062468869d835d59d045278ab873b0a06fa22417ed6bc68e181886',6,6,'tincazo','[]',0,'2019-06-07 12:13:04','2019-06-07 12:13:04','2020-06-07 12:13:04'),
 ('36cfe52f3fff7f15d3ee5f6e7440675597767b819003cb71e740142583b4e88068c91481617f1675',1,6,'tincazo','[]',0,'2019-06-06 12:15:52','2019-06-06 12:15:52','2020-06-06 12:15:52'),
+('37b855cb157e71672b551344bc621dd0c2db8bf3614172bf2fc840cd4c05abdd22672027f89dac5a',6,6,'tincazo','[]',0,'2019-06-07 12:38:27','2019-06-07 12:38:27','2020-06-07 12:38:27'),
+('383da313dabf2642611c829eb183d2a1bff711fb9e697be6877497047dad190fdc77615191d50bfd',1,6,'tincazo','[]',0,'2019-06-11 11:42:31','2019-06-11 11:42:31','2020-06-11 11:42:31'),
 ('3858870de0423cbd29602886f93c1acdab6910ea2a4c5f5553491ab07bc286a28bd6f91cb556c4ec',6,6,'tincazo','[]',1,'2019-06-06 18:12:52','2019-06-06 18:12:52','2020-06-06 18:12:52'),
 ('39ce3a31057e13be7c99d938a3829c1b567cdcca497438dc91993ce1d00440504912a3775517fce1',1,6,'tincazo','[]',0,'2019-06-03 07:10:23','2019-06-03 07:10:23','2020-06-03 07:10:23'),
+('3a4af6a12a9387bd74763d1310f29bccc2b185aa2ee5dc6b3ca75af68d916d95c764b03b882f3cfc',6,6,'tincazo','[]',0,'2019-06-07 12:07:47','2019-06-07 12:07:47','2020-06-07 12:07:47'),
 ('3a65c842c8968904bbe583f7a84e67464ca45b4208bac1f1b98bb14b22c7759208e7739e3f12026c',1,6,'tincazo','[]',0,'2019-06-06 12:20:40','2019-06-06 12:20:40','2020-06-06 12:20:40'),
+('3b144df833c5a5e5bdc7a8035f8e3079199531149a872baf799753549c6a09961c3e7b3cfa87d067',1,6,'tincazo','[]',0,'2019-06-11 11:46:22','2019-06-11 11:46:22','2020-06-11 11:46:22'),
 ('3d8a6040f966d9295c5fe9de51f06ecc7c16872de0cc9ee822606a8c3f13b4491934750a4d1ad513',6,6,'tincazo','[]',0,'2019-06-06 11:35:58','2019-06-06 11:35:58','2020-06-06 11:35:58'),
+('3e52a61d96e20a8ce3390bb6e0708781adec151218b7f87d39827f6371cec12cdcc4c26bd1154f27',6,6,'tincazo','[]',0,'2019-06-07 12:40:46','2019-06-07 12:40:46','2020-06-07 12:40:46'),
 ('3f3c8aaa34ec6bd22d82d090db4e1a42b6a58bc6ec6f889c66b7e9f9da91aee895b09877f66beb9e',1,6,'tincazo','[]',0,'2019-06-02 17:26:35','2019-06-02 17:26:35','2020-06-02 17:26:35'),
 ('3fc49c21d0e1631366b1c855ce3f21c9ecc9f3536bde10d68aa90f0e44d7612ade5fdfb888ab2d72',6,6,'tincazo','[]',0,'2019-06-06 11:39:03','2019-06-06 11:39:03','2020-06-06 11:39:03'),
 ('423f1c110a24f0d4ab53fb14f22d042b9ff49797857c09d939bc59d932ae031db61de348687336da',1,6,'tincazo','[]',0,'2019-06-02 17:11:38','2019-06-02 17:11:38','2020-06-02 17:11:38'),
 ('451338ea42ed23718f1240361e071d32503ff87a21ec0a45828b26231fe8b5d5814bc86f98baa060',6,6,'tincazo','[]',1,'2019-06-02 14:03:13','2019-06-02 14:03:13','2020-06-02 14:03:13'),
 ('480b1cc09b425a97d9c50469315cf0dbb803edea531959cc4c39a1965e66f795c2f55f2a916ae317',1,3,'tincazo','[]',0,'2019-05-30 10:26:38','2019-05-30 10:26:38','2020-05-30 10:26:38'),
+('48766873385031a86451d18f3c790cbbc40efb3b4ef795ce995e8280bfaa605ed2594c71bc25725e',6,6,'tincazo','[]',0,'2019-06-07 11:09:38','2019-06-07 11:09:38','2020-06-07 11:09:38'),
 ('4a038745fd4393e5506413c53d0fcfcf943e53a8afc245c4e7ba15507132142d69a80489dccd1ac6',1,6,'tincazo','[]',0,'2019-06-06 10:23:46','2019-06-06 10:23:46','2020-06-06 10:23:46'),
 ('4e88f4b790225701f5ecb2cd67b87571d87158823345ab842d6bd14865baa4e425758e27192ca853',1,6,'tincazo','[]',0,'2019-06-06 12:24:42','2019-06-06 12:24:42','2020-06-06 12:24:42'),
 ('5059a9a4bb6ab0834e2cade09819867ff9fec31b12d4bfd39ff6dced95ce161e853cc8aeebade6a9',161,6,'tincazo','[]',0,'2019-06-06 22:09:22','2019-06-06 22:09:22','2020-06-06 22:09:22'),
 ('51364cab359e61aebf66095f0764165eac7df7bd1e3e0247ea9b45637a97a936c2682d7bdfa6b0aa',1,6,'tincazo','[]',1,'2019-06-03 12:36:38','2019-06-03 12:36:38','2020-06-03 12:36:38'),
+('516deffc0af7df4f27526ab980ed1b153e96b4b972f94e7c06687c843c9ff7a0778dc45a369caada',6,6,'tincazo','[]',0,'2019-06-07 11:39:09','2019-06-07 11:39:09','2020-06-07 11:39:09'),
 ('519b28bd51058c0d4fd982c7ee25c938d5027b41f3958917777196ca6f1f5af90e8159b9f2d25b2a',1,6,'tincazo','[]',1,'2019-06-06 11:22:38','2019-06-06 11:22:38','2020-06-06 11:22:38'),
 ('526ca24320bddc2b247e0f9b0b237239249be6a2b41d3c4e0bcc043607183cc39d326f8acc92b713',1,6,'tincazo','[]',0,'2019-06-06 12:03:23','2019-06-06 12:03:23','2020-06-06 12:03:23'),
 ('52dcbb54dc4e77877dad077599ca852c7a0a0e1c76d262c297dc92daf9aaed8fbeea7cef33cc4ce3',2,6,'tincazo','[]',1,'2019-06-06 11:00:11','2019-06-06 11:00:11','2020-06-06 11:00:11'),
+('56ef00a3cd67918e1e703818016302f49108a59f912989895fc150f513ed44e9188580fbc923b852',6,6,'tincazo','[]',1,'2019-06-11 16:20:52','2019-06-11 16:20:52','2020-06-11 16:20:52'),
+('5a4683381281161b10fe393903401cdc68ac4e2f5252d461d752654363b5273317e6dc41accca6b4',6,6,'tincazo','[]',1,'2019-06-07 14:08:02','2019-06-07 14:08:02','2020-06-07 14:08:02'),
+('5b70047a01d38f35db4136b5b95a08148e4efab169abe2451cdd06b0543680e5a167ae20f6004da0',6,6,'tincazo','[]',0,'2019-06-07 13:04:46','2019-06-07 13:04:46','2020-06-07 13:04:46'),
+('5dc5c7716c79438be7547695200cbede7ff6073b76fb6506e7e833a8f91cb5db375e6f2c17105760',1,6,'tincazo','[]',0,'2019-06-11 12:01:11','2019-06-11 12:01:11','2020-06-11 12:01:11'),
 ('5ecd18a1c3fd116108af50c2cd497e774ca5998255d8b6230c41fc9046b9c9e74d6710369138adfc',1,3,'tincazo','[]',0,'2019-05-31 09:40:49','2019-05-31 09:40:49','2020-05-31 09:40:49'),
+('5f8e08291e9008a4fe1930aea24c712e8e9d4e0c6e73ec10cca76663b9b8f11eb174b72c72c52bbb',6,6,'tincazo','[]',0,'2019-06-07 13:57:58','2019-06-07 13:57:58','2020-06-07 13:57:58'),
 ('60c9274e89104d91da2ef8e49058f9d4a124a9eddd8c9a8bb0cd63aea24cd7a7454c45bd9a8dab23',1,3,'tincazo','[]',0,'2019-05-31 10:20:07','2019-05-31 10:20:07','2020-05-31 10:20:07'),
 ('60ea1f2cc2d9d71ca68f44a13b6fa1c0e1330bc1a08d81d63d33525f0d82062a3bbc076f5eb246a0',1,6,'tincazo','[]',1,'2019-06-03 15:22:09','2019-06-03 15:22:09','2020-06-03 15:22:09'),
 ('61d1aba6a9ba05c7623d97e8bb82e184b28fa5ad4b1c56bad5547eecad81f55faebd76dd93fefd17',1,3,'tincazo','[]',0,'2019-05-31 09:39:47','2019-05-31 09:39:47','2020-05-31 09:39:47'),
 ('62a2e4480b38aac42dc1171f790a9cb3307883569df00ee2944eb5da3f8c39dfc07f6d05553598a1',1,6,'tincazo','[]',1,'2019-06-06 11:42:09','2019-06-06 11:42:09','2020-06-06 11:42:09'),
 ('630b4ab041256cb01265a9c7d7f1952730941cf67dbedb38eb751b3301263825cf1d951dc51ea09d',1,3,'tincazo','[]',1,'2019-05-30 11:09:23','2019-05-30 11:09:23','2020-05-30 11:09:23'),
+('64c551dd497a8f5919590b583e71981684d500b45479c895639f185295e2f28cc77b4ad4afd368da',1,6,'tincazo','[]',0,'2019-06-11 11:59:49','2019-06-11 11:59:49','2020-06-11 11:59:49'),
 ('652957b300e5cfd724148fb54d74a2d7a2d3005f12d84edcbba25da71d85859419f8cc5f4e4d4297',1,3,'tincazo','[]',0,'2019-05-31 11:14:52','2019-05-31 11:14:52','2020-05-31 11:14:52'),
+('65c630912b352b315bf83efa148f543f5c60176da5640d34408ce0df57f70c96b8c880c330fc4523',1,6,'tincazo','[]',0,'2019-06-11 16:01:24','2019-06-11 16:01:24','2020-06-11 16:01:24'),
 ('67386059f8b2f727aaf48e15b9b71c170a82412ee9a6cb951f2cc633e7e998b97527bc237cd0c1cf',1,3,'tincazo','[]',1,'2019-05-31 09:24:50','2019-05-31 09:24:50','2020-05-31 09:24:50'),
 ('685bb559a153ed13a3dfe8564d080eb5e8583e9e631002db40a53670c31f42c8da133e6d8c46ed95',1,6,'tincazo','[]',1,'2019-06-05 21:49:43','2019-06-05 21:49:43','2020-06-05 21:49:43'),
 ('6974a23651c133e3b0ee2f540ea04fb0561ab0218ec8e77b0df4e3ac98efa9e8396380f745d698a1',1,6,'tincazo','[]',1,'2019-06-03 09:27:29','2019-06-03 09:27:29','2020-06-03 09:27:29'),
 ('6c0615ecb8661459bd0d5ee7b2dd5e5d477aa6961312c9ccbbe35efc269dfabdbb9a7b08b8d437be',1,3,'tincazo','[]',0,'2019-05-31 09:45:43','2019-05-31 09:45:43','2020-05-31 09:45:43'),
 ('6cabcfbf13180db8a6fcc0f52c09078da5277f8e60fc50ab988114dc822dcf2c9b57b97d7469192f',1,6,'tincazo','[]',1,'2019-06-05 18:36:29','2019-06-05 18:36:29','2020-06-05 18:36:29'),
+('6d1c5a97741d677e161eedbc2bbeb529b39919ab663bf9d946e03fc063dc21debadbfe77043afdb6',6,6,'tincazo','[]',0,'2019-06-07 13:07:31','2019-06-07 13:07:31','2020-06-07 13:07:31'),
+('6e1cf46c2ce4b1b0e49cb07c1bd36b4c576231442b9426ddf42aa19ea2fb9bf571e0b664b7138185',6,6,'tincazo','[]',0,'2019-06-07 11:02:38','2019-06-07 11:02:38','2020-06-07 11:02:38'),
 ('6e28af6f73324bc0cc96209a0f9ce75f0640b135fb295f8ed6b7e773a6725811a6daba9d114c4119',1,6,'tincazo','[]',0,'2019-06-02 17:05:07','2019-06-02 17:05:07','2020-06-02 17:05:07'),
 ('6e2bf31a96727cf5f7b2ecfed22331add841b8745106d96745cd6000bb2d384058a0d4ee72902280',2,6,'tincazo','[]',1,'2019-06-05 13:32:45','2019-06-05 13:32:45','2020-06-05 13:32:45'),
 ('6fc161744178c51c45a3b4c48dbabcd95c535baeaec23688d8ae650aa74877dd1add84d1ca9d3845',6,6,'tincazo','[]',1,'2019-06-05 15:26:18','2019-06-05 15:26:18','2020-06-05 15:26:18'),
 ('72eb15757dfbfd55f4389a26b8fd77c2125394ff742185353d6e4aedfb8b69c12547e5bdfb03e9e9',6,6,'tincazo','[]',0,'2019-06-05 15:28:34','2019-06-05 15:28:34','2020-06-05 15:28:34'),
+('736055e8edef586100abe101c0ad9a17654c81a25ba6e0a48b34cc7c1bac9ca723d8082965a47a36',6,6,'tincazo','[]',0,'2019-06-07 14:36:16','2019-06-07 14:36:16','2020-06-07 14:36:16'),
 ('76b08c68a46a7b46884c4c1397fcd8407e76da183710c504e6db7c7e33a8ec600e7ff6e5bb7babbb',1,6,'tincazo','[]',1,'2019-06-04 21:34:42','2019-06-04 21:34:42','2020-06-04 21:34:42'),
 ('776163b0d66a13a2bca394766b3d1557dff1c98bfa022fcffdc5e29735868ff2592e43888902867c',1,6,'tincazo','[]',1,'2019-06-06 12:31:41','2019-06-06 12:31:41','2020-06-06 12:31:41'),
 ('780015aec47e10137cecab4b8c539104377a83012e8ebe3b0f4dafe328a346a45166ba3e5a99fb4d',1,6,'tincazo','[]',0,'2019-06-06 12:10:59','2019-06-06 12:10:59','2020-06-06 12:10:59'),
 ('78eb30fd1181bc45ba1a6562bde7bf080ff904e76791092325df35653b09cc6f1df312bab54256c6',1,6,'tincazo','[]',1,'2019-06-03 11:20:20','2019-06-03 11:20:20','2020-06-03 11:20:20'),
 ('79e87e87fcc42f7ddfa31e1d6ec3b1fedad45a810bfeddd7300553b0fdeb0468a045d2663730c147',6,6,'tincazo','[]',1,'2019-06-06 11:28:54','2019-06-06 11:28:54','2020-06-06 11:28:54'),
+('7a11749c32a468361be1d9784e5bc38f1603229ef17ef579ddd99a8997ae27a6e04906c438b46879',6,6,'tincazo','[]',0,'2019-06-07 11:11:46','2019-06-07 11:11:46','2020-06-07 11:11:46'),
+('7a211efa7c2005a28bbd7c3e217aec6bb1c7c019a7cc9ba65fc0cdcbbc7cd595a7f50275972f4918',6,6,'tincazo','[]',0,'2019-06-07 11:48:08','2019-06-07 11:48:08','2020-06-07 11:48:08'),
 ('7a5dd4d8677f48a902e2fc1c2730253246fb889746ac09e7b92b8fa681fa60ac18bb6c62d553419f',1,6,'tincazo','[]',1,'2019-06-03 15:35:23','2019-06-03 15:35:23','2020-06-03 15:35:23'),
 ('7ae507e97b848443cec6277d8366809d41b63b284f324d4ee074c5955287e95191ed5efe8ac571ed',6,3,'tincazo','[]',0,'2019-05-30 00:52:53','2019-05-30 00:52:53','2020-05-30 00:52:53'),
 ('7b1171ce14c7ec0032be6e54c8ddb6ac8fbacf2b66abab9acfbf910a1eb55818252871b7d7c5893b',1,6,'tincazo','[]',1,'2019-06-03 11:13:33','2019-06-03 11:13:33','2020-06-03 11:13:33'),
 ('7d0bcaf3eb7a3435e3950b56cb8495cbb3dfb7c0d06fff150bcbdbea15321453361aceddc6abca04',1,6,'tincazo','[]',0,'2019-06-02 17:17:55','2019-06-02 17:17:55','2020-06-02 17:17:55'),
 ('803d549e459df33d5a950cfd5aa8344451ca6860fbd2deca4dde3b5e539d0077539ce8a78db91a0c',4,6,'tincazo','[]',0,'2019-06-06 22:02:27','2019-06-06 22:02:27','2020-06-06 22:02:27'),
 ('80833e63115455256c308a9addd2918f3eab81aed1ea6b8c1f87c0e0da19ea9eb8de57456f0f7a3e',1,3,'tincazo','[]',0,'2019-05-31 09:41:59','2019-05-31 09:41:59','2020-05-31 09:41:59'),
+('80a7e903763abf67fa7fbdfee29015ce92375e311742aceaf4d080e26afdb68e1ba5b784621eeaf4',1,6,'tincazo','[]',1,'2019-06-11 11:57:07','2019-06-11 11:57:07','2020-06-11 11:57:07'),
 ('81efd9f538b56c1418b711a0f0c7a1079bed96fd50026de8a80d44d42999aa5a348ef857bad6ba89',1,3,'tincazo','[]',0,'2019-05-31 11:14:03','2019-05-31 11:14:03','2020-05-31 11:14:03'),
+('83c8a08ba3076c2af2cc622621049b832e50f0d8eab11af5d56829d302b575226dad4358bdd2f4d3',6,6,'tincazo','[]',0,'2019-06-07 10:59:32','2019-06-07 10:59:32','2020-06-07 10:59:32'),
 ('850dc4185693aa89cc2440a597cc52cbd230f333c7192a22d0f38776a3d10743a7f00cec205323c0',1,6,'tincazo','[]',0,'2019-06-06 12:05:02','2019-06-06 12:05:02','2020-06-06 12:05:02'),
+('87052665216b28de6a4e140cc911d29f2dcc8c3936ffd4995bba91009132911497a4a000d2c2eb71',6,6,'tincazo','[]',0,'2019-06-07 13:51:19','2019-06-07 13:51:19','2020-06-07 13:51:19'),
+('8a30cf0ebd0b5c1a0d1d6aff155e564ec785977bfea3a79cd88e9eaaf474dc32cc1ea844da131b4d',1,6,'tincazo','[]',0,'2019-06-11 11:57:28','2019-06-11 11:57:28','2020-06-11 11:57:28'),
 ('8a443bc630fee354c7a697dfd4b5492df123871c200ac9a927170ca989ad56b6da128d04366856f3',1,6,'tincazo','[]',0,'2019-06-05 15:35:38','2019-06-05 15:35:38','2020-06-05 15:35:38'),
 ('8a652de48cc60363f0609b2c1f4da2e0cd0c903bdefcf17d0d20531529b3f9612e89cb864a072f9a',1,6,'tincazo','[]',1,'2019-06-06 11:13:26','2019-06-06 11:13:26','2020-06-06 11:13:26'),
+('8b5132fb948afeb7b10ae752d054a8965fa5e929de435d4fef50618297b4b28e6c2bde849f06ef7c',1,6,'tincazo','[]',0,'2019-06-11 16:04:31','2019-06-11 16:04:31','2020-06-11 16:04:31'),
 ('8b6e79b5bcde37a08695e4c22a4ac546a4bf09af21dcc6dd176c5123d50776859f4a38771a6f7316',1,6,'tincazo','[]',0,'2019-06-06 12:06:21','2019-06-06 12:06:21','2020-06-06 12:06:21'),
+('8d3a9a3620bc83429d99b5572528deb3a5ab048432907aa6b8a8daa4738a439dc447a8e628d2b812',6,6,'tincazo','[]',1,'2019-06-07 14:49:22','2019-06-07 14:49:22','2020-06-07 14:49:22'),
 ('8db6eeeaa5745de91b48010b4c266a130d096b3589436ef3b70b704c2dbc8445d1fd80919a20c1c3',1,3,'tincazo','[]',0,'2019-05-31 09:33:21','2019-05-31 09:33:21','2020-05-31 09:33:21'),
 ('8e7902151f9d47a3e0678f1dd969c854b6a32f57daa46b099875172fe913df9af1bf1b932968e229',1,6,'tincazo','[]',0,'2019-06-06 10:26:35','2019-06-06 10:26:35','2020-06-06 10:26:35'),
+('8f48673b26760dfe2c042863ce035998dea685f2443d29a6d551ecdaa3f44431a414b0021ad50333',6,6,'tincazo','[]',0,'2019-06-07 12:11:32','2019-06-07 12:11:32','2020-06-07 12:11:32'),
 ('8fe4b3071f776b2e26f6e23fadc311d778d96991136cd4f64a0ae44ef59a35c0a792fe265a748a37',1,6,'tincazo','[]',0,'2019-06-02 17:12:33','2019-06-02 17:12:33','2020-06-02 17:12:33'),
+('91a3b9d41f80a894a40f7bf16baedc2cf6d83aa901f62c6d452a56555dce057fd667d60645b70511',6,6,'tincazo','[]',0,'2019-06-07 13:54:02','2019-06-07 13:54:02','2020-06-07 13:54:02'),
 ('93362b0ea553806d4be479ab937e6bdd8994ef36b1ff7c5fd48f675aba754688b551080c83694081',1,6,'tincazo','[]',1,'2019-06-06 12:10:36','2019-06-06 12:10:36','2020-06-06 12:10:36'),
 ('937b02e2615d1841d4dc3b18646124902c24463b999a11771c10505b9e2643e9adef0d625c2736bd',6,6,'tincazo','[]',1,'2019-05-31 15:57:14','2019-05-31 15:57:14','2020-05-31 15:57:14'),
 ('94bc19d7ebae0b0007f8f1c083d06ec8ae089fc5806060cddbcdf19da08a4a8c129deddfc5303ae9',1,6,'tincazo','[]',1,'2019-06-06 10:30:40','2019-06-06 10:30:40','2020-06-06 10:30:40'),
+('9b1779f05d0baae00b2b63c23ce4ba2009098a71020b8211dc46ee9281a2af9782f7c7a03e045db8',6,6,'tincazo','[]',0,'2019-06-07 11:26:08','2019-06-07 11:26:08','2020-06-07 11:26:08'),
 ('9dbe9780ded392920dc1334a2be40b775c44029cd333819c86c59e6ff8d17080bc2dd3c0887dbb52',1,3,'tincazo','[]',0,'2019-05-31 09:34:34','2019-05-31 09:34:34','2020-05-31 09:34:34'),
+('9f5d546dfee650afa41aca36807faff531706c1ba9c9b42f2c7ccb0259d4bb9bc0b86c22be7b2284',6,6,'tincazo','[]',0,'2019-06-07 13:08:14','2019-06-07 13:08:14','2020-06-07 13:08:14'),
+('a1be4325b4e5ac54758fb08151078499d5457ee858aa15a35485682eb0ec06fc25ffb5a7ef03b3fd',6,6,'tincazo','[]',0,'2019-06-07 11:50:26','2019-06-07 11:50:26','2020-06-07 11:50:26'),
+('a1e9430f31863f8ca2b64018cc6b8aa2fdb5e3868bfb78864d64d6c57e3cf4ca763d6d4338d2d52d',6,6,'tincazo','[]',0,'2019-06-07 13:26:26','2019-06-07 13:26:26','2020-06-07 13:26:26'),
 ('a2b3a9245157886073688bb82e112538ab06e760ea0f3dd6aea8e413a5d20eb48b2fba0f58ad7f57',6,6,'tincazo','[]',0,'2019-06-05 15:29:31','2019-06-05 15:29:31','2020-06-05 15:29:31'),
 ('a3113820883fe9b17d3aeefcd826d65f5ca16d370e41416ccf15f522a028d900eff78e481cb9da5a',6,3,'tincazo','[]',0,'2019-05-30 10:23:14','2019-05-30 10:23:14','2020-05-30 10:23:14'),
+('a387409773f2381595a8348044b600aa5b5832c5c278fee57ffb57c87c58405cc4686d43df330899',1,6,'tincazo','[]',0,'2019-06-11 16:18:25','2019-06-11 16:18:25','2020-06-11 16:18:25'),
+('a523d179bad0ac90964cc272b8e159c610cb69b28fda9573934f5fed2c9a488d98218fb29c919c43',6,6,'tincazo','[]',0,'2019-06-07 13:34:20','2019-06-07 13:34:20','2020-06-07 13:34:20'),
+('a53b5f4f931b03b4265336fc95903a164b29df40ea749fcbb597e5b8ff8e8909bccbe306a5bddd66',1,6,'tincazo','[]',0,'2019-06-11 15:51:36','2019-06-11 15:51:36','2020-06-11 15:51:36'),
 ('a5f2409bc61e00277c73a823402d264264a8859925c46f4495960462b3d264c350ee861b0efb6e95',6,6,'tincazo','[]',0,'2019-06-06 11:14:53','2019-06-06 11:14:53','2020-06-06 11:14:53'),
 ('a7462ae369d9ee3a5a23f3b5870ed02b1a0fc925c57229d2ec352744c8c2611cd6a2fee3f86d5b18',1,6,'tincazo','[]',0,'2019-06-03 15:33:23','2019-06-03 15:33:23','2020-06-03 15:33:23'),
+('abf5539ba1691fc3e72e0aa79891fe650bb85277bc3036bbac0ba21be692ab0f594a17ee27ce4a47',1,6,'tincazo','[]',0,'2019-06-11 16:02:15','2019-06-11 16:02:15','2020-06-11 16:02:15'),
+('aeda12ad0762077c5f248ae878a62378c68a47e8c94e798b7b9bca56cc9f0849ba0ca78fc729525a',6,6,'tincazo','[]',0,'2019-06-07 11:08:00','2019-06-07 11:08:00','2020-06-07 11:08:00'),
+('afec48bd58bf24a9a691ee7eae40dd8f8853e2be2a356f1ce5b6277c4eb9ff3de658de600842844d',1,6,'tincazo','[]',0,'2019-06-11 15:49:24','2019-06-11 15:49:24','2020-06-11 15:49:24'),
+('b0b9da0e9fd7d7129742e2f867d17d3c55a853824b28c48e62c1a29f87ce6324aff594c31f5079e5',6,6,'tincazo','[]',0,'2019-06-07 13:19:08','2019-06-07 13:19:08','2020-06-07 13:19:08'),
+('b12f4522593dbd51cb9a449953e0212ed7f44cc818046e29cb80fdb3b62c0c561dfcc32f46feb24c',6,6,'tincazo','[]',0,'2019-06-07 12:22:58','2019-06-07 12:22:58','2020-06-07 12:22:58'),
 ('b60415670a4e86d5ba9af0b9610affb1c00d29476bdba0a62d754980f4fcebd9bb0679bce08e567b',1,3,'tincazo','[]',0,'2019-05-31 10:21:47','2019-05-31 10:21:47','2020-05-31 10:21:47'),
+('b63e9d199521ed9b2564158d26808f14e1f24de6013146dbb207983dc93cdef7707fe0e2ee5a3a64',6,6,'tincazo','[]',0,'2019-06-07 11:25:04','2019-06-07 11:25:04','2020-06-07 11:25:04'),
+('b6f97179f66d660bb63d71e54fc11c753a234ed7b668b68130d1d58aef85d6161b0853a027565beb',6,6,'tincazo','[]',0,'2019-06-07 11:05:27','2019-06-07 11:05:27','2020-06-07 11:05:27'),
 ('b715bf863a8e648ff0e62eb9ebed48a4423d479c71434d776d14c97e9a93d54f2f7736112a21c8c0',1,6,'tincazo','[]',0,'2019-06-06 10:30:05','2019-06-06 10:30:05','2020-06-06 10:30:05'),
 ('ba79c4ea79d500ac9a12bf89971c49e5a509bc9e6d77aa868f2aed0305392ce4ecb0315dbf605d50',1,6,'tincazo','[]',0,'2019-06-06 12:01:56','2019-06-06 12:01:56','2020-06-06 12:01:56'),
+('bb76da8849f0201423cadbd811f58e03f06b600f18e5d2856cd69a19e5199c95dd4b3bfb5237a8d9',6,6,'tincazo','[]',1,'2019-06-07 13:45:44','2019-06-07 13:45:44','2020-06-07 13:45:44'),
+('bcd3532002ef749619015746330fa143c9b292d41cb82005d9efc600634530ae8b92978213cd446b',1,6,'tincazo','[]',0,'2019-06-11 16:21:04','2019-06-11 16:21:04','2020-06-11 16:21:04'),
 ('bfb622b5c9609ba959c9a189e82c2455f1085304f5efdf0d954c18b3020f6c841b588a81fc52abd0',1,6,'tincazo','[]',0,'2019-06-02 14:56:35','2019-06-02 14:56:35','2020-06-02 14:56:35'),
 ('c172f74a8289d17ecf40c746c3ec49480411b3bd7de29ba1dc65589010ede1a330b0425e50c41064',1,6,'tincazo','[]',0,'2019-06-02 17:29:38','2019-06-02 17:29:38','2020-06-02 17:29:38'),
 ('c1ff3489f18a9ae4a4d73f3e83d402f97f692da8af03cd549ca14e6e388f7fdd6dc452cf844ada50',1,6,'tincazo','[]',0,'2019-06-03 13:03:02','2019-06-03 13:03:02','2020-06-03 13:03:02'),
 ('c564693127bb95d53dc9105162dc8d10884977607d81cd12b72825ac680c102e75f9f83936c3d330',1,3,'tincazo','[]',0,'2019-05-31 09:38:23','2019-05-31 09:38:23','2020-05-31 09:38:23'),
+('c5dc9a8c406844df499576b1513c902abefae559d5ac882bb8908a620882a27869045d8b51a0e2bb',1,6,'tincazo','[]',0,'2019-06-11 15:53:56','2019-06-11 15:53:56','2020-06-11 15:53:56'),
+('c965b56d8f4b9527727d7a3295621d2f3bbad3fe9988c4d7eecbc07adc0eca0094c204605da79256',1,6,'tincazo','[]',0,'2019-06-11 11:52:23','2019-06-11 11:52:23','2020-06-11 11:52:23'),
 ('c985321bb7b7ca39627d4ed831db8ce2a050a8ef2fb77888c02788e86806abf6f5d0027ce1ff3c20',1,6,'tincazo','[]',1,'2019-06-03 09:20:26','2019-06-03 09:20:26','2020-06-03 09:20:26'),
+('ca4e2a0048a0543560718553e7f47084964bb7f3566bed8816c31235b36c81a2a404efd32408c5eb',6,6,'tincazo','[]',0,'2019-06-07 13:17:43','2019-06-07 13:17:43','2020-06-07 13:17:43'),
 ('cb1a4f46e50e7c8d6e51f367d3da65a8a156e56d60432c92380a4a4d17e370ff77e1c31014425cb9',1,6,'tincazo','[]',0,'2019-06-06 12:12:00','2019-06-06 12:12:00','2020-06-06 12:12:00'),
+('cb2e088c17c7cd452467e299bd06944db3fbe39fe23decf4e1c824be4807e85e60d8b363d6c7f566',1,6,'tincazo','[]',0,'2019-06-11 13:15:20','2019-06-11 13:15:20','2020-06-11 13:15:20'),
+('cd6c1b51135538007bd6f10883b0df83c8cac414cdbf90db9c1f49517ee7362d2f4dd660c2b63cbf',6,6,'tincazo','[]',0,'2019-06-07 12:29:29','2019-06-07 12:29:29','2020-06-07 12:29:29'),
+('ce635834f9b07aacbfc1b0db32791a6b937856651a9011e8e390b036a2c7dc8e3a59f2b6a4c33fcd',6,6,'tincazo','[]',0,'2019-06-07 11:19:28','2019-06-07 11:19:28','2020-06-07 11:19:28'),
+('d20d34b010f6c5bf77376fe8949bbbfc10473db0ce345254f9bc70b2ac4e51ca231064ceacc19cec',6,6,'tincazo','[]',0,'2019-06-07 11:47:20','2019-06-07 11:47:20','2020-06-07 11:47:20'),
 ('d2689ebd5e32432b8cb39e051eaddff39591cd9699d3c65982fd3b163ba78203d30362b8f8d7b807',1,6,'tincazo','[]',1,'2019-06-05 09:29:21','2019-06-05 09:29:21','2020-06-05 09:29:21'),
+('d7ff69a919fe95bf5a5dbd09c974d431b4fe722f48ad29126b0e9819c3d24acfd0334124d0801c9e',6,6,'tincazo','[]',0,'2019-06-07 11:26:40','2019-06-07 11:26:40','2020-06-07 11:26:40'),
 ('d8646bbe9e989df3028254367a331e778351d4963a5e9eed42029c0e39bb508c9450a9d92567a5f9',1,3,'tincazo','[]',0,'2019-05-31 10:22:35','2019-05-31 10:22:35','2020-05-31 10:22:35'),
+('d88363199f83cb30043949303ab1455481f283cd1b80f7b79b6ec33b3b6418ba0645e2ae043edef1',6,6,'tincazo','[]',0,'2019-06-07 13:45:57','2019-06-07 13:45:57','2020-06-07 13:45:57'),
 ('da4779f6b545a58803e1504df14ec4ddf2ba433d82a813b021b60b12e9fb38b433991d168f4807dd',1,6,'tincazo','[]',0,'2019-06-05 15:40:55','2019-06-05 15:40:55','2020-06-05 15:40:55'),
+('da8a182fb1d8b260dab2a2bb4aeaf10c62d8f315db50b4ed575b7b73599f10c55de82541fd077369',6,6,'tincazo','[]',1,'2019-06-07 14:39:28','2019-06-07 14:39:28','2020-06-07 14:39:28'),
+('db0b4d409aef3012827d39f3a1831241963f3ead2fa99cbae7736c248bbff6b7808c829ef2a300f8',6,6,'tincazo','[]',0,'2019-06-07 13:47:16','2019-06-07 13:47:16','2020-06-07 13:47:16'),
+('dc1ffffd52b87407ba861075102a4f86b90a4cda7128fe4bb02742342e14782886d55ec4151b8b51',6,6,'tincazo','[]',0,'2019-06-07 13:31:41','2019-06-07 13:31:41','2020-06-07 13:31:41'),
 ('dd13f4f8d5e055e5cf6536a8e1a86f5ae9665d69412837f6673ff873b0e5e264b9c628e8bb2d7e8b',1,6,'tincazo','[]',0,'2019-06-06 12:15:27','2019-06-06 12:15:27','2020-06-06 12:15:27'),
 ('de3aa8310e0780789bc7035494c9630eb4dd9d02100dff23ee72ea838bdc3114592c6e9085c78b73',1,6,'tincazo','[]',0,'2019-06-06 12:14:02','2019-06-06 12:14:02','2020-06-06 12:14:02'),
 ('de569afc2413e369563937b6a5049ce01398474d1972f1563b16ed7eff1171b7e17b69674ea51d34',1,6,'tincazo','[]',0,'2019-06-06 12:00:07','2019-06-06 12:00:07','2020-06-06 12:00:07'),
 ('df87d0888f82bbee867ead725bbd88ae5f9d52b73676e6612b58f7511bfdcad2891d0cbcd622d17f',1,6,'tincazo','[]',0,'2019-06-02 17:07:49','2019-06-02 17:07:49','2020-06-02 17:07:49'),
+('e0c7e17c97832d93520eef8fc134d3256dd994836c9b9e86dafc9ecff7993ba526745add427aafe2',6,6,'tincazo','[]',0,'2019-06-07 14:01:33','2019-06-07 14:01:33','2020-06-07 14:01:33'),
 ('e334e787a5456ad3074e9a389a5700f52a11db907d62fbb2a70999054faa7adb2e2f3ed7a948609a',1,6,'tincazo','[]',0,'2019-06-06 12:08:47','2019-06-06 12:08:47','2020-06-06 12:08:47'),
+('e37fb96f02983dbf3e5228dff04174005bc3e996eda05ad0711a8a905626c1d393343e1bae4051c8',6,6,'tincazo','[]',0,'2019-06-07 13:39:25','2019-06-07 13:39:25','2020-06-07 13:39:25'),
 ('e48b99535abfd263e982c9fa1e71b67b75b218f13314f2a0bb88a56ca2d7d99704e0be4012d1ea59',1,6,'tincazo','[]',1,'2019-06-03 23:30:43','2019-06-03 23:30:43','2020-06-03 23:30:43'),
 ('e4d906a765baeb6382c4b82fea4252ec650d4f06c164555add54eb281161d5a9732881db066c3a3f',1,6,'tincazo','[]',1,'2019-06-04 21:41:23','2019-06-04 21:41:23','2020-06-04 21:41:23'),
+('e870fb6f5387a2878ff47699bd43768f04d1b0355d02e31f57ee9fe3dbd6a252fe25f671c0ca069a',6,6,'tincazo','[]',0,'2019-06-07 12:37:33','2019-06-07 12:37:33','2020-06-07 12:37:33'),
 ('ea5e32509a74c43df4644e56dca501f0f59a1ac07acd424eb0cd3999eeeedda653d9e0cb9903e72a',6,6,'tincazo','[]',0,'2019-06-06 18:11:50','2019-06-06 18:11:50','2020-06-06 18:11:50'),
+('eb6e38f020497e101f34664a2530622e282ffa61e762b4e24a844b08979cb591044c4d86e475ad3e',6,6,'tincazo','[]',0,'2019-06-07 12:41:59','2019-06-07 12:41:59','2020-06-07 12:41:59'),
 ('eb74f3c3e0b5db9c3fe509426edd76c320fcd61a67164e65e6d7aeca40021061bd1b840e7a73a6b6',1,6,'tincazo','[]',0,'2019-06-06 12:07:44','2019-06-06 12:07:44','2020-06-06 12:07:44'),
 ('ec2086159958c22b9b1d20817fb721e330cb08dcf3ee420a88cce09928913d000b145c09e6d46ee3',1,3,'tincazo','[]',0,'2019-05-31 09:32:27','2019-05-31 09:32:27','2020-05-31 09:32:27'),
 ('ec9d28e448efa74c0bcf6c151e4b6c3daa2ad19de826405be326c117de2475186a9a6ea060c53ada',1,6,'tincazo','[]',0,'2019-06-06 12:21:02','2019-06-06 12:21:02','2020-06-06 12:21:02'),
 ('ed6fbcfdc4bf6b61ad51b4059a1590c726e544064c98ed00595b62c7deccfaadbdb15bda8f09d21e',6,6,'tincazo','[]',0,'2019-06-06 18:14:08','2019-06-06 18:14:08','2020-06-06 18:14:08'),
 ('eebf3e5db45f5c9dbefd5a9ec65a87168ed3d541417426b881f2f5682b7c028dc68f77333c806099',1,3,'tincazo','[]',1,'2019-05-30 10:35:25','2019-05-30 10:35:25','2020-05-30 10:35:25'),
+('ef1443f6301eebc95d64c75d7d2130227e8b2e4c3dfcadf8e87c02135e99cdf88e4dc3bc38050366',6,6,'tincazo','[]',0,'2019-06-07 12:19:12','2019-06-07 12:19:12','2020-06-07 12:19:12'),
 ('ef5c13bb71f7447eb593227eb1b513b40b977730a35985c8b98457e86c5c16f02ac7987d057d2312',6,6,'tincazo','[]',0,'2019-06-06 16:32:35','2019-06-06 16:32:35','2020-06-06 16:32:35'),
 ('efbc5b225b114c23f260619868ff3f6b7fc1bc96eb41b3ae9efc3aafc77fbe29bd6f8ff67b331296',1,6,'tincazo','[]',0,'2019-06-03 09:19:43','2019-06-03 09:19:43','2020-06-03 09:19:43'),
 ('f17dfa2c7309f511d958e70c4602c0da42d1d0a62ee9d796126438161745636bc230b732ddb94763',1,6,'tincazo','[]',0,'2019-06-02 17:08:51','2019-06-02 17:08:51','2020-06-02 17:08:51'),
 ('f4df73e2f79758be029eb8dadac51e78f0acaefac18d3ee5b440103de07c844f3ebf9f843254e6c4',1,6,'tincazo','[]',0,'2019-06-05 15:37:30','2019-06-05 15:37:30','2020-06-05 15:37:30'),
+('f5410f687f3c076fc2af00d17c04dcc793c94201bd1ffc8916ef52aca255b5acd6580bb217e68c05',6,6,'tincazo','[]',0,'2019-06-07 13:16:11','2019-06-07 13:16:11','2020-06-07 13:16:11'),
 ('f6734dffe8c5b429dd3af2b21b785666d5059cf86ff9c6885407125dba1897bd739b68d26d0bbcf7',1,6,'tincazo','[]',1,'2019-06-06 18:57:04','2019-06-06 18:57:04','2020-06-06 18:57:04'),
 ('f8b03d28956fb651b11f431a3e4848eec7e80f36e8fb5d46551b5724943667ca9c4fc46ad9b5da10',1,3,'tincazo','[]',0,'2019-05-30 00:54:09','2019-05-30 00:54:09','2020-05-30 00:54:09');
 
@@ -504,7 +595,7 @@ CREATE TABLE `plainf` (
   `conmemscode` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`plainficode`),
   UNIQUE KEY `UQ__plainf__A07E1D74F85EC457` (`plainficode`)
-) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
 
 /*Data for the table `plainf` */
 
@@ -651,7 +742,8 @@ insert  into `plainf`(`plainficode`,`plainftname`,`plainftnick`,`plainftgder`,`p
 (162,'test','test','M','1980-01-01','defaultm.jpg',1),
 (163,'miguel','miguel','M','2019-04-24','Uh46Bk2vN4SoIPXcxZdgyoxqWtyyRC.png',1),
 (164,'Eduardo Camargo (Papita)','Eduardo Camargo (Papita)','M','1988-03-10','defaultm.jpg',1),
-(165,'Jorge Civera (coco)','Jorge Civera (coco)','M','1988-08-11','defaultm.jpg',1);
+(165,'Jorge Civera (coco)','Jorge Civera (coco)','M','1988-08-11','defaultm.jpg',1),
+(166,'123','123','M','2019-06-07','defaultm.jpg',2);
 
 /*Table structure for table `plapre` */
 
@@ -670,7 +762,7 @@ CREATE TABLE `plapre` (
   `plaprebenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`tougplicode`,`toufixicode`),
   KEY `plapreicode` (`plapreicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=5872 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5879 DEFAULT CHARSET=latin1;
 
 /*Data for the table `plapre` */
 
@@ -6514,7 +6606,14 @@ insert  into `plapre`(`plapreicode`,`plapredcrea`,`plaprethour`,`tougplicode`,`t
 (5864,'2019-06-03','15:23:31',158,75,1,0,1,0,1),
 (5869,'2019-06-06','16:34:40',160,65,1,1,1,0,1),
 (5870,'2019-06-06','16:34:44',160,66,2,2,1,0,1),
-(5871,'2019-06-06','22:17:48',162,65,3,0,1,0,1);
+(5875,'2019-06-07','11:03:35',160,67,1,1,1,0,1),
+(5873,'2019-06-07','11:12:38',160,70,1,12,1,0,1),
+(5876,'2019-06-07','11:13:49',160,71,1,1,1,0,1),
+(5877,'2019-06-07','11:53:31',160,76,1,1,1,0,1),
+(5874,'2019-06-07','11:00:41',160,82,1,1,1,0,1),
+(5871,'2019-06-06','22:17:48',162,65,3,0,1,0,1),
+(5872,'2019-06-07','09:05:39',163,65,1,1,1,0,1),
+(5878,'2019-06-11','13:16:02',165,66,1,1,1,0,1);
 
 /*Table structure for table `secpin` */
 
@@ -6711,12 +6810,12 @@ CREATE TABLE `secusr` (
   `plainficode` int(11) NOT NULL,
   PRIMARY KEY (`secusricode`),
   UNIQUE KEY `UQ__secusr__0C9925B0F8328E5F` (`secusricode`)
-) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=latin1;
 
 /*Data for the table `secusr` */
 
 insert  into `secusr`(`secusricode`,`secusrtmail`,`secusrtface`,`secusrtpass`,`secusrdregu`,`secusrdvalu`,`contypscode`,`secusrbenbl`,`plainficode`) values 
-(1,'rojasldante@gmail.com',NULL,'$2y$10$N5zi/4m6TKLUIKgK0X1.3uFpprgMitjgwUbZs2lDPwx35pjOKSRwq','2018-06-03','2018-06-03',1,1,1),
+(1,'rojasldante@gmail.com',NULL,'$2y$10$RrhcsLNhHj6j1iOEAl9vLebSKZjdODcTyAZZIs2uLp8zcVrbyz1Na','2018-06-03','2018-06-03',1,1,1),
 (2,'pablojavierfigueroabresler@gmail.com',NULL,'$2y$10$5vAvkqZ8RHyb3PtioiGtrOsh8Lfiquotmmpn5TfHxLFwEmwAc7Fv.','2018-06-03','2018-06-03',2,1,2),
 (3,'milkagoytia@gmail.com',NULL,'Kamil2604','2018-06-03','2018-06-03',2,1,3),
 (4,'rgoytia@gmail.com',NULL,'$2y$10$RpZDkLGUrQiDq7QBNvdIHeFXxKZNDd3bPS.O2GzKTbGk0OaDWOeOG','2018-06-03','2018-06-03',2,1,4),
@@ -6858,7 +6957,8 @@ insert  into `secusr`(`secusricode`,`secusrtmail`,`secusrtface`,`secusrtpass`,`s
 (161,'test@gmail.com',NULL,'$2y$10$5vAvkqZ8RHyb3PtioiGtrOsh8Lfiquotmmpn5TfHxLFwEmwAc7Fv.','2018-07-27','2018-07-27',2,1,162),
 (162,'fromhell.wtc@gmail.com',NULL,'123','2019-04-24','2019-04-24',2,1,163),
 (163,'eduardomedranocamargo@gmail.com',NULL,'password','2019-05-21','2019-05-21',2,1,164),
-(164,'george_civ@hotmail.com',NULL,'$2y$10$pAaMsuTpPB25Bi.CR9mZAOSOgFhFxuP9RLbLIylYWkiwb.p7RvbYW','2019-05-21','2019-05-21',2,1,165);
+(164,'george_civ@hotmail.com',NULL,'$2y$10$pAaMsuTpPB25Bi.CR9mZAOSOgFhFxuP9RLbLIylYWkiwb.p7RvbYW','2019-05-21','2019-05-21',2,1,165),
+(165,'learm10llar@gmail.com',NULL,'$2y$10$XazZ.BqNgsSglJqq3DPXh.cw1grN7Z5vOKBUssJT8MuEDgODcw8q2','2019-06-07','2019-06-07',2,1,166);
 
 /*Table structure for table `sysdiagrams` */
 
@@ -6966,7 +7066,7 @@ insert  into `toufix`(`toufixicode`,`toufixdplay`,`toufixthour`,`constascode`,`t
 (62,'2018-07-11','14:00',3,4,18,1,2,0,NULL,NULL,1),
 (63,'2018-07-14','10:00',3,26,4,2,0,0,NULL,NULL,1),
 (64,'2018-07-15','11:00',3,5,18,4,2,0,NULL,NULL,1),
-(65,'2019-06-14','20:30',1,35,34,NULL,NULL,0,NULL,NULL,1),
+(65,'2019-06-14','20:30',2,35,34,0,0,0,NULL,NULL,1),
 (66,'2019-06-15','15:00',1,45,43,NULL,NULL,0,NULL,NULL,1),
 (67,'2019-06-15','18:00',1,33,38,NULL,NULL,0,NULL,NULL,1),
 (68,'2019-06-16','15:00',1,42,37,NULL,NULL,0,NULL,NULL,1),
@@ -6999,7 +7099,7 @@ CREATE TABLE `tougpl` (
   `tougplsmedp` int(11) NOT NULL,
   `tougplslowp` int(11) NOT NULL,
   PRIMARY KEY (`tougplicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougpl` */
 
@@ -7161,7 +7261,11 @@ insert  into `tougpl`(`tougplicode`,`tougrpicode`,`constascode`,`plainficode`,`t
 (159,14,2,1,0,0,0,0),
 (160,14,2,6,0,0,0,0),
 (161,14,1,163,0,0,0,0),
-(162,14,2,162,0,0,0,0);
+(162,14,2,162,0,0,0,0),
+(163,15,2,166,0,0,0,0),
+(164,16,2,1,0,0,0,0),
+(165,17,2,1,0,0,0,0),
+(166,18,2,1,0,0,0,0);
 
 /*Table structure for table `tougrp` */
 
@@ -7183,7 +7287,7 @@ CREATE TABLE `tougrp` (
   `tougrpvimgg` longtext NOT NULL,
   `tougrpbenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`tougrpicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tougrp` */
 
@@ -7191,7 +7295,7 @@ insert  into `tougrp`(`tougrpicode`,`secconnuuid`,`tougrptname`,`tougrpdcrea`,`t
 (1,NULL,'Flia Goytia 2018','2018-06-03',1,1,5,3,1,1,1,0,'GdMvo7zj72oMhU1H8YNSq2vLk1TyOM.jpeg',1),
 (2,NULL,'Mundial DBI/INFOARCH','2018-06-04',1,1,5,3,1,0,3,0,'6XuzOxm17FJVLkKKlE70SZaSLlnLGq.png',1),
 (3,NULL,'Mundial Misticos 2018','2018-06-04',1,1,5,3,1,1,2,0,'4AxseS3QaeA7O55N0oJ1FOlEEQrQ2E.jpg',1),
-(4,NULL,'GTV Mundial 2018','2018-06-07',1,1,5,3,1,1,1,0,'p249UStJwWbMR3S8NsR82dH5ZjYHTf.jpeg',1),
+(4,NULL,'GTV Mundial 2018','2018-06-07',1,1,5,3,1,1,5,0,'p249UStJwWbMR3S8NsR82dH5ZjYHTf.jpeg',1),
 (5,NULL,'Larefi Rusia 2018','2018-06-08',1,28,5,3,1,1,1,0,'fsPCuJjS8llbbYnPAdeTWGJS0ityd1.jpg',1),
 (6,NULL,'Mundial Rusia Tigo 2018','2018-06-11',1,4,5,3,1,1,1,0,'nrorWgVc2WEKDTicplLbk38W2YZlHi.jpeg',1),
 (7,NULL,'Futebol Rusia 2018','2018-06-11',1,24,5,3,1,0,3,0,'edP1BeDW03TclVfrCcrQPXkPf6OlaD.png',1),
@@ -7201,7 +7305,11 @@ insert  into `tougrp`(`tougrpicode`,`secconnuuid`,`tougrptname`,`tougrpdcrea`,`t
 (11,NULL,'Copa America OSBolivia 2019','2019-04-26',2,1,5,3,1,0,1,0,'OdYTdRlzUS26v7FPlj5TuUcWwEuWjk.jpeg',1),
 (12,NULL,'Futebol CA','2019-05-17',2,24,1,1,1,1,1,0,'l9ftZba1ZAMIBvZouwlk9KLAqOqNgd.jpg',1),
 (13,NULL,'Copa America Infoarch','2019-05-29',2,1,1,1,1,1,1,0,'7pj81RSRdM5NKGbR9xYlOD1PFIb1Th.png',1),
-(14,'1eb8085d-147b-4790-a669-00bdfbc97929','Grupo Prueba 2019','2019-06-06',2,1,1,1,1,1,1,0,'default.jpg',1);
+(14,'1eb8085d-147b-4790-a669-00bdfbc97929','Grupo Prueba 2019','2019-06-06',2,1,1,1,1,1,1,0,'default.jpg',1),
+(15,'72883026-6bc1-44c6-9465-fc29f8c37a98','asdasda','2019-06-07',2,166,1,1,1,1,1,0,'default.jpg',1),
+(16,'b4dea175-aafb-4814-9e6a-95059f675147','asdasda','2019-06-10',2,1,1,1,1,1,1,0,'default.jpg',1),
+(17,'ba717441-5ae4-4379-8193-b60bb9827b3c','hola 2223','2019-06-10',2,1,3,2,1,1,3,6,'default.jpg',1),
+(18,'3396c198-5374-4f21-af30-e98bc040235f','BRBEE','2019-06-11',2,1,3,2,1,1,1,2,'default.jpg',1);
 
 /*Table structure for table `touinf` */
 

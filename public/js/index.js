@@ -2498,7 +2498,6 @@
      var formData = new FormData();
      var _token = $('input[name=_token]').val();
      var tougrptname = $('input[name=tougrptname]').val();
-     var tougrptname = $('input[name=tougrptname]').val();
      var tougrpicode = $('#tougrpicode-edit-hidden').val();
      var touinfscode = $('#touinfscode-edit-hidden').val();
      var tougrpsmaxp = $('input[name=tougrpsmaxp]').val();

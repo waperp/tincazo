@@ -43,8 +43,8 @@ class tougrpController extends Controller
                 $tougrp->touinfscode = $request->touinfscode;
                 $tougrp->tougrpvimgg = $imageName;
                 $tougrp->tougrpbenbl = 1;
-                $tougrp->tougrpsmaxp = 1;
-                $tougrp->tougrpsmedp = 1;
+                $tougrp->tougrpsmaxp = 3;
+                $tougrp->tougrpsmedp = 2;
                 $tougrp->tougrpsminp = 1;
                 $tougrp->tougrpsxval = 1;
                 $tougrp->tougrpbchva = 1;
@@ -107,8 +107,8 @@ class tougrpController extends Controller
                 $tougrp->touinfscode = $request->touinfscode;
                 $tougrp->tougrpvimgg = $imageName;
                 $tougrp->tougrpbenbl = 1;
-                $tougrp->tougrpsmaxp = 1;
-                $tougrp->tougrpsmedp = 1;
+                $tougrp->tougrpsmaxp = 3;
+                $tougrp->tougrpsmedp = 2;
                 $tougrp->tougrpsminp = 1;
                 $tougrp->tougrpsxval = 1;
                 $tougrp->tougrpbchva = 1;
@@ -349,7 +349,6 @@ class tougrpController extends Controller
             } else {
                 $imageName = null;
             }
-            // return response()->json($request->all());
 
             $validator = Validator::make($request->all(), [
                 'tougrpicode' => 'required',
@@ -368,7 +367,8 @@ class tougrpController extends Controller
             $validTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
             if ($validator->passes()) {
                 if ($validTougrpbchva->tougrpbchva == 1) {
-                    if ($dateValid->fecha <= 0) {
+                    if ($dateValid->fecha > 0) {
+
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->touinfscode = $request->touinfscode;
@@ -377,13 +377,13 @@ class tougrpController extends Controller
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
                         $tougrp->tougrpschpt = $request->tougrpschpt;
-                        $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
                         Session::forget('select-tougrpsxval');
+                        Session::put('select-tougrptname', $request->tougrptname);
                         Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
                     } else {
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
@@ -398,10 +398,11 @@ class tougrpController extends Controller
                         $tougrp->save();
                         Session::forget('select-tougrpsxval');
                         Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
+                        Session::put('select-tougrptname', $request->tougrptname);
                     }
                 } else {
                     return response()->json(
-                        ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                        ['message' => 'No puede cambiar el valor de tougrpbchva', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
                 }
 
             } else {
@@ -456,7 +457,6 @@ class tougrpController extends Controller
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
                         $tougrp->tougrpschpt = $request->tougrpschpt;
-                        $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;

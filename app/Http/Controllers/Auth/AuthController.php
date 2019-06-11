@@ -304,7 +304,7 @@ public function tournamentDay(Request $request)
             ->where('touinf.touinfscode', $request->touinfscode)
             ->where('touinf.touinfdstat', '>', $date->toDateString())
             ->first();
-        return response()->json($data);
+        return response()->json($data->fecha);
 
     }
     public function tablePositionsDay(Request $request)

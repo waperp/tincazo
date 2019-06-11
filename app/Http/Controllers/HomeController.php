@@ -193,7 +193,7 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
             ->where('touinf.touinfdstat', '>', $date->toDateString())
             ->first();
-        // dd($validTorneo);
+        /*dd($fechaValidar);*/
 
         $listaEquiposElegir = DB::select('select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
         from toutea

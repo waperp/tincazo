@@ -359,17 +359,16 @@ class tougrpController extends Controller
                 'tougrpsmedp' => 'required|numeric|integer|min:2|max:100',
                 'tougrpsminp' => 'required|numeric|integer|min:1|max:100',
                 'tougrpsxval' => 'required|numeric|integer|min:1|max:10',
-                'tougrpschpt' => 'required|numeric|integer|min:1|max:50',
+                'tougrpschpt' => 'required|numeric|integer|min:0|max:50',
             ]);
-            $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
+            $dateValid = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
                 ->where('touinf.touinfscode', Session::get('select-touinfscode'))
                 ->where('touinf.touinfdstat', '>', $date->toDateString())
                 ->first();
-            $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
+            $validTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
             if ($validator->passes()) {
-                if ($validarTougrpbchva->tougrpbchva == 1) {
-                    if ($fechaValidar->fecha <= 0) {
-                        
+                if ($validTougrpbchva->tougrpbchva == 1) {
+                    if ($dateValid->fecha <= 0) {
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->touinfscode = $request->touinfscode;

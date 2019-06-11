@@ -1722,7 +1722,7 @@
                       </div>
                       <div class="form-group">
                           <label for=""> Puntos x Campeon <strong  style="color: red">(0 a 50)</strong></label>
-                        <input type="number"  min="1" max="50" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="50" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt" >
+                        <input type="number"  min="0" max="50" data-toggle="just_number" @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="50" data-min_max data-min="0" onKeypress="return isNumberKey(this)" class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt" >
                       </div>
                       <div class="form-group form-group--submit">
                          <button type="submit" class="btn btn-primary-inverse btn-block">LISTO!</button>

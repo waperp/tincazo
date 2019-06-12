@@ -1718,7 +1718,7 @@
                       </div>
                      <div class="form-group">
                         <label for=""> Valor x Partido <strong  style="color: red">(0 a 10)</strong></label>
-                        <input type="number" @if($validarTougrpbchva) @if($validarTougrpbchva->tougrpbchva == 0) readonly @else @endif @endif min="1" data-toggle="just_number"  data-max="10" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" max="10" id="tougrpsxval-edit" name="tougrpsxval" >
+                        <input type="number" @if($fechaValidar->fecha <= 0 ) readonly @else @endif min="1" data-toggle="just_number"  data-max="10" data-min_max data-min="1" onKeypress="return isNumberKey(this)" class="form-control" required="" max="10" id="tougrpsxval-edit" name="tougrpsxval" >
                       </div>
                       <div class="form-group">
                           <label for=""> Puntos x Campeon <strong  style="color: red">(0 a 50)</strong></label>

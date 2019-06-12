@@ -235,33 +235,32 @@ class toufixController extends Controller
             // join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0)
             // From plapre Where tougpl.tougplicode = plapre.tougplicode and plapre.toufixicode = ?', [$request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode]);
 
-            DB::statement('Update tougpl Set tougpl.tougplipwin = tougpl.tougplipwin + IsNull((Select Case
-When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then tougrp.tougrpsmaxp * tougrp.tougrpsxval
-When toufix.toufixsscr1 > toufix.toufixsscr2 and plapre.plapresscr1 > plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 = toufix.toufixsscr2 and plapre.plapresscr1 = plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 < toufix.toufixsscr2 and plapre.plapresscr1 < plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 = plapre.plapresscr1 then tougrp.tougrpsminp * tougrp.tougrpsxval
-When toufix.toufixsscr2 = plapre.plapresscr2 then tougrp.tougrpsminp * tougrp.tougrpsxval Else 0 End
-from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl tougpl1 on plapre.tougplicode = tougpl1.tougplicode
-join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0),
-tougpl.tougplsmaxp = tougpl.tougplsmaxp + IsNull((Select Case When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then 1
-Else 0 End from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl tougpl1 on plapre.tougplicode = tougpl1.tougplicode
-join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0),
-tougpl.tougplsmedp = tougpl.tougplsmedp + IsNull((Select Case When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then 0
-When toufix.toufixsscr1 > toufix.toufixsscr2 and plapre.plapresscr1 > plapre.plapresscr2 then 1
-When toufix.toufixsscr1 = toufix.toufixsscr2 and plapre.plapresscr1 = plapre.plapresscr2 then 1
-When toufix.toufixsscr1 < toufix.toufixsscr2 and plapre.plapresscr1 < plapre.plapresscr2 then 1
-Else 0 End from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl tougpl1 on plapre.tougplicode = tougpl1.tougplicode
-join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0),
-tougpl.tougplslowp = tougpl.tougplslowp + IsNull((Select Case When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then 0
-When toufix.toufixsscr1 > toufix.toufixsscr2 and plapre.plapresscr1 > plapre.plapresscr2 then 0
-When toufix.toufixsscr1 = toufix.toufixsscr2 and plapre.plapresscr1 = plapre.plapresscr2 then 0
-When toufix.toufixsscr1 < toufix.toufixsscr2 and plapre.plapresscr1 < plapre.plapresscr2 then 0
-When toufix.toufixsscr1 = plapre.plapresscr1 then 1
-When toufix.toufixsscr2 = plapre.plapresscr2 then 1
-Else 0 End from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl tougpl1 on plapre.tougplicode = tougpl1.tougplicode
-join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0)
-From plapre Where tougpl.tougplicode = plapre.tougplicode and plapre.toufixicode = ?', [$request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode]);
+            DB::statement('update tougpl JOIN plapre ON tougpl.tougplicode = plapre.tougplicode AND plapre.toufixicode = ?
+SET tougpl.tougplipwin = tougpl.tougplipwin + IFNULL((SELECT CASE WHEN toufix.toufixsscr1 = plapre.plapresscr1 AND toufix.toufixsscr2 =
+plapre.plapresscr2 THEN tougrp.tougrpsmaxp * tougrp.tougrpsxval WHEN toufix.toufixsscr1 > toufix.toufixsscr2 AND plapre.plapresscr1 >
+plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval WHEN toufix.toufixsscr1 = toufix.toufixsscr2 AND plapre.plapresscr1 =
+plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval WHEN toufix.toufixsscr1 < toufix.toufixsscr2 AND plapre.plapresscr1 <
+plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval WHEN toufix.toufixsscr1 = plapre.plapresscr1 THEN tougrp.tougrpsminp *
+tougrp.tougrpsxval WHEN toufix.toufixsscr2 = plapre.plapresscr2 THEN tougrp.tougrpsminp * tougrp.tougrpsxval ELSE 0 END
+FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN tougpl tougpl1 ON plapre.tougplicode = tougpl1.tougplicode
+JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode = ? AND tougpl1.tougplicode = tougpl.tougplicode),0),
+tougpl.tougplsmaxp = tougpl.tougplsmaxp + IFNULL((SELECT CASE WHEN toufix.toufixsscr1 = plapre.plapresscr1 AND toufix.toufixsscr2 =
+plapre.plapresscr2 THEN 1 ELSE 0 END FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN tougpl tougpl1 ON
+plapre.tougplicode = tougpl1.tougplicode JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode = ? AND
+tougpl1.tougplicode = tougpl.tougplicode),0),
+tougpl.tougplsmedp = tougpl.tougplsmedp + IFNULL((SELECT CASE WHEN toufix.toufixsscr1 = plapre.plapresscr1 AND toufix.toufixsscr2 =
+plapre.plapresscr2 THEN 0 WHEN toufix.toufixsscr1 > toufix.toufixsscr2 AND plapre.plapresscr1 > plapre.plapresscr2 THEN 1 WHEN
+toufix.toufixsscr1 = toufix.toufixsscr2 AND plapre.plapresscr1 = plapre.plapresscr2 THEN 1 WHEN toufix.toufixsscr1 < toufix.toufixsscr2
+AND plapre.plapresscr1 < plapre.plapresscr2 THEN 1 ELSE 0 END FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN
+tougpl tougpl1 ON plapre.tougplicode = tougpl1.tougplicode JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode
+WHERE toufix.toufixicode = ? AND tougpl1.tougplicode = tougpl.tougplicode),0),
+tougpl.tougplslowp = tougpl.tougplslowp + IFNULL((SELECT CASE WHEN toufix.toufixsscr1 = plapre.plapresscr1 AND toufix.toufixsscr2 =
+plapre.plapresscr2 THEN 0 WHEN toufix.toufixsscr1 > toufix.toufixsscr2 AND plapre.plapresscr1 > plapre.plapresscr2 THEN 0
+WHEN toufix.toufixsscr1 = toufix.toufixsscr2 AND plapre.plapresscr1 = plapre.plapresscr2 THEN 0
+WHEN toufix.toufixsscr1 < toufix.toufixsscr2 AND plapre.plapresscr1 < plapre.plapresscr2 THEN 0
+WHEN toufix.toufixsscr1 = plapre.plapresscr1 THEN 1 WHEN toufix.toufixsscr2 = plapre.plapresscr2 THEN 1
+ELSE 0 END FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN tougpl tougpl1 ON plapre.tougplicode = tougpl1.tougplicode
+JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode = ? AND tougpl1.tougplicode = tougpl.tougplicode),0)', [$request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode]);
 
 //             DB::statement('Update plapre set plapre.plapresptos = IsNull((Select Case
             // When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then tougrp.tougrpsmaxp * toufix.toufixyxval

@@ -58,6 +58,7 @@ class AuthController extends Controller
             plainf.plainficode) as constascode  ', [$request->tougrpicode])
             ->join('secusr', 'plainf.plainficode', 'secusr.plainficode')
             ->where('secusr.secusrbenbl', 1)
+            ->orderBy('plainf.plainftnick')
             ->paginate(5);
         return response()->json($data);
 

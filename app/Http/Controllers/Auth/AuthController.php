@@ -59,7 +59,7 @@ class AuthController extends Controller
             ->join('secusr', 'plainf.plainficode', 'secusr.plainficode')
             ->where('secusr.secusrbenbl', 1)
             ->orderBy('plainf.plainftnick')
-            ->paginate(5);
+            ->get();
         return response()->json($data);
 
     }

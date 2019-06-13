@@ -32,6 +32,7 @@ Route::group([
         Route::post('storeApp', 'plapreController@store_app');
         Route::post('createGroupApi', 'tougrpController@createGroupApi');
         Route::post('pushChampions', 'touteaController@pushChampions');
+        Route::post('validateDateChampions', 'touteaController@validateDateChampions');
         Route::post('invitarJugador', 'tougrpController@invitarJugadorApi');
         Route::post('myInvitationsCount', 'Auth\AuthController@myInvitationsCount');
         Route::post('myInvitationsApi', 'Auth\AuthController@myInvitationsApi');

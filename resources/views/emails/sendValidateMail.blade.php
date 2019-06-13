@@ -1,39 +1,4 @@
-{{-- @component('mail::message')
-# CAMBIAR TU CONTRASEÑA
-<br>
-    {{ $data->secusrtmail }}
 
-Has click en el enlace para proceder a cambiar tu contraseña.
-
-@component('button', 
-['url' => ])
-
-@endcomponent
-    <table align="center" cellpadding="0" cellspacing="0" class="action" role="presentation" width="100%">
-        <tr>
-            <td align="center">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                    <tr>
-                        <td align="center">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                                <tr>
-                                    <td>
-                                        <a class="button button-primary" href="http://tincazo.com/reset/password?utm_ref={{ $data->secusrtmail }}&utm_source={{encrypt( $data->secusricode )}}&utm_value={{encrypt( $data->secpininump )}}" target="_blank">
-                                            Has click Aqui
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    Gracias,
-    <br>
-        {{ config('app.name') }}
-@endcomponent --}}
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
@@ -91,7 +56,7 @@ Has click en el enlace para proceder a cambiar tu contraseña.
                                                                                     <tr>
                                                                                         <td>
                                                                                             <a class="button button-primary" href="http://tincazo.com/reset/password?utm_ref={{ $data->secusrtmail }}&utm_source={{encrypt( $data->secusricode )}}&utm_value={{encrypt( $data->secpininump )}}" target="_blank">
-                                                                                                Has click Aqui
+                                                                                                Haz click Aquí
                                                                                             </a>
                                                                                         </td>
                                                                                     </tr>

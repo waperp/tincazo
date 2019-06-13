@@ -273,18 +273,18 @@ JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode
             // join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0)
             // From tougpl Where plapre.tougplicode = tougpl.tougplicode and plapre.toufixicode = ?', [$request->toufixicode, $request->toufixicode]);
 
-            DB::statement('Update plapre set plapre.plapresxval = tougrp.tougrpsxval,plapre.plapresptos = IsNull((Select Case
-When toufix.toufixsscr1 = plapre.plapresscr1 and toufix.toufixsscr2 = plapre.plapresscr2 then tougrp.tougrpsmaxp * tougrp.tougrpsxval
-When toufix.toufixsscr1 > toufix.toufixsscr2 and plapre.plapresscr1 > plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 = toufix.toufixsscr2 and plapre.plapresscr1 = plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 < toufix.toufixsscr2 and plapre.plapresscr1 < plapre.plapresscr2 then tougrp.tougrpsmedp * tougrp.tougrpsxval
-When toufix.toufixsscr1 = plapre.plapresscr1 then tougrp.tougrpsminp * tougrp.tougrpsxval
-When toufix.toufixsscr2 = plapre.plapresscr2 then tougrp.tougrpsminp * tougrp.tougrpsxval Else 0 End
-from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl tougpl1 on plapre.tougplicode = tougpl1.tougplicode
-join tougrp on tougpl1.tougrpicode = tougrp.tougrpicode where toufix.toufixicode = ? and tougpl1.tougplicode = tougpl.tougplicode),0)
-From tougpl
-join tougrp on tougpl.tougrpicode = tougrp.tougrpicode
-Where plapre.tougplicode = tougpl.tougplicode and plapre.toufixicode = ?', [$request->toufixicode, $request->toufixicode]);
+            DB::statement('update plapre 
+JOIN tougpl ON tougpl.`tougplicode` = plapre.`tougplicode`
+JOIN tougrp ON tougpl.tougrpicode = tougrp.tougrpicode
+AND plapre.tougplicode = tougpl.tougplicode AND plapre.toufixicode = 65 SET plapre.plapresxval = tougrp.tougrpsxval,plapre.plapresptos = IFNULL((SELECT CASE
+WHEN toufix.toufixsscr1 = plapre.plapresscr1 AND toufix.toufixsscr2 = plapre.plapresscr2 THEN tougrp.tougrpsmaxp * tougrp.tougrpsxval
+WHEN toufix.toufixsscr1 > toufix.toufixsscr2 AND plapre.plapresscr1 > plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval
+WHEN toufix.toufixsscr1 = toufix.toufixsscr2 AND plapre.plapresscr1 = plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval
+WHEN toufix.toufixsscr1 < toufix.toufixsscr2 AND plapre.plapresscr1 < plapre.plapresscr2 THEN tougrp.tougrpsmedp * tougrp.tougrpsxval
+WHEN toufix.toufixsscr1 = plapre.plapresscr1 THEN tougrp.tougrpsminp * tougrp.tougrpsxval
+WHEN toufix.toufixsscr2 = plapre.plapresscr2 THEN tougrp.tougrpsminp * tougrp.tougrpsxval ELSE 0 END
+FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN tougpl tougpl1 ON plapre.tougplicode = tougpl1.tougplicode
+JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode = 65  AND tougpl1.tougplicode = tougpl.tougplicode),0)', [$request->toufixicode, $request->toufixicode]);
             DB::commit();
             return response()->json(
                 ['error' => false, 'success' => true, 'types' => 'update']);

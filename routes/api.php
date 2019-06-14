@@ -30,6 +30,7 @@ Route::group([
         Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
         Route::resource('plapre', 'plapreController');
         Route::post('storeApp', 'plapreController@store_app');
+        Route::post('validatePartido', 'plapreController@validatePartido');
         Route::post('createGroupApi', 'tougrpController@createGroupApi');
         Route::post('pushChampions', 'touteaController@pushChampions');
         Route::post('validateDateChampions', 'touteaController@validateDateChampions');

@@ -104,7 +104,19 @@ class plapreController extends Controller
                 ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']);
         }
     }
-public function store_app(Request $request)
+    public function validatePartido(Request $request)
+    {
+            $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
+            if ($toufix->constascode == 1) {
+                return response()->json(['message' => 'ESTE PARTIDO ESTA DISPONIBLE', 
+                    'errors' =>"NO ERRORS", 'error' => false, 'success' => true, 'types' => 'constascode']);
+             } else {
+                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 
+                        'errors' => "ERRORS", 'error' => true, 'success' => false, 'types' => 'constascode'],401);
+                }
+        
+    }
+    public function store_app(Request $request)
     {
         /*return $request->all();*/
         DB::beginTransaction();
@@ -157,7 +169,8 @@ public function store_app(Request $request)
 
                     }
                 } else {
-                    return response()->json(['message' => 'Algo paso mal, intente de nuevo', 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode'],401);
+                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 'errors' => 
+                        $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode'],401);
                 }
             } else {
                 return response()->json(

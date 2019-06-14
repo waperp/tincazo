@@ -311,21 +311,18 @@ public function tournamentDay(Request $request)
     public function tablePositionsDay(Request $request)
     {
         $date = Carbon::now();
-        $data = DB::table('plapre')->select('plainf.plainficode',
-            'plainf.plainfvimgp', 'plapre.toufixicode', 'sum(plapre.plapresptos) as PTOS')
+        $data = DB::table('plapre')->select('plainf.plainficode','plainf.plainfvimgp', 'plainf.plainftnick as JUGADOR', 
+            DB::raw('SUM(plapre.plapresptos) AS PTOS'))
             ->join('toufix', 'plapre.toufixicode', 'toufix.toufixicode')
             ->join('tougpl', 'plapre.tougplicode', 'tougpl.tougplicode')
             ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
             ->where('toufix.toufixdplay', Carbon::parse($request->toufixdplay)->format('Y-m-d'))
             ->where('tougpl.tougrpicode', $request->tougrpicode)
-            ->where('tougpl.constascode', 3)
+            ->where('toufix.constascode', 3)
             ->groupBy('plainf.plainficode', 'plainf.plainfvimgp', 'plainf.plainftnick')
-            ->orderBy('PTOS', 'desc')
             ->orderBy('plainf.plainftnick', 'asc')
             ->paginate(5);
         return response()->json($data);
-
-        $date = Carbon::now();
 
     }
     public function register(Request $request)

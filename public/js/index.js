@@ -629,10 +629,7 @@
          ],
      });
      var table = $("#tableinvitaciones").DataTable({
-         colReorder: true,
-         order: [
-             [1, 'desc']
-         ],
+         
          "searching": true,
          "pageLength": 10,
          "paging": true,
@@ -686,7 +683,7 @@
                  return '<figure class="team-meta__logo"><img src="/images/' + full.plainfvimgp + '" alt=""></figure>'
              }
          }, {
-             orderable: true,
+             orderable: false,
              sortable: true,
              render: function(data, type, full, meta) {
                  return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.plainftname + '</h6></div>'
@@ -2737,6 +2734,7 @@
  }
 
  function mi_tincazo(toufixicode, plapreicode, val1, val2) {
+    debugger
      document.getElementById('form-agregar-tincazo-button').disabled = 0;
      $('#agregar-toufixicode-hidden').val(toufixicode);
      $('#agregar-plapreicode-hidden').val(plapreicode);
@@ -3082,7 +3080,9 @@
          }
      });
  }
-
+function isEmpty(value) {
+  return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+}
  function tusTincazosPendientes(shearh) {
      $('#game-result-pendientes').empty();
      var tougplicode = $('#session-select-tougplicode').val();
@@ -3102,12 +3102,12 @@
              var toufixsscr2Pendientes = '';
              var score_dash = '-';
              for (var i = 0; i < data.listaPartidosPendiente.length; i++) {
+                debugger
                  var plapreicodePendientes = data.listaPartidosPendiente[i].plapreicode == null ? null : data.listaPartidosPendiente[i].plapreicode;
-                 var plapresscr1Pendientes = data.listaPartidosPendiente[i].plapresscr1 == null ? '' : data.listaPartidosPendiente[i].plapresscr1;
-                 var plapresscr2Pendientes = data.listaPartidosPendiente[i].plapresscr2 == null ? '' : data.listaPartidosPendiente[i].plapresscr2;
-                 var tincazo = data.listaPartidosPendiente[i].plapreicode == null ? 'TINCAZO <i class="fa fa-question" style="font-size:17px; color:black"></i>' : 'TINCAZO  &nbsp; ' + "<strong style='color:black ; font-size:17px'>" + plapresscr1Pendientes + " </strong>" + " - " + "<strong  style='color:black ; font-size:17px'>" + plapresscr2Pendientes + " </strong>";
-                 var plapresscr2 = plapresscr2Pendientes == '' ? null : plapresscr2Pendientes;
-                 var plapresscr1 = plapresscr1Pendientes == '' ? null : plapresscr1Pendientes;
+                 var plapresscr1Pendientes = data.listaPartidosPendiente[i].plapresscr1 == null ? "" : data.listaPartidosPendiente[i].plapresscr1;
+                 var plapresscr2Pendientes = data.listaPartidosPendiente[i].plapresscr2 == null ? "" : data.listaPartidosPendiente[i].plapresscr2;
+                 var plapresscr2 = isEmpty(plapresscr2Pendientes) == true ? null : plapresscr2Pendientes;
+                 var plapresscr1 =  isEmpty(plapresscr1Pendientes) == true ? null : plapresscr1Pendientes;
                  if (data.listaPartidosPendiente[i].toufixsscr1 > data.listaPartidosPendiente[i].toufixsscr2) {
                      toufixsscr1Pendientes = "<span id='scoreresultwinner__1__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner'>" + data.listaPartidosPendiente[i].toufixsscr1 + "</span>";
                  } else if (data.listaPartidosPendiente[i].toufixsscr1 < data.listaPartidosPendiente[i].toufixsscr2) {
@@ -3123,7 +3123,16 @@
                      toufixsscr2Pendientes = "<span  id='scoreresultdraw__2__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosPendiente[i].toufixsscr2 + "</span>";
                  }
                  // htmlPendientes = "<section class='game-result__section pt-15'><header class='game-result__header game-result__header--alt game-result__header__modify'><span class='game-result__league game-result__league__modify'> " + data.listaPartidosPendiente[i].toufixdplay + " </span><h3 class='game-result__title'><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr1Pendientes + " </strong></span><figure class='comment__author-avatar avatar__modify' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")'><img  src='assets/images/soccer/tincaso-pred.png'></img></figure><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr2Pendientes + " </strong></span></h3><time class='game-result__date game-result__date__modify'> " + data.listaPartidosPendiente[i].toufixthour + "</time></header><div class='game-result__content' style='margin: 0px'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo' style='width: 20%; height: 68px;'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + " </h5> </div></div><div class='game-result__score-wrap' style='padding: 1px 0 0 0;'><div class='game-result__score game-result__score--lg game-result__score__modify' >" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + " </div><div class='label label-warning'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo' style='width: 20%;height: 68px;'><img  src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'> " + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section>";
-                 htmlPendientes = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosPendiente[i].toufixdplay).lang('es').format('MMM DD') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + data.listaPartidosPendiente[i].toufixthour + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
+
+                 var tincazo = data.listaPartidosPendiente[i].plapreicode == null ? 'SIN TINCAZO <i class="fa fa-question" style="font-size:17px; color:black"></i>' : 'TINCAZO  &nbsp; ' + "<strong style='color:black ; font-size:17px'>" + plapresscr1Pendientes + " </strong>" + " - " + "<strong  style='color:black ; font-size:17px'>" + plapresscr2Pendientes + " </strong>";
+                 if(data.listaPartidosPendiente[i].plapreicode == null){
+                 var tincazoFinal="<h3 style='cursor:pointer; color:red; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
+
+             }else{
+                 var tincazoFinal="<h3 style='cursor:pointer; color:#38a9ff; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
+
+             }
+                 htmlPendientes = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosPendiente[i].toufixdplay).lang('es').format('MMMM dddd DD ') + " </span> "+tincazoFinal+"<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " "+ data.listaPartidosPendiente[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
                  $('#game-result-pendientes').append(htmlPendientes);
                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultwinner__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultloser__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";

@@ -293,8 +293,9 @@ t2 on toufix.touttescod2 = t2.touttescode
     }
     public function tablaInvitacionesGrupo(Request $request)
     {
-        $data = DB::select('Select plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick, (Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
-        plainf.plainficode) as constascode from plainf join secusr on plainf.plainficode = secusr.plainficode where secusr.secusrbenbl = 1', 
+        $data = DB::select('Select plainf.plainficode, plainf.plainfvimgp, 
+            plainf.plainftname, plainf.plainftnick, (Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
+        plainf.plainficode) as constascode from plainf join secusr on plainf.plainficode = secusr.plainficode where secusr.secusrbenbl = 1 order by plainf.plainftname', 
         [Session::get('select-tougrpicode')]);
         return Datatables::of($data)->make(true);
 

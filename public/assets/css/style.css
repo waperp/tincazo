@@ -261,18 +261,17 @@ padding-left: 0px !important;
 .nav-tabs {
      border-bottom: 0px solid #ddd !important; 
 }
-.game-result__header >  h3:hover{
+.game-result__header > h3:hover{
     color: #38a9ff;
     content: "";
-    width: 50%; //ANCHO DE LA UNDERLINE
+    width: 50%;
     height: 2px;
     bottom: 0;
     left: 25%;
-    border-bottom: 2px solid #38a9ff;
-     
-      transition: all 0.35s ease-in-out;
-      transform: scale(1.1);
+    transition: all 0.35s ease-in-out;
+    transform: scale(1.1);
 }
+
 .game-result__header__modify {
     margin-bottom: 5px !important;
     padding-bottom: 0px !important;

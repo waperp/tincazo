@@ -320,6 +320,7 @@ public function tournamentDay(Request $request)
             ->where('tougpl.tougrpicode', $request->tougrpicode)
             ->where('toufix.constascode', 3)
             ->groupBy('plainf.plainficode', 'plainf.plainfvimgp', 'plainf.plainftnick')
+            ->orderBy('PTOS', 'desc')
             ->orderBy('plainf.plainftnick', 'asc')
             ->paginate(5);
         return response()->json($data);

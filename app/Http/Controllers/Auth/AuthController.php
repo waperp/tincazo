@@ -294,7 +294,7 @@ public function tournamentDay(Request $request)
             ->where('tougpl.constascode', 2)
             ->orderBy('tougpl.tougplipwin', 'desc')
             ->orderBy('plainf.plainftnick', 'asc')
-            ->paginate(5);
+            ->paginate(100);
 
         return response()->json($data);
     }
@@ -322,7 +322,7 @@ public function tournamentDay(Request $request)
             ->groupBy('plainf.plainficode', 'plainf.plainfvimgp', 'plainf.plainftnick')
             ->orderBy('PTOS', 'desc')
             ->orderBy('plainf.plainftnick', 'asc')
-            ->paginate(5);
+            ->paginate(100);
         return response()->json($data);
 
     }

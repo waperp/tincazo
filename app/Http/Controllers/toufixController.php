@@ -261,6 +261,7 @@ class toufixController extends Controller
             WHEN toufix.toufixsscr1 = plapre.plapresscr1 THEN 1 WHEN toufix.toufixsscr2 = plapre.plapresscr2 THEN 1
             ELSE 0 END FROM toufix JOIN plapre ON toufix.toufixicode = plapre.toufixicode JOIN tougpl tougpl1 ON plapre.tougplicode = tougpl1.tougplicode
             JOIN tougrp ON tougpl1.tougrpicode = tougrp.tougrpicode WHERE toufix.toufixicode = ? AND tougpl1.tougplicode = tougpl.tougplicode),0)', [$request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode, $request->toufixicode]);
+            
             DB::statement('update plapre 
             JOIN tougpl ON tougpl.`tougplicode` = plapre.`tougplicode`
             JOIN tougrp ON tougpl.tougrpicode = tougrp.tougrpicode

@@ -162,15 +162,14 @@ class plapreController extends Controller
                         } else {
                             return response()->json(
                                 ['message' => 'Algo paso mal, intente de nuevo', 
-                                'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update'],401);
+                                'errors' => "", 'error' => true, 'success' => false, 'types' => 'update'],401);
                         }
                         return response()->json(
-                            ['message' => 'Tincazo registrado correctamente', 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+                            ['message' => 'Tincazo registrado correctamente', 'errors' => "", 'error' => false, 'success' => true, 'types' => 'update']);
 
                     }
                 } else {
-                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 'errors' => 
-                        $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode'],401);
+                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'constascode'],401);
                 }
             } else {
                 return response()->json(
@@ -179,7 +178,7 @@ class plapreController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(
-                ['message' => 'Algo paso mal, intente de nuevo', 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server'],401);
+                ['message' => 'Algo paso mal, intente de nuevo', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'server'],401);
         }
     }
     /**

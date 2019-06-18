@@ -42,6 +42,8 @@ Route::group([
         Route::post('validateTournamentApi', 'Auth\AuthController@validateTournamentApi');
         Route::post('updateTougrpApi', 'tougrpController@updateTougrpApi')->name('tougrp.updateTougrp');
         Route::post('updatePerfilApi', 'secusrController@updatePerfilApi');
+        Route::get('getChampionsUsers', 'Auth\AuthController@getChampionsUsers');
+        Route::get('getUsersToChampions', 'Auth\AuthController@getUsersToChampions');
     });
     Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
 });

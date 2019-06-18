@@ -308,6 +308,22 @@ public function tournamentDay(Request $request)
         return response()->json($data->fecha);
 
     }
+    public function getUsersToChampions(Request $request)
+    {
+        $data = DB::select('Select plainf.plainfvimgp, plainf.plainftnick from plachm join tougpl on plachm.tougplicode = tougpl.tougplicode
+        join plainf on tougpl.plainficode = plainf.plainficode where tougpl.tougrpicode = ? and plachm.touttescode = ?',
+         [$request->tougrpicode, $request->touttescode]);
+        return response()->json($data);
+    }
+    public function getChampionsUsers(Request $request)
+    {
+        $data = DB::select('Select toutte.touttebenbl, toutea.touteavimgt, toutte.touttescode,toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea
+            join toutte on toutea.touteascode = toutte.touteascode
+join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
+group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.touttebenbl', [$request->tougrpicode]);
+        return response()->json($data);
+
+    }
     public function tablePositionsDay(Request $request)
     {
         $date = Carbon::now();

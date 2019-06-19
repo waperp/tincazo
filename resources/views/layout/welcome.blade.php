@@ -96,37 +96,38 @@
 
                 <div class="post__content">
                   <h3 style="text-align: center" > <u> COMO FUNCIONA </u> <span>TINCAZO.COM</span> </h3>
-                  <p >Con 6 sencillos pasos puedes jugar y colocar tu TINCAZO</p>
-                  <h5>1ER PASO – CREARSE UN USUARIO</h5>
-                  <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo,
-                   nombre, fecha de nacimiento, etc. Elige la membresía disponible (ORO) y finalmente presionas ‘COMPLETA REGISTRO’.
+                  <p >Con 5 sencillos pasos puedes jugar y colocar tu TINCAZO</p>
+                  <h5>1ER PASO – CREASE CUENTA</h5>
+                  <p>Utiliza la opción ‘Crear Cuenta’ en la parte superior de la web, llena tus datos y Listo.
                   </p>
-                  <h5>2DO PASO – CREAR GRUPO / ELEGIR GRUPO</h5>
-                  <p><ul>
-                  <li>Puedes CREAR UN GRUPO del torneo que quieras jugar e invitar a tus amigos en la opción INVITACIONES.</li>
-                  <li>Puedes ELEGIR UN GRUPO de los que hayas sido invitado.</li>
+                  <h5>2DO PASO – TUS GRUPOS</h5>
+                  <p>
+                  Para colocar tus TINCAZOS debes ser parte de un grupo:
+                  <ul>
+                  <li>CREAR GRUPO, Puedes crear un grupo del Torneo que esté vigente e invitar a tus amigos. Puedes hacerlo dentro de la opción ‘Mi Cuenta’.</li>
+                  <li>INVITACION, Puedes recibir una invitación para jugar en diferentes grupos. Puedes Aceptar o Rechazar en ‘Invitaciones’ en la parte superior de la web</li>
                   </ul>
                   </p>
-                  <h5>3ER PASO – INVITACIONES</h5>
-                  <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo. <br>
-En la Campanita ubicada en la parte superior de la aplicación, recibirás notificaciones si has sido invitado a algún grupo. Puedes aceptarla o rechazarla.</p>
+                  <h5>3ER PASO – INGRESA A TU GRUPO</h5>
+                  <p> Elige el Torneo, luego el Grupo para comenzar a poner tu campeón y tus Tincazos.</p>
                   <h5>3ER PASO – Elige tu Grupo</h5>
-                <p> Una vez seas parte de 1 o más grupos, debes seleccionar el grupo para empezar a colocar TU CAMPEON y TUS TINCAZOS.</p>
-
+                  <p> Una vez seas parte de 1 o más grupos, debes seleccionar el grupo para empezar a colocar TU CAMPEON y TUS TINCAZOS.</p>
                   <h5>4TO PASO – ELIGE TU CAMPEÓN</h5>
-                <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo. <br> 
-En la Campanita ubicada en la parte superior de la aplicación, recibirás notificaciones si has sido invitado a algún grupo. Puedes aceptarla o rechazarla.</p>
+                <p> Elije tu campeón antes de comenzar el 1er partido del torneo y podrás obtener puntos extras si aciertas (Si el grupo está configurado con Puntos x Campeón).</p>
 
                   <h5>5TO PASO - COLOCA TU TINCAZO</h5>
-                <p> Por ultimo debes colocar tus TINCAZOS a medida que avancen los partidos. Es MUY IMPORTANTE que sepas que una vez el partido está EN JUEGO, no podrás colocarlo. Toma tus previsiones. </p>
-                <span> Existen 3 tipos de <strong>TINCAZOS</strong></span>
+                  <strong style="color:green">REGLAS</strong>
+                <p> Coloca tus TINCAZOS de cada uno de los partidos. MUY IMPORTANTE, coloca tu pronóstico antes del comienzo del partido, posterior a eso, no podrás hacerlo.</p>
+                <span>- Existen 3 tipos de <strong>TINCAZOS</strong></span>
                 <ul> 
               <li> <strong>TA</strong> (Tincazo ALTO), Acertar Resultado y marcador
               <li> <strong>TM</strong> (Tincazo MEDIO), Acertar Solo Resultado
               <li> <strong>TB</strong> (Tincazo BAJO), al menos uno de los marcadores de los 2 equipos
               </ul>
-              <p>El valor de los puntos para los tincazos alto, medio y bajo los determina el CREADOR del Grupo.</p>
-              <p>No te olvides revisar que en las <strong>TABLA GENERAL y TABLA X DIA</strong>, están los puntos que vas acumulando en todo el campeonato y por día respectivament.</p>
+              <p>- Los <strong>Puntos X Campeón</strong> otorga puntos extras si tu selección resulta campeona. Estos serán definidos por el Encargado del Grupo</p> 
+              <p>-	El <strong> Valor X Partido</strong> multiplica los puntos de los Tincazos Mayor, Medio y Bajo, los determina el Encargado del Grupo.</p> 
+              <p>-	No te olvides revisar que en las <strong> TABLA GENERAL y TABLA X DIA</strong> , están los puntos que vas acumulando en todo el campeonato y por día respectivamente.</p> 
+
               <h5 style="color: red">ACLARACIONES</h5>
               <p>La siguiente información te ayudara a entender algunos aspectos de TINCAZO.COM</p>
               <ul style="list-style-type:circle;">

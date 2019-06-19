@@ -116,8 +116,9 @@
                 <p> Elije tu campeón antes de comenzar el 1er partido del torneo y podrás obtener puntos extras si aciertas (Si el grupo está configurado con Puntos x Campeón).</p>
 
                   <h5>5TO PASO - COLOCA TU TINCAZO</h5>
-                  <strong style="color:green">REGLAS</strong>
                 <p> Coloca tus TINCAZOS de cada uno de los partidos. MUY IMPORTANTE, coloca tu pronóstico antes del comienzo del partido, posterior a eso, no podrás hacerlo.</p>
+                <strong style="color:green">REGLAS</strong><br>
+                
                 <span>- Existen 3 tipos de <strong>TINCAZOS</strong></span>
                 <ul> 
               <li> <strong>TA</strong> (Tincazo ALTO), Acertar Resultado y marcador

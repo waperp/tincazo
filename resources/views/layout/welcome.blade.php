@@ -98,12 +98,13 @@
                   <h3 style="text-align: center" > <u> COMO FUNCIONA </u> <span>TINCAZO.COM</span> </h3>
                   <p >Con 6 sencillos pasos puedes jugar y colocar tu TINCAZO</p>
                   <h5>1ER PASO – CREARSE UN USUARIO</h5>
-                  <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo, nombre, fecha de nacimiento, etc. Elige la membresía disponible (ORO) y finalmente presionas ‘COMPLETA REGISTRO’.
+                  <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo,
+                   nombre, fecha de nacimiento, etc. Elige la membresía disponible (ORO) y finalmente presionas ‘COMPLETA REGISTRO’.
                   </p>
                   <h5>2DO PASO – CREAR GRUPO / ELEGIR GRUPO</h5>
                   <p><ul>
                   <li>Puedes CREAR UN GRUPO del torneo que quieras jugar e invitar a tus amigos en la opción INVITACIONES.</li>
-                  <li>Puedes CREAR UN GRUPO del torneo que quieras jugar e invitar a tus amigos en la opción INVITACIONES.</li>
+                  <li>Puedes ELEGIR UN GRUPO de los que hayas sido invitado.</li>
                   </ul>
                   </p>
                   <h5>3ER PASO – INVITACIONES</h5>

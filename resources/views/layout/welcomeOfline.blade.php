@@ -92,16 +92,17 @@
                   <h3 style="text-align: center" > <u> COMO FUNCIONA </u> <span>TINCAZO.COM</span> </h3>
                   <p >Con 6 sencillos pasos puedes jugar y colocar tu TINCAZO</p>
                   <h5>1ER PASO – CREARSE UN USUARIO</h5>
-                  <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo, nombre, fecha de nacimiento, etc. Elige la membresía disponible (ORO) y finalmente presionas ‘COMPLETA REGISTRO’.
+                  <p>Debes hacer clic en la opción en la parte superior que dice ‘CREAR CUENTA’ y colocar tus datos como correo,
+                   nombre, fecha de nacimiento, etc. Elige la membresía disponible (ORO) y finalmente presionas ‘COMPLETA REGISTRO’.
                   </p>
                   <h5>2DO PASO – CREAR GRUPO / ELEGIR GRUPO</h5>
                   <p><ul>
                   <li>Puedes CREAR UN GRUPO del torneo que quieras jugar e invitar a tus amigos en la opción INVITACIONES.</li>
-                  <li>Puedes CREAR UN GRUPO del torneo que quieras jugar e invitar a tus amigos en la opción INVITACIONES.</li>
+                  <li>Puedes ELEGIR UN GRUPO de los que hayas sido invitado.</li>
                   </ul>
                   </p>
                   <h5>3ER PASO – INVITACIONES</h5>
-                  <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo.
+                  <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo. <br>
 En la Campanita ubicada en la parte superior de la aplicación, recibirás notificaciones si has sido invitado a algún grupo. Puedes aceptarla o rechazarla.</p>
                   <h5>3ER PASO – Elige tu Grupo</h5>
                 <p> Una vez seas parte de 1 o más grupos, debes seleccionar el grupo para empezar a colocar TU CAMPEON y TUS TINCAZOS.</p>

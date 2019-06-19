@@ -117,7 +117,7 @@
 
                   <h5>5TO PASO - COLOCA TU TINCAZO</h5>
                 <p> Coloca tus TINCAZOS de cada uno de los partidos. MUY IMPORTANTE, coloca tu pronóstico antes del comienzo del partido, posterior a eso, no podrás hacerlo.</p>
-                <strong style="color:green">REGLAS</strong><br>
+                <h5 style="color: green">REGLAS</h5>
                 
                 <span>- Existen 3 tipos de <strong>TINCAZOS</strong></span>
                 <ul> 

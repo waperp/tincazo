@@ -114,7 +114,7 @@ En la Campanita ubicada en la parte superior de la aplicación, recibirás notif
                 <p> Una vez seas parte de 1 o más grupos, debes seleccionar el grupo para empezar a colocar TU CAMPEON y TUS TINCAZOS.</p>
 
                   <h5>4TO PASO – ELIGE TU CAMPEÓN</h5>
-                <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo.
+                <p> En el Menú de la aplicación, en la opción INVITACIONES, podrás enviar invitaciones a la persona que desees que este en tu grupo. <br> 
 En la Campanita ubicada en la parte superior de la aplicación, recibirás notificaciones si has sido invitado a algún grupo. Puedes aceptarla o rechazarla.</p>
 
                   <h5>5TO PASO - COLOCA TU TINCAZO</h5>

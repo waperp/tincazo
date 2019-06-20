@@ -308,6 +308,34 @@ public function tournamentDay(Request $request)
         return response()->json($data->fecha);
 
     }
+    public function getPositionsGeneralInfoUser(Request $request)
+    {
+        $data = DB::select('Select t1.touteavimgt as touteavimgt1, t1.touteatabrv as touteatabrv1, toufix.toufixsscr1, plapre.plapresscr1, plapre.plapresscr2, toufix.toufixsscr2, t2.touteatabrv as touteatabrv2, 
+        t2.touteavimgt as touteavimgt2, plapre.plapresptos
+        from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
+        (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+        t1 on toufix.touttescod1 = t1.touttescode join
+        (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+        t2 on toufix.touttescod2 = t2.touttescode
+        where tougpl.plainficode = ? and tougpl.tougrpicode = ? and toufix.constascode in (3) 
+        order by toufix.toufixicode desc',
+            [$request->plainficode, $request->tougrpicode]);
+            return response()->json($data);
+    }
+    public function getPositionsGeneralInfoUserDay(Request $request)
+    {
+        $data = DB::select('Select t1.touteavimgt as touteavimgt1, t1.touteatabrv as touteatabrv1, toufix.toufixsscr1, plapre.plapresscr1, plapre.plapresscr2, toufix.toufixsscr2, t2.touteatabrv as touteatabrv2, 
+t2.touteavimgt as touteavimgt2, plapre.plapresptos
+from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
+(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+t1 on toufix.touttescod1 = t1.touttescode join
+(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+t2 on toufix.touttescod2 = t2.touttescode
+            where tougpl.plainficode = ? and tougpl.tougrpicode = ? and toufix.constascode in (3) and toufix.toufixdplay = ? 
+            order by toufix.toufixicode desc',
+            [$request->plainficode, $request->tougrpicode,$request->toufixdplay]);
+            return response()->json($data);
+    }
     public function getUsersToChampions(Request $request)
     {
         $data = DB::select('Select plainf.plainfvimgp, plainf.plainftnick from plachm join tougpl on plachm.tougplicode = tougpl.tougplicode

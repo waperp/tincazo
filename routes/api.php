@@ -44,6 +44,9 @@ Route::group([
         Route::post('updatePerfilApi', 'secusrController@updatePerfilApi');
         Route::get('getChampionsUsers', 'Auth\AuthController@getChampionsUsers');
         Route::get('getUsersToChampions', 'Auth\AuthController@getUsersToChampions');
+        Route::get('getPositionsGeneralInfoUser', 'Auth\AuthController@getPositionsGeneralInfoUser');
+        Route::get('getPositionsGeneralInfoUserDay', 'Auth\AuthController@getPositionsGeneralInfoUserDay');
+
     });
     Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
 });

@@ -276,7 +276,10 @@ order by toufix.toufixicode desc',
             [$request->plainficode, Session::get('select-tougrpicode')]);
         return Datatables::of($data)->make(true);
     }
+public function politica (){
+    return view('partials.politica');
 
+}
     public function tablaInfoPlayerDia(Request $request)
     {
         $data = DB::select('Select t1.touteavimgt as touteavimgt1, t1.touteatabrv as touteatabrv1, toufix.toufixsscr1, plapre.plapresscr1, plapre.plapresscr2, toufix.toufixsscr2, t2.touteatabrv as touteatabrv2, 

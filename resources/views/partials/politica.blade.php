@@ -74,11 +74,11 @@
           <div class="content col-md-8 col-md-offset-2">
 
             <!-- Article -->
-            <article class="card card--lg post post--single post--extra-top">
-              <div class="card__content" id="instrucciones">
+            <article class="card card--lg post post--single">
+              <div class="card__content">
 
                 <div class="post__content">
-                <h2>Política de privacidad</h2> <p>
+                <h2 style="text-align: center;">Política de privacidad</h2> <p>
                     Tincazo construyó la aplicación como gratuita. Este SERVICIO es provisto sin costo y está diseñado para ser utilizado tal como es
                   </p> <p>
                     Esta página se utiliza para informar a los visitantes sobre nuestras políticas con la recopilación, el uso y la divulgación de información personal si alguien decide utilizar nuestro Servicio.

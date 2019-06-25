@@ -176,7 +176,7 @@
                     <nav class="main-nav clearfix">
                         <ul class="main-nav__list">
                             <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-                            <li ><a onclick="removemenu()" href="/#instrucciones">GUIA</a></li>
+                            <li ><a onclick="removemenu()" href="/Guia" target="_blank">GUIA</a></li>
 
                  @if(Session::has('plainficode') )
                     <li class=""><a href="javascript:void(0)">MIS TORNEOS <span style="color:#c2ff1f">( {{ count($listaTorneosMenu) }} )</span></a>

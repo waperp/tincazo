@@ -149,7 +149,10 @@ Es posible que contratemos a empresas y personas de terceros debido a las siguie
                                             <a href="javascript:void(0)">
                                                 Tincazo 
                                             </a>
-                                            2018   |   Todos los derechos reservados
+                                            2018   |   Todos los derechos reservados | &nbsp;
+                                            <a target="_blank" href="/PoliticaPrivacidad">
+                                              Politicas de Privacidad
+                                          </a>
                                         </div>
                                     </div>
                                 </div>

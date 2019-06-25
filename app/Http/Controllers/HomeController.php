@@ -279,6 +279,9 @@ order by toufix.toufixicode desc',
 public function politica (){
     return view('partials.politica');
 
+}public function guia (){
+    return view('partials.guia');
+
 }
     public function tablaInfoPlayerDia(Request $request)
     {

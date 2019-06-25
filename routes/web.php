@@ -67,7 +67,7 @@ Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
 
 
 
-Route::get('politica', 'HomeController@politica');
+Route::get('PoliticaPrivacidad', 'HomeController@politica');
 Route::get('tablaAdminTorneos', 'HomeController@tablaAdminTorneos');
 Route::get('tougrpShow/{f}', 'tougrpController@show');
 Route::get('toufixShow/{f}', 'toufixController@show1');

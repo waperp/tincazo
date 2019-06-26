@@ -167,6 +167,8 @@ class HomeController extends Controller
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+        $listaTouinfAll = DB::table('touinf')->get();
+
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode',2)->get();
         $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
@@ -222,7 +224,7 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
 
         return view('index', compact('listaConmen', 'listaTouinf','listaTipoPlantel', 'listaTorneos', 'listaInvitaciones',
             'listaContypEquipos', 'listaToutea', 'listaEquiposElegir', 'miCampeon', 'estadisticas',
-            'listaEditPerfil', 'fechaValidar','listaTouinfSlider','validarTougrpbchva','listaTorneosMenu'));
+            'listaEditPerfil', 'fechaValidar','listaTouinfSlider','validarTougrpbchva','listaTorneosMenu','listaTouinfAll'));
 
     }
 

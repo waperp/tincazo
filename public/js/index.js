@@ -141,7 +141,7 @@
      // });
      estadisticas();
      tusTincazosPendientes("");
-     
+
      selectResponsable();
      tusTincazosJuego("");
      tusTincazosFinalizados("");
@@ -200,6 +200,7 @@
          $('#tougrptname-edit').val(torneo);
          $('#touinfscode-edit-hidden').val(touinfscode);
          $('#tougrpicode-edit-hidden').val(tougrpicode);
+         debugger
          $('#selecttorneo-edit').val(touinfscode).trigger('change');
          $("#imagetorneo-edit").attr("src", imgs.src);
      } else {
@@ -276,7 +277,7 @@
      $('#select-modal-nuevo-equipo').change(function() {
          $('#table-admin-equipo').DataTable().ajax.reload();
      });
-      $('#select-torneo-fixture').change(function() {
+     $('#select-torneo-fixture').change(function() {
          $('#table-fixture').DataTable().ajax.reload();
      });
      $('#selecttorneo').on('select2:selecting', function(e) {
@@ -460,7 +461,7 @@
              });
          },
          "createdRow": function(row, data, dataIndex) {
-             $(row).attr('onClick', 'info_player(' + data.plainficode + ',"'+data.JUGADOR+'")');
+             $(row).attr('onClick', 'info_player(' + data.plainficode + ',"' + data.JUGADOR + '")');
              $(row).css({
                  cursor: 'pointer',
              });
@@ -587,7 +588,7 @@
              // });
          },
          "createdRow": function(row, data, dataIndex) {
-             $(row).attr('onClick', 'info_player_dia(' + data.plainficode + ',"'+data.plainftnick+'")');
+             $(row).attr('onClick', 'info_player_dia(' + data.plainficode + ',"' + data.plainftnick + '")');
              $(row).css({
                  cursor: 'pointer',
              });
@@ -629,7 +630,7 @@
          ],
      });
      var table = $("#tableinvitaciones").DataTable({
-         
+
          "searching": true,
          "pageLength": 10,
          "paging": true,
@@ -1066,14 +1067,14 @@
          serverSide: true,
          buttons: [],
          ajax: {
-            url: '/tablaAdminEquipos',
-            data: function(d) {
+             url: '/tablaAdminEquipos',
+             data: function(d) {
                  var contypscode = $('#select-modal-nuevo-equipo').val();
                  d.contypscode = contypscode;
                  $('#contypscode').val(contypscode).trigger('change');
-            }
+             }
 
-        },
+         },
          columns: [{
              width: 35,
              className: 'widthtable',
@@ -1202,11 +1203,11 @@
              orderable: false,
              sortable: false,
              render: function(data, type, full, meta) {
-                if(full.touttebenbl != 0){
+                 if (full.touttebenbl != 0) {
 
-                 return "<tr><a class='btn-estado' OnClick='EstadoEquipoTorneo(" + full.touteascode + "," + full.touinfscode + "," + full.touttescode + ");' title='RETIRAR'><i class='fa fa-minus-circle'></i></a></tr>";
-                }
-                return '';
+                     return "<tr><a class='btn-estado' OnClick='EstadoEquipoTorneo(" + full.touteascode + "," + full.touinfscode + "," + full.touttescode + ");' title='RETIRAR'><i class='fa fa-minus-circle'></i></a></tr>";
+                 }
+                 return '';
              }
          }],
          buttons: [{
@@ -1216,8 +1217,8 @@
                  $('#modal-nuevo-torneo-equipo').modal('hide');
                  $('#modal-admin-add-torneo-equipo').modal('show');
                  $('#select-torneo-equipo').empty();
-/*$("#selectMultiple").select2('destroy');*/
-                 
+                 /*$("#selectMultiple").select2('destroy');*/
+
 
              },
              titleAttr: 'AGREGAR EQUIPO'
@@ -1375,8 +1376,8 @@
                          closeOnConfirm: true
                      });
                  } else {
-                    combo1();
-     combo2();
+                     combo1();
+                     combo2();
                      $('#select-touinfscode-hidden').val(touinfscode);
                      $('#dates-toufixdplay').val(toufixdplay);
                      $('#select-toufixdplay-hidden').val(touinfscode);
@@ -1409,7 +1410,7 @@
          ajax: {
              url: '/tableGestionarFixture',
              data: function(d) {
-                
+
                  var toufixdplay = $('#date-toufixdplay').val();
                  var touinfscode = $('#select-torneo-fixture').val();
                  d.toufixdplay = toufixdplay;
@@ -1767,10 +1768,10 @@
              processData: false,
              data: formData,
              success: function(data) {
-                debugger
-                document.getElementById('form-button-register').disabled = 0;
+                 debugger
+                 document.getElementById('form-button-register').disabled = 0;
                  if (data.mail == true) {
-                     
+
                      swal({
                          // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
                          title: "CORREO DUPLICADO",
@@ -1786,7 +1787,7 @@
                  }
              },
              error: function(xhr, status, error) {
-                debugger
+                 debugger
              }
          });
      }
@@ -1876,7 +1877,7 @@
          processData: false,
          data: formData,
          success: function(data) {
-            debugger
+             debugger
              if (data == false) {
                  swal({
                      // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
@@ -2085,11 +2086,11 @@
              toufixicode: toufixicode
          },
          success: function(data) {
-            debugger
+             debugger
              $('#select-touteascode1').empty();
              $('#select-touteascode2').empty();
-                    combo1();
-     combo2();
+             combo1();
+             combo2();
              $('#select-touteascode1').append('<option value="' + data.touttescode1 + '">' + data.touteatname + '</option>');
              $('#select-touteascode2').append('<option value="' + data.touttescode2 + '">' + data.touteatname2 + '</option>');
              $('#toufixicode-hidden').val(data.toufixicode);
@@ -2257,7 +2258,7 @@
                          $('#table-fixture').DataTable().ajax.reload();
                          swal("FINALIZADO!", "Se ha finalizado el partido!!", "success");
                      } else {
-                        $('#table-fixture').DataTable().ajax.reload();
+                         $('#table-fixture').DataTable().ajax.reload();
                          swal("ERROR!", "Hubo un error en el proceso!!", "error");
                      }
                  }
@@ -2611,7 +2612,7 @@
      toufixsscr2 = $('#agregar-toufixsscr2-tincazo').val();
      toufixicode = $('#agregar-toufixicode-hidden').val();
      plapreicode = $('#agregar-plapreicode-hidden').val();
-     
+
      $.ajax({
          url: '/plapre',
          type: 'post',
@@ -2626,7 +2627,7 @@
              toufixsscr2: toufixsscr2
          },
          success: function(data) {
-             
+
              if (data.message == 1 && data.error == true && data.success == false && data.types == "constascode") {
                  $('#modal-nuevo-agregar-tinzaso').modal('hide');
                  swal({
@@ -2734,7 +2735,7 @@
  }
 
  function mi_tincazo(toufixicode, plapreicode, val1, val2) {
-    debugger
+     debugger
      document.getElementById('form-agregar-tincazo-button').disabled = 0;
      $('#agregar-toufixicode-hidden').val(toufixicode);
      $('#agregar-plapreicode-hidden').val(plapreicode);
@@ -3022,7 +3023,7 @@
              tougrpicode: tougrpicode,
          },
          success: function(data) {
-             
+
              $('#jugadores').empty();
              var text = "";
              for (var i = 0; i < data.length; i++) {
@@ -3080,9 +3081,11 @@
          }
      });
  }
-function isEmpty(value) {
-  return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
-}
+
+ function isEmpty(value) {
+     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+ }
+
  function tusTincazosPendientes(shearh) {
      $('#game-result-pendientes').empty();
      var tougplicode = $('#session-select-tougplicode').val();
@@ -3102,12 +3105,12 @@ function isEmpty(value) {
              var toufixsscr2Pendientes = '';
              var score_dash = '-';
              for (var i = 0; i < data.listaPartidosPendiente.length; i++) {
-                debugger
+                 debugger
                  var plapreicodePendientes = data.listaPartidosPendiente[i].plapreicode == null ? null : data.listaPartidosPendiente[i].plapreicode;
                  var plapresscr1Pendientes = data.listaPartidosPendiente[i].plapresscr1 == null ? "" : data.listaPartidosPendiente[i].plapresscr1;
                  var plapresscr2Pendientes = data.listaPartidosPendiente[i].plapresscr2 == null ? "" : data.listaPartidosPendiente[i].plapresscr2;
                  var plapresscr2 = isEmpty(plapresscr2Pendientes) == true ? null : plapresscr2Pendientes;
-                 var plapresscr1 =  isEmpty(plapresscr1Pendientes) == true ? null : plapresscr1Pendientes;
+                 var plapresscr1 = isEmpty(plapresscr1Pendientes) == true ? null : plapresscr1Pendientes;
                  if (data.listaPartidosPendiente[i].toufixsscr1 > data.listaPartidosPendiente[i].toufixsscr2) {
                      toufixsscr1Pendientes = "<span id='scoreresultwinner__1__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner'>" + data.listaPartidosPendiente[i].toufixsscr1 + "</span>";
                  } else if (data.listaPartidosPendiente[i].toufixsscr1 < data.listaPartidosPendiente[i].toufixsscr2) {
@@ -3125,14 +3128,14 @@ function isEmpty(value) {
                  // htmlPendientes = "<section class='game-result__section pt-15'><header class='game-result__header game-result__header--alt game-result__header__modify'><span class='game-result__league game-result__league__modify'> " + data.listaPartidosPendiente[i].toufixdplay + " </span><h3 class='game-result__title'><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr1Pendientes + " </strong></span><figure class='comment__author-avatar avatar__modify' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")'><img  src='assets/images/soccer/tincaso-pred.png'></img></figure><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr2Pendientes + " </strong></span></h3><time class='game-result__date game-result__date__modify'> " + data.listaPartidosPendiente[i].toufixthour + "</time></header><div class='game-result__content' style='margin: 0px'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo' style='width: 20%; height: 68px;'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + " </h5> </div></div><div class='game-result__score-wrap' style='padding: 1px 0 0 0;'><div class='game-result__score game-result__score--lg game-result__score__modify' >" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + " </div><div class='label label-warning'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo' style='width: 20%;height: 68px;'><img  src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'> " + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section>";
 
                  var tincazo = data.listaPartidosPendiente[i].plapreicode == null ? 'SIN TINCAZO <i class="fa fa-question" style="font-size:17px; color:black"></i>' : 'TINCAZO  &nbsp; ' + "<strong style='color:black ; font-size:17px'>" + plapresscr1Pendientes + " </strong>" + " - " + "<strong  style='color:black ; font-size:17px'>" + plapresscr2Pendientes + " </strong>";
-                 if(data.listaPartidosPendiente[i].plapreicode == null){
-                 var tincazoFinal="<h3 style='cursor:pointer; color:red; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
+                 if (data.listaPartidosPendiente[i].plapreicode == null) {
+                     var tincazoFinal = "<h3 style='cursor:pointer; color:red; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
 
-             }else{
-                 var tincazoFinal="<h3 style='cursor:pointer; color:#38a9ff; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
+                 } else {
+                     var tincazoFinal = "<h3 style='cursor:pointer; color:#38a9ff; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
 
-             }
-                 htmlPendientes = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosPendiente[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span> "+tincazoFinal+"<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " "+ data.listaPartidosPendiente[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
+                 }
+                 htmlPendientes = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosPendiente[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span> " + tincazoFinal + "<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " " + data.listaPartidosPendiente[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
                  $('#game-result-pendientes').append(htmlPendientes);
                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultwinner__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultloser__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
@@ -3191,7 +3194,7 @@ function isEmpty(value) {
                      toufixsscr2Pendientes = "<span  id='scoreresultdrawJ__2__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosJuego[i].toufixsscr2 + "</span>";
                  }
                  // htmlPendientes1 = "<section class='game-result__section pt-15'><header class='game-result__header game-result__header--alt game-result__header__modify'><span class='game-result__league game-result__league__modify'> " + data.listaPartidosJuego[i].toufixdplay + " </span><h3 class='game-result__title'><span style='font-size:25px; color: #24d9b0'><strong> " + plapresscr1Pendientes + " </strong></span><figure class='comment__author-avatar avatar__modify' onclick='tincazos(" + data.listaPartidosJuego[i].toufixicode + ")'><img  src='assets/images/soccer/tincaso-pred.png'></img></figure><span style='font-size:25px; color: #24d9b0'><strong> " + plapresscr2Pendientes + " </strong></span></h3><time class='game-result__date game-result__date__modify'> " + data.listaPartidosJuego[i].toufixthour + "</time></header><div class='game-result__content' style='margin: 0px'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo' style='width: 20%; height: 68px;'><img src='images/" + data.listaPartidosJuego[i].touteavimgt + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname + " </h5> </div></div><div class='game-result__score-wrap' style='padding: 1px 0 0 0;'><div class='game-result__score game-result__score--lg game-result__score__modify' >" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + " </div><div class='label label-success'>" + data.listaPartidosJuego[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo' style='width: 20%;height: 68px;'><img  src='images/" + data.listaPartidosJuego[i].touteavimgt2 + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'> " + data.listaPartidosJuego[i].touteatname2 + "</h5></div></div></div></section>";
-                 htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosJuego[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px;text-transform: NONE' onclick='tincazos(" + data.listaPartidosJuego[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosJuego[i].toufixdplay + " "+ data.listaPartidosJuego[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosJuego[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
+                 htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosJuego[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px;text-transform: NONE' onclick='tincazos(" + data.listaPartidosJuego[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosJuego[i].toufixdplay + " " + data.listaPartidosJuego[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosJuego[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
                  $('#game-result-juego').append(htmlPendientes1);
                  data.listaPartidosJuego[i].toufixsscr1 == null ? $('#scoreresultwinnerJ__1__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
                  data.listaPartidosJuego[i].toufixsscr1 == null ? $('#scoreresultloserJ__1__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
@@ -3243,7 +3246,7 @@ function isEmpty(value) {
                  } else {
                      toufixsscr2Pendientes = "<span  id='scoreresultdrawJ__2__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosFinalizados[i].toufixsscr2 + "</span>";
                  }
-                 htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosFinalizados[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px; text-transform: NONE' onclick='tincazos(" + data.listaPartidosFinalizados[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosFinalizados[i].toufixdplay + " "+ data.listaPartidosFinalizados[i].toufixthour).lang('es').format('HH:mm A')  + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosFinalizados[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
+                 htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosFinalizados[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px; text-transform: NONE' onclick='tincazos(" + data.listaPartidosFinalizados[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosFinalizados[i].toufixdplay + " " + data.listaPartidosFinalizados[i].toufixthour).lang('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosFinalizados[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
                  $('#game-result-finalizado').append(htmlPendientes1);
                  data.listaPartidosFinalizados[i].toufixsscr1 == null ? $('#scoreresultwinnerJ__1__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
                  data.listaPartidosFinalizados[i].toufixsscr1 == null ? $('#scoreresultloserJ__1__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
@@ -3339,7 +3342,7 @@ function isEmpty(value) {
  }
 
  function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicode, plainficode, tougrpsxval) {
-     
+
      var _token = $('input[name=_token]').val();
      $.ajax({
          url: '/sessionLink',
@@ -3396,16 +3399,16 @@ function isEmpty(value) {
      tusTincazosPendientes("");
  });
 
- function info_player(plainficode,name) {
-    
+ function info_player(plainficode, name) {
+
      $('#modal-info-player-tinzaso-plainficode').val(plainficode);
      $('#modal-info-player-tinzaso-player-name').text(name);
      $('#table-info-player-grupo').DataTable().ajax.reload();
      $('#modal-info-player-tinzaso').modal('show');
  }
 
- function info_player_dia(plainficode,name) {
-     $('#modal-info-player-tinzaso-dia-name').text(name);   
+ function info_player_dia(plainficode, name) {
+     $('#modal-info-player-tinzaso-dia-name').text(name);
      $('#modal-info-player-tinzaso-plainficode-dia').val(plainficode);
      $('#table-info-player-grupo-dia').DataTable().ajax.reload();
      $('#modal-info-player-tinzaso-dia').modal('show');

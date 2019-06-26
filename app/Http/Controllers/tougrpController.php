@@ -371,12 +371,12 @@ class tougrpController extends Controller
 
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
-                        $tougrp->touinfscode = $request->touinfscode;
                         $tougrp->tougrpsmaxp = $request->tougrpsmaxp;
                         $tougrp->tougrpsmedp = $request->tougrpsmedp;
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
-                        $tougrp->tougrpschpt = $request->tougrpschpt;
+                        $tougrp->tougrpschpt = $request->tougrpschpt;                        
+                        $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;
@@ -388,9 +388,8 @@ class tougrpController extends Controller
                     } else {
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
-                        $tougrp->touinfscode = $request->touinfscode;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
-
+                        $tougrp->tougrpbchva = 0;
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;
@@ -457,6 +456,7 @@ class tougrpController extends Controller
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
                         $tougrp->tougrpschpt = $request->tougrpschpt;
+                        
                         if ($imageName == null) {
                         } else {
                             $tougrp->tougrpvimgg = $imageName;

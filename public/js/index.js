@@ -200,7 +200,7 @@
          $('#tougrptname-edit').val(torneo);
          $('#touinfscode-edit-hidden').val(touinfscode);
          $('#tougrpicode-edit-hidden').val(tougrpicode);
-         debugger
+
          $('#selecttorneo-edit').val(touinfscode).trigger('change');
          $("#imagetorneo-edit").attr("src", imgs.src);
      } else {
@@ -1209,6 +1209,17 @@
                  }
                  return '';
              }
+         }, {
+             width: 30,
+             orderable: false,
+             sortable: false,
+             render: function(data, type, full, meta) {
+                 if (full.touttebenbl != 0) {
+
+                     return "<tr><a style='color:orange !important' class='btn-estado' OnClick='EquipoChampions(" + full.touteascode + "," + full.touinfscode + "," + full.touttescode + ");' title='CAMPEON'><i class='fa fa-star'></i></a></tr>";
+                 }
+                 return '';
+             }
          }],
          buttons: [{
              text: 'AGREGAR',
@@ -1768,7 +1779,7 @@
              processData: false,
              data: formData,
              success: function(data) {
-                 debugger
+
                  document.getElementById('form-button-register').disabled = 0;
                  if (data.mail == true) {
 
@@ -1787,7 +1798,7 @@
                  }
              },
              error: function(xhr, status, error) {
-                 debugger
+
              }
          });
      }
@@ -1877,7 +1888,7 @@
          processData: false,
          data: formData,
          success: function(data) {
-             debugger
+
              if (data == false) {
                  swal({
                      // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
@@ -2086,7 +2097,7 @@
              toufixicode: toufixicode
          },
          success: function(data) {
-             debugger
+
              $('#select-touteascode1').empty();
              $('#select-touteascode2').empty();
              combo1();
@@ -2490,6 +2501,34 @@
      });
      // swal("Changed!", "Confirm button text was changed!!", "success");
  }
+
+ function EquipoChampions(touteascode, touinfscode, touttescode) {
+     var _token = $('input[name=_token]').val();
+     $.ajax({
+         url: '/EquipoChampions',
+         type: 'post',
+         headers: {
+             'X-CSRF-TOKEN': _token
+         },
+         datatype: 'json',
+         data: {
+             touteascode: touteascode,
+             touinfscode: touinfscode,
+             touttescode: touttescode
+         },
+         success: function(data) {
+             $('#table-admin-torneo-equipo').DataTable().ajax.reload();
+             swal({
+                 title: " COMPLETADO",
+                 type: "success",
+                 showConfirmButton: false,
+                 closeOnConfirm: false,
+                 timer: 2000
+             });
+         }
+     });
+     // swal("Changed!", "Confirm button text was changed!!", "success");
+ }
  $("#formgrupoconfig").submit(function(e) {
      e.preventDefault();
      var torneo = window.getParameterByName("id");
@@ -2533,7 +2572,7 @@
          //     tougrpicode: tougrpicode
          // },
          success: function(data) {
-             debugger
+
              window.location.reload();
          },
      });
@@ -2685,8 +2724,7 @@
      toufixicode = $('#toufixicode-hidden').val();
      toufixdplay = $('#dates-toufixdplay').val();
      toufixthour = $('#dates-toufixthour').val();
-     toufixyxval = $('#toufix-toufixyxval').val();
-     debugger;
+     toufixyxval = $('#toufix-toufixyxval').val();;
      tipo = $('#toufixicode-tipo').val();
      $.ajax({
          url: '/toufix',
@@ -2735,7 +2773,7 @@
  }
 
  function mi_tincazo(toufixicode, plapreicode, val1, val2) {
-     debugger
+
      document.getElementById('form-agregar-tincazo-button').disabled = 0;
      $('#agregar-toufixicode-hidden').val(toufixicode);
      $('#agregar-plapreicode-hidden').val(plapreicode);
@@ -3105,7 +3143,7 @@
              var toufixsscr2Pendientes = '';
              var score_dash = '-';
              for (var i = 0; i < data.listaPartidosPendiente.length; i++) {
-                 debugger
+
                  var plapreicodePendientes = data.listaPartidosPendiente[i].plapreicode == null ? null : data.listaPartidosPendiente[i].plapreicode;
                  var plapresscr1Pendientes = data.listaPartidosPendiente[i].plapresscr1 == null ? "" : data.listaPartidosPendiente[i].plapresscr1;
                  var plapresscr2Pendientes = data.listaPartidosPendiente[i].plapresscr2 == null ? "" : data.listaPartidosPendiente[i].plapresscr2;

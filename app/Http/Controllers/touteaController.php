@@ -163,6 +163,19 @@ class touteaController extends Controller
         return response()->json($data);
 
     }
+    public function EquipoChampions(Request $request)
+    {
+        // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);
+        $data = DB::table('toutte')
+        ->where('toutte.touteascode', $request->touteascode)
+        ->where('toutte.touinfscode', $request->touinfscode)
+        ->where('toutte.touttescode', $request->touttescode)
+        ->update([
+            'touttebisch' => 1
+        ]);
+        return response()->json($data);
+
+    }
     public function agregarTorneosEquipos(Request $request)
     {
         // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);

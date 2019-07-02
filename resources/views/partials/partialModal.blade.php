@@ -1249,6 +1249,7 @@
                                                 <th>TIPO</th>
                                                 <TH></TH>
                                                 <TH></TH>
+                                                <TH></TH>
             
                                               </tr>
                                         </thead>

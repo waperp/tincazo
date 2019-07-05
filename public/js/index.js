@@ -401,9 +401,13 @@
              if (tougrpschpt > 0) {
                  this.api().columns([2, 3, 4]).visible(false);
                  this.api().columns([5, 6]).visible(true);
+                 $('#tincazos_champions').show();
+                 $('#tincazos_champions_not').hide();
              } else {
                  this.api().columns([2, 3, 4]).visible(true);
                  this.api().columns([5, 6]).visible(false);
+                 $('#tincazos_champions').hide();
+                 $('#tincazos_champions_not').show();
              }
 
          },

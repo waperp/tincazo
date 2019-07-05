@@ -126,6 +126,7 @@ Description:  Styles for displaying content with some of the most commonly used 
 
 .ul_tincazos {
     display: flex;
+    margin: 0;
     flex-direction: row;
     /* Below sets up your display method: flex-start|flex-end|space-between|space-around */
     justify-content: flex-start;
@@ -142,7 +143,7 @@ Description:  Styles for displaying content with some of the most commonly used 
 }
 
 .ul_tincazos li strong {
-    text-decoration: underline;
+    color: red;
 }
 
 .mitorneo[style='display: block;']+table {

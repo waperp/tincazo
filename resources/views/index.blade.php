@@ -420,10 +420,12 @@
             <h4>
                 TABLA GENERAL
             </h4>
-            <ul class="ul_tincazos" style="margin:0; font-size:10px;">
+            <ul id="tincazos_champions" class="ul_tincazos" style="display:none ;font-size:10px;">
             <li>
             <strong>TI: </strong> Tincazo</li><li>
-            <strong>CA: </strong> Campeon</li><li> <strong>TA: </strong> Tincazo Alto</li>
+            <strong>CA: </strong> Campeon</li></ul>
+            <ul id="tincazos_champions_not"class="ul_tincazos" style="display:none ; font-size:10px;">
+           <li> <strong>TA: </strong> Tincazo Alto</li>
             <li><strong>TM :</strong> Tincazo Medio</li>
             <li><strong>TB :</strong> Tincazo Bajo</li></ul>
         </div>

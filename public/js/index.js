@@ -395,6 +395,18 @@
              [5, 10, 25, 50, -1],
              [5, 10, 25, 50, "Todos"]
          ],
+         initComplete: function() {
+             var tougrpschpt = $('#session-select-tougrpschpt').val();
+
+             if (tougrpschpt > 0) {
+                 this.api().columns([2, 3, 4]).visible(false);
+                 this.api().columns([5, 6]).visible(true);
+             } else {
+                 this.api().columns([2, 3, 4]).visible(true);
+                 this.api().columns([5, 6]).visible(false);
+             }
+
+         },
          language: {
              // processing: "<img src='/images/db/loading.gif'>",
              processing: "Cargando",
@@ -501,6 +513,16 @@
              sortable: false
          }, {
              data: 'TB',
+             searchable: false,
+             orderable: false,
+             sortable: false
+         }, {
+             data: 'TINCAZOS',
+             searchable: false,
+             orderable: false,
+             sortable: false
+         }, {
+             data: 'CAMPEON',
              searchable: false,
              orderable: false,
              sortable: false
@@ -1203,8 +1225,7 @@
              orderable: false,
              sortable: false,
              render: function(data, type, full, meta) {
-                 if (full.touttebenbl != 0) {
-
+                 if (full.touttebenbl == 1 && full.touttebisch == 0) {
                      return "<tr><a class='btn-estado' OnClick='EstadoEquipoTorneo(" + full.touteascode + "," + full.touinfscode + "," + full.touttescode + ");' title='RETIRAR'><i class='fa fa-minus-circle'></i></a></tr>";
                  }
                  return '';
@@ -1214,9 +1235,12 @@
              orderable: false,
              sortable: false,
              render: function(data, type, full, meta) {
-                 if (full.touttebenbl != 0) {
+                 if (full.touttebenbl == 0 && full.touttebisch == 1) {
+                     return "<tr><img src='http://hackathon.ccafs.cgiar.org/wp-content/uploads/2014/10/icon-award_04.png' width='25px'></tr>";
 
+                 } else if (full.touttebenbl == 1 && full.touttebisch == 0) {
                      return "<tr><a style='color:orange !important' class='btn-estado' OnClick='EquipoChampions(" + full.touteascode + "," + full.touinfscode + "," + full.touttescode + ");' title='CAMPEON'><i class='fa fa-star'></i></a></tr>";
+
                  }
                  return '';
              }
@@ -2505,7 +2529,7 @@
  function EquipoChampions(touteascode, touinfscode, touttescode) {
      var _token = $('input[name=_token]').val();
      $.ajax({
-         url: '/EquipoChampions',
+         url: '/EquipoChampionsValidate',
          type: 'post',
          headers: {
              'X-CSRF-TOKEN': _token
@@ -2517,14 +2541,65 @@
              touttescode: touttescode
          },
          success: function(data) {
-             $('#table-admin-torneo-equipo').DataTable().ajax.reload();
-             swal({
-                 title: " COMPLETADO",
-                 type: "success",
-                 showConfirmButton: false,
-                 closeOnConfirm: false,
-                 timer: 2000
-             });
+             debugger
+             if (data > 0) {
+                 swal({
+                     title: "Faltan equipos por desclasificar? ",
+                     text: "¿Desea hacerlo?",
+                     type: "warning",
+                     showCancelButton: true,
+                     confirmButtonText: "Si",
+                     cancelButtonText: "No",
+                     closeOnConfirm: true,
+                     closeOnCancel: false
+                 }, function(isConfirm) {
+                     if (isConfirm) {
+                         var _token = $('input[name=_token]').val();
+                         $.ajax({
+                             url: '/EquipoChampions',
+                             type: 'post',
+                             headers: {
+                                 'X-CSRF-TOKEN': _token
+                             },
+                             datatype: 'json',
+                             data: {
+                                 touteascode: touteascode,
+                                 touinfscode: touinfscode,
+                                 touttescode: touttescode
+                             },
+                             success: function(data) {
+                                 $('#table-admin-torneo-equipo').DataTable().ajax.reload();
+                             }
+                         });
+                     } else {
+                         swal({
+                             title: "CANCELADO",
+                             type: "error",
+                             showConfirmButton: false,
+                             closeOnConfirm: false,
+                             timer: 1000
+                         });
+                     }
+                 });
+             } else {
+                 var _token = $('input[name=_token]').val();
+                 $.ajax({
+                     url: '/EquipoChampions',
+                     type: 'post',
+                     headers: {
+                         'X-CSRF-TOKEN': _token
+                     },
+                     datatype: 'json',
+                     data: {
+                         touteascode: touteascode,
+                         touinfscode: touinfscode,
+                         touttescode: touttescode
+                     },
+                     success: function(data) {
+                         $('#table-admin-torneo-equipo').DataTable().ajax.reload();
+                     }
+                 });
+             }
          }
      });
      // swal("Changed!", "Confirm button text was changed!!", "success");
@@ -3066,10 +3141,13 @@
              var text = "";
              for (var i = 0; i < data.length; i++) {
                  var value = data[i].cantidad
-                 if (data[i].touttebenbl <= 0) {
+                 if (data[i].touttebenbl == 0 && data[i].touttebisch == 0) {
                      var style = "style='cursor: pointer; background-color: rgba(0, 0, 0, 0.1803921568627451); text-decoration:line-through;font-weight:bold; color:black;'";
-                 } else {
+                 } else if (data[i].touttebenbl == 0 && data[i].touttebisch == 1) {
+                     var style = "style='cursor: pointer; background-image: url(/images/champions.png);background-repeat: no-repeat;background-size: cover;'";
+                 } else if (data[i].touttebenbl == 1 && data[i].touttebisch == 0) {
                      var style = "style='cursor: pointer'";
+
                  }
                  if (value > 1) {
                      text = "JUGAD0RES";
@@ -3379,7 +3457,7 @@
      });
  }
 
- function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicode, plainficode, tougrpsxval) {
+ function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicode, plainficode, tougrpsxval, tougrpschpt) {
 
      var _token = $('input[name=_token]').val();
      $.ajax({
@@ -3395,7 +3473,8 @@
              touinfscode: touinfscode,
              tougplicode: tougplicode,
              plainficode: plainficode,
-             tougrpsxval: tougrpsxval
+             tougrpsxval: tougrpsxval,
+             tougrpschpt: tougrpschpt,
          },
          success: function(data) {
              window.location.href = '/?q=true';

@@ -69,6 +69,7 @@ Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
 
 Route::get('PoliticaPrivacidad', 'HomeController@politica');
 Route::post('EquipoChampions', 'touteaController@EquipoChampions');
+Route::post('EquipoChampionsValidate', 'touteaController@EquipoChampionsValidate');
 
 Route::get('Guia', 'HomeController@guia');
 Route::get('tablaAdminTorneos', 'HomeController@tablaAdminTorneos');

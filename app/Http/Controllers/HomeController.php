@@ -51,6 +51,7 @@ class HomeController extends Controller
         Session::put('select-tougplicode', $request->tougplicode);
         Session::put('select-plainficode', $request->plainficode);
         Session::put('select-tougrpsxval', $request->tougrpsxval);
+        Session::put('select-tougrpschpt', $request->tougrpschpt);
         if(Session::get('plainficode') == Session::get('select-plainficode')){
             Session::put('session-admin-tougrp', true);
         }else{
@@ -245,9 +246,12 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         // } else {
         //      return response(view('403'), 403);
         // }
-        $data = DB::select('Select RANK() OVER (Order By tougpl.tougplipwin desc) as POS, plainf.plainficode , plainf.plainfvimgp, plainf.plainftnick JUGADOR,
-tougpl.tougplsmaxp TA, tougpl.tougplsmedp TM, tougpl.tougplslowp TB, tougpl.tougplipwin PTOS from tougpl join plainf on tougpl.plainficode =
-plainf.plainficode where tougpl.tougrpicode = ? and tougpl.constascode = 2 order by tougpl.tougplipwin desc, plainf.plainftnick asc', 
+        $data = DB::select('select RANK() OVER (ORDER BY tougpl.tougplipwin DESC) AS POS, 
+        plainf.plainficode , plainf.plainfvimgp, plainf.plainftnick JUGADOR,
+        tougpl.tougplsmaxp TA, tougpl.tougplsmedp TM, tougpl.tougplslowp TB, 
+        tougpl.`tougplipwin` TINCAZOS, tougpl.`tougplschpt` CAMPEON,
+        tougpl.tougplipwin + tougpl.`tougplschpt` PTOS FROM tougpl JOIN plainf ON tougpl.plainficode = plainf.plainficode
+        WHERE tougpl.tougrpicode = ? AND tougpl.constascode = 2 ORDER BY tougpl.tougplipwin DESC, plainf.plainftnick ASC', 
 [Session::get('select-tougrpicode')]);
             return Datatables::of($data)->make(true);
 
@@ -405,7 +409,8 @@ WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode
     }
     public function estadisticas(Request $request)
     {
-        $estadisticas = DB::select('Select toutte.touttebenbl, toutea.touteavimgt, toutte.touttescode,toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea
+        $estadisticas = DB::select('Select toutte.touttebisch, toutte.touttebenbl, toutea.touteavimgt, 
+        toutte.touttescode,toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea
             join toutte on toutea.touteascode = toutte.touteascode
 join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
 group by  toutte.touttescode ,toutea.touteavimgt, toutea.touteatname, toutte.touttebenbl', [Session::get('select-tougrpicode')]);

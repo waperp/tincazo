@@ -7,6 +7,7 @@
   <input type="hidden" value="{{ Session::get('select-touinfscode') }}" id="session-select-touinfscode">
   <input type="hidden" value="{{ Session::get('select-tougplicode') }}" id="session-select-tougplicode">
   <input type="hidden" value="{{ Session::get('select-plainficode') }}" id="session-select-plainficode">
+  <input type="hidden" value="{{ Session::get('select-tougrpschpt') }}" id="session-select-tougrpschpt">
   <input type="hidden" value="{{ Session::get('select-q') }}" id="session-select-q">
   <input type="hidden"  id="tougrpicode-hidden-filtrer">
   @if(!Session::has('select-q'))
@@ -220,18 +221,18 @@
                                       <input type="hidden" id="tougrpsminp{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpsminp}}">
                                       <input type="hidden" id="tougrpsxval{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpsxval}}">
                                   <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}" value="{{ $objTorneosUsers->tougrpschpt}}">
-                                <li class="posts__item posts__item--category-1">
+                                <li class="posts__item posts__item--category-1"  style="cursor: pointer;" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
                                   <figure class="posts__thumb">
-                                    <a href="javascript:void(0)" data-id="{{ $objTorneosUsers->tougrpicode }}" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }})">
+                                    <a data-id="{{ $objTorneosUsers->tougrpicode }}">
                                       <img id="image-torneo-{{ $objTorneosUsers->tougrpicode }}" name="image-torneo-{{ $objTorneosUsers->tougrpicode }}"  
                                       style="width: 50px ; height: 50px; border-radius: 20%" src="/images/{{ $objTorneosUsers->tougrpvimgg  }}" >
                                     </a>
                                   </figure>
                                   <div class="posts__inner">
                                     <div class="posts__cat">
-                                      <span style="white-space: pre-wrap; width: 100%"  class="label posts__cat-label"><a href="javascript:void(0)" style="color: white;font-size: 11px;" data-id="{{ $objTorneosUsers->tougrpicode }}" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }})">{{ $objTorneosUsers->tougrptname }}</a></span>
+                                      <span style="white-space: pre-wrap; width: 100%"  class="label posts__cat-label"><a style="color: white;font-size: 11px;">{{ $objTorneosUsers->tougrptname }}</a></span>
                                     </div>
-                                    <h6 class="posts__title"><a href="javascript:void(0)" style="color: white;font-size:9px;"  data-id="{{ $objTorneosUsers->tougrpicode }}" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }})">{{ $objTorneosUsers->touinftname }}</a> </h6>
+                                    <h6 class="posts__title"><a  style="color: white;font-size:9px;"  data-id="{{ $objTorneosUsers->tougrpicode }}">{{ $objTorneosUsers->touinftname }}</a> </h6>
                                   </div>
                         </li>
                         @endforeach
@@ -419,6 +420,12 @@
             <h4>
                 TABLA GENERAL
             </h4>
+            <ul class="ul_tincazos" style="margin:0; font-size:10px;">
+            <li>
+            <strong>TI: </strong> Tincazo</li><li>
+            <strong>CA: </strong> Campeon</li><li> <strong>TA: </strong> Tincazo Alto</li>
+            <li><strong>TM :</strong> Tincazo Medio</li>
+            <li><strong>TB :</strong> Tincazo Bajo</li></ul>
         </div>
         <div class="widget__content card__content">
             <div class="table-responsive">
@@ -439,6 +446,12 @@
                             </th>
                             <th>
                                 TB
+                            </th>
+                            <th>
+                                TI
+                            </th>
+                            <th>
+                                CA
                             </th>
                             <th>
                                 PTS

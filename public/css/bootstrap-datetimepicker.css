@@ -9,7 +9,8 @@
 .bootstrap-datetimepicker-widget.dropdown-menu {
   display: block;
   margin: 2px 0;
-  padding: 4px;
+  z-index: 100000;
+  padding: 4px;overflow: hidden;
   width: 19em;
 }
 @media (min-width: 768px) {

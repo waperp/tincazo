@@ -30,7 +30,78 @@ class HomeController extends Controller
 
         return view('indexOfline', compact('listaTouinf'));
     }
+    public function matches(Request $request)
+    {
+        Session::put('select-q', true);
 
+        $listaTorneos = [] ;
+        $date = Carbon::now();
+        // return  dd$request->ajax();
+       
+        // return $request->all();
+        // Session::put('touinfscode',$request->touinfscode);
+        $listaConmen     = DB::table('conmem')->get();
+        $listaTouinf = DB::table('touinf')->where('touinfdendt','>=',Carbon::now()->toDateString())->get();
+        $listaTouinfAll = DB::table('touinf')->get();
+
+        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt','>',Carbon::now()->toDateString())->get();
+        $listaTipoPlantel = DB::table('contyp')->where('confrmicode',2)->get();
+        $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
+        JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
+        JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
+WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
+        $listaToutea     = DB::table('toutea')->get();
+        $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode',Session::get('select-tougrpicode'))->first();
+        $listaEditPerfil = DB::table('secusr')
+            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+            ->where('plainf.plainficode', Session::get('plainficode'))
+            ->first();
+        $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
+        if(Session::has('session_link_tournament')){
+            $touinf_link_tournament = Session::get('session_link_tournament');
+        $listaTorneos       = DB::select('select tougrp.*,touinf.*, tougpl.tougplicode
+        from tougrp
+        join touinf on tougrp.touinfscode = touinf.touinfscode
+        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
+        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'),$touinf_link_tournament->touinfscode]);
+        }
+
+        $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
+            ->where('touinf.touinfscode', Session::get('select-touinfscode'))
+            ->where('touinf.touinfdstat', '>', $date->toDateString())
+            ->first();
+        /*dd($fechaValidar);*/
+
+        $listaEquiposElegir = DB::select('select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
+        from toutea
+        join toutte on toutea.touteascode = toutte.touteascode
+        join tougrp on toutte.touinfscode = tougrp.touinfscode
+        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
+        left join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
+        where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc',
+            [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]);
+
+        $miCampeon = DB::select('select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
+        from toutea
+        join toutte on toutea.touteascode = toutte.touteascode
+        join tougrp on toutte.touinfscode = tougrp.touinfscode
+        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
+        join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
+             where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc limit 1',
+            [Session::get('select-tougplicode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]);
+        $estadisticas = DB::select('Select toutea.touteavimgt, toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea join toutte on toutea.touteascode = toutte.touteascode
+        join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
+        group by  toutea.touteavimgt, toutea.touteatname', [Session::get('select-tougrpicode')]);
+
+        $listaInvitaciones = DB::select('Select tougrp.tougrpicode, tougrp.tougrpvimgg, tougrp.tougrptname, touinf.touinftname
+        from tougrp join tougpl on tougrp.tougrpicode = tougpl.tougrpicode join touinf on tougrp.touinfscode = touinf.touinfscode
+        where tougpl.plainficode = ? and tougpl.constascode = 1', [Session::get('plainficode')]);
+
+        return view('matches', compact('listaConmen', 'listaTouinf','listaTipoPlantel', 'listaTorneos', 'listaInvitaciones',
+            'listaContypEquipos', 'listaToutea', 'listaEquiposElegir', 'miCampeon', 'estadisticas',
+            'listaEditPerfil', 'fechaValidar','listaTouinfSlider','validarTougrpbchva','listaTorneosMenu','listaTouinfAll'));
+
+    }
     public function sessionLink(Request $request)
     {
         // return response()->json($request->all());
@@ -329,30 +400,30 @@ t2 on toufix.touttescod2 = t2.touttescode
     public function tusTincazosPendientes(Request $request)
     {
         // return $request->all();
-        $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
-toutea1.touteavimgt, 
-toutea1.touteatname, 
-toufix.toufixsscr1, 
-toufix.toufixspen1, 
-toutea2.touteavimgt AS touteavimgt2, 
-toutea2.touteatname AS touteatname2, 
-toufix.toufixsscr2, 
-toufix.toufixspen2, 
-toufix.toufixbpnlt, 
-consta.constatdesc,
-toufix.toufixdplay,
-toufix.toufixthour, 
-consta.constascode, 
-consta.constatdesc, plapre.plapreicode, plapre.plapresscr1, plapre.plapresscr2
-FROM toufix 
-JOIN toutte toutte1 ON toufix.touttescod1 = toutte1.touttescode 
-JOIN toutte toutte2 ON toufix.touttescod2 = toutte2.touttescode
-JOIN toutea toutea1 ON toutte1.touteascode = toutea1.touteascode 
-JOIN toutea toutea2 ON toutte2.touteascode = toutea2.touteascode 
-JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
-LEFT JOIN plapre ON toufix.toufixicode = plapre.toufixicode AND plapre.tougplicode = ? 
-WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
-            [$request->tougplicode, $request->touinfscode, $request->touinfscode]);
+                    $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
+            toutea1.touteavimgt, 
+            toutea1.touteatname, 
+            toufix.toufixsscr1, 
+            toufix.toufixspen1, 
+            toutea2.touteavimgt AS touteavimgt2, 
+            toutea2.touteatname AS touteatname2, 
+            toufix.toufixsscr2, 
+            toufix.toufixspen2, 
+            toufix.toufixbpnlt, 
+            consta.constatdesc,
+            toufix.toufixdplay,
+            toufix.toufixthour, 
+            consta.constascode, 
+            consta.constatdesc, plapre.plapreicode, plapre.plapresscr1, plapre.plapresscr2
+            FROM toufix 
+            JOIN toutte toutte1 ON toufix.touttescod1 = toutte1.touttescode 
+            JOIN toutte toutte2 ON toufix.touttescod2 = toutte2.touttescode
+            JOIN toutea toutea1 ON toutte1.touteascode = toutea1.touteascode 
+            JOIN toutea toutea2 ON toutte2.touteascode = toutea2.touteascode 
+            JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
+            LEFT JOIN plapre ON toufix.toufixicode = plapre.toufixicode AND plapre.tougplicode = ? 
+            WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
+                        [$request->tougplicode, $request->touinfscode, $request->touinfscode]);
 
 
 
@@ -360,7 +431,34 @@ WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode
             'listaPartidosPendiente' => $listaPartidosPendiente,
         ]);
     }
-
+    public function matches_all_web(Request $request)
+    {
+        // return $request->all();
+                    $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
+            toutea1.touteavimgt, 
+            toutea1.touteatname, 
+            toufix.toufixsscr1, 
+            toufix.toufixspen1, 
+            toutea2.touteavimgt AS touteavimgt2, 
+            toutea2.touteatname AS touteatname2, 
+            toufix.toufixsscr2, 
+            toufix.toufixspen2, 
+            toufix.toufixbpnlt, 
+            toufix.toufixdplay,
+            toufix.toufixthour, 
+            consta.constascode, 
+            consta.constatdesc FROM toufix 
+            JOIN toutte toutte1 ON toufix.touttescod1 = toutte1.touttescode 
+            JOIN toutte toutte2 ON toufix.touttescod2 = toutte2.touttescode
+            JOIN toutea toutea1 ON toutte1.touteascode = toutea1.touteascode 
+            JOIN toutea toutea2 ON toutte2.touteascode = toutea2.touteascode 
+            JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
+            WHERE toutte1.touinfscode = ? 
+            AND toutte2.touinfscode = ?
+            AND toufix.toufixdplay BETWEEN ? AND ?
+            order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
+        return response()->json($listaPartidosPendiente);
+    }
     public function tusTincazosJuego(Request $request)
     {
 

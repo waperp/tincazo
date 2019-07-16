@@ -123,7 +123,9 @@ Description:  Styles for displaying content with some of the most commonly used 
 
 
 /* Headings */
-
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    z-index: 9999 !important;
+}
 .ul_tincazos {
     display: flex;
     margin: 0;
@@ -22932,7 +22934,7 @@ td.team-leader__goals {
     border-right: 8px solid #38a9ff;
     width: 0;
     height: 0;
-    margin-left: .5em;
+    margin-left: .3em;
     margin-top: -20px;
     margin-bottom: 0.1em;
     /*     content: "";

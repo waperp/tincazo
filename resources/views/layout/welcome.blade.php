@@ -20,7 +20,7 @@
       <link href="assets/fonts/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
       <link href="assets/vendor/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
       <link href="assets/vendor/slick/slick.css" rel="stylesheet">
-        <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/bootstrap-datetimepicker.css?vercss1={{ time() }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css?vercss1={{ time() }}"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/select.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/buttons.dataTables.min.css"/>
@@ -70,7 +70,6 @@
                 @section('sidebar')
                 @show
                 @yield('silder')
-                @if (Session::has('plainficode'))
                     @if(Session::has('select-q') && Session::get('select-q') == true)
                         <div class="site-content" >
                           <div class="container" >
@@ -80,7 +79,6 @@
                           </div>
                       </div>
                     @endif
-                @endif
             
                 <footer class="footer" id="footer" >
                     <div class="footer-widgets">
@@ -169,7 +167,8 @@
 <script src="/assets/vendor/jpreloader2/js/jpreloader.js" type="text/javascript">
 </script>
   <script src="/js/sum.js" type="text/javascript"></script>
-
+  <script src="/js/matches.js?v={{ time() }}" type="text/javascript">
+  </script>
 
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {

@@ -12,7 +12,7 @@
                 </h4>
             </div>
             <div class="widget__content card__content">
-                @foreach($listaTouinfAll as $objTorneosUsersMenu)
+                @foreach($listaTouinf as $objTorneosUsersMenu)
 
                 <ul class="posts posts--simple-list">
                     <li  class="posts__item  post__items__custom" onclick="load_matches({{$objTorneosUsersMenu->touinfscode}},this)">

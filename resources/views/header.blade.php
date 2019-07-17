@@ -84,8 +84,10 @@
                     </div>
                     <nav class="main-nav clearfix">
                         <ul class="main-nav__list">
-                            <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-                            <li ><a  href="/matches">PARTIDOS</a></li>
+                            <li @if(trim(\Request::segment(1))."/*" == 
+                            trim(substr("/",1))."/*") class="active" @else @endif ><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                            <li @if(trim(\Request::segment(1))."/*" == 
+									trim(substr("/matches",1))."/*") class="active active-white" @else @endif><a   style="color:orange" href="/matches">PARTIDOS</a></li>
 
                             <li ><a  href="/Guia" target="_blank">GUIA</a></li>
 

@@ -121,7 +121,9 @@ Description:  Styles for displaying content with some of the most commonly used 
 // --------------------------------------------------
 */
 
-
+.active-white > a{
+color : #fff !important;
+}
 /* Headings */
 .post__items__custom{
     cursor:pointer;margin: 0  !important;padding-left: 0 !important;padding-right: 0 !important;

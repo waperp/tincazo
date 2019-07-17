@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank"><img width="20%" src="/images/google-play-badge.png" alt=""></a>
+                                        <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank"><img width="30%" src="/images/google-play-badge.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>

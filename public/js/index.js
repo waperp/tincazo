@@ -1716,11 +1716,7 @@
      format: 'DD-MM-YYYY',
      defaultDate: new Date(),
  })
- $('#datetimepicker-toufixdplay-matches-full').datetimepicker({
-    locale: 'es',
-    format: 'DD-MM-YYYY',
-    defaultDate: new Date(),
-})
+
  $('#datetimepicker-fixture').datetimepicker({
      locale: 'es',
      format: 'DD-MM-YYYY',

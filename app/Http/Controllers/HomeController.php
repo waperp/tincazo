@@ -433,8 +433,9 @@ t2 on toufix.touttescod2 = t2.touttescode
     }
     public function matches_all_web(Request $request)
     {
-        // return $request->all();
-                    $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
+        $listaPartidosPendiente =[];
+        if($request->touteatname != ''){
+            $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
             toutea1.touteavimgt, 
             toutea1.touteatname, 
             toufix.toufixsscr1, 
@@ -456,8 +457,38 @@ t2 on toufix.touttescod2 = t2.touttescode
             WHERE toutte1.touinfscode = ? 
             AND toutte2.touinfscode = ?
             AND toufix.toufixdplay BETWEEN ? AND ?
+            AND MATCH(toutea1.touteatname) AGAINST('{$request->touteatname}*' IN BOOLEAN MODE)
             order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
-        return response()->json($listaPartidosPendiente);
+
+        }else{
+            $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
+            toutea1.touteavimgt, 
+            toutea1.touteatname, 
+            toufix.toufixsscr1, 
+            toufix.toufixspen1, 
+            toutea2.touteavimgt AS touteavimgt2, 
+            toutea2.touteatname AS touteatname2, 
+            toufix.toufixsscr2, 
+            toufix.toufixspen2, 
+            toufix.toufixbpnlt, 
+            toufix.toufixdplay,
+            toufix.toufixthour, 
+            consta.constascode, 
+            consta.constatdesc FROM toufix 
+            JOIN toutte toutte1 ON toufix.touttescod1 = toutte1.touttescode 
+            JOIN toutte toutte2 ON toufix.touttescod2 = toutte2.touttescode
+            JOIN toutea toutea1 ON toutte1.touteascode = toutea1.touteascode 
+            JOIN toutea toutea2 ON toutte2.touteascode = toutea2.touteascode 
+            JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
+            WHERE toutte1.touinfscode = ? 
+            AND toutte2.touinfscode = ?
+            AND toufix.toufixdplay BETWEEN ? AND ?
+
+            order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
+
+        }
+        // return $request->all();
+                            return response()->json($listaPartidosPendiente);
     }
     public function tusTincazosJuego(Request $request)
     {

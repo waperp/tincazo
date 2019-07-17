@@ -12,20 +12,19 @@
                 </h4>
             </div>
             <div class="widget__content card__content">
-                @foreach($listaTouinf as $objTorneosUsersMenu)
+                @foreach($listaTouinfAll as $objTorneosUsersMenu)
 
                 <ul class="posts posts--simple-list">
-                    <li style="cursor:pointer" class="posts__item posts__item--category-2" onclick="load_matches({{$objTorneosUsersMenu->touinfscode}})">
+                    <li  class="posts__item  post__items__custom" onclick="load_matches({{$objTorneosUsersMenu->touinfscode}},this)">
                         <figure class="posts__thumb">
-                            <a ><img style="width: 130px; height: 80px"
-                                    src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}" alt=""></a>
+                                <img class="post__items__custom__img" src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}" alt="">
                         </figure>
                         <div class="posts__inner">
                             <div class="posts__cat">
                                 <span class="label posts__cat-label"
                                     style="font-size: 10px;background-color: #38a9ff">{{$objTorneosUsersMenu->touinfdstat}}</span>
                             </div>
-                            <h6 class="posts__title"><a>{{ $objTorneosUsersMenu->touinftname }}</a></h6>
+                            <h6 class="posts__title">{{ $objTorneosUsersMenu->touinftname }}</h6>
                         </div>
                     </li>
                 </ul>
@@ -65,9 +64,9 @@
                                                     </div>
                                                 </div>
                                                 <input type="search" class="form-control buscar input-sm"
-                                                    placeholder="Busca por equipos">
+                                                    placeholder="Busca por equipos" >
                                                 <div class="input-group-btn">
-                                                    <button title="Buscar Tincazos" type="button" id="shearh-tincazos"
+                                                    <button title="Buscar Tincazos" type="button" id="shearh-matches"
                                                         class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>
                                                     </button>
                                                 </div>

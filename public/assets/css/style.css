@@ -123,6 +123,17 @@ Description:  Styles for displaying content with some of the most commonly used 
 
 
 /* Headings */
+.post__items__custom{
+    cursor:pointer;margin: 0  !important;padding-left: 0 !important;padding-right: 0 !important;
+}
+.post__items__custom__selected{
+    background-color:rgba(128, 128, 128, 0.4);
+}.post__items__custom__img__selected{
+    width: 130px; height: 80px;filter: brightness(0.8);
+}
+.post__items__custom__img{
+    width: 130px; height: 80px;
+}
 .bootstrap-datetimepicker-widget.dropdown-menu {
     z-index: 9999 !important;
 }

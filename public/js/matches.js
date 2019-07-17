@@ -1,22 +1,38 @@
-
+var touinfscode_static ;
 $(document).ready(function () {
-    
+    $('#datetimepicker-toufixdplay-matches-full').datetimepicker({
+        locale: 'es',
+        format: 'DD-MM-YYYY',
+        defaultDate: new Date(),
+    }).on('dp.hide', function(e) {
+        debugger
+        matches_all(touinfscode_static);
+    });
 });
+$(".refresh-button").on('click', function() {
+    matches_all(touinfscode_static);
+});
+$("#shearh-matches").on('click', function() {
+    matches_all(touinfscode_static);
+ });
 
 function matches_all(touinfscode) {
-    var touinfscode = touinfscode;
+    $('body').Wload({text:' Cargando'})
+    var touteatname = $(".buscar").val();
+    touinfscode_static = touinfscode;
     var toufixdplay = $('#datetimepicker-toufixdplay-matches-full').data('DateTimePicker').date().format('YYYY-MM-DD');
-debugger
+    debugger
     $.ajax({
         url: '/matches_all_web',
         type: 'get',
         dataType: 'json',
         data: {
             touinfscode: touinfscode,
-            toufixdplay: toufixdplay
+            toufixdplay: toufixdplay,
+            touteatname: touteatname
         },
         success: function (data) {
-
+           
             $('#matches_all').empty();
             $.each(data, function (i, item) {
                 // Create with DOM
@@ -106,10 +122,21 @@ debugger
             //     // for (var u = 0; u < data.listaPartidosFinalizados.length; u++) {
             //     //     $('#game-result-finalizados').append(html)
             //     // }
+        },
+        complete: function(data) {
+            $('body').Wload('hide',{time:1000})
         }
     });
 }
-function load_matches(touinfscode){
+function load_matches(touinfscode,elm){
+    debugger
+    touinfscode_static = touinfscode; 
+    $('li.posts__item').removeClass('post__items__custom__selected');
+    $('li > figure > img.post__items__custom__img').removeClass('post__items__custom__img__selected');
+    $(elm).addClass('post__items__custom__selected');
+    var img = $(elm).children().children()[0];
+    $(img).removeClass('post__items__custom__img__selected');
+    $(img).addClass('post__items__custom__img__selected');
     matches_all(touinfscode);
 }
 function constatdesc_matches (item){

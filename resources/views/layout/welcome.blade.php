@@ -40,10 +40,13 @@
         })(window,document,'script','dataLayer','GTM-WLKH8LT');</script> --}}
         <!-- End Google Tag Manager -->
         <!-- Template CSS-->
+        <link rel="stylesheet" href="/css/jquery.Wload.css">
+
 <link href="assets/css/style.css?vercss={{ time() }}" rel="stylesheet"/>
   <!-- Custom CSS-->
         <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css"/>
   <link href="assets/css/custom.css" rel="stylesheet"/>
+
     </head>
     <body  {{-- oncontextmenu="return false" --}} class="template-soccer">
         <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}"/>
@@ -169,7 +172,7 @@
   <script src="/js/sum.js" type="text/javascript"></script>
   <script src="/js/matches.js?v={{ time() }}" type="text/javascript">
   </script>
-
+<script src="/js/jquery.Wload.js"></script>
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
         if (window.history && history.pushState) {

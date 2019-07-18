@@ -249,8 +249,11 @@ WHERE tougpl.plainficode = ?',[Session::get('plainficode')]);
         $data = DB::select('select RANK() OVER (ORDER BY tougpl.tougplipwin DESC) AS POS, 
         plainf.plainficode , plainf.plainfvimgp, plainf.plainftnick JUGADOR,
         tougpl.tougplsmaxp TA, tougpl.tougplsmedp TM, tougpl.tougplslowp TB, 
-        tougpl.`tougplipwin` TINCAZOS, tougpl.`tougplschpt` CAMPEON,
-        tougpl.tougplipwin + tougpl.`tougplschpt` PTOS FROM tougpl JOIN plainf ON tougpl.plainficode = plainf.plainficode
+        tougpl.`tougplipwin` TINCAZOS, 
+        tougpl.`tougplschpt` CAMPEON,
+        tougpl.tougplipwin + tougpl.`tougplschpt` PTOS
+         FROM tougpl 
+         JOIN plainf ON tougpl.plainficode = plainf.plainficode
         WHERE tougpl.tougrpicode = ? AND tougpl.constascode = 2 ORDER BY tougpl.tougplipwin DESC, plainf.plainftnick ASC', 
 [Session::get('select-tougrpicode')]);
             return Datatables::of($data)->make(true);

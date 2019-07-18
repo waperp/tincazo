@@ -288,7 +288,7 @@ public function tournamentDay(Request $request)
          */
         $data = DB::table('tougpl')->select(\DB::raw('RANK() OVER (Order By tougpl.tougplipwin desc) as POS'),
             'plainf.plainficode', 'plainf.plainfvimgp', 'plainf.plainftnick as JUGADOR', 'tougpl.tougplsmaxp as TA',
-            'tougpl.tougplsmedp as TM', 'tougpl.tougplslowp as TB', 'tougpl.tougplipwin as PTOS')
+            'tougpl.tougplsmedp as TM', 'tougpl.tougplslowp as TB', 'tougpl.tougplipwin as TINCAZOS','tougpl.tougplschpt as CAMPEON',DB::raw('tougpl.tougplipwin + tougpl.tougplschpt as PTOS'))
             ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
             ->where('tougpl.tougrpicode', $request->tougrpicode)
             ->where('tougpl.constascode', 2)

@@ -29,6 +29,7 @@ class secusrController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     */
 
     public function create()
     {
@@ -180,14 +181,20 @@ class secusrController extends Controller
 
                             }
                         }
+                        $plainfddobp="";
+                        if($request->plainfddobp ) {
+                            $plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
+                        } else{
+                            $plainfddobp = Carbon::now()->format('Y-m-d');
+                        }
                         $plainf              = new plainf;
                         $secusr              = new secusr;
                         $plainf->plainftname = $request->plainftname;
-                        $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
+                        $plainf->plainfddobp =  $plainfddobp;
                         $plainf->plainftnick = $request->plainftname;
                         $plainf->plainfvimgp = $imageName;
                         $plainf->conmemscode = $request->conmemscode;
-                        $plainf->plainftgder = $request->plainftgder;
+                        $plainf->plainftgder = $request->plainftgder == '' ? 'M': $request->plainftgder; 
                         $plainf->save();
                         $secusr->secusrtmail = $request->secusrtmail;
                         $secusr->secusrtpass = Hash::make($request->password);
@@ -209,7 +216,7 @@ class secusrController extends Controller
                             Session::put('plainftnick', $plainf->plainftnick);
                             Session::put('conmemscode', $plainf->conmemscode);
                             Session::put('conmemvimgm', $conmem->conmemvimgm);
-                            Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
+                            // Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
                             DB::commit();
                             return response()->json(['success' => true, 'mail'      => false, 'type' => 'create',
                                 'plainf'                           => $plainf, 'conmem' => $conmem]);

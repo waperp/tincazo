@@ -865,7 +865,7 @@
                            <div class="col-md-5">
                             <div class="form-group">
                     <select class="select2 form-control" id="select-torneo-admin-torneos" style="width: 100%">
-                                                @foreach($listaTouinf as $objTorneosEquipos)
+                                                @foreach($listaTouinfAll as $objTorneosEquipos)
                                                     <option  value="{{$objTorneosEquipos->touinfscode}}">
                                                         {{$objTorneosEquipos->touinftname}}
                                                     </option>

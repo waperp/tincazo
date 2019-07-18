@@ -20,7 +20,7 @@
       <link href="assets/fonts/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
       <link href="assets/vendor/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
       <link href="assets/vendor/slick/slick.css" rel="stylesheet">
-        <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/bootstrap-datetimepicker.css?vercss1={{ time() }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css?vercss1={{ time() }}"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/datatable/select.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/buttons.dataTables.min.css"/>
@@ -40,10 +40,13 @@
         })(window,document,'script','dataLayer','GTM-WLKH8LT');</script> --}}
         <!-- End Google Tag Manager -->
         <!-- Template CSS-->
+        <link rel="stylesheet" href="/css/jquery.Wload.css">
+
 <link href="assets/css/style.css?vercss={{ time() }}" rel="stylesheet"/>
   <!-- Custom CSS-->
         <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css"/>
   <link href="assets/css/custom.css" rel="stylesheet"/>
+
     </head>
     <body  {{-- oncontextmenu="return false" --}} class="template-soccer">
         <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}"/>
@@ -70,7 +73,6 @@
                 @section('sidebar')
                 @show
                 @yield('silder')
-                @if (Session::has('plainficode'))
                     @if(Session::has('select-q') && Session::get('select-q') == true)
                         <div class="site-content" >
                           <div class="container" >
@@ -80,7 +82,6 @@
                           </div>
                       </div>
                     @endif
-                @endif
             
                 <footer class="footer" id="footer" >
                     <div class="footer-widgets">
@@ -102,6 +103,9 @@
                                               Politicas de Privacidad
                                           </a>
                                         </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank"><img width="30%" src="/images/google-play-badge.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -169,8 +173,9 @@
 <script src="/assets/vendor/jpreloader2/js/jpreloader.js" type="text/javascript">
 </script>
   <script src="/js/sum.js" type="text/javascript"></script>
-
-
+  <script src="/js/matches.js?v={{ time() }}" type="text/javascript">
+  </script>
+<script src="/js/jquery.Wload.js"></script>
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
         if (window.history && history.pushState) {

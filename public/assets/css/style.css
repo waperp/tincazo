@@ -121,9 +121,24 @@ Description:  Styles for displaying content with some of the most commonly used 
 // --------------------------------------------------
 */
 
-
+.active-white > a{
+color : #fff !important;
+}
 /* Headings */
-
+.post__items__custom{
+    cursor:pointer;margin: 0  !important;padding-left: 0 !important;padding-right: 0 !important;
+}
+.post__items__custom__selected{
+    background-color:rgba(128, 128, 128, 0.4);
+}.post__items__custom__img__selected{
+    width: 130px; height: 80px;filter: brightness(0.8);
+}
+.post__items__custom__img{
+    width: 130px; height: 80px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    z-index: 9999 !important;
+}
 .ul_tincazos {
     display: flex;
     margin: 0;
@@ -22932,7 +22947,7 @@ td.team-leader__goals {
     border-right: 8px solid #38a9ff;
     width: 0;
     height: 0;
-    margin-left: .5em;
+    margin-left: .3em;
     margin-top: -20px;
     margin-bottom: 0.1em;
     /*     content: "";

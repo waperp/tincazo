@@ -29,14 +29,17 @@ class secusrController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+<<<<<<< HEAD
      */
 
+=======
+*/
+>>>>>>> 04db42f8caefcb13aadd94735d01a543e3a7c719
     public function create()
     {
     return secusr::where('secusricode', 1)->first();
     }
-
-    /**
+ /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -146,8 +149,6 @@ class secusrController extends Controller
     }
     public function store(Request $request)
     {
-        
-
         DB::beginTransaction();
         try {
             $date = Carbon::now();
@@ -165,7 +166,6 @@ class secusrController extends Controller
                         'message' => $validator->errors()->all(),
                     ], 401);
                 } else {
-
                     $existMail = DB::table('secusr')->where('secusrtmail', $request->secusrtmail)->first();
                     if (!$existMail) {
                         if ($request->hasFile('plainfvimgp')) {
@@ -175,10 +175,8 @@ class secusrController extends Controller
                         } else {
                             if ($request->plainftgder == "M") {
                                 $imageName = "defaultm.jpg";
-
                             } else {
                                 $imageName = "defaultf.jpg";
-
                             }
                         }
                         $plainfddobp="";

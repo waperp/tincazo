@@ -1716,6 +1716,7 @@
      format: 'DD-MM-YYYY',
      defaultDate: new Date(),
  })
+
  $('#datetimepicker-fixture').datetimepicker({
      locale: 'es',
      format: 'DD-MM-YYYY',

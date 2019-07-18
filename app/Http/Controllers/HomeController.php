@@ -460,7 +460,7 @@ t2 on toufix.touttescod2 = t2.touttescode
             WHERE toutte1.touinfscode = ? 
             AND toutte2.touinfscode = ?
             AND toufix.toufixdplay BETWEEN ? AND ?
-            AND MATCH(toutea1.touteatname) AGAINST('{$request->touteatname}*' IN BOOLEAN MODE)
+            AND   toutea1.touteatname LIKE '{$request->touteatname}%'
             order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
 
         }else{

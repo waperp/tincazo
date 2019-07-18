@@ -25,20 +25,6 @@ class secusrController extends Controller
     {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-<<<<<<< HEAD
-     */
-
-=======
-*/
->>>>>>> 04db42f8caefcb13aadd94735d01a543e3a7c719
-    public function create()
-    {
-    return secusr::where('secusricode', 1)->first();
-    }
  /**
      * Store a newly created resource in storage.
      *

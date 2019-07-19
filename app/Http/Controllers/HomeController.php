@@ -433,8 +433,9 @@ t2 on toufix.touttescod2 = t2.touttescode
     }
     public function matches_all_web(Request $request)
     {
+
         $listaPartidosPendiente =[];
-        if($request->touteatname != ''){
+        if(!empty($request->touteatname)){
             $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
             toutea1.touteavimgt, 
             toutea1.touteatname, 
@@ -460,6 +461,7 @@ t2 on toufix.touttescod2 = t2.touttescode
             AND   toutea1.touteatname LIKE '{$request->touteatname}%'
             order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
         }else{
+
             $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
             toutea1.touteavimgt, 
             toutea1.touteatname, 
@@ -486,7 +488,7 @@ t2 on toufix.touttescod2 = t2.touttescode
 
         }
         // return $request->all();
-                            return response()->json($listaPartidosPendiente);
+        return response()->json($listaPartidosPendiente);
     }
     public function tusTincazosJuego(Request $request)
     {

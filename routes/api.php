@@ -46,7 +46,7 @@ Route::group([
         Route::get('getUsersToChampions', 'Auth\AuthController@getUsersToChampions');
         Route::get('getPositionsGeneralInfoUser', 'Auth\AuthController@getPositionsGeneralInfoUser');
         Route::get('getPositionsGeneralInfoUserDay', 'Auth\AuthController@getPositionsGeneralInfoUserDay');
-
+        Route::get('matches_all_web', 'HomeController@matches_all_web');
     });
     Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
 });

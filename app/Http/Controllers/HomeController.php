@@ -427,9 +427,6 @@ t2 on toufix.touttescod2 = t2.touttescode
             LEFT JOIN plapre ON toufix.toufixicode = plapre.toufixicode AND plapre.tougplicode = ? 
             WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
                         [$request->tougplicode, $request->touinfscode, $request->touinfscode]);
-
-
-
         return response()->json([
             'listaPartidosPendiente' => $listaPartidosPendiente,
         ]);
@@ -462,7 +459,6 @@ t2 on toufix.touttescod2 = t2.touttescode
             AND toufix.toufixdplay BETWEEN ? AND ?
             AND   toutea1.touteatname LIKE '{$request->touteatname}%'
             order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
-
         }else{
             $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
             toutea1.touteavimgt, 
@@ -486,7 +482,6 @@ t2 on toufix.touttescod2 = t2.touttescode
             WHERE toutte1.touinfscode = ? 
             AND toutte2.touinfscode = ?
             AND toufix.toufixdplay BETWEEN ? AND ?
-
             order by consta.constayorde",[$request->touinfscode,$request->touinfscode,$request->toufixdplay,$request->toufixdplay]);
 
         }

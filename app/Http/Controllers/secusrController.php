@@ -159,11 +159,7 @@ class secusrController extends Controller
                             $imageName = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
                             $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageName);
                         } else {
-                            if ($request->plainftgder == "M") {
-                                $imageName = "defaultm.jpg";
-                            } else {
-                                $imageName = "defaultf.jpg";
-                            }
+                                $imageName = "user.png";                            
                         }
                         $plainfddobp="";
                         if($request->plainfddobp ) {

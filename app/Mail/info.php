@@ -28,7 +28,7 @@ public $data;
      */
     public function build()
     {
-        return $this->from("Tincazo.info@gmail.com")->subject("Partidos del dia. Ya pusiste tu TINCAZO?")
+        return $this->from("soporte@tincazo.com")->subject("Partidos del dia. Ya pusiste tu TINCAZO?")
         ->markdown('emails.info');
 
     }

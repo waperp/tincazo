@@ -28,7 +28,7 @@ class WelcomeUser extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('Tincazo.info@gmail.com')->subject('Bienvenido a TINCAZO')
+        return $this->from('soporte@tincazo.com')->subject('Bienvenido a TINCAZO')
         ->markdown('emails.WelcomeUser');
     }
 }

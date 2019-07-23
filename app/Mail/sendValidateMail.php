@@ -32,7 +32,7 @@ class sendValidateMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->from('soporte@tincazo.com')->subject('REESTABLECER TU CONTRASEÑA')
+        return $this->from('soporte@tincazo.com','TINCAZO')->subject('REESTABLECER TU CONTRASEÑA')
         ->markdown('emails.sendValidateMail');
 
     }

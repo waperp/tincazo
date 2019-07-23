@@ -86,8 +86,10 @@
                         <ul class="main-nav__list">
                             <li @if(trim(\Request::segment(1))."/*" == 
                             trim(substr("/",1))."/*") class="active" @else @endif ><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                            @if(Session::has('plainficode') )
                             <li @if(trim(\Request::segment(1))."/*" == 
-									trim(substr("/matches",1))."/*") class="active active-white" @else @endif><a   style="color:orange" href="/matches">PARTIDOS</a></li>
+                  trim(substr("/matches",1))."/*") class="active active-white" @else @endif><a   style="color:orange" href="/matches">PARTIDOS</a></li>
+                      @endif
 
                             <li ><a  href="/Guia" target="_blank">GUIA</a></li>
 

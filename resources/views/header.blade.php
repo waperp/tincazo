@@ -89,6 +89,10 @@
                             @if(Session::has('plainficode') )
                             <li @if(trim(\Request::segment(1))."/*" == 
                   trim(substr("/matches",1))."/*") class="active active-white" @else @endif><a   style="color:orange" href="/matches">PARTIDOS</a></li>
+                  @else
+                  <li @if(trim(\Request::segment(1))."/*" == 
+                  trim(substr("/matches",1))."/*") class="active active-white" @else @endif><a   style="color:orange" data-toggle="modal" data-target="#modal-login-register-tabs">PARTIDOS</a></li>
+                  
                       @endif
 
                             <li ><a  href="/Guia" target="_blank">GUIA</a></li>

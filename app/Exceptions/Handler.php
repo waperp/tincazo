@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,8 +46,17 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
+    protected function unauthenticated($request, AuthenticationException $exception)
+{
+    if ($request->expectsJson()) {
+        return response()->json(['error' => 'Unauthenticated.'], 401);
+    }
+
+    return redirect()->guest(route('login'));
+}
     public function render($request, Exception $e)
     {
+        //dd($e);
         // if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
         //     return response()->json(['session_expired' => 'Lo siento, su sesión  ha expirado.']);
         //     // return redirect('/')->withErrors(['token_error' => 'Sorry, your session seems to have expired. Please try again.']);
@@ -61,7 +71,13 @@ class Handler extends ExceptionHandler
         // }
 
         // return parent::render($request, $exception);
+        if ($e instanceof AuthenticationException) {
 
+            if ($request->ajax()) {
+                return response()->json('Lo siento, su sesión ha expirado. Inicie session de nuevo.', 401);
+            }
+            return redirect('/')->withErrors(['token_error' => 'Sorry, your session seems to have expired. Please try again.']);
+        }
         if ($this->isHttpException($e))
         {
             return $this->renderHttpException($e);
@@ -75,10 +91,8 @@ class Handler extends ExceptionHandler
                 ]);
             }
         }
-        else
-        {
+        
             return parent::render($request, $e);
-        }
 
     }
 }

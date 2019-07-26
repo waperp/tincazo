@@ -4,6 +4,7 @@
 @endsection
 @section('content')
 <div class="col-md-12">
+    
     <div class="content col-md-4">
         <aside class="widget card widget--sidebar widget-awards">
             <div class="widget__title card__header">

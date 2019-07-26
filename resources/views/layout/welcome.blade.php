@@ -59,6 +59,7 @@
     <!-- Custom CSS-->
     <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
 
 </head>
 
@@ -197,6 +198,8 @@
 <script src="/js/matches.js?v={{ time() }}" type="text/javascript">
 </script>
 <script src="/js/jquery.Wload.js"></script>
+    <script  src="/js/loading-bar.js"></script>
+
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
         if (window.history && history.pushState) {

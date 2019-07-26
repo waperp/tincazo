@@ -5,7 +5,6 @@ $(document).ready(function() {
         format: 'DD-MM-YYYY',
         defaultDate: new Date(),
     }).on('dp.hide', function(e) {
-        debugger
         matches_all(touinfscode_static);
     });
     var touinfscode = $("#post-torneos li:first").data('touinfscode');
@@ -13,7 +12,6 @@ $(document).ready(function() {
         touinfscode_static = touinfscode;
         matches_all(touinfscode_static);
     }
-    debugger
 });
 $(".refresh-button").on('click', function() {
     matches_all(touinfscode_static);
@@ -21,13 +19,11 @@ $(".refresh-button").on('click', function() {
 $("#shearh-matches").on('click', function() {
     matches_all(touinfscode_static);
 });
-
 function matches_all(touinfscode) {
     $('body').Wload({ text: ' Cargando' })
     var touteatname = $(".buscar").val();
     touinfscode_static = touinfscode;
     var toufixdplay = $('#datetimepicker-toufixdplay-matches-full').data('DateTimePicker').date().format('YYYY-MM-DD');
-    debugger
     $.ajax({
         url: '/matches_all_web',
         type: 'get',
@@ -48,10 +44,9 @@ function matches_all(touinfscode) {
                     style: "height:15px; margin-bottom:0px;top: 0px; ",
                     html: $('<div class="' + constatdesc_matches(item) + '">' + item.constatdesc + '</div>')
                 });
-                var span_col_1 = $('<div>', { class: 'col-md-5', style: 'text-align: left', html: $('<span>', { class: 'game-result__league', text: moment(item.toufixdplay).lang('es').format('dddd DD [de] MMMM') }) });
                 var span_col_2 = $('<div>', { class: 'col-md-2', html: [progress], });
-                var span_col_3 = $('<div>', { class: 'col-md-5', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).lang('es').format('HH:mm A') }) });
-                var header = $('<header>', { style: 'margin-top:0px;margin-bottom:0px', class: 'game-result__header game-result__header--alt', html: [span_col_1, span_col_2, span_col_3], });
+                var span_col_3 = $('<div>', { class: 'col-md-2', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).lang('es').format('HH:mm A') }) });
+                var header = $('<header>', { style: 'margin-top:0px;margin-bottom:0px', class: 'game-result__header game-result__header--alt', html: [ span_col_3, span_col_2], });
                 var game_result_team_first = $('<div>', {
                     class: 'game-result__team game-result__team--first',
                     html: [
@@ -110,7 +105,7 @@ function matches_all(touinfscode) {
                 });
                 var game_result = $('<div>', {
                     class: 'game-result__content',
-                    style: 'margin: 0 0 5px 0;',
+                    style: 'margin: 10px 0 10px 0;',
                     html: [game_result_team_first, game_result_team_score, game_result_team_second]
                 });
 
@@ -148,7 +143,7 @@ function matches_all(touinfscode) {
 }
 
 function load_matches(touinfscode, elm) {
-    debugger
+    
     touinfscode_static = touinfscode;
     $('li.posts__item').removeClass('post__items__custom__selected');
     $('li > figure > img.post__items__custom__img').removeClass('post__items__custom__img__selected');
@@ -183,7 +178,7 @@ function matches_score_type_team1(item) {
         } else if (item.toufixsscr1 < item.toufixsscr2) {
             return 'game-result__score-result game-result__score-result--loser--winner';
         } else {
-            return 'game-result__score-result';
+            return 'game-result__score-result game-result__score-result--draw-1';
         }
     }
 }
@@ -198,7 +193,7 @@ function matches_score_type_team2(item) {
         } else if (item.toufixsscr2 < item.toufixsscr1) {
             return 'game-result__score-result game-result__score-result--winner--loser';
         } else {
-            return 'game-result__score-result';
+            return 'game-result__score-result game-result__score-result--draw-2';
         }
     }
 }

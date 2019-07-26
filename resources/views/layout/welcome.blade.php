@@ -110,8 +110,8 @@
                                         <p class="mb-0">Descargar APP</p>
                                         <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank">
                                             <img style="height:40px" src="/images/google_play.png" alt=""></a>
-                                        <!-- <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank">
-                                            <img style="height:40px" src="/images/app_store.png" alt=""></a> -->
+                                         <a href="https://apps.apple.com/app/id1470422497#?platform=iphone" target="_blank">
+                                            <img style="height:40px" src="/images/app_store.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="row">

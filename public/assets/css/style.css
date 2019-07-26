@@ -122,12 +122,6 @@ Description:  Styles for displaying content with some of the most commonly used 
 */
 
 
-.game-result__header--alt .game-result__date_edit {
-    font-weight: 600;
-    -ms-flex-preferred-size: 25%;
-    flex-basis: 100%;
-    text-align: left;
-}
 .active-white>a {
     color: #fff !important;
 }

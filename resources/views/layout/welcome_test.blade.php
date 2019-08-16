@@ -13,9 +13,9 @@
 	<meta content="{{ csrf_token() }}" name="_token" />
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="assets/images/soccer/favicons/favicon.ico">
-	<link rel="apple-touch-icon" sizes="120x120" href="assets/images/soccer/favicons/favicon-120.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="assets/images/soccer/favicons/favicon-152.png">
+	<link rel="shortcut icon" href="/favicon.ico">
+	{{-- <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png"> --}}
 	<!-- Mobile Specific Metas
 	================================================== -->
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">

@@ -1112,3 +1112,23 @@ input.header-mobile__search-control {
     border-color: #292c31;
     color: white;
 }
+
+@media (min-width: 992px){
+    .nav-account .nav-account__item.has-children ul {
+        list-style: none;
+        top: 40px;
+        right: 0;
+        min-width: 180px;
+        padding: 14px 0;
+        margin: 0;
+        border: 1px solid #e4e7ed;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background-color: #fff;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transform: translateX(50%) rotateX(-75deg);
+        transform: translateX(50%) rotateX(-75deg);
+        visibility: hidden;
+    }
+}

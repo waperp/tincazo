@@ -31,8 +31,11 @@
                 if (file.type.match('image')) {
                   // Image
                   $(settings.preview_box).css("background-image", "url("+loadedFile.result+")");
-                  $(settings.preview_box).css("background-size", "cover");
-                  $(settings.preview_box).css("background-position", "center center");
+                  $(settings.preview_box).css("background-size", "350px 350px");
+                  $(settings.preview_box).css("background-repeat", "no-repeat");
+                  $(settings.preview_box).css("background-position", "50% 50%");
+                  $(settings.preview_box).css("padding", "30px");
+                 ;
                 } else if (file.type.match('audio')) {
                   // Audio
                   $(settings.preview_box).html("<audio controls><source src='" + loadedFile.result + "' type='" + file.type + "' />Your browser does not support the audio element.</audio>");

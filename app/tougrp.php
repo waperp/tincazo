@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class tougrp extends Model
 {
-        public $timestamps  = false;
+    public $timestamps  = false;
     protected $primaryKey = 'tougrpicode';
-	protected $table = 'tougrp';
-	protected $fillable = [
-        'tougrptname', 
-        'tougrpdcrea', 
-        'touinfscode', 
+    protected $table = 'tougrp';
+    protected $fillable = [
+        'tougrptname',
+        'tougrpdcrea',
+        'touinfscode',
         'plainficode',
         'tougrpvimgg',
         'tougrpbenbl',
@@ -20,13 +20,8 @@ class tougrp extends Model
         'tougrpsmedp',
         'tougrpsminp',
         'tougrpsxval',
-        'tougrpbchva'
+        'tougrpbchva',
+        'tougrpschpt',
 
     ];
-
-    
-    public function getDateFormat()
-    {
-        return "d-m-Y H:i:s";
-    }
 }

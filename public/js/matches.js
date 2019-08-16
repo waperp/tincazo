@@ -13,10 +13,10 @@ $(document).ready(function() {
         matches_all(touinfscode_static);
     }
 });
-$(".refresh-button").on('click', function() {
+$(".refresh-button-all").on('click', function() {
     matches_all(touinfscode_static);
 });
-$("#shearh-matches").on('click', function() {
+$("#shearh-matches-all").on('click', function() {
     matches_all(touinfscode_static);
 });
 function matches_all(touinfscode) {
@@ -45,7 +45,7 @@ function matches_all(touinfscode) {
                     html: $('<div class="' + constatdesc_matches(item) + '">' + item.constatdesc + '</div>')
                 });
                 var span_col_2 = $('<div>', { class: 'col-md-2', html: [progress], });
-                var span_col_3 = $('<div>', { class: 'col-md-2', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).lang('es').format('HH:mm A') }) });
+                var span_col_3 = $('<div>', { class: 'col-md-2', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') }) });
                 var header = $('<header>', { style: 'margin-top:0px;margin-bottom:0px', class: 'game-result__header game-result__header--alt', html: [ span_col_3, span_col_2], });
                 var game_result_team_first = $('<div>', {
                     class: 'game-result__team game-result__team--first',
@@ -121,9 +121,9 @@ function matches_all(touinfscode) {
             //         htmlPendientes = "<section class='game-result__section pt-0'>
             // <header class='game-result__header game-result__header--alt'>
             //<span class='game-result__league'> " 
-            //+ moment(data.listaPartidosPendiente[i].toufixdplay).lang('es').format('dddd DD [de] MMMM') + " 
+            //+ moment(data.listaPartidosPendiente[i].toufixdplay).locale('es').format('dddd DD [de] MMMM') + " 
             //</span> " + tincazoFinal + "
-            //<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " " + data.listaPartidosPendiente[i].toufixthour).lang('es').format('HH:mm A') + "</time>
+            //<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " " + data.listaPartidosPendiente[i].toufixthour).locale('es').format('HH:mm A') + "</time>
             //</header> <div class='game-result__content'>
             //<div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + 
             //"</h5></div></div></div></section><div class='spacer'></div> ";

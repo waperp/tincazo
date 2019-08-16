@@ -12,8 +12,7 @@
     <link href="favicon.ico" rel="shortcut icon" />
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
     <!-- Preloader CSS -->
-    <link href="assets/css/preloader.css" rel="stylesheet">
-    <link href="/css/googleFont.css" rel="stylesheet" />
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" />
     <!-- Vendor CSS -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +31,17 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/dataTables.colVis.css" />
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/extensions/sweetalert.css" />
+    <link rel="stylesheet" href="/css/jquery.Wload.css">
+    <link href="assets/css/preloader.css" rel="stylesheet">
+    <link href="/css/googleFont.css" rel="stylesheet" />
     <!-- Custom CSS-->
+    <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+
+    <link href="assets/css/style.css?vercss={{ time() }}" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+
+   <!-- Custom CSS-->
     <!-- Google Tag Manager -->
     {{--
     <script>
@@ -53,14 +62,6 @@
     </script> --}}
     <!-- End Google Tag Manager -->
     <!-- Template CSS-->
-    <link rel="stylesheet" href="/css/jquery.Wload.css">
-
-    <link href="assets/css/style.css?vercss={{ time() }}" rel="stylesheet" />
-    <!-- Custom CSS-->
-    <link href="assets/vendors/css/forms/selects/select2.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/custom.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
-
 </head>
 
 <body {{-- oncontextmenu="return false" --}} class="template-soccer">
@@ -84,7 +85,11 @@
                         </span>
             </div>
         </div>
-        @yield('header') @section('sidebar') @show @yield('silder') @if(Session::has('select-q') && Session::get('select-q') == true)
+        @yield('header') 
+        @section('sidebar') 
+        @show 
+        @yield('silder') 
+        @if(Session::has('select-q') && Session::get('select-q') == true)
         <div class="site-content">
             <div class="container">
                 <div class="row">
@@ -93,7 +98,6 @@
             </div>
         </div>
         @endif
-
         <footer class="footer" id="footer">
             <div class="footer-widgets">
                 <!-- Sponsors / End -->
@@ -103,32 +107,7 @@
             <div class="footer-secondary">
                 <div class="container">
                     <div class="footer-secondary__inner">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="row">
-                                    <div class="footer-copyright col-md-12 text-center">
-                                        <p class="mb-0">Descargar APP</p>
-                                        <a href="https://play.google.com/store/apps/details?id=tincazo.com" target="_blank">
-                                            <img style="height:40px" src="/images/google_play.png" alt=""></a>
-                                         <a href="https://apps.apple.com/app/id1470422497#?platform=iphone" target="_blank">
-                                            <img style="height:40px" src="/images/app_store.png" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-12 footer-copyright text-center">
-                                        <a href="javascript:void(0)">
-
-                                        </a>
-                                        @2018 - 2019 TINCAZO  | &nbsp;
-                                        <a target="_blank" href="/PoliticaPrivacidad">
-                                                Politicas de Privacidad
-                                            </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        @include('partials.footer')
                     </div>
                 </div>
             </div>
@@ -171,17 +150,14 @@
 </script>
 <script src="/assets/vendors/js/extensions/sweetalert.min.js" type="text/javascript"></script>
 <script src="/assets/js/scripts/extensions/sweet-alerts.js" type="text/javascript"></script>
-
 <script src="/assets/vendors/js/tables/jquery.dataTables.min.js"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.buttons.min.js" type="text/javascript"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.responsive.min.js" type="text/javascript"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.select.min.js" type="text/javascript"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.colVis.js" type="text/javascript"></script>
-
 <script src="/assets/vendors/js/tables/datatable/dataTables.fixedColumns.min.js" type="text/javascript"></script>
 <script src="/assets/vendors/js/tables/datatable/dataTables.colReorder.min.js" type="text/javascript"></script>
-
 <script src="/assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="css/bootstrapValidator.js"></script>
 {{--
@@ -198,7 +174,7 @@
 <script src="/js/matches.js?v={{ time() }}" type="text/javascript">
 </script>
 <script src="/js/jquery.Wload.js"></script>
-    <script  src="/js/loading-bar.js"></script>
+<script  src="/js/loading-bar.js"></script>
 
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {

@@ -71,13 +71,13 @@ class Handler extends ExceptionHandler
         // }
 
         // return parent::render($request, $exception);
-        if ($e instanceof AuthenticationException) {
+        // if ($e instanceof AuthenticationException) {
 
-            if ($request->ajax()) {
-                return response()->json('Lo siento, su sesión ha expirado. Inicie session de nuevo.', 401);
-            }
-            return redirect('/')->withErrors(['token_error' => 'Sorry, your session seems to have expired. Please try again.']);
-        }
+        //     if ($request->ajax()) {
+        //         return response()->json('Lo siento, su sesión ha expirado. Inicie session de nuevo.', 401);
+        //     }
+        //     return redirect('/')->withErrors(['token_error' => 'Sorry, your session seems to have expired. Please try again.']);
+        // }
         if ($this->isHttpException($e))
         {
             return $this->renderHttpException($e);

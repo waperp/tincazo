@@ -176,7 +176,7 @@
 		var per = Math.round((current / items.length) * 100);
 		$(jBar).stop().animate({
 			width: per + '%'
-		}, 100, 'linear');
+		}, 500, 'linear');
 
 		if(jpreOptions.showPercentage) {
 			$(jPer).text(per+"%");
@@ -200,19 +200,19 @@
 			//max progress bar
 			$(jBar).stop().animate({
 				width: '100%'
-			}, 100, 'linear', function() {
+			}, 500, 'linear', function() {
 				//autoclose on
 				if( jpreOptions.autoClose )
 					loadComplete();
 				else
-					$(jButton).fadeIn(100);
+					$(jButton).fadeIn(1000);
 			});
 		}
 	}
 
 	//triggered when all images are loaded
 	var loadComplete = function() {
-		$(jOverlay).fadeOut(100, function() {
+		$(jOverlay).fadeOut(800, function() {
 			$(jOverlay).remove();
 			onComplete();	//callback function
 		});

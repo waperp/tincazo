@@ -14,7 +14,8 @@
 // Route::get('/', 'HomeController@index')->middleware('isadminMiddleware1');
 // Route::get('inicio', 'HomeController@index');
 // Route::get('inicio', 'HomeController@inicio')->middleware('isadminMiddleware');
-    Route::get('matches', 'HomeController@matches')->middleware('auth');
+    Route::get('matches', 'HomeController@matches');
+    Route::get('test', 'HomeController@test');
 
 
 Route::get('/', 'HomeController@index')->name('home.index');

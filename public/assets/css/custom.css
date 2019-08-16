@@ -791,7 +791,7 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px max-height: 250px;
+        max-width: 250px; max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -805,7 +805,7 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px max-height: 250px;
+        max-width: 250px; max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -816,7 +816,7 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px max-height: 250px;
+        max-width: 250px; max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -827,7 +827,7 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px max-height: 250px;
+        max-width: 250px ;max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -1132,3 +1132,11 @@ input.header-mobile__search-control {
         visibility: hidden;
     }
 }
+
+@media (min-width: 768px){
+.sponsors {
+    margin-top: -16px;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding: 35px 0 20px 0;
+}}

@@ -2680,6 +2680,7 @@ $("#formgrupoconfig").submit(function (e) {
     });
 });
 $("#iniciosession").submit(function (e) {
+    debugger
     document.getElementById('form-login-button-submit').disabled = 1;
     e.preventDefault();
     $.ajax({

@@ -245,8 +245,29 @@
 		</footer>
 		<!-- Footer / End -->
 		<!-- Login/Register Tabs Modal -->
-		@section('modals')
-		@show
+		@include('partials.modals.modal-login')
+@include('partials.modals.modal-register')
+@auth
+@if (\Auth::user()->contypscode == 1)
+@include('partials.modals.admin.modal-admin-fixture')
+@include('partials.modals.admin.modal-admin-equipo-plantel')
+@include('partials.modals.admin.modal-admin-add-torneo-equipo')
+@include('partials.modals.admin.modal-admin-add-fixture')
+@include('partials.modals.admin.modal-admin-add-equipo')
+@include('partials.modals.admin.modal-admin-add-torneo')
+@include('partials.modals.admin.modal-admin-add-grupo')
+@include('partials.modals.admin.modal-admin-plantel')
+@include('partials.modals.admin.modal-admin-torneo')
+@include('partials.modals.admin.modal-admin-grupo')
+@endif
+@endauth
+@auth
+@include('partials.modals.user.modal-user-perfil')
+@include('partials.modals.user.modal-user-config-grupo')
+@include('partials.modals.user.modal-user-invitar')
+@endauth
+@include('partials.modals.admin.group.modal-admin-group-grupo')
+@include('partials.partialModal')
 
 		<!-- Login/Register Tabs Modal / End -->
 	</div>
@@ -320,27 +341,5 @@
 	
 	<script src="/js/progressbar.min.js"></script>
 </body>
-@include('partials.modals.modal-login')
-@include('partials.modals.modal-register')
-@auth
-@if (\Auth::user()->contypscode == 1)
-@include('partials.modals.admin.modal-admin-fixture')
-@include('partials.modals.admin.modal-admin-equipo-plantel')
-@include('partials.modals.admin.modal-admin-add-torneo-equipo')
-@include('partials.modals.admin.modal-admin-add-fixture')
-@include('partials.modals.admin.modal-admin-add-equipo')
-@include('partials.modals.admin.modal-admin-add-torneo')
-@include('partials.modals.admin.modal-admin-add-grupo')
-@include('partials.modals.admin.modal-admin-plantel')
-@include('partials.modals.admin.modal-admin-torneo')
-@include('partials.modals.admin.modal-admin-grupo')
-@endif
-@endauth
-@auth
-@include('partials.modals.user.modal-user-perfil')
-@include('partials.modals.user.modal-user-config-grupo')
-@include('partials.modals.user.modal-user-invitar')
-@endauth
-@include('partials.modals.admin.group.modal-admin-group-grupo')
-@include('partials.partialModal')
+
 </html>

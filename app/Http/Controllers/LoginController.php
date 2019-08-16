@@ -124,8 +124,9 @@ class LoginController extends Controller
                         DB::commit();
                         return response()->json(['mensaje' => 'Inicio de session correctamente', 'success' => 1]);
                     } catch (\Exception $e) {
-                        return $e;
                         DB::rollback();
+                        return $e;
+
                         // something went wrong
                     }
 

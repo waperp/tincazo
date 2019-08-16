@@ -67,7 +67,8 @@
                             </header>
                             <div class="tab-content">
                                 <div class="card__content" style="height: 600px;overflow-y:  auto;">
-                                    <div class="row" style="margin-bottom: 15px">
+                                    <div class="row" style="padding: 0 0 24px 0px;border-bottom: 1px solid #e4e7ed;
+                                    ">
                                         <div class="col-md-4">
                                             <div class="input-group input-group-sm date"
                                                 id="datetimepicker-toufixdplay-matches-full">

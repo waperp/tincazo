@@ -1388,7 +1388,7 @@ $(document).ready(function () {
     $("#table-fixture").DataTable({
         colReorder: true,
         "ordering": false,
-        "searching": true,
+        "searching": false,
         responsive: true,
         "pageLength": 5,
         "paging": true,

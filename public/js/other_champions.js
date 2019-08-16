@@ -25,7 +25,7 @@ function other_champions() {
                              style = "style=' background-image: url(/images/champions.png);background-repeat: no-repeat;background-size: cover;'";
                              imagen = 'images/champions.png';
                              text = '<span style="font-size:11px;color:yellow" class="album__item-btn-fab "><strong>CAMPEON</strong></span>';
-                             album__item__holder = 'box-shadow: 0px 10px 20px -10px #00ff2a, 5px 5px 15px 5px rgba(255,0,0,0)';
+                             album__item__holder = 'box-shadow: 5px 5px 40px 15px #00ff2a, 5px 40px 47px 5px rgba(255,0,0,0)';
 
                         } else if (item.touttebenbl == 1 && item.touttebisch == 0) {
                              style = "style='cursor: '";

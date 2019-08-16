@@ -79,10 +79,10 @@
                                     <div class="posts__inner">
                                         <div class="posts__cat">
                                             <span
-                                                class="label posts__cat-label">{{ $objTorneosUsers->tougrptname }}</span>
+                                                class="label posts__cat-label">{{ $objTorneosUsers->touinftname }}</span>
                                         </div>
                                         <h6 class="posts__title"><a
-                                                data-id="{{ $objTorneosUsers->tougrpicode }}">{{ $objTorneosUsers->touinftname }}</a>
+                                                data-id="{{ $objTorneosUsers->tougrpicode }}">{{ $objTorneosUsers->tougrptname }}</a>
                                         </h6>
                                         <time class="posts__date">{{ $objTorneosUsers->tougrpdcrea }}</time>
                                     </div>

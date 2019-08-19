@@ -446,6 +446,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         buttons: [{
+            className: 'btn-success',
             titleAttr: 'Refrescar Datos',
             text: '<i class="fa fa-refresh"></i>',
             action: function (e, dt, node, config) {
@@ -594,7 +595,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         buttons: [{
-            className: 'btn-xs',
+            className: 'btn-success',
             text: '<i class="fa fa-refresh"></i>',
             titleAttr: 'Refrescar Datos',
             action: function (e, dt, node, config) {

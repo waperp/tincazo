@@ -2,16 +2,22 @@
         <div class="widget__title card__header">
             <h4>TABLA POR DIA</h4>
         </div>
-        <div class="widget__content card__content">
-            <div class="input-group input-group-sm date" id="datetimepicker-filtrer-posiciones">
-                <input class="form-control" id="date-filtrer-posiciones"
-                    placeholder="Ingrese una fecha" required="" type="text" />
-                <div class="input-group-addon input-group-append">
-                    <div class="input-group-text">
-                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                    </div>
+        <div class="row">
+          
+        </div>
+        
+        <div class="widget__content card__content p-0">
+                <div class="col-12">
+                        <div style="width: auto" class="input-group input-group-sm date m-2" id="datetimepicker-filtrer-posiciones">
+                                <input class="form-control" id="date-filtrer-posiciones"
+                                    placeholder="Ingrese una fecha" required="" type="text" />
+                                <div class="input-group-addon input-group-append">
+                                    <div class="input-group-text">
+                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
-            </div>
             <div class="table-responsive">
 
                 <table style="width: 100%" class="table table-hover table-standings"

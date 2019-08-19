@@ -37,104 +37,138 @@ function matches_all(touinfscode) {
 
             $('#matches_all').empty();
             $.each(data, function(i, item) {
+                var game__result__section = '';
+
+                game__result__section += '<section class="game-result__section mt-2">';
+                game__result__section += '<header class="game-result__header game-result__header--alt mb-1">';
+                game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('dddd DD [de] MMMM') + '</span>';
+                game__result__section += '<div class="game-result__title"></div>';
+                game__result__section += '<time class="game-result__date m-auto">' + moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') + '</time>';
+                game__result__section += '</header>';
+                game__result__section += '<div class="game-result__content mb-2">';
+
+                game__result__section += '<div class="game-result__team game-result__team--first">';
+                game__result__section += '<figure class="game-result__team-logo">';
+                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt + '" alt="">';
+                game__result__section += '</figure>';
+                game__result__section += '<div class="game-result__team-info">';
+                game__result__section += '<h5 class="game-result__team-name">' + item.touteatname + '</h5>';
+                // game__result__section += '<div class="game-result__team-desc">Elric Bros School</div>';
+                game__result__section += '</div>';
+                game__result__section += '</div>';
+
+                game__result__section += '<div class="game-result__score-wrap">';
+                game__result__section += '<div class="game-result__score game-result__score--lg">';
+
+                game__result__section += winner_loser_team1(item);
+                game__result__section += '<span class="game-result__score-dash">-</span>';
+                game__result__section += winner_loser_team2(item);
+                game__result__section += '</div>';
+                if (item.constascode == 2){
+                    game__result__section += '<div style="font-size:14px" class="game-result__score-label"><img style="height: 40px;" src="/images/enjuego.gif"></div>';
+
+                }else if (item.constascode == 3){
+                    game__result__section += '<div style="font-size:14px" class="game-result__score-label"> <span style="display: inline;padding: .25em .25em;vertical-align: middle;" class="badge badge-success">'+ item.constatdesc +'</span></div>';
+
+                }else if (item.constascode == 1){
+                    game__result__section += '<div style="font-size:14px" class="game-result__score-label"> <span style="display: inline;padding: .25em .25em;vertical-align: middle;    background-color: #007bff !important;" class="badge badge-primary">'+ item.constatdesc +'</span></div>';
+
+                }
+                game__result__section += '</div>';
+
+                game__result__section += '<div class="game-result__team game-result__team--second">';
+                game__result__section += '<figure class="game-result__team-logo">';
+                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt2 + '" alt="">';
+                game__result__section += '</figure>';
+                game__result__section += '<div class="game-result__team-info">';
+                game__result__section += '<h5 class="game-result__team-name">' + item.touteatname2 + '</h5>';
+                // game__result__section += '<div class="game-result__team-desc">Elric Bros School</div>';
+                game__result__section += '</div>';
+                game__result__section += '</div>';
+                game__result__section += '</div>';
+                game__result__section += '</section>';
+                $('#matches_all').append(game__result__section);
+                game__result__section = '';
+
                 // Create with DOM
-                var spacer = $('<div>', { class: 'spacer' })
-                var progress = $('<div >', {
-                    class: 'progress',
-                    style: "height:15px; margin-bottom:0px;top: 0px; ",
-                    html: $('<div class="' + constatdesc_matches(item) + '">' + item.constatdesc + '</div>')
-                });
-                var span_col_2 = $('<div>', { class: 'col-md-2', html: [progress], });
-                var span_col_3 = $('<div>', { class: 'col-md-2', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') }) });
-                var header = $('<header>', { style: 'margin-top:0px;margin-bottom:0px', class: 'game-result__header game-result__header--alt', html: [ span_col_3, span_col_2], });
-                var game_result_team_first = $('<div>', {
-                    class: 'game-result__team game-result__team--first',
-                    html: [
-                        $('<figure>', {
-                            class: 'game-result__team-logo',
-                            html: $('<img>', {
-                                src: 'images/' + item.touteavimgt
-                            })
-                        }),
-                        $('<div>', {
-                            class: 'game-result__team-info',
-                            html: $('<h5>', {
-                                class: 'game-result__team-name',
-                                text: item.touteatname
-                            })
-                        })
-                    ]
-                });
-                var game_result_team_score = $('<div>', {
-                    class: 'game-result__score-wrap',
-                    html: $('<div>', {
-                        class: 'game-result__score game-result__score--lg',
-                        html: [
-                            $('<span>', {
-                                class: matches_score_type_team1(item),
-                                text: item.toufixsscr1
-                            }),
-                            $('<span>', {
-                                class: 'game-result__score-dash',
-                                text: '-'
-                            }),
-                            $('<span>', {
-                                class: matches_score_type_team2(item),
-                                text: item.toufixsscr2
-                            })
-                        ]
-                    })
-                });
-                var game_result_team_second = $('<div>', {
-                    class: 'game-result__team game-result__team--second',
-                    html: [
-                        $('<figure>', {
-                            class: 'game-result__team-logo',
-                            html: $('<img>', {
-                                src: 'images/' + item.touteavimgt2
-                            })
-                        }),
-                        $('<div>', {
-                            class: 'game-result__team-info',
-                            html: $('<h5>', {
-                                class: 'game-result__team-name',
-                                text: item.touteatname2
-                            })
-                        })
-                    ]
-                });
-                var game_result = $('<div>', {
-                    class: 'game-result__content',
-                    style: 'margin: 10px 0 10px 0;',
-                    html: [game_result_team_first, game_result_team_score, game_result_team_second]
-                });
+                // var spacer = $('<div>', { class: 'spacer' })
+                // var progress = $('<div >', {
+                //     class: 'progress',
+                //     style: "height:15px; margin-bottom:0px;top: 0px; ",
+                //     html: $('<div class="' + constatdesc_matches(item) + '">' + item.constatdesc + '</div>')
+                // });
+                // var span_col_2 = $('<div>', { class: 'col-md-2', html: [progress], });
+                // var span_col_3 = $('<div>', { class: 'col-md-2', html: $('<time>', { class: 'game-result__date', text: moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') }) });
+                // var header = $('<header>', { style: 'margin-top:0px;margin-bottom:0px', class: 'game-result__header game-result__header--alt', html: [ span_col_3, span_col_2], });
+                // var game_result_team_first = $('<div>', {
+                //     class: 'game-result__team game-result__team--first',
+                //     html: [
+                //         $('<figure>', {
+                //             class: 'game-result__team-logo',
+                //             html: $('<img>', {
+                //                 src: 'images/' + item.touteavimgt
+                //             })
+                //         }),
+                //         $('<div>', {
+                //             class: 'game-result__team-info',
+                //             html: $('<h5>', {
+                //                 class: 'game-result__team-name',
+                //                 text: item.touteatname
+                //             })
+                //         })
+                //     ]
+                // });
+                // var game_result_team_score = $('<div>', {
+                //     class: 'game-result__score-wrap',
+                //     html: $('<div>', {
+                //         class: 'game-result__score game-result__score--lg',
+                //         html: [
+                //             $('<span>', {
+                //                 class: matches_score_type_team1(item),
+                //                 text: item.toufixsscr1
+                //             }),
+                //             $('<span>', {
+                //                 class: 'game-result__score-dash',
+                //                 text: '-'
+                //             }),
+                //             $('<span>', {
+                //                 class: matches_score_type_team2(item),
+                //                 text: item.toufixsscr2
+                //             })
+                //         ]
+                //     })
+                // });
+                // var game_result_team_second = $('<div>', {
+                //     class: 'game-result__team game-result__team--second',
+                //     html: [
+                //         $('<figure>', {
+                //             class: 'game-result__team-logo',
+                //             html: $('<img>', {
+                //                 src: 'images/' + item.touteavimgt2
+                //             })
+                //         }),
+                //         $('<div>', {
+                //             class: 'game-result__team-info',
+                //             html: $('<h5>', {
+                //                 class: 'game-result__team-name',
+                //                 text: item.touteatname2
+                //             })
+                //         })
+                //     ]
+                // });
+                // var game_result = $('<div>', {
+                //     class: 'game-result__content',
+                //     style: 'margin: 10px 0 10px 0;',
+                //     html: [game_result_team_first, game_result_team_score, game_result_team_second]
+                // });
 
-                var section = $('<section>', {
-                    class: 'game-result__section pt-0',
-                    html: [header, game_result]
-                })
-                $("#matches_all").append(section);
+                // var section = $('<section>', {
+                //     class: 'game-result__section pt-0',
+                //     html: [header, game_result]
+                // })
+                // $("#matches_all").append(section);
             });
-            //     for (var i = 0; i < data.listaPartidosPendiente.length; i++) {
-
-
-            //         htmlPendientes = "<section class='game-result__section pt-0'>
-            // <header class='game-result__header game-result__header--alt'>
-            //<span class='game-result__league'> " 
-            //+ moment(data.listaPartidosPendiente[i].toufixdplay).locale('es').format('dddd DD [de] MMMM') + " 
-            //</span> " + tincazoFinal + "
-            //<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " " + data.listaPartidosPendiente[i].toufixthour).locale('es').format('HH:mm A') + "</time>
-            //</header> <div class='game-result__content'>
-            //<div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + 
-            //"</h5></div></div></div></section><div class='spacer'></div> ";
-            //         $('#game-result-pendientes').append(htmlPendientes);
-            //                    }
-            //     // for (var o = 0; o < data.listaPartidosJuego.length; o++) {
-            //     //     $('#game-result-juego').append(html)
-            //     // }
-            //     // for (var u = 0; u < data.listaPartidosFinalizados.length; u++) {
-            //     //     $('#game-result-finalizados').append(html)
-            //     // }
+        
         },
         complete: function(data) {
             $('body').Wload('hide', { time: 1000 })

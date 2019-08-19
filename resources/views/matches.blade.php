@@ -67,10 +67,9 @@
                             </header>
                             <div class="tab-content">
                                 <div class="card__content" style="height: 600px;overflow-y:  auto;">
-                                    <div class="row" style="padding: 0 0 24px 0px;border-bottom: 1px solid #e4e7ed;
-                                    ">
+                                    <div class="row">
                                         <div class="col-md-4">
-                                            <div class="input-group input-group-sm date"
+                                            <div class="input-group input-group-sm date mb-4"
                                                 id="datetimepicker-toufixdplay-matches-full">
                                                 <input class="form-control c" placeholder="Ingrese su fecha inicio"
                                                     required="" type="text" />

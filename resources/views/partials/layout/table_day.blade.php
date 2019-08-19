@@ -1,14 +1,13 @@
 <aside class="widget widget--sidebar card widget-popular-posts">
-        <div class="widget__title card__header">
+        <div class="widget__title card__header" style="padding: 12px 24px">
             <h4>TABLA POR DIA</h4>
         </div>
         <div class="row">
           
         </div>
         
-        <div class="widget__content card__content p-0">
-                <div class="col-12">
-                        <div style="width: auto" class="input-group input-group-sm date m-2" id="datetimepicker-filtrer-posiciones">
+        <div class="widget__content card__content p-2">
+                        <div style="width: auto" class="input-group input-group-sm date mt-1 mb-1" id="datetimepicker-filtrer-posiciones">
                                 <input class="form-control" id="date-filtrer-posiciones"
                                     placeholder="Ingrese una fecha" required="" type="text" />
                                 <div class="input-group-addon input-group-append">
@@ -17,7 +16,6 @@
                                     </div>
                                 </div>
                             </div>
-                </div>
             <div class="table-responsive">
 
                 <table style="width: 100%" class="table table-hover table-standings"

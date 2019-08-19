@@ -12,7 +12,7 @@
 								{{-- <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">See All
 									Stats</a> --}}
 							</div>
-							<div class="widget__content card__content">
+							<div class="widget__content card__content p-2">
 								<div class="table-responsive">
 									<table id="tablepociciones" style="width: 100%" class="table table-hover table-standings">
 										<thead>

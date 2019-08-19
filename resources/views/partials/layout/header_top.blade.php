@@ -1,21 +1,21 @@
 <div class="header__top-bar-inner">
     <!-- Account Navigation -->
     <ul class="nav-account">
-        @if(Session::has('plainficode'))
+            @auth
         <li class="nav-account__item">
-                <a data-toggle="modal" data-target="#modal-edit-perfil"><img src="images/{{ Session::get('conmemvimgm') }}"
+                <a data-toggle="modal" data-target="#modal-edit-perfil"><img src="images/{{ \Auth::user()->membership()->conmemvimgm }}"
                         style="height:25px; width: 25px" alt=""> &nbsp; {{ \Auth::user()->playerInfo()->plainftnick }} </a>
             </li>
-        @if (COUNT($listaInvitaciones) > 0)
+        @if (App\tougrp::invitationsTotal() > 0)
         <li class="nav-account__item">
             <a DATA-toggle="modal" DATA-target="#modal-invitaciones"><span style="color:orange">INVITACIONES</span>
                 <span> (
-                    {{ COUNT($listaInvitaciones) }} )</span></a>
+                    {{ App\tougrp::invitationsTotal() }} )</span></a>
         </li>
         @else
         <li class="nav-account__item">
             <a><span style="color:orange">INVITACIONES</span> <span style="color:#c2ff1f">(
-                    {{ COUNT($listaInvitaciones) }} )</span> </a>
+                    {{ App\tougrp::invitationsTotal() }} )</span> </a>
         </li>
         @endif
        
@@ -60,7 +60,7 @@
             {{-- <li class="nav-account__item"><a  data-toggle="modal" data-target="#modal-login-register-tabs">Iniciar Sesion</a></li> --}}
             <a data-toggle="modal" data-target="#modal-login-register">Crear Cuenta</a>
         </li>
-        @endif
+        @endauth
     </ul>
     <!-- Account Navigation / End -->
 </div>

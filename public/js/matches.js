@@ -45,7 +45,7 @@ function matches_all(touinfscode) {
                 game__result__section += '<div class="game-result__title"></div>';
                 game__result__section += '<time class="game-result__date m-auto">' + moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') + '</time>';
                 game__result__section += '</header>';
-                game__result__section += '<div class="game-result__content mb-2">';
+                game__result__section += '<div class="game-result__content mb-3">';
 
                 game__result__section += '<div class="game-result__team game-result__team--first">';
                 game__result__section += '<figure class="game-result__team-logo">';

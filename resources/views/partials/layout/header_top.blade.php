@@ -4,7 +4,7 @@
         @if(Session::has('plainficode'))
         <li class="nav-account__item">
                 <a data-toggle="modal" data-target="#modal-edit-perfil"><img src="images/{{ Session::get('conmemvimgm') }}"
-                        style="height:25px; width: 25px" alt=""> &nbsp; {{ Session::get('plainftnick') }} </a>
+                        style="height:25px; width: 25px" alt=""> &nbsp; {{ \Auth::user()->playerInfo()->plainftnick }} </a>
             </li>
         @if (COUNT($listaInvitaciones) > 0)
         <li class="nav-account__item">
@@ -22,7 +22,7 @@
         <li class="nav-account__item"><span class="main-nav__toggle"></span><a>Mi Cuenta <span
                     class="highlight"></span></a>
             <ul class="main-nav__sub">
-                @if (Session::get('conmemscode') != 1)
+                @if (\Auth::user()->membership()->conmemscode != 1)
                 <li><a data-toggle="modal" data-target="#modal-login-nuevo-grupo">Crear Grupo </a>
                 </li>
                 @endif

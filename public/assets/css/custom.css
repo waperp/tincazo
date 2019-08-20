@@ -1140,3 +1140,12 @@ input.header-mobile__search-control {
     flex-wrap: nowrap;
     padding: 35px 0 20px 0;
 }}
+
+@media (min-width: 992px){
+.nav-account .nav-account__item.has-children:hover ul {
+    display: block;
+    -webkit-transform: translateX(50%) rotateX(0deg);
+    transform: translateX(0%) rotateX(0deg);
+    opacity: 1;
+    visibility: visible;
+}}

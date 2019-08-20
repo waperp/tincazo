@@ -4,19 +4,21 @@ Description:  You can add your custom CSS here and it will overwrite template st
 */
 
 /*# sourceMappingURL=maps/custom.css.map */
+
 .form-control-sm, .input-group-sm>.form-control, .input-group-sm>.input-group-append>.btn, .input-group-sm>.input-group-append>.input-group-text, .input-group-sm>.input-group-prepend>.btn, .input-group-sm>.input-group-prepend>.input-group-text {
     padding: .25rem .5rem;
     font-size: .875rem;
     line-height: 1.5;
     border-radius: .2rem;
 }
+
 .form-control-sm:not(textarea) {
     height: 32px;
 }
+
 .active-white>a {
     color: #fff !important;
 }
-
 
 /* Headings */
 
@@ -137,12 +139,7 @@ Description:  You can add your custom CSS here and it will overwrite template st
     font-size: 10px !important;
 }
 
-#table-info-player-grupo>thead>tr>th,
-#table-info-player-grupo>thead>tr>td,
-#table-info-player-grupo>tbody>tr>th,
-#table-info-player-grupo>tbody>tr>td,
-#table-info-player-grupo>tfoot>tr>th,
-#table-info-player-grupo>tfoot>tr>td {
+#table-info-player-grupo>thead>tr>th, #table-info-player-grupo>thead>tr>td, #table-info-player-grupo>tbody>tr>th, #table-info-player-grupo>tbody>tr>td, #table-info-player-grupo>tfoot>tr>th, #table-info-player-grupo>tfoot>tr>td {
     padding: 6.5px;
     vertical-align: middle;
     border-top: 0px solid #e4e7ed;
@@ -155,12 +152,7 @@ Description:  You can add your custom CSS here and it will overwrite template st
     font-size: 10px !important;
 }
 
-#table-info-player-grupo-dia>thead>tr>th,
-#table-info-player-grupo-dia>thead>tr>td,
-#table-info-player-grupo-dia>tbody>tr>th,
-#table-info-player-grupo-dia>tbody>tr>td,
-#table-info-player-grupo-dia>tfoot>tr>th,
-#table-info-player-grupo-dia>tfoot>tr>td {
+#table-info-player-grupo-dia>thead>tr>th, #table-info-player-grupo-dia>thead>tr>td, #table-info-player-grupo-dia>tbody>tr>th, #table-info-player-grupo-dia>tbody>tr>td, #table-info-player-grupo-dia>tfoot>tr>th, #table-info-player-grupo-dia>tfoot>tr>td {
     padding: 6.5px;
     vertical-align: middle;
     border-top: 0px solid #e4e7ed;
@@ -187,7 +179,6 @@ Description:  You can add your custom CSS here and it will overwrite template st
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 }
-
 
 /*#tablepociciones>tbody>tr>td:first-child{
 padding-left: 0px !important;
@@ -301,9 +292,7 @@ padding-left: 0px !important;
     color: #e29d1a !important;
 }
 
-.btn-edit:hover,
-.btn-edit:active,
-.btn-edit:focus {
+.btn-edit:hover, .btn-edit:active, .btn-edit:focus {
     color: #e29d1ad9 !important;
 }
 
@@ -329,15 +318,11 @@ padding-left: 0px !important;
     background-image: linear-gradient(to bottom, #1892ed 0%, #1892ed 100%) !important;
 }
 
-.btn-estado:hover,
-.btn-estado:active,
-.btn-estado:focus {
+.btn-estado:hover, .btn-estado:active, .btn-estado:focus {
     color: #46aefdd9 !important;
 }
 
-.btn-eliminar:hover,
-.btn-eliminar:active,
-.btn-eliminar:focus {
+.btn-eliminar:hover, .btn-eliminar:active, .btn-eliminar:focus {
     color: #f44336d9 !important;
 }
 
@@ -425,11 +410,13 @@ padding-left: 0px !important;
     margin: auto;
     text-align: center;
 }
+
 .image-preview {
     flex-basis: 50%;
-        flex-basis: 50%;
+    flex-basis: 50%;
     padding: 50px 38px;
 }
+
 #image-preview {
     flex-basis: 50%;
     position: relative;
@@ -791,7 +778,8 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px; max-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -805,7 +793,8 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px; max-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -816,7 +805,8 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px; max-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
@@ -827,15 +817,14 @@ padding-left: 0px !important;
         margin-top: 40px;
         width: 200px;
         height: 200px;
-        max-width: 250px ;max-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
         position: relative;
         overflow: hidden;
         background-color: #ffffff;
         color: #ecf0f1;
     }
 }
-
-
 
 .main-nav__list>li>.mitorneo:hover {
     color: #fff;
@@ -858,9 +847,11 @@ padding-left: 0px !important;
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
 }
+
 .mitorneo[style='display: block;']+table {
     filter: blur(3px);
 }
+
 .main-nav__list>li>#enlace-invitacion {
     display: block;
     position: relative;
@@ -882,17 +873,21 @@ padding-left: 0px !important;
     background-color: transparent;
     text-decoration: none;
 }
+
 .category-filter__link.active {
     color: #31404b;
 }
+
 .main-nav__list>li>#partidos:hover {
     color: #5a3737;
     background-color: transparent;
     text-decoration: none;
 }
+
 .bootstrap-datetimepicker-widget.dropdown-menu {
     z-index: 9999 !important;
 }
+
 .main-nav__list>li>#partidos {
     display: block;
     position: relative;
@@ -911,29 +906,32 @@ padding-left: 0px !important;
 
 @media (min-width: 992px) {
     .album__item-title {
-      font-size: 12px;
+        font-size: 12px;
     }
-  }
+}
 
-  @media (min-width: 992px) {
+@media (min-width: 992px) {
     .album__item-meta {
         right: 40%;
         top: 70%;
     }
-  }
+}
 
-  .meta__item--likes .meta-like {
+.meta__item--likes .meta-like {
     vertical-align: middle;
     margin-right: 2px;
     font-size: 12px;
 }
+
 .album__thumb img {
     width: 100%;
     height: 90px;
 }
-.meta__item--likes .meta-like--active{
-    color:#47ef47;
+
+.meta__item--likes .meta-like--active {
+    color: #47ef47;
 }
+
 .btn-fab-eliminate {
     display: block;
     position: absolute;
@@ -944,68 +942,68 @@ padding-left: 0px !important;
     overflow: hidden;
     background-color: #1892ed;
     border-radius: 50%;
-  }
-  
-  .btn-fab-eliminate::before, .btn-fab-eliminate::after {
+}
+
+.btn-fab-eliminate::before, .btn-fab-eliminate::after {
     content: "";
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     background-color: #fff;
     -webkit-transition: -webkit-transform 0.25s ease;
     transition: -webkit-transform 0.25s ease;
     transition: transform 0.25s ease;
     transition: transform 0.25s ease, -webkit-transform 0.25s ease;
-  }
-  
-  .btn-fab-eliminate::before {
+}
+
+.btn-fab-eliminate::before {
     width: 17px;
     height: 3px;
-  }
-  
-  .btn-fab-eliminate::after {
+}
+
+.btn-fab-eliminate::after {
     width: 3px;
     height: 17px;
-  }
-  
-  .btn-fab-eliminate:hover::before, .btn-fab-eliminate:hover::after {
+}
+
+.btn-fab-eliminate:hover::before, .btn-fab-eliminate:hover::after {
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
-            transform: translate(-50%, -50%) rotate(90deg);
-  }
-  
-  .btn-fab-eliminate--clean {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.btn-fab-eliminate--clean {
     background-color: transparent;
-  }
-  
-  .btn-fab-eliminate--clean::before, .btn-fab-eliminate--clean::after {
+}
+
+.btn-fab-eliminate--clean::before, .btn-fab-eliminate--clean::after {
     background-color: #38a9ff;
-  }
-  
-  .btn-fab-eliminate--sm {
+}
+
+.btn-fab-eliminate--sm {
     width: 30px;
     height: 30px;
-  }
-  
-  .btn-fab-eliminate--sm::before {
+}
+
+.btn-fab-eliminate--sm::before {
     width: 10px;
     height: 2px;
-  }
-  
-  .btn-fab-eliminate--sm::after {
+}
+
+.btn-fab-eliminate--sm::after {
     width: 2px;
     height: 10px;
-  }
-  
-  .btn-outline.btn-primary {
+}
+
+.btn-outline.btn-primary {
     border-color: #007bff;
     color: #31404b;
     border-width: 2px;
-  }
-  
-  .game-result__score-result--loser ~ .game-result__score-result--winner::after{
+}
+
+.game-result__score-result--loser~.game-result__score-result--winner::after {
     content: "";
     display: block;
     position: absolute;
@@ -1018,17 +1016,18 @@ padding-left: 0px !important;
     border-bottom: 8px solid transparent;
     -webkit-transform: translateY(-50%);
     transform: translatey(-50%);
-  }
+}
 
-  .game-result__score-result--loser ~ .game-result__score-result--winner::before{
+.game-result__score-result--loser~.game-result__score-result--winner::before {
     display: none;
-  }
+}
 
-  .btn-outline.btn-success {
+.btn-outline.btn-success {
     border-color: #9fe900;
-    color:#9fe900 !important;
+    color: #9fe900 !important;
     border-width: 2px;
 }
+
 .btn-outline.btn-success:hover {
     background-color: #95da00;
     border-color: #95da00;
@@ -1047,19 +1046,21 @@ padding-left: 0px !important;
     color: #fff !important;
 }
 
-.table > tbody > tr > td > div > h6 {
-     color: black;
+.table>tbody>tr>td>div>h6 {
+    color: black;
 }
+
 .table {
     width: 100%;
     max-width: 100%;
     color: black;
-  }
-  @media (min-width: 992px){
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-    padding: 10px 10px;
-    font-size: 11px;
 }
+
+@media (min-width: 992px) {
+    .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
+        padding: 10px 10px;
+        font-size: 11px;
+    }
 }
 
 /* .widthtable {
@@ -1071,12 +1072,14 @@ select.form-control-sm:not([size]):not([multiple]) {
 }
 
 .modal {
-    overflow-y:auto;
-  }
-  .modal-form .form-group--submit {
+    overflow-y: auto;
+}
+
+.modal-form .form-group--submit {
     margin: 10px 0;
     padding-top: 9px;
 }
+
 .team-stats__item {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 33%;
@@ -1098,9 +1101,11 @@ select.form-control-sm:not([size]):not([multiple]) {
     -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
+
 .form-control:not(textarea) {
     height: 36.5px;
 }
+
 .posts--simple-list .posts__item {
     overflow: hidden;
     margin-bottom: 18px;
@@ -1113,7 +1118,7 @@ input.header-mobile__search-control {
     color: white;
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     .nav-account .nav-account__item.has-children ul {
         list-style: none;
         top: 40px;
@@ -1132,20 +1137,21 @@ input.header-mobile__search-control {
         visibility: hidden;
     }
 }
+@media (min-width: 768px) {
+    .sponsors {
+        margin-top: -16px;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        padding: 35px 0 20px 0;
+    }
+}
 
-@media (min-width: 768px){
-.sponsors {
-    margin-top: -16px;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    padding: 35px 0 20px 0;
-}}
-
-@media (min-width: 992px){
-.nav-account .nav-account__item.has-children:hover ul {
-    display: block;
-    -webkit-transform: translateX(50%) rotateX(0deg);
-    transform: translateX(0%) rotateX(0deg);
-    opacity: 1;
-    visibility: visible;
-}}
+@media (min-width: 992px) {
+    .nav-account .nav-account__item.has-children:hover ul {
+        display: block;
+        -webkit-transform: translateX(50%) rotateX(0deg);
+        transform: translateX(0%) rotateX(0deg);
+        opacity: 1;
+        visibility: visible;
+    }
+}

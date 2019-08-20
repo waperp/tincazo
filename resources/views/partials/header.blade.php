@@ -112,7 +112,7 @@
 
             @if(Session::has('plainficode') )
             <li class=""><a href="javascript:void(0)">MIS TORNEOS <span style="color:#c2ff1f">(
-                  {{ count($listaTorneosMenu) }} )</span></a>
+                  {{ App\touinf::tournamentMenu()->count() }} )</span></a>
               <div id="main-nav-torneos" class="main-nav__megamenu clearfix"
                 style="width:unset; left: unset; padding: 20px 20px ">
                 <div class="col-lg-12 col-md-12 col-xs-12">

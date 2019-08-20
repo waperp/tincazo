@@ -20,12 +20,13 @@
             </li>
             @endif
             @if(Session::has('plainficode') )
-            <li class=""><a href="#">Mis Torneos</a>
+            <li class=""><a href="#">Mis Torneos  <span style="color:#c2ff1f">(
+                    {{ App\touinf::tournamentMenu()->count() }} )</span></a>
                 <div class="main-nav__megamenu clearfix">
                     <div class="col-12">
                         <ul class="posts posts--simple-list">
                             <div class="row">
-                                @foreach($listaTorneosMenu as $objTorneosUsersMenu)
+                                @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
                                 <li style="cursor: pointer;" class="posts__item posts__item--category-1 col-3">
                                     <figure class="posts__thumb">
                                         <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
@@ -50,12 +51,17 @@
                     </div>
                 </div>
             </li>
-            <li class=""><a href="#">Mis Grupos</a>
+            <li class="">
+                <a href="#">Mis Grupos 
+                    @if (App\tougrp::tournamentsWithGroups()->count() > 0)
+                    <span style="color:#c2ff1f">(
+                            {{ App\tougrp::tournamentsWithGroups()->count() }} )</span>
+                    @endif</a>
                 <div class="main-nav__megamenu clearfix">
                     <div class="col-12">
                         <ul class="posts posts--simple-list">
                             <div class="row">
-                                @foreach($listaTorneos as $objTorneosUsers)
+                                @foreach(App\tougrp::tournamentsWithGroups() as $objTorneosUsers)
                                 <input type="hidden" id="tougrpsmaxp{{ $objTorneosUsers->tougrpicode }}"
                                     value="{{ $objTorneosUsers->tougrpsmaxp }}">
                                 <input type="hidden" id="tougrpsmedp{{ $objTorneosUsers->tougrpicode }}"

@@ -741,7 +741,7 @@ id="formStore" method="post">
 </div> --}}
 @endif
 @if(Session::has('plainficode'))
-@foreach ($listaTorneos as $objVerifyTorneoAdmin)
+@foreach (App\tougrp::tournamentsWithGroups() as $objVerifyTorneoAdmin)
 @if (Session::get('plainficode') == $objVerifyTorneoAdmin->plainficode)
 
 

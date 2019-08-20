@@ -36,7 +36,6 @@ class HomeController extends Controller
     {
         Session::put('select-q', true);
 
-        $listaTorneos = [];
         $date = Carbon::now();
         // return  dd$request->ajax();
 
@@ -48,9 +47,6 @@ class HomeController extends Controller
 
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
-        $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
-        JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
-        JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')
@@ -58,14 +54,7 @@ class HomeController extends Controller
             ->where('plainf.plainficode', Session::get('plainficode'))
             ->first();
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-        if (Session::has('session_link_tournament')) {
-            $touinf_link_tournament = Session::get('session_link_tournament');
-            $listaTorneos       = DB::select('select tougrp.*,touinf.*, tougpl.tougplicode
-        from tougrp
-        join touinf on tougrp.touinfscode = touinf.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'), $touinf_link_tournament->touinfscode]);
-        }
+        
 
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
@@ -84,16 +73,6 @@ class HomeController extends Controller
             [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
         );
 
-        $miCampeon = DB::select(
-            'select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
-        from toutea
-        join toutte on toutea.touteascode = toutte.touteascode
-        join tougrp on toutte.touinfscode = tougrp.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
-             where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc limit 1',
-            [Session::get('select-tougplicode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
-        );
         $estadisticas = DB::select('Select toutea.touteavimgt, toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea join toutte on toutea.touteascode = toutte.touteascode
         join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
         group by  toutea.touteavimgt, toutea.touteatname', [Session::get('select-tougrpicode')]);
@@ -106,18 +85,15 @@ class HomeController extends Controller
             'listaConmen',
             'listaTouinf',
             'listaTipoPlantel',
-            'listaTorneos',
             'listaInvitaciones',
             'listaContypEquipos',
             'listaToutea',
             'listaEquiposElegir',
-            'miCampeon',
             'estadisticas',
             'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',
-            'listaTorneosMenu',
             'listaTouinfAll'
         ));
     }
@@ -247,7 +223,6 @@ class HomeController extends Controller
     }
     public function test(Request $request)
     {
-        $listaTorneos = [];
         $date = Carbon::now();
         // return  dd$request->ajax();
         if (!$request->has('q')) {
@@ -261,10 +236,7 @@ class HomeController extends Controller
 
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
-        $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
-        JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
-        JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
-WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
+       
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')
@@ -272,14 +244,7 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             ->where('plainf.plainficode', Session::get('plainficode'))
             ->first();
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-        if (Session::has('session_link_tournament')) {
-            $touinf_link_tournament = Session::get('session_link_tournament');
-            $listaTorneos       = DB::select('select tougrp.*,touinf.*, tougpl.tougplicode
-        from tougrp
-        join touinf on tougrp.touinfscode = touinf.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'), $touinf_link_tournament->touinfscode]);
-        }
+        
 
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
@@ -298,17 +263,7 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
         );
 
-        $miCampeon = DB::select(
-            'select contyp.contyptdesc,toutea.touteatabrv,toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
-        from toutea
-        join toutte on toutea.touteascode = toutte.touteascode
-        join tougrp on toutte.touinfscode = tougrp.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        join contyp on toutea.contypscode = contyp.contypscode and contyp.confrmicode = 2
-        join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
-             where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc limit 1',
-            [Session::get('select-tougplicode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
-        );
+        
         $estadisticas = DB::select('Select toutea.touteavimgt, toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea join toutte on toutea.touteascode = toutte.touteascode
         join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
         group by  toutea.touteavimgt, toutea.touteatname', [Session::get('select-tougrpicode')]);
@@ -321,24 +276,21 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             'listaConmen',
             'listaTouinf',
             'listaTipoPlantel',
-            'listaTorneos',
             'listaInvitaciones',
             'listaContypEquipos',
             'listaToutea',
             'listaEquiposElegir',
-            'miCampeon',
             'estadisticas',
             'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',
-            'listaTorneosMenu',
             'listaTouinfAll'
         ));
     }
     public function index(Request $request)
     {
-        $listaTorneos = [];
+       
         $date = Carbon::now();
         // return  dd$request->ajax();
         if (!$request->has('q')) {
@@ -352,10 +304,7 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
 
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
-        $listaTorneosMenu = DB::select('select DISTINCT touinf.* FROM touinf 
-        JOIN tougrp ON touinf.touinfscode = tougrp.touinfscode 
-        JOIN tougpl ON tougrp.tougrpicode = tougpl.tougrpicode
-WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
+        
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
         $listaEditPerfil = DB::table('secusr')
@@ -363,14 +312,7 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             ->where('plainf.plainficode', Session::get('plainficode'))
             ->first();
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-        if (Session::has('session_link_tournament')) {
-            $touinf_link_tournament = Session::get('session_link_tournament');
-            $listaTorneos       = DB::select('select tougrp.*,touinf.*, tougpl.tougplicode
-        from tougrp
-        join touinf on tougrp.touinfscode = touinf.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        where tougrp.tougrpbenbl = 1 and tougpl.plainficode = ? and tougpl.constascode = 2 and touinf.touinfscode = ?', [Session::get('plainficode'), $touinf_link_tournament->touinfscode]);
-        }
+     
 
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
@@ -389,17 +331,7 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
         );
 
-        $miCampeon = DB::select(
-            'select contyp.contyptdesc,toutea.touteatabrv,toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
-        from toutea
-        join toutte on toutea.touteascode = toutte.touteascode
-        join tougrp on toutte.touinfscode = tougrp.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        join contyp on toutea.contypscode = contyp.contypscode and contyp.confrmicode = 2
-        join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
-             where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc limit 1',
-            [Session::get('select-tougplicode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
-        );
+       
         $estadisticas = DB::select('Select toutea.touteavimgt, toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea join toutte on toutea.touteascode = toutte.touteascode
         join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
         group by  toutea.touteavimgt, toutea.touteatname', [Session::get('select-tougrpicode')]);
@@ -412,18 +344,15 @@ WHERE tougpl.plainficode = ?', [Session::get('plainficode')]);
             'listaConmen',
             'listaTouinf',
             'listaTipoPlantel',
-            'listaTorneos',
             'listaInvitaciones',
             'listaContypEquipos',
             'listaToutea',
             'listaEquiposElegir',
-            'miCampeon',
             'estadisticas',
             'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',
-            'listaTorneosMenu',
             'listaTouinfAll'
         ));
     }

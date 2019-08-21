@@ -22,7 +22,6 @@ class toutea extends Model
     public function scopeMyChampion($query)
     {
 
-        return Cache::remember("MyChampion", now()->addMinutes(60), function () use ($query) {
 
             return $query->select(
                 'contyp.contyptdesc',
@@ -46,13 +45,11 @@ class toutea extends Model
                 ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
                 ->where('tougpl.tougplicode',  Session::get('select-tougplicode'))
                 ->first();
-        });
     }
 
     public function scopeTeamChampions($query)
     {
         $session_touglpicode = Session::get('select-tougplicode');
-        return Cache::remember("TeamChampions.{$session_touglpicode}", now()->addMinutes(60), function () use ($query) {
             return $query->select(
                 'toutte.touttescode as touttescode1',
                 'toutea.touteavimgt',
@@ -70,6 +67,5 @@ class toutea extends Model
                 ->where('tougpl.tougplicode',  Session::get('select-tougplicode'))
                 ->orderBy('toutea.touteatname', 'asc')
                 ->get();
-        });
     }
 }

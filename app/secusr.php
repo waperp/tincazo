@@ -41,7 +41,6 @@ class secusr extends Authenticatable
     }
     public function scopeMembership($query)
     {
-
             return $query->select('conmem.*')
                 ->join('plainf', 'plainf.plainficode', 'secusr.plainficode')
                 ->join('conmem', 'conmem.conmemscode', 'plainf.conmemscode')

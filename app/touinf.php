@@ -30,13 +30,11 @@ class touinf extends Model
     }
     public function scopeTournamentMenu($query)
     {
-        return Cache::remember("TournamentMenu", now()->addMinutes(60), function () use ($query) {
             return $query->select('touinf.*')
                 ->join('tougrp', 'touinf.touinfscode', 'tougrp.touinfscode')
                 ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
                 ->where('tougpl.plainficode', \Auth::user()->plainficode)
                 ->distinct()
                 ->get();
-        });
     }
 }

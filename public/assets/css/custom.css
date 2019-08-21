@@ -1176,3 +1176,79 @@ input.header-mobile__search-control {
         color: #6c757d;
     }
 }
+
+.main-nav__megamenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50%;
+    left: unset;
+    right: 0;
+    position: absolute;
+    top: 62px;
+    z-index: 1000;
+    margin: 0;
+    text-align: left;
+    padding: 13px 13px;
+    font-size: 15px;
+    border: solid 1px #292c31;
+    background-color: #1e2024;
+    opacity: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: opacity .3s, -webkit-transform .3s;
+    transition: opacity .3s, -webkit-transform .3s;
+    transition: transform .3s, opacity .3s;
+    transition: transform .3s, opacity .3s, -webkit-transform .3s;
+}
+
+@media only screen and (max-width: 991px){
+    .main-nav__megamenu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        left: 0;
+        position: absolute;
+        top: 62px;
+        z-index: 1000;
+        margin: 0;
+        text-align: left;
+        padding: 13px 13px;
+        font-size: 15px;
+        border: solid 1px #292c31;
+        background-color: #1e2024;
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transition: opacity .3s, -webkit-transform .3s;
+        transition: opacity .3s, -webkit-transform .3s;
+        transition: transform .3s, opacity .3s;
+        transition: transform .3s, opacity .3s, -webkit-transform .3s;
+    }
+}
+
+.img-thumbnail-success {
+    padding: .10rem;
+    background-color: #25853c;
+    border: 1px solid #25853c;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.badge-success {
+    color: #fff;
+    background-color: #28a745 !important;
+}
+.badge-primary {
+    color: #fff;
+    background-color: #007bff !important;
+}
+.img-thumbnail-primary {
+    padding: .10rem;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}

@@ -16,7 +16,7 @@ function other_champions() {
                 var image ='';
                 var text ='';
                 var album__item__holder = '';
-                debugger
+                
                 if (item.touttebenbl == 0 && item.touttebisch == 0) {
                              style = "style='filter: grayscale(100%); text-decoration:line-through;font-weight:bold; color:black;'";
                              text = '<span style="font-size:11px;color:#f34141" class="album__item-btn-fab "><strong>ELIMINADO</strong></span>';

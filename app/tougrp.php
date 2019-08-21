@@ -51,7 +51,7 @@ class tougrp extends Model
             $touinfscode = Session::get('session_link_tournament')->touinfscode;
         }
         return $query
-            ->select('tougrp.*', 'touinf.*', 'tougpl.tougplicode')
+            ->select('tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
             ->where('tougrp.tougrpbenbl', 1)

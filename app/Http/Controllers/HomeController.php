@@ -638,9 +638,11 @@ Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and toufix.toufixicode
     public function tableGestionarGruposAdmin(Request $request)
     {
         // $data = tougrp::join('plainf','plainf.plainficode', 'tougrp.plainficode')->where('tougrp.touinfscode', $request->touinfscode)->get();
-        $data = DB::select('Select tougrp.tougrpicode , tougrp.tougrpvimgg, tougrp.tougrptname, plainf.plainftname, tougrp.tougrpdcrea, tougrp.tougrpsmaxp, tougrp.tougrpsmedp,
+        $data = DB::select('Select tougrp.tougrpicode , tougrp.tougrpvimgg, 
+        tougrp.tougrptname, plainf.plainftname, tougrp.tougrpdcrea, tougrp.tougrpsmaxp, tougrp.tougrpsmedp,
 tougrp.tougrpsminp, (Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total
-from tougrp join plainf on tougrp.plainficode = plainf.plainficode where tougrp.touinfscode = ?', [$request->touinfscode]);
+from tougrp 
+join plainf on tougrp.plainficode = plainf.plainficode where tougrp.touinfscode = ?', [$request->touinfscode]);
 
         return Datatables::of($data)->make(true);
     }

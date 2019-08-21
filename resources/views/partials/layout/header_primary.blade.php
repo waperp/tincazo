@@ -74,7 +74,10 @@
                                 <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}"
                                     value="{{ $objTorneosUsers->tougrpschpt}}">
                                 <li class="posts__item posts__item--category-1" style="cursor: pointer;"
-                                    onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',{{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},{{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},{{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
+                                    onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',
+                                    {{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},
+                                    {{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},
+                                    {{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
                                     <figure class="posts__thumb">
                                         <a data-id="{{ $objTorneosUsers->tougrpicode }}">
                                             <img id="image-torneo-{{ $objTorneosUsers->tougrpicode }}"
@@ -109,6 +112,7 @@
                             <div style="height: 180px; overflow-y:auto;">
 
                             @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
+                            
                             <li class="posts__item posts__item--category-1">
                                 
                                     <figure class="posts__thumb">
@@ -139,7 +143,21 @@
                             <div style="height: 180px; overflow-y:auto;">
                                 
                                 @foreach (App\tougrp::tournamentsWithGroups()  as $objTorneosUsers)
-                                <li class="posts__item posts__item--category-1">
+                                <input type="hidden" id="tougrpsmaxp{{ $objTorneosUsers->tougrpicode }}"
+                            value="{{ $objTorneosUsers->tougrpsmaxp }}">
+                        <input type="hidden" id="tougrpsmedp{{ $objTorneosUsers->tougrpicode }}"
+                            value="{{ $objTorneosUsers->tougrpsmedp}}">
+                        <input type="hidden" id="tougrpsminp{{ $objTorneosUsers->tougrpicode }}"
+                            value="{{ $objTorneosUsers->tougrpsminp}}">
+                        <input type="hidden" id="tougrpsxval{{ $objTorneosUsers->tougrpicode }}"
+                            value="{{ $objTorneosUsers->tougrpsxval}}">
+                        <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}"
+                            value="{{ $objTorneosUsers->tougrpschpt}}">
+                                <li class="posts__item posts__item--category-1"  style="cursor: pointer;"
+                                onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',
+                                {{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},
+                                {{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},
+                                {{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
                                     
                                         <figure class="posts__thumb">
                                                 <a data-id="{{ $objTorneosUsers->tougrpicode }}">

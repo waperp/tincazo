@@ -38,11 +38,16 @@ function matches_all(touinfscode) {
             $('#matches_all').empty();
             $.each(data, function(i, item) {
                 var game__result__section = '';
-
+                var game__result__title = '';
+                if (item.constascode == 3){
+                    game__result__title = '<span style="font-size: 12px !important;" class="badge badge-success">'+ item.constatdesc +'</span>'
+                }else if (item.constascode == 1){
+                    game__result__title = '<span style="font-size: 12px !important;background-color: #007bff;" class="badge badge-primary">'+ item.constatdesc +'</span>'
+                }
                 game__result__section += '<section class="game-result__section mt-2">';
                 game__result__section += '<header class="game-result__header game-result__header--alt mb-1">';
                 game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('dddd DD [de] MMMM') + '</span>';
-                game__result__section += '<div class="game-result__title"></div>';
+                game__result__section += '<div class="game-result__title">'+game__result__title+'</div>';
                 game__result__section += '<time class="game-result__date m-auto">' + moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') + '</time>';
                 game__result__section += '</header>';
                 game__result__section += '<div class="game-result__content mb-3">';
@@ -66,12 +71,6 @@ function matches_all(touinfscode) {
                 game__result__section += '</div>';
                 if (item.constascode == 2){
                     game__result__section += '<div style="font-size:14px" class="game-result__score-label"><img style="height: 40px;" src="/images/enjuego.gif"></div>';
-
-                }else if (item.constascode == 3){
-                    game__result__section += '<div style="font-size:14px" class="game-result__score-label"> <span style="display: inline;padding: .25em .25em;vertical-align: middle;" class="badge badge-success">'+ item.constatdesc +'</span></div>';
-
-                }else if (item.constascode == 1){
-                    game__result__section += '<div style="font-size:14px" class="game-result__score-label"> <span style="display: inline;padding: .25em .25em;vertical-align: middle;    background-color: #007bff !important;" class="badge badge-primary">'+ item.constatdesc +'</span></div>';
 
                 }
                 game__result__section += '</div>';

@@ -1155,3 +1155,24 @@ input.header-mobile__search-control {
         visibility: visible;
     }
 }
+
+.game-result__header--alt .game-result__league {
+    font-size: 10px;
+    font-weight: bold;
+    color: #6c757d;
+}
+.game-result__date {
+    font-size: 11px;
+    
+}
+.game-result__header--alt .game-result__date{
+    font-weight: bold;
+    color: #6c757d;
+}
+@media (min-width: 992px){
+.game-result__date {
+    font-size: 10px;
+    font-weight: bold;
+    color: #6c757d;
+}
+}

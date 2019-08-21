@@ -30,28 +30,28 @@
 
 
                                     <input type="hidden" id="edit-perfil-image-src"
-                                        value="{{ $listaEditPerfil->plainfvimgp }}" />
+                                        value="{{ \Auth::user()->playerInfo()->plainfvimgp }}" />
                                     <input type="hidden" id="edit-perfil-plainficode"
-                                        value="{{ $listaEditPerfil->plainficode }}" />
+                                        value="{{ \Auth::user()->playerInfo()->plainficode }}" />
                                     <div class="form-group">
                                         <input class="form-control" id="edit-perfil-secusrtmail"
-                                            value="{{ $listaEditPerfil->secusrtmail }}" readonly=""
+                                            value="{{ \Auth::user()->playerInfo()->secusrtmail }}" readonly=""
                                             placeholder="Ingrese su correo electronico..." required="" type="email">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" id="edit-perfil-plainftname"
-                                            value="{{ $listaEditPerfil->plainftname }}" readonly=""
+                                            value="{{ \Auth::user()->playerInfo()->plainftname }}" readonly=""
                                             placeholder="Ingrese su nombre completo..." required="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" id="edit-perfil-plainftnick"
-                                            value="{{ $listaEditPerfil->plainftnick }}"
+                                            value="{{ \Auth::user()->playerInfo()->plainftnick }}"
                                             placeholder="Ingrese su nick name..." required="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group date" id="edit-perfil-datetimepicker1">
                                             <input class="form-control" id="edit-perfil-plainfddobp"
-                                                value="{{ Carbon\Carbon::parse($listaEditPerfil->plainfddobp)->format('d-m-Y')  }}"
+                                                value="{{ Carbon\Carbon::parse(\Auth::user()->playerInfo()->plainfddobp)->format('d-m-Y')  }}"
                                                 placeholder="Ingrese su fecha de nacimiento" type="text" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar">
@@ -62,19 +62,19 @@
 
                                     <div class="form-group col-md-12" style="text-align:center;">
                                         <label class="radio-inline">
-                                            <input name="edit-perfil-plainftgder" @if( $listaEditPerfil->plainftgder ==
+                                            <input name="edit-perfil-plainftgder" @if( \Auth::user()->playerInfo()->plainftgder ==
                                             "M") checked="checked" @else @endif type="radio" value="M">
                                             Hombre
                                         </label>
                                         <label class="radio-inline">
-                                            <input name="edit-perfil-plainftgder" @if( $listaEditPerfil->plainftgder ==
+                                            <input name="edit-perfil-plainftgder" @if( \Auth::user()->playerInfo()->plainftgder ==
                                             "F") checked="checked" @else @endif type="radio" value="F">
                                             Mujer
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         {{--  <div class="input-group">
-                                          <input type="password" readonly="" class="form-control pwd" id="edit-perfil-secusrtpass" value="{{ $listaEditPerfil->secusrtpass }}">
+                                          <input type="password" readonly="" class="form-control pwd" id="edit-perfil-secusrtpass" value="{{ \Auth::user()->playerInfo()->secusrtpass }}">
                                         <span class="input-group-btn">
                                             <button style="padding:11px 42px" class="btn btn-primary reveal"
                                                 type="button"><i class="glyphicon glyphicon-eye-open"></i></button>

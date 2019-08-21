@@ -35,8 +35,8 @@ class secusr extends Authenticatable
     }
     public function scopePlayerInfo($query)
     {
-        return Cache::remember("playerInfo", now()->addMinutes(60), function () use ($query) {
-            return $query->select('plainf.*')
+        return Cache::remember("playerInfoUser", now()->addMinutes(60), function () use ($query) {
+            return $query->select('*')
                 ->join('plainf', 'plainf.plainficode', 'secusr.plainficode')
                 ->where('plainf.plainficode', $this->plainficode)->first();
         });

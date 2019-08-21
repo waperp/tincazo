@@ -29,7 +29,7 @@
                                 <div class="widget__content card__content">
                                     <ul class="team-stats-box">
 
-                                        @foreach ($listaEquiposElegir as $objEquiposELegir)
+                                        @foreach (App\toutea::teamChampions() as $objEquiposELegir)
 
                                         @if($objEquiposELegir->touttescode != null )
                                         <li id="li-equipo-selected-{{ $objEquiposELegir->touttescode1 }}"

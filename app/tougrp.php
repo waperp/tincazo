@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Session;
+
 class tougrp extends Model
 {
     public $timestamps  = false;
@@ -45,16 +46,18 @@ class tougrp extends Model
         // where tougrp.tougrpbenbl = 1 
         // and tougpl.plainficode = ? 
         // and tougpl.constascode = 2 and touinf.touinfscode = ?';
-            return $query
-            ->select('tougrp.*','touinf.*','tougpl.tougplicode')
-                ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
-                ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
-                ->where('tougrp.tougrpbenbl', 1)
-                ->where('tougpl.plainficode', \Auth::user()->plainficode)
-                ->where('tougpl.constascode', 2)
-                ->where('touinf.touinfscode', Session::get('session_link_tournament')->touinfscode)
-                ->get();
+        $touinfscode = null;
+        if (Session::has('session_link_tournament')) {
+            $touinfscode = Session::get('session_link_tournament')->touinfscode;
+        }
+        return $query
+            ->select('tougrp.*', 'touinf.*', 'tougpl.tougplicode')
+            ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->where('tougrp.tougrpbenbl', 1)
+            ->where('tougpl.plainficode', \Auth::user()->plainficode)
+            ->where('tougpl.constascode', 2)
+            ->where('touinf.touinfscode', $touinfscode)
+            ->get();
     }
-
-    
 }

@@ -49,10 +49,7 @@ class HomeController extends Controller
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
-        $listaEditPerfil = DB::table('secusr')
-            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
-            ->where('plainf.plainficode', Session::get('plainficode'))
-            ->first();
+        
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
         
 
@@ -90,7 +87,6 @@ class HomeController extends Controller
             'listaToutea',
             'listaEquiposElegir',
             'estadisticas',
-            'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',
@@ -239,10 +235,7 @@ class HomeController extends Controller
        
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
-        $listaEditPerfil = DB::table('secusr')
-            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
-            ->where('plainf.plainficode', Session::get('plainficode'))
-            ->first();
+        
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
         
 
@@ -281,7 +274,6 @@ class HomeController extends Controller
             'listaToutea',
             'listaEquiposElegir',
             'estadisticas',
-            'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',
@@ -301,19 +293,11 @@ class HomeController extends Controller
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTouinfAll = DB::table('touinf')->get();
-
         $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
-        
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
-        $listaEditPerfil = DB::table('secusr')
-            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
-            ->where('plainf.plainficode', Session::get('plainficode'))
-            ->first();
-        $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-     
-
+        $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();  
         $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
             ->where('touinf.touinfscode', Session::get('select-touinfscode'))
             ->where('touinf.touinfdstat', '>', $date->toDateString())
@@ -328,7 +312,8 @@ class HomeController extends Controller
         join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
         left join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
         where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc',
-            [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
+            [Session::get('select-plainficode'), 
+            Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
         );
 
        
@@ -349,7 +334,6 @@ class HomeController extends Controller
             'listaToutea',
             'listaEquiposElegir',
             'estadisticas',
-            'listaEditPerfil',
             'fechaValidar',
             'listaTouinfSlider',
             'validarTougrpbchva',

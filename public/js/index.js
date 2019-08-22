@@ -13,7 +13,7 @@ $(document).ready(function () {
     var element_tournament_selected = touinf.touinfscode;
     if(element_group_selected &&  element_tournament_selected){
         selected_tournament(null,touinf.secconnuuid);
-        $('.posts__item--category-tournament-'+element_tournament_selected).addClass('group__select');
+        $('.posts__item--category-tournament-'+element_tournament_selected).addClass('tournament__select');
         
     }
     $.fn.select2.defaults.set("theme", "bootstrap4");

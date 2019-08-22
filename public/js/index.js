@@ -3420,9 +3420,9 @@ function desing_menu_groups(data) {
 
         });
         $('#list_groups').append(desing_menu_groups);
-        $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
+       
     }, 1000);
-
+    $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
 }
 // $(".buscar").keyup(function (e) {
 //     // $(".buscar").css("background-color", "pink");

@@ -13,6 +13,8 @@ $(document).ready(function () {
     var element_tournament_selected = touinf.touinfscode;
     if(element_group_selected &&  element_tournament_selected){
         selected_tournament(null,touinf.secconnuuid);
+        $('.posts__item__tournament').removeClass('tournament__select');
+
         $('.posts__item--category-tournament-'+element_tournament_selected).addClass('tournament__select');
         
     }
@@ -3420,9 +3422,9 @@ function desing_menu_groups(data) {
 
         });
         $('#list_groups').append(desing_menu_groups);
-       
+        $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
     }, 1000);
-    $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
+    
 }
 // $(".buscar").keyup(function (e) {
 //     // $(".buscar").css("background-color", "pink");

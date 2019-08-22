@@ -21,51 +21,48 @@ class toutea extends Model
 
     public function scopeMyChampion($query)
     {
-
-
-            return $query->select(
-                'contyp.contyptdesc',
-                'toutea.touteatabrv',
-                'toutte.touttescode as touttescode1',
-                'toutea.touteavimgt',
-                'toutea.touteatname',
-                'plachm.touttescode'
-            )
-                ->join('toutte', 'toutea.touteascode', 'toutte.touteascode')
-                ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
-                ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
-                ->join('contyp', function ($contyp) {
-                    $contyp->on('toutea.contypscode', 'contyp.contypscode')
-                        ->where('contyp.confrmicode', 2);
-                })
-                ->join('plachm', function ($plachm) {
-                    $plachm->on('toutte.touttescode', 'plachm.touttescode')
-                        ->where('plachm.tougplicode', Session::get('select-tougplicode'));
-                })
-                ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
-                ->where('tougpl.tougplicode',  Session::get('select-tougplicode'))
-                ->first();
+        return $query->select(
+            'contyp.contyptdesc',
+            'toutea.touteatabrv',
+            'toutte.touttescode as touttescode1',
+            'toutea.touteavimgt',
+            'toutea.touteatname',
+            'plachm.touttescode'
+        )
+            ->join('toutte', 'toutea.touteascode', 'toutte.touteascode')
+            ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->join('contyp', function ($contyp) {
+                $contyp->on('toutea.contypscode', 'contyp.contypscode')
+                    ->where('contyp.confrmicode', 2);
+            })
+            ->join('plachm', function ($plachm) {
+                $plachm->on('toutte.touttescode', 'plachm.touttescode')
+                    ->where('plachm.tougplicode', Session::get('select-tougplicode'));
+            })
+            ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+            ->where('tougpl.tougplicode',  Session::get('select-tougplicode'));
     }
 
     public function scopeTeamChampions($query)
     {
         $session_touglpicode = Session::get('select-tougplicode');
-            return $query->select(
-                'toutte.touttescode as touttescode1',
-                'toutea.touteavimgt',
-                'toutea.touteatname',
-                'plachm.touttescode'
-            )
-                ->join('toutte', 'toutea.touteascode', 'toutte.touteascode')
-                ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
-                ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
-                ->leftjoin('plachm', function ($plachm) {
-                    $plachm->on('toutte.touttescode', 'plachm.touttescode')
-                        ->where('plachm.tougplicode', Session::get('select-tougplicode'));
-                })
-                ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
-                ->where('tougpl.tougplicode',  Session::get('select-tougplicode'))
-                ->orderBy('toutea.touteatname', 'asc')
-                ->get();
+        return $query->select(
+            'toutte.touttescode as touttescode1',
+            'toutea.touteavimgt',
+            'toutea.touteatname',
+            'plachm.touttescode'
+        )
+            ->join('toutte', 'toutea.touteascode', 'toutte.touteascode')
+            ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->leftjoin('plachm', function ($plachm) {
+                $plachm->on('toutte.touttescode', 'plachm.touttescode')
+                    ->where('plachm.tougplicode', Session::get('select-tougplicode'));
+            })
+            ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+            ->where('tougpl.tougplicode',  Session::get('select-tougplicode'))
+            ->orderBy('toutea.touteatname', 'asc')
+            ->get();
     }
 }

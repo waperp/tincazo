@@ -24,11 +24,9 @@
                                     </h5>
                                     <div class="form-group">
                                         <input class="form-control" id="secusrtmail" name="secusrtmail" placeholder="Ingrese su dirección de correo electrónico ..." required="" type="email">
-                                        </input>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" id="secusrtpass" name="secusrtpass" placeholder="Ingrese su contraseña ..." required="" type="password">
-                                        </input>
                                     </div>
                                     <div class="alert alert-danger" id="false" style="display: none;">
                                         <strong>

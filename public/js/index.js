@@ -1,11 +1,21 @@
-setTimeout(function () {
-    window.location.reload();
-}, 600000);
+
+// setTimeout(function () {
+//     window.location.reload();
+// }, 600000);
 
 function removemenu() {
     $('.site-wrapper.clearfix').removeClass('site-wrapper--has-overlay');
 }
 $(document).ready(function () {
+    debugger
+    
+    var element_group_selected = tougrp.tougrpicode;
+    var element_tournament_selected = touinf.touinfscode;
+    if(element_group_selected &&  element_tournament_selected){
+        selected_tournament(null,touinf.secconnuuid);
+        $('.posts__item--category-tournament-'+element_tournament_selected).addClass('group__select');
+        
+    }
     $.fn.select2.defaults.set("theme", "bootstrap4");
     $.fn.dataTable.ext.classes.sLengthSelect = 'form-control form-control-sm';
     $('#row-container').hide();
@@ -152,13 +162,14 @@ $(document).ready(function () {
     //     height: 'auto',
     //     'max-height': '90%'
     // });
-    var torneo = $('#session-select-tougrptname').val();
+    var torneo = tougrp.tougrptname;
+    
     var filtre_torneo = window.getParameterByName('q');
-    var touinfscode = $('#session-select-touinfscode').val();
-    var tougrpicode = $('#session-select-tougrpicode').val();
-    var plainficodeurl = $('#session-select-plainficode').val();
+    var touinfscode = tougrp.touinfscode;
+    var tougrpicode = tougrp.tougrpicode;
+    var plainficodeurl = tougrp.plainficode;
     var plainficodehidden = $('#plainficode-hidden').val();
-    var imagen = document.getElementById('image-torneo-' + tougrpicode);
+    // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
 
     var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
     var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
@@ -190,22 +201,22 @@ $(document).ready(function () {
         //     $('#torneo-select-player').text(torneo);
         //     $('#grupo-li-player-group').show();
         // }
-        $("#image-preview2").css("background-image", "url('" + imagen.src + "')");
+        $("#image-preview2").css("background-image", "url('images/" + tougrp.tougrpvimgg + "')");
         $("#image-preview2").css("background-size", "cover");
         $("#image-preview2").css("background-position", "center center");
-        $("#image-preview3").css("background-image", "url('" + imagen.src + "')");
+        $("#image-preview3").css("background-image", "url('images/" + tougrp.tougrpvimgg + "')");
         $("#image-preview3").css("background-size", "cover");
         $("#image-preview3").css("background-position", "center center");
-        $('#tougrpsmaxp-edit').val(tougrpsmaxp);
-        $('#tougrpsmedp-edit').val(tougrpsmedp);
-        $('#tougrpsminp-edit').val(tougrpsminp);
-        $('#tougrpsxval-edit').val(tougrpsxval);
-        $('#tougrpschpt-edit').val(tougrpschpt);
-        $('#tougrptname-edit').val(torneo);
-        $('#touinfscode-edit-hidden').val(touinfscode);
-        $('#tougrpicode-edit-hidden').val(tougrpicode);
+        $('#tougrpsmaxp-edit').val(tougrp.tougrpsmaxp);
+        $('#tougrpsmedp-edit').val(tougrp.tougrpsmedp);
+        $('#tougrpsminp-edit').val(tougrp.tougrpsminp);
+        $('#tougrpsxval-edit').val(tougrp.tougrpsxval);
+        $('#tougrpschpt-edit').val(tougrp.tougrpschpt);
+        $('#tougrptname-edit').val(tougrp.tougrptname);
+        $('#touinfscode-edit-hidden').val(tougrp.touinfscode);
+        $('#tougrpicode-edit-hidden').val(tougrp.tougrpicode);
 
-        $('#selecttorneo-edit').val(touinfscode).trigger('change');
+        $('#selecttorneo-edit').val(tougrp.touinfscode).trigger('change');
         $("#imagetorneo-edit").attr("src", imgs.src);
     } else {
         // $('#site-content-intrucciones').show();
@@ -2681,7 +2692,7 @@ $("#formgrupoconfig").submit(function (e) {
     });
 });
 $("#iniciosession").submit(function (e) {
-    debugger
+    
     document.getElementById('form-login-button-submit').disabled = 1;
     e.preventDefault();
     $.ajax({
@@ -3234,178 +3245,6 @@ function isEmpty(value) {
     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 
-//  function tusTincazosPendientes(shearh) {
-//      $('#game-result-pendientes').empty();
-//      var tougplicode = $('#session-select-tougplicode').val();
-//      var touinfscode = $('#session-select-touinfscode').val();
-//      $.ajax({
-//          url: '/tusTincazosPendientes',
-//          type: 'get',
-//          dataType: 'json',
-//          data: {
-//              tougplicode: tougplicode,
-//              touinfscode: touinfscode,
-//              shearh: shearh
-//          },
-//          success: function(data) {
-//              $('#game-result-pendientes').empty();
-//              var toufixsscr1Pendientes = '';
-//              var toufixsscr2Pendientes = '';
-//              var score_dash = '-';
-//              for (var i = 0; i < data.listaPartidosPendiente.length; i++) {
-
-//                  var plapreicodePendientes = data.listaPartidosPendiente[i].plapreicode == null ? null : data.listaPartidosPendiente[i].plapreicode;
-//                  var plapresscr1Pendientes = data.listaPartidosPendiente[i].plapresscr1 == null ? "" : data.listaPartidosPendiente[i].plapresscr1;
-//                  var plapresscr2Pendientes = data.listaPartidosPendiente[i].plapresscr2 == null ? "" : data.listaPartidosPendiente[i].plapresscr2;
-//                  var plapresscr2 = isEmpty(plapresscr2Pendientes) == true ? null : plapresscr2Pendientes;
-//                  var plapresscr1 = isEmpty(plapresscr1Pendientes) == true ? null : plapresscr1Pendientes;
-//                  if (data.listaPartidosPendiente[i].toufixsscr1 > data.listaPartidosPendiente[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultwinner__1__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner'>" + data.listaPartidosPendiente[i].toufixsscr1 + "</span>";
-//                  } else if (data.listaPartidosPendiente[i].toufixsscr1 < data.listaPartidosPendiente[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultloser__1__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--loser--winner'>" + data.listaPartidosPendiente[i].toufixsscr1 + "</span>";
-//                  } else {
-//                      toufixsscr1Pendientes = "<span id='scoreresultdraw__1__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-1'>" + data.listaPartidosPendiente[i].toufixsscr1 + "</span>";
-//                  }
-//                  if (data.listaPartidosPendiente[i].toufixsscr2 < data.listaPartidosPendiente[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span id='scoreresultloser__2__" + data.listaPartidosPendiente[i].toufixicode + "'  class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosPendiente[i].toufixsscr2 + "</span>";
-//                  } else if (data.listaPartidosPendiente[i].toufixsscr2 > data.listaPartidosPendiente[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultwinner__2__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosPendiente[i].toufixsscr2 + "</span>";
-//                  } else {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultdraw__2__" + data.listaPartidosPendiente[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosPendiente[i].toufixsscr2 + "</span>";
-//                  }
-//                  // htmlPendientes = "<section class='game-result__section pt-15'><header class='game-result__header game-result__header--alt game-result__header__modify'><span class='game-result__league game-result__league__modify'> " + data.listaPartidosPendiente[i].toufixdplay + " </span><h3 class='game-result__title'><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr1Pendientes + " </strong></span><figure class='comment__author-avatar avatar__modify' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")'><img  src='assets/images/soccer/tincaso-pred.png'></img></figure><span style='font-size:25px; color: #ff7e1f'><strong> " + plapresscr2Pendientes + " </strong></span></h3><time class='game-result__date game-result__date__modify'> " + data.listaPartidosPendiente[i].toufixthour + "</time></header><div class='game-result__content' style='margin: 0px'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo' style='width: 20%; height: 68px;'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + " </h5> </div></div><div class='game-result__score-wrap' style='padding: 1px 0 0 0;'><div class='game-result__score game-result__score--lg game-result__score__modify' >" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + " </div><div class='label label-warning'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo' style='width: 20%;height: 68px;'><img  src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'> " + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section>";
-
-//                  var tincazo = data.listaPartidosPendiente[i].plapreicode == null ? 'SIN TINCAZO <i class="fa fa-question" style="font-size:17px; color:black"></i>' : 'TINCAZO  &nbsp; ' + "<strong style='color:black ; font-size:17px'>" + plapresscr1Pendientes + " </strong>" + " - " + "<strong  style='color:black ; font-size:17px'>" + plapresscr2Pendientes + " </strong>";
-//                  if (data.listaPartidosPendiente[i].plapreicode == null) {
-//                      var tincazoFinal = "<h3 style='cursor:pointer; color:red; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
-
-//                  } else {
-//                      var tincazoFinal = "<h3 style='cursor:pointer; color:#38a9ff; font-size:13px' onclick='mi_tincazo(" + data.listaPartidosPendiente[i].toufixicode + "," + plapreicodePendientes + "," + plapresscr1 + "," + plapresscr2 + ")' class='game-result__title'> " + tincazo + "</h3>"
-
-//                  }
-//                  htmlPendientes = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosPendiente[i].toufixdplay).locale('es').format('dddd DD [de] MMMM') + " </span> " + tincazoFinal + "<time class='game-result__date' >" + moment(data.listaPartidosPendiente[i].toufixdplay + " " + data.listaPartidosPendiente[i].toufixthour).locale('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosPendiente[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosPendiente[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosPendiente[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
-//                  $('#game-result-pendientes').append(htmlPendientes);
-//                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultwinner__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultloser__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//                  data.listaPartidosPendiente[i].toufixsscr1 == null ? $('#scoreresultdraw__1__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//                  data.listaPartidosPendiente[i].toufixsscr2 == null ? $('#scoreresultwinner__2__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//                  data.listaPartidosPendiente[i].toufixsscr2 == null ? $('#scoreresultloser__2__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//                  data.listaPartidosPendiente[i].toufixsscr2 == null ? $('#scoreresultdraw__2__' + data.listaPartidosPendiente[i].toufixicode).empty() : "";
-//              }
-//              // for (var o = 0; o < data.listaPartidosJuego.length; o++) {
-//              //     $('#game-result-juego').append(html)
-//              // }
-//              // for (var u = 0; u < data.listaPartidosFinalizados.length; u++) {
-//              //     $('#game-result-finalizados').append(html)
-//              // }
-//          }
-//      });
-//  }
-
-//  function tusTincazosJuego(shearh) {
-//      $('#game-result-juego').empty();
-//      var tougplicode = $('#session-select-tougplicode').val();
-//      var touinfscode = $('#session-select-touinfscode').val();
-//      $.ajax({
-//          url: '/tusTincazosJuego',
-//          type: 'get',
-//          dataType: 'json',
-//          data: {
-//              tougplicode: tougplicode,
-//              touinfscode: touinfscode,
-//              shearh: shearh
-//          },
-//          success: function(data) {
-//              $('#game-result-juego').empty();
-//              var toufixsscr1Pendientes = '';
-//              var toufixsscr2Pendientes = '';
-//              var score_dash = '-';
-//              for (var i = 0; i < data.listaPartidosJuego.length; i++) {
-//                  var plapreicodePendientes = data.listaPartidosJuego[i].plapreicode == null ? null : data.listaPartidosJuego[i].plapreicode;
-//                  var plapresscr1Pendientes = data.listaPartidosJuego[i].plapresscr1 == null ? '' : data.listaPartidosJuego[i].plapresscr1;
-//                  var plapresscr2Pendientes = data.listaPartidosJuego[i].plapresscr2 == null ? '' : data.listaPartidosJuego[i].plapresscr2;
-//                  var tincazo = 'Ver TINCAZOS  &nbsp;<i class="fa fa-search" style="font-size:17px; color:black"></i>';
-//                  var plapresscr2 = plapresscr2Pendientes == '' ? null : plapresscr2Pendientes;
-//                  var plapresscr1 = plapresscr1Pendientes == '' ? null : plapresscr1Pendientes;
-//                  if (data.listaPartidosJuego[i].toufixsscr1 > data.listaPartidosJuego[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultwinnerJ__1__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner'>" + data.listaPartidosJuego[i].toufixsscr1 + "</span>";
-//                  } else if (data.listaPartidosJuego[i].toufixsscr1 < data.listaPartidosJuego[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultloserJ__1__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--loser--winner'>" + data.listaPartidosJuego[i].toufixsscr1 + "</span>";
-//                  } else {
-//                      toufixsscr1Pendientes = "<span id='scoreresultdrawJ__1__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-1'>" + data.listaPartidosJuego[i].toufixsscr1 + "</span>";
-//                  }
-//                  if (data.listaPartidosJuego[i].toufixsscr2 < data.listaPartidosJuego[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span id='scoreresultloserJ__2__" + data.listaPartidosJuego[i].toufixicode + "'  class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosJuego[i].toufixsscr2 + "</span>";
-//                  } else if (data.listaPartidosJuego[i].toufixsscr2 > data.listaPartidosJuego[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultwinnerJ__2__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosJuego[i].toufixsscr2 + "</span>";
-//                  } else {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultdrawJ__2__" + data.listaPartidosJuego[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosJuego[i].toufixsscr2 + "</span>";
-//                  }
-//                  // htmlPendientes1 = "<section class='game-result__section pt-15'><header class='game-result__header game-result__header--alt game-result__header__modify'><span class='game-result__league game-result__league__modify'> " + data.listaPartidosJuego[i].toufixdplay + " </span><h3 class='game-result__title'><span style='font-size:25px; color: #24d9b0'><strong> " + plapresscr1Pendientes + " </strong></span><figure class='comment__author-avatar avatar__modify' onclick='tincazos(" + data.listaPartidosJuego[i].toufixicode + ")'><img  src='assets/images/soccer/tincaso-pred.png'></img></figure><span style='font-size:25px; color: #24d9b0'><strong> " + plapresscr2Pendientes + " </strong></span></h3><time class='game-result__date game-result__date__modify'> " + data.listaPartidosJuego[i].toufixthour + "</time></header><div class='game-result__content' style='margin: 0px'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo' style='width: 20%; height: 68px;'><img src='images/" + data.listaPartidosJuego[i].touteavimgt + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname + " </h5> </div></div><div class='game-result__score-wrap' style='padding: 1px 0 0 0;'><div class='game-result__score game-result__score--lg game-result__score__modify' >" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + " </div><div class='label label-success'>" + data.listaPartidosJuego[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo' style='width: 20%;height: 68px;'><img  src='images/" + data.listaPartidosJuego[i].touteavimgt2 + "'></img></figure><div class='game-result__team-info' style='padding-top: 20px;'><h5 class='game-result__team-name'> " + data.listaPartidosJuego[i].touteatname2 + "</h5></div></div></div></section>";
-//                  htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosJuego[i].toufixdplay).locale('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px;text-transform: NONE' onclick='tincazos(" + data.listaPartidosJuego[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosJuego[i].toufixdplay + " " + data.listaPartidosJuego[i].toufixthour).locale('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosJuego[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosJuego[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosJuego[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
-//                  $('#game-result-juego').append(htmlPendientes1);
-//                  data.listaPartidosJuego[i].toufixsscr1 == null ? $('#scoreresultwinnerJ__1__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//                  data.listaPartidosJuego[i].toufixsscr1 == null ? $('#scoreresultloserJ__1__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//                  data.listaPartidosJuego[i].toufixsscr1 == null ? $('#scoreresultdrawJ__1__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//                  data.listaPartidosJuego[i].toufixsscr2 == null ? $('#scoreresultwinnerJ__2__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//                  data.listaPartidosJuego[i].toufixsscr2 == null ? $('#scoreresultloserJ__2__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//                  data.listaPartidosJuego[i].toufixsscr2 == null ? $('#scoreresultdrawJ__2__' + data.listaPartidosJuego[i].toufixicode).empty() : "";
-//              }
-//          }
-//      });
-//  }
-
-//  function tusTincazosFinalizados(shearh) {
-//      $('#game-result-finalizado').empty();
-//      var tougplicode = $('#session-select-tougplicode').val();
-//      var touinfscode = $('#session-select-touinfscode').val();
-//      $.ajax({
-//          url: '/tusTincazosFinalizados',
-//          type: 'get',
-//          dataType: 'json',
-//          data: {
-//              tougplicode: tougplicode,
-//              touinfscode: touinfscode,
-//              shearh: shearh
-//          },
-//          success: function(data) {
-//              $('#game-result-finalizado').empty();
-//              var toufixsscr1Pendientes = '';
-//              var toufixsscr2Pendientes = '';
-//              var score_dash = '-';
-//              for (var i = 0; i < data.listaPartidosFinalizados.length; i++) {
-//                  var plapreicodePendientes = data.listaPartidosFinalizados[i].plapreicode == null ? null : data.listaPartidosFinalizados[i].plapreicode;
-//                  var plapresscr1Pendientes = data.listaPartidosFinalizados[i].plapresscr1 == null ? '' : data.listaPartidosFinalizados[i].plapresscr1;
-//                  var plapresscr2Pendientes = data.listaPartidosFinalizados[i].plapresscr2 == null ? '' : data.listaPartidosFinalizados[i].plapresscr2;
-//                  var tincazo = 'Ver TINCAZOS &nbsp;<i class="fa fa-search" style="font-size:17px; color:black"></i>';
-//                  var plapresscr2 = plapresscr2Pendientes == '' ? null : plapresscr2Pendientes;
-//                  var plapresscr1 = plapresscr1Pendientes == '' ? null : plapresscr1Pendientes;
-//                  if (data.listaPartidosFinalizados[i].toufixsscr1 > data.listaPartidosFinalizados[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultwinnerJ__1__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner'>" + data.listaPartidosFinalizados[i].toufixsscr1 + "</span>";
-//                  } else if (data.listaPartidosFinalizados[i].toufixsscr1 < data.listaPartidosFinalizados[i].toufixsscr2) {
-//                      toufixsscr1Pendientes = "<span id='scoreresultloserJ__1__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--loser--winner'>" + data.listaPartidosFinalizados[i].toufixsscr1 + "</span>";
-//                  } else {
-//                      toufixsscr1Pendientes = "<span id='scoreresultdrawJ__1__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-1'>" + data.listaPartidosFinalizados[i].toufixsscr1 + "</span>";
-//                  }
-//                  if (data.listaPartidosFinalizados[i].toufixsscr2 < data.listaPartidosFinalizados[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span id='scoreresultloserJ__2__" + data.listaPartidosFinalizados[i].toufixicode + "'  class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosFinalizados[i].toufixsscr2 + "</span>";
-//                  } else if (data.listaPartidosFinalizados[i].toufixsscr2 > data.listaPartidosFinalizados[i].toufixsscr1) {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultwinnerJ__2__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--winner--loser'>" + data.listaPartidosFinalizados[i].toufixsscr2 + "</span>";
-//                  } else {
-//                      toufixsscr2Pendientes = "<span  id='scoreresultdrawJ__2__" + data.listaPartidosFinalizados[i].toufixicode + "' class='game-result__score-result game-result__score-result--draw-2'>" + data.listaPartidosFinalizados[i].toufixsscr2 + "</span>";
-//                  }
-//                  htmlPendientes1 = "<section class='game-result__section pt-0'><header class='game-result__header game-result__header--alt'><span class='game-result__league'> " + moment(data.listaPartidosFinalizados[i].toufixdplay).locale('es').format('dddd DD [de] MMMM') + " </span><h3 style='cursor:pointer; color:#38a9ff; font-size:13px; text-transform: NONE' onclick='tincazos(" + data.listaPartidosFinalizados[i].toufixicode + ")' class='game-result__title'> " + tincazo + "</h3><time class='game-result__date' datetime='2017-03-17'>" + moment(data.listaPartidosFinalizados[i].toufixdplay + " " + data.listaPartidosFinalizados[i].toufixthour).locale('es').format('HH:mm A') + "</time></header> <div class='game-result__content'><div class='game-result__team game-result__team--first'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname + "</h5></div></div><div class='game-result__score-wrap'><div class='game-result__score game-result__score--lg'>" + toufixsscr1Pendientes + "<span class='game-result__score-dash'>" + score_dash + "</span> " + toufixsscr2Pendientes + "</div><div class='game-result__score-label'>" + data.listaPartidosFinalizados[i].constatdesc + "</div></div><div class='game-result__team game-result__team--second'><figure class='game-result__team-logo'><img src='images/" + data.listaPartidosFinalizados[i].touteavimgt2 + "' alt=''></figure><div class='game-result__team-info'><h5 class='game-result__team-name'>" + data.listaPartidosFinalizados[i].touteatname2 + "</h5></div></div></div></section><div class='spacer'></div> ";
-//                  $('#game-result-finalizado').append(htmlPendientes1);
-//                  data.listaPartidosFinalizados[i].toufixsscr1 == null ? $('#scoreresultwinnerJ__1__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//                  data.listaPartidosFinalizados[i].toufixsscr1 == null ? $('#scoreresultloserJ__1__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//                  data.listaPartidosFinalizados[i].toufixsscr1 == null ? $('#scoreresultdrawJ__1__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//                  data.listaPartidosFinalizados[i].toufixsscr2 == null ? $('#scoreresultwinnerJ__2__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//                  data.listaPartidosFinalizados[i].toufixsscr2 == null ? $('#scoreresultloserJ__2__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//                  data.listaPartidosFinalizados[i].toufixsscr2 == null ? $('#scoreresultdrawJ__2__' + data.listaPartidosFinalizados[i].toufixicode).empty() : "";
-//              }
-//          }
-//      });
-//  }
 $(".reveal").on('click', function () {
     var $pwd = $(".pwd");
     if ($pwd.attr('type') === 'password') {
@@ -3513,6 +3352,78 @@ function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicod
         }
     });
 }
+
+function selected_tournament(element, secconnuuid) {
+    if(element){
+        $('.posts__item__tournament').removeClass("tournament__select");
+        $(element).addClass("tournament__select");
+        $('#list_groups').empty();
+        $('.lds-spinner').removeClass('d-none').show();
+    }
+   
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/selected_tournament',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': _token
+        },
+        data: {
+            secconnuuid: secconnuuid,
+        },
+        success: function (data) {
+            desing_menu_groups(data);
+        }
+    });
+}
+function selected_tournament_group(element, secconnuuid,tougplicode) {
+
+    debugger
+    $('.posts__item__groups').removeClass("group__select");
+    $(element).addClass("group__select");
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/selected_group',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': _token
+        },
+        data: {
+            secconnuuid: secconnuuid,
+            tougplicode: tougplicode
+        },
+        success: function (data) {
+            window.location.href = '/?q=true';
+        }
+    });
+}
+function desing_menu_groups(data) {
+    setTimeout(function () {
+        var desing_menu_groups = '';
+        $.each(data, function (i, item) {
+            desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-'+item.tougrpicode+' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"'+item.secconnuuid1+'",'+item.tougplicode+')>';
+            desing_menu_groups += ' <figure class="posts__thumb">';
+            desing_menu_groups += '<a>';
+            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary  rounded-circle" style="width: 40px ; height: 40px; border-radius: 25%"/>';
+            desing_menu_groups += '</a>';
+            desing_menu_groups += '</figure>';
+            desing_menu_groups += '<div class="posts__inner">';
+            desing_menu_groups += '<div class="posts__cat">';
+            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 8px">' + item.total + ' Participantes</span>';
+            desing_menu_groups += '</div>';
+            desing_menu_groups += '<h6 class="posts__title"><a >' + item.tougrptname + '</a></h6>';
+            desing_menu_groups += '</div>';
+            desing_menu_groups += '</li>';
+            $('.lds-spinner').addClass('d-none').hide();
+
+        });
+        $('#list_groups').append(desing_menu_groups);
+        $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
+    }, 1000);
+
+}
 // $(".buscar").keyup(function (e) {
 //     // $(".buscar").css("background-color", "pink");
 //     var search = $(".buscar").val();
@@ -3540,7 +3451,7 @@ $("#shearh-tincazos").on('click', function () {
     var search = $("ul.info-block--header > div > div > #input-buscar").val();
     var elmnt = document.getElementById("tustincazos-div");
     elmnt.scrollIntoView();
-    debugger
+    
     tusTincazosFinalizados(search);
     tusTincazosJuego(search);
     tusTincazosPendientes(search);
@@ -3567,7 +3478,7 @@ function info_player_dia(plainficode, name) {
 }
 
 function winner_loser_team1(item) {
-    
+
     if (item.constascode == 1) {
 
         var toufixsscr1 = '';
@@ -3588,7 +3499,7 @@ function winner_loser_team1(item) {
         } else {
             return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr1 + '</span>';
         }
-    }else{
+    } else {
         if (item.toufixsscr1 > item.toufixsscr2) {
             return '<span class="game-result__score-result game-result__score-result--winner">' + item.toufixsscr1 + '</span>';
         } else if (item.toufixsscr1 < item.toufixsscr2) {
@@ -3617,7 +3528,7 @@ function winner_loser_team2(item) {
         } else {
             return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr2 + '</span>';
         }
-    }else{
+    } else {
         if (item.toufixsscr2 > item.toufixsscr1) {
             return '<span class="game-result__score-result game-result__score-result--winner">' + item.toufixsscr2 + '</span>';
         } else if (item.toufixsscr2 < item.toufixsscr1) {

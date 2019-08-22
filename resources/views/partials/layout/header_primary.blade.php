@@ -22,41 +22,41 @@
             @if(Session::has('plainficode') )
             {{-- <li class=""><a href="#">Mis Torneos  <span style="color:#c2ff1f">(
                     {{ App\touinf::tournamentMenu()->count() }} )</span></a>
-                <div class="main-nav__megamenu clearfix">
-                    <div class="col-12">
-                        <ul class="posts posts--simple-list">
-                            <div class="row">
-                                @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
-                                <li style="cursor: pointer;" class="posts__item posts__item--category-1 col-3">
-                                    <figure class="posts__thumb">
-                                        <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
-                                            <img style="width: 80px ; height:80px;"
-                                                src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}">
-                                        </a>
-                                    </figure>
-                                    <div class="posts__inner">
-                                        <div class="posts__cat">
-                                            <span
-                                                class="label posts__cat-label">{{ $objTorneosUsersMenu->touinftname }}</span>
-                                        </div>
-                                        <h6 class="posts__title">
-                                            <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
-                                                {{ $objTorneosUsersMenu->touinftname }}</a>
-                                        </h6>
-                                        <time class="posts__date">{{ $objTorneosUsersMenu->touinfdstat }}</time>
+            <div class="main-nav__megamenu clearfix">
+                <div class="col-12">
+                    <ul class="posts posts--simple-list">
+                        <div class="row">
+                            @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
+                            <li style="cursor: pointer;" class="posts__item posts__item--category-1 col-3">
+                                <figure class="posts__thumb">
+                                    <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
+                                        <img style="width: 80px ; height:80px;"
+                                            src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}">
+                                    </a>
+                                </figure>
+                                <div class="posts__inner">
+                                    <div class="posts__cat">
+                                        <span
+                                            class="label posts__cat-label">{{ $objTorneosUsersMenu->touinftname }}</span>
                                     </div>
-                                </li>
-                                @endforeach
-                            </div>
-                        </ul>
-                    </div>
+                                    <h6 class="posts__title">
+                                        <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
+                                            {{ $objTorneosUsersMenu->touinftname }}</a>
+                                    </h6>
+                                    <time class="posts__date">{{ $objTorneosUsersMenu->touinfdstat }}</time>
+                                </div>
+                            </li>
+                            @endforeach
+                        </div>
+                    </ul>
                 </div>
+            </div>
             </li>
             <li class="">
-                <a href="#">Mis Grupos 
+                <a href="#">Mis Grupos
                     @if (App\tougrp::tournamentsWithGroups()->count() > 0)
                     <span style="color:#c2ff1f">(
-                            {{ App\tougrp::tournamentsWithGroups()->count() }} )</span>
+                        {{ App\tougrp::tournamentsWithGroups()->count() }} )</span>
                     @endif</a>
                 <div class="main-nav__megamenu clearfix">
                     <div class="col-lg-6 col-md-6 col-12">
@@ -73,8 +73,7 @@
                                     value="{{ $objTorneosUsers->tougrpsxval}}">
                                 <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}"
                                     value="{{ $objTorneosUsers->tougrpschpt}}">
-                                <li class="posts__item posts__item--category-1" style="cursor: pointer;"
-                                    onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',
+                                <li class="posts__item posts__item--category-1" style="cursor: pointer;" onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',
                                     {{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},
                                     {{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},
                                     {{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
@@ -105,80 +104,85 @@
             </li> --}}
             <li class=""><a href="#">MIS TORNEOS Y GRUPOS</a>
                 <div class="main-nav__megamenu clearfix">
-                    
-                    <div class="col-lg-6 col-md-6 col-12" >
+                    <div class="col-lg-6 col-md-6 col-12">
                         <ul class="posts posts--simple-list">
                             <span class="badge badge-success mb-3" style="font-size: small">TORNEOS</span>
                             <div style="height: 180px; overflow-y:auto;">
-
-                            @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
-                            
-                            <li class="posts__item posts__item--category-1">
-                                
+                                @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
+                                <li class="posts__item posts__item--category-tournament posts__item--category-tournament-{{ $objTorneosUsersMenu->touinfscode }} posts__item__tournament" style="cursor: pointer;"
+                                    onclick="selected_tournament(this,'{{ $objTorneosUsersMenu->secconnuuid }}')">
                                     <figure class="posts__thumb">
-                                            <a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
-                                                    <img class="img-thumbnail img-thumbnail-success rounded-circle" style="width: 80px; height:80px;border-radius: 25%"
-                                                        src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}">
-                                                </a>
+                                        <a >
+                                            <img class="img-thumbnail img-thumbnail-success rounded-circle"
+                                                style="width: 80px; height:80px"
+                                                src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}">
+                                        </a>
                                     </figure>
                                     <div class="posts__inner">
-                                            <div class="posts__cat">
-                                                    <span class="label posts__cat-label badge-success" style="font-size: 9px">{{ $objTorneosUsersMenu->touinfsnumt }} Equipos</span>
-                                                </div>
-                                        <h6 class="posts__title"><a href="{{ route('touinf.tournament', $objTorneosUsersMenu->secconnuuid) }}">
-                                                {{ $objTorneosUsersMenu->touinftname }}</a></h6>
-                                                
-                                        <time datetime="2016-08-21" class="posts__date">{{ $objTorneosUsersMenu->touinfdstat }}</time>
+                                        <div class="posts__cat">
+                                            <span class="label posts__cat-label badge-success"
+                                                style="font-size: 9px">{{ $objTorneosUsersMenu->touinfsnumt }}
+                                                Equipos</span>
+                                        </div>
+                                        <h6 class="posts__title"><a>{{ $objTorneosUsersMenu->touinftname }}</a></h6>
+
+                                        <time class="posts__date">{{ $objTorneosUsersMenu->touinfdstat }}</time>
                                     </div>
                                 </li>
-                            @endforeach
-                           
-                        </div>
-                          
+                                @endforeach
+
+                            </div>
+
                         </ul>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12" >
-                            <ul class="posts posts--simple-list">
-                                <span class="badge badge-primary mb-3" style="font-size: small;background-color: #007bff;">GRUPOS</span>
-                            <div style="height: 180px; overflow-y:auto;">
-                                
-                                @foreach (App\tougrp::tournamentsWithGroups()  as $objTorneosUsers)
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <ul class="posts posts--simple-list">
+                            <span class="badge badge-primary mb-3"
+                                style="font-size: small;background-color: #007bff;">GRUPOS
+                            </span>
+                            <div class="lds-spinner lds-spinner-middle d-none"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            <div style="height: 180px; overflow-y:auto;" id="list_groups">
+                                    
+                                {{-- @foreach (App\tougrp::tournamentsWithGroups() as $objTorneosUsers)
                                 <input type="hidden" id="tougrpsmaxp{{ $objTorneosUsers->tougrpicode }}"
-                            value="{{ $objTorneosUsers->tougrpsmaxp }}">
-                        <input type="hidden" id="tougrpsmedp{{ $objTorneosUsers->tougrpicode }}"
-                            value="{{ $objTorneosUsers->tougrpsmedp}}">
-                        <input type="hidden" id="tougrpsminp{{ $objTorneosUsers->tougrpicode }}"
-                            value="{{ $objTorneosUsers->tougrpsminp}}">
-                        <input type="hidden" id="tougrpsxval{{ $objTorneosUsers->tougrpicode }}"
-                            value="{{ $objTorneosUsers->tougrpsxval}}">
-                        <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}"
-                            value="{{ $objTorneosUsers->tougrpschpt}}">
-                                <li class="posts__item posts__item--category-1"  style="cursor: pointer;"
+                                    value="{{ $objTorneosUsers->tougrpsmaxp }}">
+                                <input type="hidden" id="tougrpsmedp{{ $objTorneosUsers->tougrpicode }}"
+                                    value="{{ $objTorneosUsers->tougrpsmedp}}">
+                                <input type="hidden" id="tougrpsminp{{ $objTorneosUsers->tougrpicode }}"
+                                    value="{{ $objTorneosUsers->tougrpsminp}}">
+                                <input type="hidden" id="tougrpsxval{{ $objTorneosUsers->tougrpicode }}"
+                                    value="{{ $objTorneosUsers->tougrpsxval}}">
+                                <input type="hidden" id="tougrpschpt{{ $objTorneosUsers->tougrpicode }}"
+                                    value="{{ $objTorneosUsers->tougrpschpt}}">
+                                <li class="posts__item posts__item--category-1" style="cursor: pointer;" 
                                 onclick="tougrptname_name_link('{{ $objTorneosUsers->tougrptname }}',
                                 {{ $objTorneosUsers->tougrpicode }},{{ $objTorneosUsers->touinfscode }},
                                 {{ $objTorneosUsers->tougplicode }},{{ $objTorneosUsers->plainficode }},
                                 {{ $objTorneosUsers->tougrpsxval }},{{ $objTorneosUsers->tougrpschpt }})">
-                                    
-                                        <figure class="posts__thumb">
-                                                <a data-id="{{ $objTorneosUsers->tougrpicode }}">
-                                                        <img class="img-thumbnail img-thumbnail-primary  rounded-circle" id="image-torneo-{{ $objTorneosUsers->tougrpicode }}"
-                                                            name="image-torneo-{{ $objTorneosUsers->tougrpicode }}"
-                                                            style="width: 40px ; height: 40px; border-radius: 25%"
-                                                            src="/images/{{ $objTorneosUsers->tougrpvimgg  }}">
-                                                    </a>
-                                        </figure>
-                                        <div class="posts__inner">
-                                                <div class="posts__cat">
-                                                        <span class="label posts__cat-label badge-primary"  style="font-size: 8px">{{ $objTorneosUsers->total }} Participantes</span>
-                                                    </div>
-                                            <h6 class="posts__title"><a href="#">{{ $objTorneosUsers->tougrptname }}</a></h6>
+                                    <figure class="posts__thumb">
+                                        <a data-id="{{ $objTorneosUsers->tougrpicode }}">
+                                            <img class="img-thumbnail img-thumbnail-primary  rounded-circle"
+                                                id="image-torneo-{{ $objTorneosUsers->tougrpicode }}"
+                                                name="image-torneo-{{ $objTorneosUsers->tougrpicode }}"
+                                                style="width: 40px ; height: 40px; border-radius: 25%"
+                                                src="/images/{{ $objTorneosUsers->tougrpvimgg  }}">
+                                        </a>
+                                    </figure>
+                                    <div class="posts__inner">
+                                        <div class="posts__cat">
+                                            <span class="label posts__cat-label badge-primary"
+                                                style="font-size: 8px">{{ $objTorneosUsers->total }}
+                                                Participantes</span>
                                         </div>
-                                    </li>
-                                @endforeach
+                                        <h6 class="posts__title"><a >{{ $objTorneosUsers->tougrptname }}</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                                @endforeach --}}
                             </div>
-                              
-                            </ul>
-                        </div>
+
+                        </ul>
+                    </div>
                 </div>
             </li>
             @endif

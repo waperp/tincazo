@@ -49,7 +49,26 @@ class tougrp extends Model
             $touinfscode = Session::get('session_link_tournament')->touinfscode;
         }
         return $query
-            ->select('tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
+            ->select('tougrp.secconnuuid as secconnuuid1','tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
+            ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->where('tougrp.tougrpbenbl', 1)
+            ->where('tougpl.plainficode', \Auth::user()->plainficode)
+            ->where('tougpl.constascode', 2)
+            ->where('touinf.touinfscode', $touinfscode)
+            ->get();
+    }
+    public function scopeGroups($query, $touinfscode)
+    {
+        // 'select tougrp.*,touinf.*, tougpl.tougplicode
+        // from tougrp
+        // join touinf on tougrp.touinfscode = touinf.touinfscode
+        // join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
+        // where tougrp.tougrpbenbl = 1 
+        // and tougpl.plainficode = ? 
+        // and tougpl.constascode = 2 and touinf.touinfscode = ?';
+        return $query
+            ->select('tougrp.secconnuuid as secconnuuid1','tougrp.*', 'touinf.*','tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
             ->where('tougrp.tougrpbenbl', 1)

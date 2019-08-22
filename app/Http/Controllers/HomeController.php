@@ -8,6 +8,7 @@ use App\secpin;
 use App\secusr;
 use App\tougrp;
 use App\touinf;
+use App\toutea;
 use Carbon\Carbon;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -225,7 +226,7 @@ class HomeController extends Controller
             Session::forget('select-q');
         }
         // return $request->all();
-        // Session::put('touinfscode',$request->touinfscode);
+         Session::get('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTouinfAll = DB::table('touinf')->get();
@@ -282,7 +283,10 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-       
+        // return toutea::myChampion()->toSql();
+        //   return Session::get('select-tougrpicode');
+        //  return Session::get('select-touinfscode');
+        //  return Session::get('select-tougplicode');
         $date = Carbon::now();
         // return  dd$request->ajax();
         if (!$request->has('q')) {
@@ -741,5 +745,49 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         // }
 
         return response()->json($data);
+    }
+    public function selected_tournament(Request $request){
+        $touinf = touinf::where('secconnuuid',$request->secconnuuid)->first();
+        if($touinf){
+            Session::put('session_link_tournament',$touinf);
+        }else{
+            Session::forget('session_link_tournament');
+        }
+        Session::put('touinf',$touinf);
+        $groups = tougrp::tournamentsWithGroups();
+        return response()->json($groups);
+    }
+    public function selected_group(Request $request){
+        $tougrp = tougrp::where('secconnuuid',$request->secconnuuid)
+        ->first();
+        Session::put('session_selected_tougrp',$tougrp);
+        Session::forget('select-q');
+        Session::forget('tougrp');
+    
+
+        Session::forget('select-tougrptname');
+        Session::forget('select-tougrpicode');
+        Session::forget('select-touinfscode');
+        Session::forget('select-tougplicode');
+        Session::forget('select-plainficode');
+        Session::forget('session-admin-tougrp');
+        Session::forget('select-tougrpsxval');
+        Session::put('tougrp',$tougrp);
+
+        Session::put('select-tougrptname', $tougrp->tougrptname);
+        Session::put('select-q', true);
+        Session::put('select-tougrpicode', $tougrp->tougrpicode);
+        Session::put('select-touinfscode', $tougrp->touinfscode);
+        Session::put('select-tougplicode', $request->tougplicode);
+        Session::put('select-plainficode', $tougrp->plainficode);
+        Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
+        Session::put('select-tougrpschpt', $tougrp->tougrpschpt);
+        
+        if (Session::get('plainficode') == Session::get('select-plainficode')) {
+            Session::put('session-admin-tougrp', true);
+        } else {
+            Session::put('session-admin-tougrp', false);
+        }
+        return response()->json($tougrp);
     }
 }

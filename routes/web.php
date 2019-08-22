@@ -22,6 +22,8 @@ Route::get('/', 'HomeController@index')->name('home.index');
 // Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
 Route::get('matches_all_web', 'HomeController@matches_all_web');
+Route::post('selected_tournament', 'HomeController@selected_tournament');
+Route::post('selected_group', 'HomeController@selected_group');
 
 
 Route::post('login', 'LoginController@login');
@@ -64,7 +66,7 @@ Route::post('agregarTorneosEquipos', 'touteaController@agregarTorneosEquipos');
 Route::get('tablaPosicionesGrupo', 'HomeController@tablaPosicionesGrupo');
 Route::get('tableGestionarFixture', 'HomeController@tableGestionarFixture');
 Route::get('tablaInvitacionesGrupo', 'HomeController@tablaInvitacionesGrupo');
-Route::get('tableGestionarGruposAdmin', 'HomeController@tableGestionarGruposAdmin');
+Route::get('tableGestionarGruposAdmin', 'HomeController@sessionLink');
 Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
 
 
@@ -89,7 +91,7 @@ Route::post('insertarCampeon', 'touteaController@insertarCampeon');
 Route::get('editarPerfil/', array('as' => 'editarPerfil', 'uses' => 'secusrController@editarPerfil'));
 Route::get('obtenerPredicciones', 'HomeController@obtenerPredicciones');
 
-Route::get('mainnav/tournament/{secconnuuid}','touinfController@selectTournament')->name('touinf.tournament');
+Route::get('mainnav/tournament/{secconnuuid}','touinfController@tableGestionarGruposAdmin')->name('touinf.tournament');
 
 // Route::get('editarPerfil/{nick}', array('as' => 'user', function($nick) { 
 // 	return view('editarPerfil',compact('nick')); 

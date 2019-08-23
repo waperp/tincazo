@@ -3366,11 +3366,8 @@ function selected_tournament(element, secconnuuid) {
     var _token = $('input[name=_token]').val();
     $.ajax({
         url: '/selected_tournament',
-        type: 'post',
+        type: 'get',
         dataType: 'json',
-        headers: {
-            'X-CSRF-TOKEN': _token
-        },
         data: {
             secconnuuid: secconnuuid,
         },
@@ -3387,11 +3384,8 @@ function selected_tournament_group(element, secconnuuid,tougplicode) {
     var _token = $('input[name=_token]').val();
     $.ajax({
         url: '/selected_group',
-        type: 'post',
+        type: 'get',
         dataType: 'json',
-        headers: {
-            'X-CSRF-TOKEN': _token
-        },
         data: {
             secconnuuid: secconnuuid,
             tougplicode: tougplicode

@@ -22,8 +22,8 @@ Route::get('/', 'HomeController@index')->name('home.index');
 // Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
 Route::get('matches_all_web', 'HomeController@matches_all_web');
-Route::post('selected_tournament', 'HomeController@selected_tournament');
-Route::post('selected_group', 'HomeController@selected_group');
+Route::get('selected_tournament', 'HomeController@selected_tournament');
+Route::get('selected_group', 'HomeController@selected_group');
 
 
 Route::post('login', 'LoginController@login');
@@ -66,7 +66,7 @@ Route::post('agregarTorneosEquipos', 'touteaController@agregarTorneosEquipos');
 Route::get('tablaPosicionesGrupo', 'HomeController@tablaPosicionesGrupo');
 Route::get('tableGestionarFixture', 'HomeController@tableGestionarFixture');
 Route::get('tablaInvitacionesGrupo', 'HomeController@tablaInvitacionesGrupo');
-Route::get('tableGestionarGruposAdmin', 'HomeController@sessionLink');
+Route::get('tableGestionarGruposAdmin', 'HomeController@tableGestionarGruposAdmin');
 Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
 
 

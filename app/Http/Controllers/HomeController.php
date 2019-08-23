@@ -97,35 +97,35 @@ class HomeController extends Controller
     public function sessionLink(Request $request)
     {
         // return response()->json($request->all());
-        Session::forget('select-q');
-        Session::forget('tougrp');
+        // Session::forget('select-q');
+        // Session::forget('tougrp');
     
 
-        Session::forget('select-tougrptname');
-        Session::forget('select-tougrpicode');
-        Session::forget('select-touinfscode');
-        Session::forget('select-tougplicode');
-        Session::forget('select-plainficode');
-        Session::forget('session-admin-tougrp');
-        Session::forget('select-tougrpsxval');
-        $tougrp = tougrp::where('tougrpicode', $request->tougrpicode)->first();
+        // Session::forget('select-tougrptname');
+        // Session::forget('select-tougrpicode');
+        // Session::forget('select-touinfscode');
+        // Session::forget('select-tougplicode');
+        // Session::forget('select-plainficode');
+        // Session::forget('session-admin-tougrp');
+        // Session::forget('select-tougrpsxval');
+        // $tougrp = tougrp::where('tougrpicode', $request->tougrpicode)->first();
 
-        Session::put('tougrp',$tougrp);
+        // Session::put('tougrp',$tougrp);
 
-        Session::put('select-tougrptname', $request->tougrptname);
-        Session::put('select-q', true);
-        Session::put('select-tougrpicode', $request->tougrpicode);
-        Session::put('select-touinfscode', $request->touinfscode);
-        Session::put('select-tougplicode', $request->tougplicode);
-        Session::put('select-plainficode', $request->plainficode);
-        Session::put('select-tougrpsxval', $request->tougrpsxval);
-        Session::put('select-tougrpschpt', $request->tougrpschpt);
-        if (Session::get('plainficode') == Session::get('select-plainficode')) {
-            Session::put('session-admin-tougrp', true);
-        } else {
-            Session::put('session-admin-tougrp', false);
-        }
-        return response()->json(1);
+        // Session::put('select-tougrptname', $request->tougrptname);
+        // Session::put('select-q', true);
+        // Session::put('select-tougrpicode', $request->tougrpicode);
+        // Session::put('select-touinfscode', $request->touinfscode);
+        // Session::put('select-tougplicode', $request->tougplicode);
+        // Session::put('select-plainficode', $request->plainficode);
+        // Session::put('select-tougrpsxval', $request->tougrpsxval);
+        // Session::put('select-tougrpschpt', $request->tougrpschpt);
+        // if (Session::get('plainficode') == Session::get('select-plainficode')) {
+        //     Session::put('session-admin-tougrp', true);
+        // } else {
+        //     Session::put('session-admin-tougrp', false);
+        // }
+        // return response()->json(1);
     }
 
     public function validateMail(Request $request)
@@ -761,19 +761,7 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         $tougrp = tougrp::where('secconnuuid',$request->secconnuuid)
         ->first();
         Session::put('session_selected_tougrp',$tougrp);
-        Session::forget('select-q');
-        Session::forget('tougrp');
-    
-
-        Session::forget('select-tougrptname');
-        Session::forget('select-tougrpicode');
-        Session::forget('select-touinfscode');
-        Session::forget('select-tougplicode');
-        Session::forget('select-plainficode');
-        Session::forget('session-admin-tougrp');
-        Session::forget('select-tougrpsxval');
         Session::put('tougrp',$tougrp);
-
         Session::put('select-tougrptname', $tougrp->tougrptname);
         Session::put('select-q', true);
         Session::put('select-tougrpicode', $tougrp->tougrpicode);

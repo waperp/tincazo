@@ -9,9 +9,10 @@ function removemenu() {
 $(document).ready(function () {
     debugger
     
-    var element_group_selected = tougrp.tougrpicode;
-    var element_tournament_selected = touinf.touinfscode;
-    if(element_group_selected &&  element_tournament_selected){
+   
+    if(tougrp &&  touinf){
+        var element_group_selected = tougrp.tougrpicode;
+        var element_tournament_selected = touinf.touinfscode;
         selected_tournament(null,touinf.secconnuuid);
         $('.posts__item__tournament').removeClass('tournament__select');
 
@@ -164,21 +165,25 @@ $(document).ready(function () {
     //     height: 'auto',
     //     'max-height': '90%'
     // });
-    var torneo = tougrp.tougrptname;
-    
     var filtre_torneo = window.getParameterByName('q');
-    var touinfscode = tougrp.touinfscode;
-    var tougrpicode = tougrp.tougrpicode;
-    var plainficodeurl = tougrp.plainficode;
-    var plainficodehidden = $('#plainficode-hidden').val();
-    // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
 
-    var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
-    var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
-    var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
-    var tougrpsminp = $('#tougrpsminp' + tougrpicode).val();
-    var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
-    var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
+    if(tougrp && touinf){
+        var torneo = tougrp.tougrptname;
+    
+        var touinfscode = tougrp.touinfscode;
+        var tougrpicode = tougrp.tougrpicode;
+        var plainficodeurl = tougrp.plainficode;
+        var plainficodehidden = $('#plainficode-hidden').val();
+        // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
+    
+        var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
+        var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
+        var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
+        var tougrpsminp = $('#tougrpsminp' + tougrpicode).val();
+        var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
+        var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
+    }
+   
     $('#tablepociciones_filter lable input').addClass('modify'); // <-- add this line
     // <-- add this line
     $("#edit-perfil-image-preview").css("background-image", "url('images/" + $('#edit-perfil-image-src').val() + "')");
@@ -3402,7 +3407,7 @@ function desing_menu_groups(data) {
             desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-'+item.tougrpicode+' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"'+item.secconnuuid1+'",'+item.tougplicode+')>';
             desing_menu_groups += ' <figure class="posts__thumb">';
             desing_menu_groups += '<a>';
-            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary  rounded-circle" style="width: 40px ; height: 40px; border-radius: 25%"/>';
+            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary" style="width: 40px ; height: 40px;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"/>';
             desing_menu_groups += '</a>';
             desing_menu_groups += '</figure>';
             desing_menu_groups += '<div class="posts__inner">';

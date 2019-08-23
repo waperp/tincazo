@@ -113,8 +113,8 @@
                                     onclick="selected_tournament(this,'{{ $objTorneosUsersMenu->secconnuuid }}')">
                                     <figure class="posts__thumb">
                                         <a >
-                                            <img class="img-thumbnail img-thumbnail-success rounded-circle"
-                                                style="width: 80px; height:80px"
+                                            <img class="img-thumbnail img-thumbnail-success "
+                                                style="width: 80px; height:80px;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"
                                                 src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}">
                                         </a>
                                     </figure>

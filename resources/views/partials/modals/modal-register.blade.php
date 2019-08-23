@@ -19,7 +19,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- Tab: Login -->
-                            <div role="tabpanel" class="tab-pane fade show active" id="tab-register">
+                            <div role="tabpanel" class="tab-pane fade show active" id="tab-register-1">
                                 <!-- Login Form -->
                                 <form action="{{ route('secusr.store') }}" class="modal-form" enctype="multipart/form-data" id="formStore" method="post">
                                     @csrf
@@ -56,6 +56,10 @@
                                                 <select class="select2 form-control" id="selectconmemscode" name="conmemscode" required="" style="width: 100%">
                                                 </select>
                                             </div>
+                                            <div class="custom-control custom-checkbox text-center">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1">He leído y acepto termino y condiciones</label>
+                                                  </div>
                                     <div class="form-group form-group--submit">
 
                                         <button id="form-button-register" class="btn btn-primary-inverse btn-block"
@@ -90,13 +94,25 @@
                             <!-- Tab: Login / End -->
 
                             <!-- Tab: Register -->
-
+                            <div role="tabpanel" class="tab-pane fade" id="tab-register-register">
+		
+                                    <!-- Register Form -->
+                                    <div style="height: 285px;overflow-y:  auto; margin: -20px">
+                                            @include('partials.layout.terminoscondiciones')
+                                    </div>
+                                    <!-- Register Form / End -->
+                                </div>
                             <!-- Tab: Register / End -->
 
                         </div>
 
                         <!-- Nav tabs -->
-
+                        <div class="nav-tabs-login-wrapper">
+                                <ul class="nav nav-tabs nav-justified nav-tabs--login" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" href="#tab-register-1" role="tab" data-toggle="tab">Registro</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab-register-register" role="tab" data-toggle="tab">Termino y condiciones</a></li>
+                                </ul>
+                            </div>
                         <!-- Nav tabs / End -->
 
                     </div>

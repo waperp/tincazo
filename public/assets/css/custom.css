@@ -1451,3 +1451,6 @@ input.header-mobile__search-control {
     background-position: center right .5625rem !important;
     background-size: 1.125rem 1.125rem !important;
 }
+.main-nav__megamenu{
+    padding: 13px 0;
+}

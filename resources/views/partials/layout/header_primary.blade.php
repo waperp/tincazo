@@ -104,7 +104,7 @@
             </li> --}}
             <li class=""><a href="#">MIS TORNEOS Y GRUPOS</a>
                 <div class="main-nav__megamenu clearfix">
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div style="border-right: 1px solid #ffffff30" class="col-lg-6 col-md-6 col-12">
                         <ul class="posts posts--simple-list">
                             <span class="badge badge-success mb-3" style="font-size: small">TORNEOS</span>
                             <div style="height: 180px; overflow-y:auto;">
@@ -135,7 +135,7 @@
 
                         </ul>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div style="border-left: 1px solid #ffffff30"  class="col-lg-6 col-md-6 col-12">
                         <ul class="posts posts--simple-list">
                             <span class="badge badge-primary mb-3"
                                 style="font-size: small;background-color: #007bff;">GRUPOS

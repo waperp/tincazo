@@ -7,17 +7,17 @@ function removemenu() {
     $('.site-wrapper.clearfix').removeClass('site-wrapper--has-overlay');
 }
 $(document).ready(function () {
-    debugger
+    
     $("#secusrtmail").change(debounce(function () {
         var $this = $(this);
-        debugger
+        
         document.getElementById('form-login-button-submit').disabled = 1;
         validateMailLogin($this.val());
         
     }, 500));
     $('#secusrtmail').keyup(debounce(function () {
         var $this = $(this);
-        debugger
+        
         document.getElementById('form-login-button-submit').disabled = 1;
         validateMailLogin($this.val())
 
@@ -1343,7 +1343,7 @@ $("#iniciosession").submit(function (e) {
 
     $('.lds-ring').show();
     document.getElementById('form-login-button-submit').disabled = 1;
-    debugger
+    
     var checked = $('#termsConditionsCheck').is(':checked')
     var ss = $("#myDiv").length
     var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
@@ -2057,7 +2057,7 @@ function selected_tournament(element, secconnuuid) {
 }
 function selected_tournament_group(element, secconnuuid, tougplicode) {
 
-    debugger
+    
     $('.posts__item__groups').removeClass("group__select");
     $(element).addClass("group__select");
     var _token = $('input[name=_token]').val();
@@ -2251,7 +2251,7 @@ function validateMailLogin(secusrtmail) {
             secusrtmail: secusrtmail
         },
         success: function (data) {
-            debugger
+            
             if (data.isTermsConditions == true && data.isValidMail == true) {
                 $("#secusrtmail").removeClass('form-control-danger');
                 $("#secusrtmail").addClass('form-control-success');

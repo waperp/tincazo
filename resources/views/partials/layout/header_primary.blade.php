@@ -24,7 +24,7 @@
                             <span class="badge badge-success mb-2" style="font-size: small">TORNEOS</span>
                             <div style="height: 180px; overflow-y:auto;">
                                 @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
-                                <li class="posts__item posts__item--category-tournament posts__item--category-tournament-{{ $objTorneosUsersMenu->touinfscode }} posts__item__tournament"
+                                <li class="posts__item posts__item--category-tournament posts__item--category-tournament-{{ $objTorneosUsersMenu->touinfscode }} posts__item__tournament m-0 mb-2"
                                     style="cursor: pointer;"
                                     onclick="selected_tournament(this,'{{ $objTorneosUsersMenu->secconnuuid }}')">
                                     <figure class="posts__thumb">

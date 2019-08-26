@@ -1454,3 +1454,9 @@ input.header-mobile__search-control {
 .main-nav__megamenu{
     padding: 13px 0;
 }
+
+.posts--simple-list .posts__item {
+    overflow: hidden;
+    margin-bottom: 18px;
+    margin-right: 0px;
+}

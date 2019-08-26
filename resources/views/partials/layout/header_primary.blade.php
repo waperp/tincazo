@@ -77,7 +77,7 @@
             </li>
             @endif
             @if(Session::has('plainficode') && Session::has('session-admin-tougrp'))
-            @if (Session::get('session-admin-tougrp')== true)
+            @if (Session::get('session-admin-tougrp') == true)
             <li class="mitorneo_li">
                 <a class="mitorneo">{{ Session::get('select-tougrptname') }}</a>
                 <ul class="main-nav__sub">

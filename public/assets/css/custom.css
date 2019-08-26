@@ -1263,14 +1263,21 @@ input.header-mobile__search-control {
     background-color: #80808045;
     border-top-right-radius: 2%;
     border-radius: 2%;
-    border: 1px solid rgba(255, 255, 255, 0.5)
+    border: 1px solid rgb(30, 32, 36) !important;
+    border-left: 0px !important;
+    border-top-width: 80% !important;
+    border-bottom-width: 80% !important;
+
 }
 
 .group__select {
     background-color: #80808045;
     border-top-right-radius: 2%;
     border-bottom-right-radius: 2%;
-    border: 1px solid rgba(255, 255, 255, 0.5)
+    border: 1px solid rgb(30, 32, 36) !important;
+    border-left: 0px !important;
+    border-top-width: 80% !important;
+    border-bottom-width: 80% !important;
 }
 
 .lds-spinner-middle {

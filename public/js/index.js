@@ -2089,7 +2089,7 @@ function desing_menu_groups(data) {
             desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-' + item.tougrpicode + ' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"' + item.secconnuuid1 + '",' + item.tougplicode + ')>';
             desing_menu_groups += ' <figure class="posts__thumb">';
             desing_menu_groups += '<a>';
-            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary" style="width: 40px ; height: 40px;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"/>';
+            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary" style="width: 50px ; height: auto;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"/>';
             desing_menu_groups += '</a>';
             desing_menu_groups += '</figure>';
             desing_menu_groups += '<div class="posts__inner">';

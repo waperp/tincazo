@@ -18,10 +18,10 @@
             @endif
             @if(Session::has('plainficode') )
             <li class=""><a href="#">MIS TORNEOS Y GRUPOS</a>
-                <div class="main-nav__megamenu clearfix">
+                <div class="main-nav__megamenu clearfix p-0 pt-2 pb-2">
                     <div style="border-right: 1px solid #ffffff30" class="col-lg-6 col-md-6 col-12">
                         <ul class="posts posts--simple-list">
-                            <span class="badge badge-success mb-3" style="font-size: small">TORNEOS</span>
+                            <span class="badge badge-success mb-2" style="font-size: small">TORNEOS</span>
                             <div style="height: 180px; overflow-y:auto;">
                                 @foreach(App\touinf::tournamentMenu() as $objTorneosUsersMenu)
                                 <li class="posts__item posts__item--category-tournament posts__item--category-tournament-{{ $objTorneosUsersMenu->touinfscode }} posts__item__tournament"
@@ -52,7 +52,7 @@
                     </div>
                     <div style="border-left: 1px solid #ffffff30" class="col-lg-6 col-md-6 col-12">
                         <ul class="posts posts--simple-list">
-                            <span class="badge badge-primary mb-3"
+                            <span class="badge badge-primary mb-2"
                                 style="font-size: small;background-color: #007bff;">GRUPOS
                             </span>
                             <div class="lds-spinner lds-spinner-middle d-none">

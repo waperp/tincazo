@@ -2095,7 +2095,7 @@ function desing_menu_groups(data) {
             desing_menu_groups += '<div class="posts__inner">';
             desing_menu_groups += '<h6 class="posts__title pt-2"><a >' + item.tougrptname + '</a></h6>';
             desing_menu_groups += '<div class="posts__cat">';
-            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 8px"> ' + item.total + ' '+title+'</span>';
+            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 9px"> ' + item.total + ' '+title+'</span>';
             desing_menu_groups += '</div>';
             desing_menu_groups += '</div>';
             desing_menu_groups += '</li>';

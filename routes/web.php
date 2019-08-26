@@ -36,6 +36,7 @@ Route::post('validateMail', 'HomeController@validateMail');
 Route::post('sendValidateMail', 'HomeController@sendValidateMail');
 Route::get('reset/password', 'HomeController@resetPassword');
 Route::post('updateResetPassword', 'HomeController@updateResetPassword');
+Route::post('validateMailLogin', 'secusrController@validateMailLogin');
 
 
 

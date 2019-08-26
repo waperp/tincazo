@@ -13,14 +13,14 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- Tab: Login -->
-                            <div role="tabpanel" class="tab-pane fade show active" id="tab-login">
+                            <div role="tabpanel" style="" class="tab-pane fade show active" id="tab-login">
                                 <!-- Login Form -->
                                 <form action="{{ action('LoginController@login') }}" id="iniciosession" method="POST"
                                     class="modal-form">
                                     @csrf
                                     <h5>Ingrese a su cuenta</h5>
                                     <div class="form-group">
-                                        <input class="form-control" id="secusrtmail" name="secusrtmail"
+                                        <input class="form-control " id="secusrtmail" name="secusrtmail"
                                             placeholder="Ingrese su dirección de correo electrónico ..." required=""
                                             type="email" />
                                     </div>
@@ -38,13 +38,15 @@
                                             Bien!
                                         </strong>
                                     </div>
+                                <div  style="display: none" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
                                     <div class="form-group text-center">
 
                                         <a class="text-center" OnClick="validateMail()">Olvidastes tu contraseña?</a>
                                     </div>
-                                    <div class="custom-control custom-checkbox text-center">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">He leído y acepto termino y condiciones</label>
+                                    <div id="termsConditions" class="custom-control custom-checkbox text-center">
+                                            <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
+                                            <label style="font-size: 8px" class="custom-control-label" for="termsConditionsCheck">He leído y acepto termino y condiciones</label>
                                           </div>
                                     <div class="form-group form-group--submit">
 

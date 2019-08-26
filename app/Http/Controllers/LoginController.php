@@ -70,9 +70,7 @@ class LoginController extends Controller
         // dd($user);
     }
     public function verify($user)
-    {
-
-    }
+    { }
     public function logout()
     {
         Session::flush();
@@ -121,46 +119,16 @@ class LoginController extends Controller
                         Session::put('plainftnick', $plainf->plainftnick);
                         Session::put('conmemscode', $plainf->conmemscode);
                         Session::put('conmemvimgm', $conmem->conmemvimgm);
+                        secusr::where('secusrtmail', $request->secusrtmail)
+                            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                            ->where('plainf.plainfbteco', 0)->update(['plainfbteco' => 1]);
                         DB::commit();
                         return response()->json(['mensaje' => 'Inicio de session correctamente', 'success' => 1]);
                     } catch (\Exception $e) {
                         DB::rollback();
                         return $e;
-
-                        // something went wrong
                     }
-
-                    /*if ($secusrtpass != $password) {
-
-                return response()->json(['mensaje' => 'Estas credenciales no coinciden con nuestros registros', 'success' => 0]);
-                } else {
-                $date = Carbon::now();
-                DB::beginTransaction();
-                try {
-                $plainf = plainf::find($plainficode);
-                $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
-                Session::put('secusrtmail', $secusrtmail);
-                Session::put('secusricode', $secusricode);
-                Session::put('plainficode', $plainficode);
-                Session::put('contypscode', $contypscode);
-                Session::put('plainftnick', $plainf->plainftnick);
-                Session::put('conmemscode', $plainf->conmemscode);
-                Session::put('conmemvimgm', $conmem->conmemvimgm);
-                DB::commit();
-                return response()->json(['mensaje' => 'Inicio de session correctamente', 'success' => 1]);
-
-                // all good
-                } catch (\Exception $e) {
-                return $e;
-                DB::rollback();
-                // something went wrong
                 }
-
-                }*/
-
-                }
-
-                // session(['secusrtname' => 'me@example.com']); //usando el helper
             }
         }
     }

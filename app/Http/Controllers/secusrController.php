@@ -22,10 +22,9 @@ class secusrController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-    }
+    { }
 
- /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -115,7 +114,7 @@ class secusrController extends Controller
                 ], 401);
             } else {
                 $plainf = plainf::find($request->user()->plainficode);
-                    $secusr = secusr::find($request->user()->secusricode);
+                $secusr = secusr::find($request->user()->secusricode);
                 $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
                 $plainf->plainftnick = $request->plainftnick;
                 $plainf->plainftgder = $request->plainftgder;
@@ -133,6 +132,24 @@ class secusrController extends Controller
             return response()->json($e->getMessage());
         }
     }
+
+    public function validateMailLogin(Request $request)
+    {
+        $secusr = secusr::where('secusrtmail', $request->secusrtmail)
+            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')->first();
+        $isTermsConditions = secusr::where('secusrtmail', $request->secusrtmail)
+            ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+            ->where('plainf.plainfbteco', 0)->first();
+        if ($secusr && $isTermsConditions) {
+            return response()->json(['isTermsConditions' => true, 'isValidMail' => true, 'message' => 'existe usuario']);
+        } else if ($secusr && !$isTermsConditions) {
+            return response()->json(['isTermsConditions' => false, 'isValidMail' => true, 'message' => 'no existe usuario']);
+        } else if (!$secusr && $isTermsConditions) {
+            return response()->json(['isTermsConditions' => true, 'isValidMail' => false, 'message' => 'no existe usuario']);
+        } else if (!$secusr && !$isTermsConditions) {
+            return response()->json(['isTermsConditions' => false, 'isValidMail' => false, 'message' => 'no existe usuario']);
+        }
+    }
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -140,7 +157,7 @@ class secusrController extends Controller
             $date = Carbon::now();
 
             if ($request->tipo == 0) {
-                 
+
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
                     'secusrtmail' => 'required|string|email',
@@ -159,12 +176,12 @@ class secusrController extends Controller
                             $imageName = str_random(30) . '.' . $request->file('plainfvimgp')->getClientOriginalExtension();
                             $request->file('plainfvimgp')->move(base_path() . '/public/images/', $imageName);
                         } else {
-                                $imageName = "user.png";                            
+                            $imageName = "user.png";
                         }
-                        $plainfddobp="";
-                        if($request->plainfddobp ) {
+                        $plainfddobp = "";
+                        if ($request->plainfddobp) {
                             $plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
-                        } else{
+                        } else {
                             $plainfddobp = Carbon::now()->format('Y-m-d');
                         }
                         $plainf              = new plainf;
@@ -174,7 +191,7 @@ class secusrController extends Controller
                         $plainf->plainftnick = $request->plainftname;
                         $plainf->plainfvimgp = $imageName;
                         $plainf->conmemscode = $request->conmemscode;
-                        $plainf->plainftgder = $request->plainftgder == '' ? 'M': $request->plainftgder; 
+                        $plainf->plainftgder = $request->plainftgder == '' ? 'M' : $request->plainftgder;
                         $plainf->save();
                         $secusr->secusrtmail = $request->secusrtmail;
                         $secusr->secusrtpass = Hash::make($request->password);
@@ -198,15 +215,15 @@ class secusrController extends Controller
                             Session::put('conmemvimgm', $conmem->conmemvimgm);
                             // Mail::to($secusr->secusrtmail)->send(new WelcomeUser($plainf));
                             DB::commit();
-                            return response()->json(['success' => true, 'mail'      => false, 'type' => 'create',
-                                'plainf'                           => $plainf, 'conmem' => $conmem]);
+                            return response()->json([
+                                'success' => true, 'mail'      => false, 'type' => 'create',
+                                'plainf'                           => $plainf, 'conmem' => $conmem
+                            ]);
                         }
-
                     } else {
                         return response()->json(['success' => false, 'mail' => true, 'type' => 'validate']);
                     }
                 }
-
             } else if ($request->tipo == 1) {
                 $validator = Validator::make($request->all(), [
                     'plainftname' => 'required|string',
@@ -248,13 +265,11 @@ class secusrController extends Controller
             } else {
                 return response()->json(['success' => false, 'mail' => false, 'type' => 'error']);
             }
-
         } catch (\Exception $e) {
 
             DB::rollback();
             return response()->json($e->getMessage());
         }
-
     }
 
     /**

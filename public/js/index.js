@@ -8,16 +8,28 @@ function removemenu() {
 }
 $(document).ready(function () {
     debugger
-    
-   
-    if(tougrp &&  touinf){
+    $("#secusrtmail").change(debounce(function () {
+        var $this = $(this);
+        debugger
+        document.getElementById('form-login-button-submit').disabled = 1;
+        validateMailLogin($this.val());
+        
+    }, 500));
+    $('#secusrtmail').keyup(debounce(function () {
+        var $this = $(this);
+        debugger
+        document.getElementById('form-login-button-submit').disabled = 1;
+        validateMailLogin($this.val())
+
+    }, 500));
+    if (tougrp && touinf) {
         var element_group_selected = tougrp.tougrpicode;
         var element_tournament_selected = touinf.touinfscode;
-        selected_tournament(null,touinf.secconnuuid);
+        selected_tournament(null, touinf.secconnuuid);
         $('.posts__item__tournament').removeClass('tournament__select');
 
-        $('.posts__item--category-tournament-'+element_tournament_selected).addClass('tournament__select');
-        
+        $('.posts__item--category-tournament-' + element_tournament_selected).addClass('tournament__select');
+
     }
     $.fn.select2.defaults.set("theme", "bootstrap4");
     $.fn.dataTable.ext.classes.sLengthSelect = 'form-control form-control-sm';
@@ -128,54 +140,20 @@ $(document).ready(function () {
             }
         });
     });
-    // $('#iniciosession').formValidation()
-    //         .on('success.field.fv', function(e, data) {
-    //             
-    //             if (data.fv.getSubmitButton()) {
-    //                 data.fv.disableSubmitButtons(false);
-    //             }
-    //         });
-    // $('#modal-login-register').bootstrapValidator({
-    //     icon: {
-    //         valid: 'glyphicon glyphicon-ok',
-    //         invalid: 'glyphicon glyphicon-remove',
-    //         validating: 'glyphicon glyphicon-refresh'
-    //     },
-    //     fields: {
-    //     plainfvimgp: {
-    //             validators: {
-    //                 file: {
-    //                     extension: 'jpeg,png',
-    //                     type: 'image/jpeg,image/png/image/jpg',
-    //                     maxSize: 1024,
-    //                     message: 'El archivo seleccionado no es válido'
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-    // estadisticas();
-    //  tusTincazosPendientes("");
 
     selectResponsable();
-    //  tusTincazosJuego("");
-    //  tusTincazosFinalizados("");
-    // $('#modal-gestionar-fixture .modal-body').css({
-    //     width: 'auto',
-    //     height: 'auto',
-    //     'max-height': '90%'
-    // });
+
     var filtre_torneo = window.getParameterByName('q');
 
-    if(tougrp && touinf){
+    if (tougrp && touinf) {
         var torneo = tougrp.tougrptname;
-    
+
         var touinfscode = tougrp.touinfscode;
         var tougrpicode = tougrp.tougrpicode;
         var plainficodeurl = tougrp.plainficode;
         var plainficodehidden = $('#plainficode-hidden').val();
         // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
-    
+
         var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
         var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
         var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
@@ -183,7 +161,7 @@ $(document).ready(function () {
         var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
         var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
     }
-   
+
     $('#tablepociciones_filter lable input').addClass('modify'); // <-- add this line
     // <-- add this line
     $("#edit-perfil-image-preview").css("background-image", "url('images/" + $('#edit-perfil-image-src').val() + "')");
@@ -278,17 +256,7 @@ $(document).ready(function () {
     $('#contypscode1').val(null).trigger('change');
     // $('#selectconmemscode').val(1).trigger('change');
     $('#select-torneo-fixture').val(null).trigger('change');
-    // $('#selectconmemscode').change(function() {
-    //     var a = $('#selectconmemscode').find(':selected').data('image')
-    //     $("#imagemember").attr("src", a);
-    // });
-    // $('#selectconmemscode').on('select2:selecting', function(e) {
-    //     var a = $('#selectconmemscode').find(':selected').data('image')
-    // });
-    // $('#selectconmemscode').on('select2:unselecting', function(e) {
-    //     var a = $('#selectconmemscode').find(':selected').data('image')
-    //     $("#imagemember").attr("src", null);
-    // });
+
     $('#selecttorneo').val(null).trigger('change');
     $('#selecttorneo').change(function () {
         var a = $('#selecttorneo').find(':selected').data('image')
@@ -1371,9 +1339,38 @@ $("#formgrupoconfig").submit(function (e) {
     });
 });
 $("#iniciosession").submit(function (e) {
-    
-    document.getElementById('form-login-button-submit').disabled = 1;
     e.preventDefault();
+
+    $('.lds-ring').show();
+    document.getElementById('form-login-button-submit').disabled = 1;
+    debugger
+    var checked = $('#termsConditionsCheck').is(':checked')
+    var ss = $("#myDiv").length
+    var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
+    var secusrtmail_danger = $('#secusrtmail').hasClass('form-control-danger');
+    if ($('#termsConditionsCheck').is(':visible')) {
+        if (checked == false) {
+            $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
+            $('.lds-ring').hide();
+            $('#false').show();
+            setTimeout(function () {
+                $('#false').hide();
+                document.getElementById('form-login-button-submit').disabled = 0;
+            }, 2500);
+            return;
+        }
+    }
+
+    if (secusrtmail_danger == true) {
+        $('#false').text('Estas credenciales no coinciden con nuestros registros');
+        $('.lds-ring').hide();
+        $('#false').show();
+        setTimeout(function () {
+            $('#false').hide();
+            document.getElementById('form-login-button-submit').disabled = 0;
+        }, 2500);
+        return;
+    }
     $.ajax({
         url: '/login',
         type: 'post',
@@ -1385,18 +1382,23 @@ $("#iniciosession").submit(function (e) {
         },
         success: function (data) {
             if (data.success == 0) {
-                $('#false').show();
-                $('#true').hide();
-                $('#false').text(data.mensaje);
                 setTimeout(function () {
-                    $('#false').hide();
+                    $('#true').hide();
+                    $('.lds-ring').hide();
+                    $('#false').text(data.mensaje);
+                    setTimeout(function () {
+                        $('#false').hide();
+                    }, 100);
                     document.getElementById('form-login-button-submit').disabled = 0;
                 }, 2500);
             } else {
-                $('#false').hide();
-                $('#true').show();
-                $('#true').text(data.mensaje);
+                // $('#true').show();
+                // $('#true').text(data.mensaje);
                 setTimeout(function () {
+                    $('.lds-ring').hide();
+                    $('#false').hide();
+                    $('#modal-login-register-tabs').modal('hide');
+
                     window.location.href = "/";
                     document.getElementById('form-login-button-submit').disabled = 0;
                 }, 2500);
@@ -2033,13 +2035,13 @@ function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicod
 }
 
 function selected_tournament(element, secconnuuid) {
-    if(element){
+    if (element) {
         $('.posts__item__tournament').removeClass("tournament__select");
         $(element).addClass("tournament__select");
         $('#list_groups').empty();
         $('.lds-spinner').removeClass('d-none').show();
     }
-   
+
     var _token = $('input[name=_token]').val();
     $.ajax({
         url: '/selected_tournament',
@@ -2053,7 +2055,7 @@ function selected_tournament(element, secconnuuid) {
         }
     });
 }
-function selected_tournament_group(element, secconnuuid,tougplicode) {
+function selected_tournament_group(element, secconnuuid, tougplicode) {
 
     debugger
     $('.posts__item__groups').removeClass("group__select");
@@ -2076,26 +2078,34 @@ function desing_menu_groups(data) {
     setTimeout(function () {
         var desing_menu_groups = '';
         $.each(data, function (i, item) {
-            desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-'+item.tougrpicode+' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"'+item.secconnuuid1+'",'+item.tougplicode+')>';
+            title = " Participante";
+            if(item.total <= 1){
+                title = " Participante";
+
+            }else{
+                title = " Participantes";
+
+            }
+            desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-' + item.tougrpicode + ' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"' + item.secconnuuid1 + '",' + item.tougplicode + ')>';
             desing_menu_groups += ' <figure class="posts__thumb">';
             desing_menu_groups += '<a>';
             desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary" style="width: 40px ; height: 40px;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"/>';
             desing_menu_groups += '</a>';
             desing_menu_groups += '</figure>';
             desing_menu_groups += '<div class="posts__inner">';
+            desing_menu_groups += '<h6 class="posts__title pt-2"><a >' + item.tougrptname + '</a></h6>';
             desing_menu_groups += '<div class="posts__cat">';
-            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 8px">' + item.total + ' Participantes</span>';
+            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 8px"> ' + item.total + ' '+title+'</span>';
             desing_menu_groups += '</div>';
-            desing_menu_groups += '<h6 class="posts__title"><a >' + item.tougrptname + '</a></h6>';
             desing_menu_groups += '</div>';
             desing_menu_groups += '</li>';
             $('.lds-spinner').addClass('d-none').hide();
 
         });
         $('#list_groups').append(desing_menu_groups);
-        $('.posts__item--category-group-'+tougrp.tougrpicode).addClass('group__select');
+        $('.posts__item--category-group-' + tougrp.tougrpicode).addClass('group__select');
     }, 1000);
-    
+
 }
 // $(".buscar").keyup(function (e) {
 //     // $(".buscar").css("background-color", "pink");
@@ -2124,7 +2134,7 @@ $("#shearh-tincazos").on('click', function () {
     var search = $("ul.info-block--header > div > div > #input-buscar").val();
     var elmnt = document.getElementById("tustincazos-div");
     elmnt.scrollIntoView();
-    
+
     tusTincazosFinalizados(search);
     tusTincazosJuego(search);
     tusTincazosPendientes(search);
@@ -2211,4 +2221,106 @@ function winner_loser_team2(item) {
         }
     }
 
+}
+
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
+function validateMailLogin(secusrtmail) {
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/validateMailLogin',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': _token
+        },
+        data: {
+            secusrtmail: secusrtmail
+        },
+        success: function (data) {
+            debugger
+            if (data.isTermsConditions == true && data.isValidMail == true) {
+                $("#secusrtmail").removeClass('form-control-danger');
+                $("#secusrtmail").addClass('form-control-success');
+                $("#termsConditions").show();
+
+
+            } else if (data.isTermsConditions == false && data.isValidMail == true) {
+                $("#secusrtmail").removeClass('form-control-danger');
+                $("#secusrtmail").addClass('form-control-success');
+                $("#termsConditions").hide();
+            }
+            else if (data.isTermsConditions == true && data.isValidMail == false) {
+                $("#secusrtmail").removeClass('form-control-success');
+                $("#secusrtmail").addClass('form-control-danger');
+                $("#termsConditions").show();
+            }
+
+            else if (data.isTermsConditions == false && data.isValidMail == false) {
+                $("#secusrtmail").removeClass('form-control-success');
+                $("#secusrtmail").addClass('form-control-danger');
+                $("#termsConditions").hide();
+            }
+            document.getElementById('form-login-button-submit').disabled = 0;
+
+            // if (data.mail == false) {
+            //     $("#secusrtmail").focus();
+            //     swal({
+            //         title: "CORREO INCORRECTO",
+            //         text: "El correo: " + " <strong> " + secusrtmail + "</strong>" + " introduccida no existe",
+            //         type: "error",
+            //         html: true,
+            //         showConfirmButton: true,
+            //         closeOnConfirm: true
+            //     });
+            //     $("#secusrtmail").focus();
+            // } else if (data.mail == null) {
+            //     $("#secusrtmail").focus();
+            //     swal({
+            //         title: "CORREO INCORRECTO",
+            //         text: "El correo: " + " <strong> " + secusrtmail + "</strong>" + " introduccida no existe",
+            //         type: "error",
+            //         html: true,
+            //         showConfirmButton: true,
+            //         closeOnConfirm: true
+            //     });
+            // } else {
+            //     $.ajax({
+            //         url: '/sendValidateMail',
+            //         type: 'post',
+            //         dataType: 'json',
+            //         headers: {
+            //             'X-CSRF-TOKEN': _token
+            //         },
+            //         data: {
+            //             secusricode: data.secusr.secusricode,
+            //             secusrtmail: data.secusr.secusrtmail
+            //         },
+            //         success: function (data2) {
+            //             swal({
+            //                 title: "CORREO CORRECTO",
+            //                 text: "Se ha enviado un enalce al correo: " + " <strong> " + secusrtmail + "</strong> <br>" + " para reestablecer su contraseña",
+            //                 type: "success",
+            //                 html: true,
+            //                 showConfirmButton: true,
+            //                 closeOnConfirm: true
+            //             });
+            //         }
+            //     });
+            // }
+        }
+    });
 }

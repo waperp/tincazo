@@ -35,6 +35,7 @@ class touinf extends Model
                 ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
                 ->where('tougpl.plainficode', \Auth::user()->plainficode)
                 ->distinct()
+                ->orderBy('touinfdstat', 'desc')
                 ->get();
     }
 }

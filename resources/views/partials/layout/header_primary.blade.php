@@ -119,13 +119,13 @@
                                         </a>
                                     </figure>
                                     <div class="posts__inner">
+                                        
+                                        <h6 class="posts__title pt-2  "><a>{{ $objTorneosUsersMenu->touinftname }}</a></h6>
                                         <div class="posts__cat">
-                                            <span class="label posts__cat-label badge-success"
-                                                style="font-size: 9px">{{ $objTorneosUsersMenu->touinfsnumt }}
-                                                Equipos</span>
-                                        </div>
-                                        <h6 class="posts__title"><a>{{ $objTorneosUsersMenu->touinftname }}</a></h6>
-
+                                                <span class="label posts__cat-label badge-success"
+                                                    style="font-size: 9px">{{ $objTorneosUsersMenu->touinfsnumt }}
+                                                    Equipos</span>
+                                            </div>
                                         <time class="posts__date">{{ $objTorneosUsersMenu->touinfdstat }}</time>
                                     </div>
                                 </li>

@@ -1493,7 +1493,7 @@ input.header-mobile__search-control {
         height: auto;
     }
     .game-result__score-wrap {
-        margin: 0 0 0px 0;
+        margin: 0 0 0 0;
         text-align: right;
     }
 }

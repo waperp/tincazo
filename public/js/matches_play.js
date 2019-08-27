@@ -21,7 +21,7 @@ function tusTincazosJuego(shearh) {
 
                 game__result__section += '<section class="game-result__section pt-0">';
                 game__result__section += '<header class="game-result__header game-result__header--alt mb-2">';
-                game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('ddd DD MMMM') + '</span>';
+                game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('ddd DD [de] MMM') + '</span>';
                 game__result__section += '<div class="game-result__title">' + tincazos_user(item) + '</div>';
                 game__result__section += '<time class="game-result__date m-auto" datetime="2017-03-17">' + moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') + '</time>';
                 game__result__section += '</header>';

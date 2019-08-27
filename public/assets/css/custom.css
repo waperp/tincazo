@@ -565,6 +565,17 @@ padding-left: 0px !important;
     color: #ecf0f1;
 }
 
+#edit-perfil-image-preview {
+    margin: auto auto;
+    width: 200px;
+    height: 200px;
+    max-width: 250px;
+    max-height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    color: #ecf0f1;
+}
 #edit-perfil-image-preview label {
     position: absolute;
     z-index: 5;
@@ -775,7 +786,6 @@ padding-left: 0px !important;
 @media only screen and (max-width: 768px) {
     #edit-perfil-image-preview {
         margin: auto auto;
-        margin-top: 40px;
         width: 200px;
         height: 200px;
         max-width: 250px;
@@ -1459,4 +1469,25 @@ input.header-mobile__search-control {
     overflow: hidden;
     margin-bottom: 18px;
     margin-right: 0px;
+}
+
+.w-85 {
+    width: 85% !important;
+}
+
+.w-90 {
+    width: 90% !important;
+}
+
+@media (max-width: 991px) {
+    .modal-dialog {
+      max-width: 95%;
+    }
+  }
+
+  .modal-dialog {
+    position: relative;
+    width: 100%;
+    margin: .5rem;
+    pointer-events: none;
 }

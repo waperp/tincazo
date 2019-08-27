@@ -336,7 +336,7 @@
 	</script>
 	<script src="/js/matches_finished.js" type="text/javascript">
 	</script>
-	<script src="/js/datatables_app.js" type="text/javascript">
+	<script src="/js/datatables_app.js?v={{ time() }}" type="text/javascript">
 	</script>
 	<script src="/js/jquery.Wload.js"></script>
 	<script src="/js/loading-bar.js"></script>

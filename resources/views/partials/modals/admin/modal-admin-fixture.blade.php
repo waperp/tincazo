@@ -11,64 +11,55 @@
 
             </div>
             <div class="modal-body">
-
-                <div class="row table-responsive">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <select class="select2 form-control" id="select-torneo-fixture" style="width: 100%">
-                                        @foreach($listaTouinf as $objTorneosEquipos)
-                                        <option value="{{$objTorneosEquipos->touinfscode}}">
-                                            {{$objTorneosEquipos->touinftname}}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <div class="input-group date" id="datetimepicker-fixture">
-                                        <input class="form-control" id="date-toufixdplay"
-                                            placeholder="Ingrese una fecha" type="text" />
-                                            <div class="input-group-addon input-group-append">
-                                                    <div class="input-group-text">
-                                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                                    </div>
-                                                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <select class="select2 form-control" id="select-torneo-fixture" style="width: 100%">
+                                @foreach($listaTouinf as $objTorneosEquipos)
+                                <option value="{{$objTorneosEquipos->touinfscode}}">
+                                    {{$objTorneosEquipos->touinftname}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker-fixture">
+                                <input class="form-control" id="date-toufixdplay" placeholder="Ingrese una fecha"
+                                    type="text" />
+                                <div class="input-group-addon input-group-append">
+                                    <div class="input-group-text">
+                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                                     </div>
                                 </div>
-                               
                             </div>
                         </div>
-                        <table id="table-fixture" class="table table-hover table-standings" style="width: 100%">
-                            <thead>
-                                <tr style="background-color: #80808099;">
-                                    <th>HORA</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>PARTIDO</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>ESTADO</th>
-                                    <th>VALOR</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
                     </div>
                 </div>
-
+                <div class="table-responsive">
+                    <table id="table-fixture" class="table table-hover table-standings" style="width: 100%">
+                        <thead>
+                            <tr style="background-color: #80808099;">
+                                <th>HORA</th>
+                                <th></th>
+                                <th>PARTIDO</th>
+                                <th></th>
+                                <th>ESTADO</th>
+                                <th>VALOR</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
     </div>
-</div>
 </div>

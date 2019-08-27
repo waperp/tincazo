@@ -587,11 +587,8 @@ var tablesss = $("#table-info-player-grupo-dia").DataTable({
     }
 });
 var table = $("#table-admin-torneo").DataTable({
-    colReorder: true,
-    order: [
-        [1, 'desc']
-    ],
-    "searching": true,
+    
+    "searching": false,
     "pageLength": 5,
     "paging": true,
     "info": false,
@@ -626,7 +623,7 @@ var table = $("#table-admin-torneo").DataTable({
         }
     },
     processing: true,
-    serverSide: true,
+    serverSide: false,
     buttons: [],
     ajax: '/tablaAdminTorneos',
     columns: [{
@@ -635,19 +632,22 @@ var table = $("#table-admin-torneo").DataTable({
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.touinfvlogt + '" alt=""></figure>'
+            // return '<figure class="team-meta__logo"><img src="/images/' + full.touinfvlogt + '" alt=""></figure>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touinfvlogt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touinftname + '</h6></div></div>'
         }
-    }, {
-        width: "5%",
-        data: 'touinfscode'
-    }, {
-        orderable: false,
-        width: 200,
-        sortable: true,
-        render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touinftname + '</h6></div>'
-        }
-    }, {
+    },
+    // }, {
+    //     width: "5%",
+    //     data: 'touinfscode'
+    // }, {
+    //     orderable: false,
+    //     width: 200,
+    //     sortable: true,
+    //     render: function (data, type, full, meta) {
+    //         return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touinftname + '</h6></div>'
+    //     }
+    // }, 
+    {
         orderable: false,
         width: 105,
         data: 'touinfdstat'
@@ -666,7 +666,7 @@ var table = $("#table-admin-torneo").DataTable({
         render: function (data, type, full, meta) {
             return "<tr><a class='btn-edit' OnClick='EditarTorneo(" + full.touinfscode + ");' title='EDITAR'><i class='fa fa-pencil-square'></i></a></tr>";
         }
-    },],
+    }],
     buttons: [{
         text: 'AGREGAR',
         className: 'btn btn-primary-inverse btn-sm',
@@ -680,9 +680,7 @@ var table = $("#table-admin-torneo").DataTable({
 });
 var table = $("#table-admin-equipo").DataTable({
     colReorder: true,
-    order: [
-        [1, 'desc']
-    ],
+   
     "searching": true,
     "pageLength": 5,
     "paging": true,
@@ -735,16 +733,10 @@ var table = $("#table-admin-equipo").DataTable({
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
+           
         }
-    }, {
-        orderable: false,
-        width: 200,
-        sortable: true,
-        render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div>'
-        }
-    }, {
+    },  {
         orderable: false,
         width: 200,
         sortable: true,
@@ -837,14 +829,8 @@ var table = $("#table-admin-torneo-equipo").DataTable({
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure>'
-        }
-    }, {
-        orderable: false,
-        width: 200,
-        sortable: true,
-        render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
+            
         }
     }, {
         data: 'contyptdesc'
@@ -1092,40 +1078,27 @@ $("#table-fixture").DataTable({
     columns: [{
         data: 'toufixthour'
     }, {
-        width: 35,
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
+            
         }
     }, {
-        orderable: false,
-        sortable: false,
-        render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div>'
-        }
-    }, {
-        width: 50,
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
             var toufixsscr1 = full.toufixsscr1 == null ? ' ' : +full.toufixsscr1;
             var toufixsscr2 = full.toufixsscr2 == null ? ' ' : +full.toufixsscr2;
-            return '<strong style="font-size: 15px; font-weight:700"> ' + toufixsscr1 + '</strong> ' + " - " + '<strong  style="font-size: 15px; font-weight:700"> ' + toufixsscr2 + '</strong> '
+            return '<div class="text-center"><strong style="font-size: 15px; font-weight:700"> ' + toufixsscr1 + '</strong> ' + " - " + '<strong  style="font-size: 15px; font-weight:700"> ' + toufixsscr2 + '</strong></div>'
         }
     }, {
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname2 + '</h6></div>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt2 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname2 + '</h6></div></div>'
         }
-    }, {
-        orderable: false,
-        sortable: false,
-        render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt2 + '" alt=""></figure>'
-        }
-    }, {
+    },{
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {

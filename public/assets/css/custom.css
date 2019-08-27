@@ -1491,3 +1491,12 @@ input.header-mobile__search-control {
     margin: .5rem;
     pointer-events: none;
 }
+
+.game-result__team-logo-img{
+    height: 70px;
+}
+@media (max-width: 991px) {
+    .game-result__team-logo-img{
+        height: auto;
+    }
+}

@@ -29,7 +29,7 @@ function tusTincazosFinalizados(shearh) {
 
                 game__result__section += '<div class="game-result__team game-result__team--first">';
                 game__result__section += '<figure class="game-result__team-logo">';
-                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt + '" alt="">';
+                game__result__section += '<img class="game-result__team-logo-img" src="images/' + item.touteavimgt + '" alt="">';
                 game__result__section += '</figure>';
                 game__result__section += '<div class="game-result__team-info">';
                 game__result__section += '<h5 class="game-result__team-name">' + item.touteatname + '</h5>';
@@ -49,7 +49,7 @@ function tusTincazosFinalizados(shearh) {
 
                 game__result__section += '<div class="game-result__team game-result__team--second">';
                 game__result__section += '<figure class="game-result__team-logo">';
-                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt2 + '" alt="">';
+                game__result__section += '<img class="game-result__team-logo-img" src="images/' + item.touteavimgt2 + '" alt="">';
                 game__result__section += '</figure>';
                 game__result__section += '<div class="game-result__team-info">';
                 game__result__section += '<h5 class="game-result__team-name">' + item.touteatname2 + '</h5>';

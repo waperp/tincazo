@@ -129,7 +129,7 @@
 
 
 <div class="modal fade" id="modal-nuevo-agregar-tinzaso" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button">
@@ -137,7 +137,7 @@
                         ×
                     </span>
                 </button>
-                <h5 style="color: #41acfe;">TU TINCAZO</h5>
+                <h4 class="modal-title" >TU TINCAZO</h4>
 
             </div>
             <div class="modal-body">
@@ -154,49 +154,54 @@
 
                             <div class="tab-content">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-lg-6">
+                                    <div class="col-6">
                                         <figure class="primero">
                                             <img id="agregar-touteavimgt1-tincazo"
-                                                style="width: 50%; height: 80px;margin-bottom: 5px;border-radius: 10px"
+                                                style="width: auto; height: 70px;"
                                                 alt="">
-                                            <h5 class="game-result__team-name" id="agregar-touteatname1-tincazo"></h5>
+                                            <h6 class="game-result__team-name" id="agregar-touteatname1-tincazo"></h6>
                                             <input required="" data-toggle="just_number"
                                                 id="agregar-toufixsscr1-tincazo" onKeypress="return isNumberKey(this)"
-                                                style="width: 50%;margin:  auto;border-radius: 10px;text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; font-weight: 700;letter-spacing: -0.02em;color: #31404b;font-size: 25px;"
+                                                style="text-align:center; 10px;text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;letter-spacing: -0.02em;color: #31404b;font-size: 15px;"
                                                 type="text" class="form-control">
                                         </figure>
 
 
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-lg-6">
+                                    <div class="col-6">
 
                                         <figure class="segundo">
                                             <img id="agregar-touteavimgt2-tincazo"
-                                                style="width: 50%; height: 80px;margin-bottom: 5px;border-radius: 10px"
+                                                style="width: auto; height: 70px;"
                                                 alt="">
-                                            <h5 class="game-result__team-name" id="agregar-touteatname2-tincazo"></h5>
+                                            <h6 class="game-result__team-name" id="agregar-touteatname2-tincazo"></h6>
                                             <input required="" data-toggle="just_number"
                                                 id="agregar-toufixsscr2-tincazo" onKeypress="return isNumberKey(this)"
-                                                style="width: 50%;margin:  auto;border-radius: 10px;text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; font-weight: 700;letter-spacing: -0.02em;color: #31404b;font-size: 25px;"
+                                                style="text-align:center;border-radius: 10px;text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;letter-spacing: -0.02em;color: #31404b;font-size: 15px;"
                                                 type="text" class="form-control">
 
                                         </figure>
                                     </div>
-
-                                    <div class="form-group form-group--submit" style="margin: auto; text-align: center">
-                                        <button id="form-agregar-tincazo-button" type="submit"
-                                            class="btn btn-primary-inverse ">PROCESAR!</button>
-                                        <button data-dismiss="modal" type="button"
-                                            class="btn btn-danger">CANCELAR</button>
-                                    </div>
+                                   
                                 </div>
 
                             </div>
 
                     </div>
+                    <div class="form-row">
+                            <div class=" col-lg-6 col-md-6 col-12 mb-1">
+                                    <button id="form-agregar-tincazo-button" type="submit"
+                                    class="btn btn-primary-inverse btn-block ">PROCESAR!</button>
+                            </div>
+                            <div class=" col-lg-6 col-md-6 col-12">
+                                    <button data-dismiss="modal" type="button"
+                                    class="btn btn-danger btn-block">CANCELAR</button>
+                            </div>
+                        </div>
                     </form>
+                    
                 </div>
                 <!-- Register Form / End -->
             </div>
@@ -296,7 +301,7 @@
 </div>
 
 <div class="modal fade" id="modal-nuevo-mostrar-tinzaso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document" style="max-width: 95%">
+    <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -327,7 +332,7 @@
                                     </div>
                                     <!-- 1st Team / End -->
 
-                                    <div class="match-preview__vs">
+                                    <div class="match-preview__vs text-center">
                                         <div class="match-preview__conj">VS</div>
 
                                     </div>

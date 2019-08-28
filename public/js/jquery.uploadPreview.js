@@ -31,7 +31,7 @@
                 if (file.type.match('image')) {
                   // Image
                   $(settings.preview_box).css("background-image", "url("+loadedFile.result+")");
-                  $(settings.preview_box).css("background-size", "350px 350px");
+                  $(settings.preview_box).css("background-size", "100%");
                   $(settings.preview_box).css("background-repeat", "no-repeat");
                   $(settings.preview_box).css("background-position", "50% 50%");
                   $(settings.preview_box).css("padding", "30px");

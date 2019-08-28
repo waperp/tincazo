@@ -25,9 +25,9 @@ body {
     content: "Cargando...";
     color: #fff; }
   #jprePercentage::after {
-    content: "TINCAZO";
+    content: "www.tincazo.com";
     display: block;
-    font-size: 8px;
+    font-size: 10px;
     line-height: 1.5em;
     color: #fff;
     letter-spacing: 0; }

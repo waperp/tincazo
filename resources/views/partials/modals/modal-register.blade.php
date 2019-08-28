@@ -66,9 +66,9 @@
                                         <input required type="checkbox" class="custom-control-input"
                                             id="termsConditionsCheck1">
                                         <label style="font-size: 9px" class="custom-control-label"
-                                            for="termsConditionsCheck1">He leído y acepto <a
+                                            for="termsConditionsCheck1">He leído y acepto los <a
                                                 style="text-decoration-line: underline" target="_blank"
-                                                href="/TerminosCondiciones">termino y condiciones </a></label>
+                                                href="/TerminosCondiciones">Termino y Condiciones </a></label>
                                     </div>
                                     <div style="display: none" class="lds-ring">
                                         <div></div>

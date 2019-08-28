@@ -159,7 +159,19 @@ Description:  You can add your custom CSS here and it will overwrite template st
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
 }
-
+#jprePercentage::before {
+    content: "Cargando...";
+    color: #fff;
+  }
+  
+  #jprePercentage::after {
+    content: "www.tincazo.com";
+    display: block;
+    font-size: 10px;
+    line-height: 1.5em;
+    color: #fff;
+    letter-spacing: 0;
+  }
 #table-pociciones-dia>tbody>tr>td {
     padding: 5px 5px !important;
     font-size: 11px !important;

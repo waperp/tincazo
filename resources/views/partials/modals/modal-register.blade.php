@@ -7,28 +7,31 @@
             </div>
             <div class="modal-body">
                 <div class="modal-account-holder">
-                        <div id="image-preview" class="image-preview">
-                                <label for="image-upload" class="image-label" id="image-label">
-                                    Tu Foto
-                                </label>
-                                <input accept="image/*" class="image-upload" id="image-upload" name="plainfvimgp" type="file"/>
-                                <span id="file_error" style="color: red">
-                                </span>
-                            </div>
+                    <div id="image-preview" class="image-preview">
+                        <label for="image-upload" class="image-label" id="image-label">
+                            Tu Foto
+                        </label>
+                        <input accept="image/*" class="image-upload" id="image-upload" name="plainfvimgp" type="file" />
+                        <span id="file_error" style="color: red">
+                        </span>
+                    </div>
                     <div class="modal-account__item">
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- Tab: Login -->
                             <div role="tabpanel" class="tab-pane fade show active" id="tab-register-1">
                                 <!-- Login Form -->
-                                <form action="{{ route('secusr.store') }}" class="modal-form" enctype="multipart/form-data" id="formStore" method="post">
+                                <form action="{{ route('secusr.store') }}" class="modal-form"
+                                    enctype="multipart/form-data" id="formStore" method="post">
                                     @csrf
                                     <h5>Registrate Ahora!</h5>
                                     <div class="form-group">
-                                        <input class="form-control " id="register-secusrtmail" name="secusrtmail" placeholder="Ingrese su correo electronico..." required="" type="email"/>
+                                        <input class="form-control " id="register-secusrtmail" name="secusrtmail"
+                                            placeholder="Ingrese su correo electronico..." required="" type="email" />
                                     </div>
                                     <div class="form-group">
-                                            <input class="form-control " id="register-plainftname" name="plainftname" placeholder="Ingrese su nombre completo..." required="" type="text"/>
+                                        <input class="form-control " id="register-plainftname" name="plainftname"
+                                            placeholder="Ingrese su nombre completo..." required="" type="text" />
                                     </div>
                                     {{-- <div class="form-group">
                                             <div class="input-group date" id="datetimepicker1">
@@ -42,26 +45,40 @@
                                                 </div>
                                     </div> --}}
                                     <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control pwd" id="register-secusrtpass" name="secusrtpass" placeholder="ingrese su contraseña" required="" type="password"/>
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary reveal btn-sm" type="button">
-                                                        <i class="fa fa-eye">
-                                                        </i>
-                                                    </button>
-                                                </div>
+                                        <div class="input-group">
+                                            <input class="form-control pwd" id="register-secusrtpass" name="secusrtpass"
+                                                placeholder="ingrese su contraseña" required="" type="password" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary reveal btn-sm" type="button">
+                                                    <i class="fa fa-eye">
+                                                    </i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                                <select class="select2 form-control" id="selectconmemscode" name="conmemscode" required="" style="width: 100%">
-                                                </select>
-                                            </div>
-                                            <div class="custom-control custom-checkbox text-center">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">He leído y acepto termino y condiciones</label>
-                                                  </div>
-                                    <div class="form-group form-group--submit">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <select class="select2 form-control" id="selectconmemscode" name="conmemscode"
+                                            required="" style="width: 100%">
+                                        </select>
+                                    </div>
+                                    <div class="custom-control custom-checkbox text-center">
+                                        <input required type="checkbox" class="custom-control-input"
+                                            id="termsConditionsCheck1">
+                                        <label style="font-size: 9px" class="custom-control-label"
+                                            for="termsConditionsCheck1">He leído y acepto <a
+                                                style="text-decoration-line: underline" target="_blank"
+                                                href="/TerminosCondiciones">termino y condiciones </a> <br> vea <a
+                                                style="text-decoration-line: underline" target="_blank"
+                                                href="/PoliticaPrivacidad">Politicas de privacidad </a></label>
+                                    </div>
+                                    <div style="display: none" class="lds-ring">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="form-group form-group--submit">
                                         <button id="form-button-register" class="btn btn-primary-inverse btn-block"
                                             type="submit">
                                             Crea tu cuenta
@@ -94,25 +111,25 @@
                             <!-- Tab: Login / End -->
 
                             <!-- Tab: Register -->
-                            <div role="tabpanel" class="tab-pane fade" id="tab-register-register">
+                            {{-- <div role="tabpanel" class="tab-pane fade" id="tab-register-register">
 		
                                     <!-- Register Form -->
                                     <div style="height: 285px;overflow-y:  auto; margin: -20px">
                                             @include('partials.layout.terminoscondiciones')
                                     </div>
                                     <!-- Register Form / End -->
-                                </div>
+                                </div> --}}
                             <!-- Tab: Register / End -->
 
                         </div>
 
                         <!-- Nav tabs -->
-                        <div class="nav-tabs-login-wrapper">
+                        {{-- <div class="nav-tabs-login-wrapper">
                                 <ul class="nav nav-tabs nav-justified nav-tabs--login" role="tablist">
                                     <li class="nav-item"><a class="nav-link active" href="#tab-register-1" role="tab" data-toggle="tab">Registro</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab-register-register" role="tab" data-toggle="tab">Termino y condiciones</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         <!-- Nav tabs / End -->
 
                     </div>

@@ -38,16 +38,21 @@
                                             Bien!
                                         </strong>
                                     </div>
-                                <div  style="display: none" class="lds-ring"><div></div><div></div><div></div><div></div></div>
-
+                                    <div style="display: none" class="lds-ring">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
                                     <div class="form-group text-center">
 
                                         <a class="text-center" OnClick="validateMail()">Olvidastes tu contraseña?</a>
                                     </div>
                                     <div id="termsConditions" class="custom-control custom-checkbox text-center">
-                                            <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
-                                            <label style="font-size: 8px" class="custom-control-label" for="termsConditionsCheck">He leído y acepto termino y condiciones</label>
-                                          </div>
+                                        <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
+                                        <label style="font-size: 9px" class="custom-control-label"
+                                            for="termsConditionsCheck">He leído y acepto <a style="text-decoration-line: underline" target="_blank" href="/TerminosCondiciones">termino y condiciones </a> <br>  vea  <a style="text-decoration-line: underline" target="_blank" href="/PoliticaPrivacidad">Politicas de privacidad </a></label>
+                                    </div>
                                     <div class="form-group form-group--submit">
 
                                         <button id="form-login-button-submit" class="btn btn-primary-inverse btn-block"
@@ -82,23 +87,25 @@
                             <!-- Tab: Login / End -->
 
                             <!-- Tab: Register -->
-                            <div role="tabpanel" class="tab-pane fade" id="tab-register">
-		
-                                    <!-- Register Form -->
-                                    <div style="height: 285px;overflow-y:  auto; margin: -20px">
-                                            @include('partials.layout.terminoscondiciones')
-                                    </div>
-                                    <!-- Register Form / End -->
+                            {{-- <div role="tabpanel" class="tab-pane fade" id="tab-register">
+
+                                <!-- Register Form -->
+                                <div style="height: 285px;overflow-y:  auto; margin: -20px">
+                                    @include('partials.layout.terminoscondiciones')
                                 </div>
+                                <!-- Register Form / End -->
+                            </div> --}}
                             <!-- Tab: Register / End -->
                         </div>
                         <!-- Nav tabs -->
-                        <div class="nav-tabs-login-wrapper">
-                                <ul class="nav nav-tabs nav-justified nav-tabs--login" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" href="#tab-login" role="tab" data-toggle="tab">Login</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab-register" role="tab" data-toggle="tab">Termino y condiciones</a></li>
-                                </ul>
-                            </div>
+                        {{-- <div class="nav-tabs-login-wrapper">
+                            <ul class="nav nav-tabs nav-justified nav-tabs--login" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" href="#tab-login" role="tab"
+                                        data-toggle="tab">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#tab-register" role="tab"
+                                        data-toggle="tab">Termino y condiciones</a></li>
+                            </ul>
+                        </div> --}}
                         <!-- Nav tabs / End -->
 
                     </div>

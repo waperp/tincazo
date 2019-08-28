@@ -445,6 +445,21 @@ $('#cancelar-equipo').click(function () {
 });
 $("#formStore").submit(function (e) {
     e.preventDefault();
+    $('.lds-ring').show();
+    var checked = $('#termsConditionsCheck1').is(':checked')
+    // if ($('#termsConditionsCheck1').is(':visible')) {
+    //     if (checked == false) {
+    //         $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
+    //         $('.lds-ring').hide();
+    //         $('#false').show();
+    //         setTimeout(function () {
+    //             $('#false').hide();
+    //             document.getElementById('form-login-button-submit').disabled = 0;
+    //         }, 2500);
+    //         return;
+    //     }
+    // }
+    
     document.getElementById('form-button-register').disabled = 1;
     var formData = new FormData();
     var _token = $('input[name=_token]').val();
@@ -489,6 +504,7 @@ $("#formStore").submit(function (e) {
             processData: false,
             data: formData,
             success: function (data) {
+            $('.lds-ring').hide();
 
                 document.getElementById('form-button-register').disabled = 0;
                 if (data.mail == true) {
@@ -503,6 +519,8 @@ $("#formStore").submit(function (e) {
                         closeOnConfirm: true
                     });
                 } else {
+                    $('#modal-login-register').modal('hide');
+
                     window.location.href = "/";
                     // document.getElementById('form-button-register').disabled = 0;
                 }
@@ -513,7 +531,74 @@ $("#formStore").submit(function (e) {
         });
     }
 });
+$("#iniciosession").submit(function (e) {
+    e.preventDefault();
 
+    $('.lds-ring').show();
+    document.getElementById('form-login-button-submit').disabled = 1;
+    
+    var checked = $('#termsConditionsCheck').is(':checked')
+    var ss = $("#myDiv").length
+    var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
+    var secusrtmail_danger = $('#secusrtmail').hasClass('form-control-danger');
+    if ($('#termsConditionsCheck').is(':visible')) {
+        if (checked == false) {
+            $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
+            $('.lds-ring').hide();
+            $('#false').show();
+            setTimeout(function () {
+                $('#false').hide();
+                document.getElementById('form-login-button-submit').disabled = 0;
+            }, 2500);
+            return;
+        }
+    }
+
+    if (secusrtmail_danger == true) {
+        $('#false').text('Estas credenciales no coinciden con nuestros registros');
+        $('.lds-ring').hide();
+        $('#false').show();
+        setTimeout(function () {
+            $('#false').hide();
+            document.getElementById('form-login-button-submit').disabled = 0;
+        }, 2500);
+        return;
+    }
+    $.ajax({
+        url: '/login',
+        type: 'post',
+        datatype: 'json',
+        data: {
+            '_token': $('input[name=_token]').val(),
+            'secusrtmail': $('#secusrtmail').val(),
+            'password': $('#password').val()
+        },
+        success: function (data) {
+            if (data.success == 0) {
+                setTimeout(function () {
+                    $('#true').hide();
+                    $('.lds-ring').hide();
+                    $('#false').text(data.mensaje);
+                    setTimeout(function () {
+                        $('#false').hide();
+                    }, 100);
+                    document.getElementById('form-login-button-submit').disabled = 0;
+                }, 2500);
+            } else {
+                // $('#true').show();
+                // $('#true').text(data.mensaje);
+                setTimeout(function () {
+                    $('.lds-ring').hide();
+                    $('#false').hide();
+                    $('#modal-login-register-tabs').modal('hide');
+
+                    window.location.href = "/";
+                    document.getElementById('form-login-button-submit').disabled = 0;
+                }, 2500);
+            }
+        }
+    });
+});
 function validateMail() {
     var _token = $('input[name=_token]').val();
     secusrtmail = $('#secusrtmail').val();
@@ -1338,74 +1423,7 @@ $("#formgrupoconfig").submit(function (e) {
         },
     });
 });
-$("#iniciosession").submit(function (e) {
-    e.preventDefault();
 
-    $('.lds-ring').show();
-    document.getElementById('form-login-button-submit').disabled = 1;
-    
-    var checked = $('#termsConditionsCheck').is(':checked')
-    var ss = $("#myDiv").length
-    var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
-    var secusrtmail_danger = $('#secusrtmail').hasClass('form-control-danger');
-    if ($('#termsConditionsCheck').is(':visible')) {
-        if (checked == false) {
-            $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
-            $('.lds-ring').hide();
-            $('#false').show();
-            setTimeout(function () {
-                $('#false').hide();
-                document.getElementById('form-login-button-submit').disabled = 0;
-            }, 2500);
-            return;
-        }
-    }
-
-    if (secusrtmail_danger == true) {
-        $('#false').text('Estas credenciales no coinciden con nuestros registros');
-        $('.lds-ring').hide();
-        $('#false').show();
-        setTimeout(function () {
-            $('#false').hide();
-            document.getElementById('form-login-button-submit').disabled = 0;
-        }, 2500);
-        return;
-    }
-    $.ajax({
-        url: '/login',
-        type: 'post',
-        datatype: 'json',
-        data: {
-            '_token': $('input[name=_token]').val(),
-            'secusrtmail': $('#secusrtmail').val(),
-            'password': $('#password').val()
-        },
-        success: function (data) {
-            if (data.success == 0) {
-                setTimeout(function () {
-                    $('#true').hide();
-                    $('.lds-ring').hide();
-                    $('#false').text(data.mensaje);
-                    setTimeout(function () {
-                        $('#false').hide();
-                    }, 100);
-                    document.getElementById('form-login-button-submit').disabled = 0;
-                }, 2500);
-            } else {
-                // $('#true').show();
-                // $('#true').text(data.mensaje);
-                setTimeout(function () {
-                    $('.lds-ring').hide();
-                    $('#false').hide();
-                    $('#modal-login-register-tabs').modal('hide');
-
-                    window.location.href = "/";
-                    document.getElementById('form-login-button-submit').disabled = 0;
-                }, 2500);
-            }
-        }
-    });
-});
 $("#editform").submit(function (e) {
     ;
     e.preventDefault();

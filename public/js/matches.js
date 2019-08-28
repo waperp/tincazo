@@ -46,7 +46,7 @@ function matches_all(touinfscode) {
                 }
                 game__result__section += '<section class="game-result__section mt-2">';
                 game__result__section += '<header class="game-result__header game-result__header--alt mb-1">';
-                game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('dddd DD [de] MMMM') + '</span>';
+                game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('ddd DD [de] MMM') + '</span>';
                 game__result__section += '<div class="game-result__title">'+game__result__title+'</div>';
                 game__result__section += '<time class="game-result__date m-auto">' + moment(item.toufixdplay + " " + item.toufixthour).locale('es').format('HH:mm A') + '</time>';
                 game__result__section += '</header>';
@@ -54,7 +54,7 @@ function matches_all(touinfscode) {
 
                 game__result__section += '<div class="game-result__team game-result__team--first">';
                 game__result__section += '<figure class="game-result__team-logo">';
-                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt + '" alt="">';
+                game__result__section += '<img class="game-result__team-logo-img" src="images/' + item.touteavimgt + '" alt="">';
                 game__result__section += '</figure>';
                 game__result__section += '<div class="game-result__team-info">';
                 game__result__section += '<h5 class="game-result__team-name">' + item.touteatname + '</h5>';
@@ -77,7 +77,7 @@ function matches_all(touinfscode) {
 
                 game__result__section += '<div class="game-result__team game-result__team--second">';
                 game__result__section += '<figure class="game-result__team-logo">';
-                game__result__section += '<img style="height:70px" src="images/' + item.touteavimgt2 + '" alt="">';
+                game__result__section += '<img class="game-result__team-logo-img" src="images/' + item.touteavimgt2 + '" alt="">';
                 game__result__section += '</figure>';
                 game__result__section += '<div class="game-result__team-info">';
                 game__result__section += '<h5 class="game-result__team-name">' + item.touteatname2 + '</h5>';

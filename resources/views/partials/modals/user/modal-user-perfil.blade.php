@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-lg-6 col-md-12" style="text-align:center;">
+                                <div class="form-group col-12 col-lg-12 col-md-12" style="text-align:center;">
                                     <label class="radio-inline">
                                         <input name="edit-perfil-plainftgder" @if(
                                             \Auth::user()->playerInfo()->plainftgder

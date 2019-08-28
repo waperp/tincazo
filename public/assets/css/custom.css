@@ -1308,7 +1308,10 @@ input.header-mobile__search-control {
     max-width: 100%;
     height: auto;
 }
-
+.modal-sm {
+    max-width: 500px;
+    width: 500px;
+}
 .tournament__select {
     background-color: #80808045;
     border-top-right-radius: 2%;
@@ -1319,7 +1322,12 @@ input.header-mobile__search-control {
     border-bottom-width: 80% !important;
 
 }
-
+.tournament__select > figure > a > img {
+    filter: brightness(0.8)
+}
+.group__select > figure > a > img {
+    filter: brightness(0.8)
+}
 .group__select {
     background-color: #80808045;
     border-top-right-radius: 2%;

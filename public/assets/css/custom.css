@@ -159,6 +159,19 @@ Description:  You can add your custom CSS here and it will overwrite template st
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
 }
+
+#jprePercentage {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #38a9ff;
+    text-align: center;
+    width: 260px;
+    margin: 0 auto;
+  }
 #jprePercentage::before {
     content: "Cargando...";
     color: #fff;
@@ -167,7 +180,7 @@ Description:  You can add your custom CSS here and it will overwrite template st
   #jprePercentage::after {
     content: "www.tincazo.com";
     display: block;
-    font-size: 10px;
+    font-size: 9px;
     line-height: 1.5em;
     color: #fff;
     letter-spacing: 0;

@@ -35,10 +35,7 @@
 	<!-- Template CSS-->
 	<link href="/css/select2.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/select2-bootstrap4.min.css">
-
-
 	<link href="assets/css/style-soccer.css" rel="stylesheet">
-
 	<!-- Custom CSS-->
 	<link href="assets/css/custom.css?css={{ time() }}" rel="stylesheet">
 	{{-- <link rel="stylesheet" type="text/css" href="/css/select.bootstrap4.min.css" />

@@ -53,7 +53,7 @@
 	<link rel="stylesheet" href="/css/jquery.Wload.css">
 	<link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap4.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/buttons.bootstrap4.min.css" />
-	<link href="/css/preloader.css" rel="stylesheet">
+	<link href="/css/preloader.css?v={{ time() }}" rel="stylesheet">
 	<link href="/css/googleFont.css" rel="stylesheet" />
 	<input type="hidden" value="{{ Session::get('plainficode') }}" id="plainficode-hidden">
 	<input type="hidden" value="{{ Session::get('select-tougrptname') }}" id="session-select-tougrptname">

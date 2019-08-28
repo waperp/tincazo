@@ -18,7 +18,6 @@ function tusTincazosJuego(shearh) {
             var array = data.listaPartidosJuego;
             var game__result__section = '';
             $.each(array, function (i, item) {
-
                 game__result__section += '<section class="game-result__section pt-0">';
                 game__result__section += '<header class="game-result__header game-result__header--alt mb-2">';
                 game__result__section += '<span class="game-result__league m-auto">' + moment(item.toufixdplay).locale('es').format('ddd DD [de] MMM') + '</span>';
@@ -44,7 +43,6 @@ function tusTincazosJuego(shearh) {
                 game__result__section += '</div>';
                 game__result__section += '<div class="game-result__score-label"><img style="height: 40px;" src="/images/enjuego.gif"></div>';
                 game__result__section += '</div>';
-
                 game__result__section += '<div class="game-result__team game-result__team--second">';
                 game__result__section += '<figure class="game-result__team-logo">';
                 game__result__section += '<img class="game-result__team-logo-img" src="images/' + item.touteavimgt2 + '" alt="">';
@@ -58,13 +56,9 @@ function tusTincazosJuego(shearh) {
                 game__result__section += '</section>';
                 $('#game-result-juego').append(game__result__section);
                 game__result__section = '';
-
             });
-
         }
     });
-
-
 }
 function tincazos_user(item) {
     return '<a  onclick="tincazos(' + item.toufixicode + ')" class="btn btn-success btn-outline btn-xs card-header__button">Ver Tincazos &nbsp;<i class="fa fa-search"></i></a>';

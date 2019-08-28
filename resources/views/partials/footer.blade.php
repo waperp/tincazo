@@ -37,6 +37,9 @@
                             <li class="footer-nav__item"><a target="_blank" href="/PoliticaPrivacidad">
                                 Politicas de Privacidad
                             </a></li>
+                            <li class="footer-nav__item"><a target="_blank" href="/TerminosCondiciones">
+                                Terminos y Condiciones
+                            </a></li>
                             {{-- <li class="footer-nav__item"><a  href="/Guia" target="_blank">GUIA</a></li> --}}
                             {{-- <li class="footer-nav__item"><a href="#" data-toggle="modal" data-target="#modal-login-register-tabs">PARTIDOS</a></li> --}}
                             {{-- <li class="footer-nav__item"><a href="_soccer_features-shortcodes.html">Features</a></li>

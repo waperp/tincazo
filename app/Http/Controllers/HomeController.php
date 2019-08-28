@@ -406,10 +406,7 @@ order by toufix.toufixicode desc',
         );
         return Datatables::of($data)->make(true);
     }
-    public function politica()
-    {
-        return view('partials.politica');
-    }
+   
     public function guia()
     {
         return view('partials.guia');
@@ -778,4 +775,13 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         }
         return response()->json($tougrp);
     }
+    public function  TerminosCondiciones(){
+        return view('partials.terminosCondiciones');
+        
+    }
+    public function politica()
+    {
+        return view('partials.politica');
+    }
 }
+

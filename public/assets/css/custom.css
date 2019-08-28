@@ -1052,7 +1052,22 @@ padding-left: 0px !important;
     -webkit-transform: translateY(-50%);
     transform: translatey(-50%);
 }
+@media (max-width: 991px){
 
+
+.game-result__score-result--draw1  {
+    display: block;
+    position: absolute;
+    bottom: 4px;
+    right: 0;
+}
+.game-result__score-result--draw2  {
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 0;
+}
+}
 .game-result__score-result--loser~.game-result__score-result--winner::before {
     display: none;
 }

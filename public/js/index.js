@@ -2198,7 +2198,7 @@ function winner_loser_team1(item) {
         } else if (item.toufixsscr1 < item.toufixsscr2) {
             return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr1 + '</span>';
         } else {
-            return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr1 + '</span>';
+            return '<span class="game-result__score-result game-result__score-result--draw1">' + toufixsscr1 + '</span>';
         }
     } else {
         if (item.toufixsscr1 > item.toufixsscr2) {
@@ -2206,7 +2206,7 @@ function winner_loser_team1(item) {
         } else if (item.toufixsscr1 < item.toufixsscr2) {
             return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr1 + '</span>';
         } else {
-            return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr1 + '</span>';
+            return '<span class="game-result__score-result game-result__score-result--draw1">' + item.toufixsscr1 + '</span>';
         }
     }
 }
@@ -2227,7 +2227,7 @@ function winner_loser_team2(item) {
         } else if (item.toufixsscr2 < item.toufixsscr1) {
             return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr2 + '</span>';
         } else {
-            return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr2 + '</span>';
+            return '<span class="game-result__score-result game-result__score-result--draw2">' + toufixsscr2 + '</span>';
         }
     } else {
         if (item.toufixsscr2 > item.toufixsscr1) {
@@ -2235,7 +2235,7 @@ function winner_loser_team2(item) {
         } else if (item.toufixsscr2 < item.toufixsscr1) {
             return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr2 + '</span>';
         } else {
-            return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr2 + '</span>';
+            return '<span class="game-result__score-result game-result__score-result--draw2">' + item.toufixsscr2 + '</span>';
         }
     }
 

@@ -68,9 +68,7 @@
                                         <label style="font-size: 9px" class="custom-control-label"
                                             for="termsConditionsCheck1">He leído y acepto <a
                                                 style="text-decoration-line: underline" target="_blank"
-                                                href="/TerminosCondiciones">termino y condiciones </a> <br> vea <a
-                                                style="text-decoration-line: underline" target="_blank"
-                                                href="/PoliticaPrivacidad">Politicas de privacidad </a></label>
+                                                href="/TerminosCondiciones">termino y condiciones </a></label>
                                     </div>
                                     <div style="display: none" class="lds-ring">
                                         <div></div>

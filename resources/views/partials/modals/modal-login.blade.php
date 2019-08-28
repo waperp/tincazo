@@ -44,15 +44,16 @@
                                         <div></div>
                                         <div></div>
                                     </div>
+                                    <div id="termsConditions" class="custom-control custom-checkbox text-center">
+                                            <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
+                                            <label style="font-size: 9px" class="custom-control-label"
+                                                for="termsConditionsCheck">He leído y acepto <a style="text-decoration-line: underline" target="_blank" href="/TerminosCondiciones">termino y condiciones </a> </label>
+                                        </div>
                                     <div class="form-group text-center">
 
                                         <a class="text-center" OnClick="validateMail()">Olvidastes tu contraseña?</a>
                                     </div>
-                                    <div id="termsConditions" class="custom-control custom-checkbox text-center">
-                                        <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
-                                        <label style="font-size: 9px" class="custom-control-label"
-                                            for="termsConditionsCheck">He leído y acepto <a style="text-decoration-line: underline" target="_blank" href="/TerminosCondiciones">termino y condiciones </a> <br>  vea  <a style="text-decoration-line: underline" target="_blank" href="/PoliticaPrivacidad">Politicas de privacidad </a></label>
-                                    </div>
+                                    
                                     <div class="form-group form-group--submit">
 
                                         <button id="form-login-button-submit" class="btn btn-primary-inverse btn-block"

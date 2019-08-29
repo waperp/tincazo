@@ -45,18 +45,22 @@
                                         <div></div>
                                     </div>
                                     <div class="form-group text-left">
-                                            <div class="form-group text-right">
+                                        <div class="form-group text-right">
+                                            <a class="text-center" OnClick="validateMail()">Olvidastes tu
+                                                contraseña?</a>
+                                        </div>
 
-                                                    <a class="text-center" OnClick="validateMail()">Olvidastes tu contraseña?</a>
-                                                </div>
-                                                
-                                    <div  style="display: none" id="termsConditions" class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="termsConditionsCheck">
+                                        <div style="display: none" id="termsConditions"
+                                            class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                id="termsConditionsCheck">
                                             <label style="font-size: 9px" class="custom-control-label"
-                                                for="termsConditionsCheck">He leído y acepto los<a style="text-decoration-line: underline" target="_blank" href="/TerminosCondiciones">     Termino y Condiciones </a> </label>
+                                                for="termsConditionsCheck">He leído y acepto los<a
+                                                    style="text-decoration-line: underline" target="_blank"
+                                                    href="/TerminosCondiciones"> Terminos y Condiciones </a> </label>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="form-group form-group--submit">
 
                                         <button id="form-login-button-submit" class="btn btn-primary-inverse btn-block"

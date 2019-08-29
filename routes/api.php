@@ -10,6 +10,7 @@ Route::group([
     Route::post('validateMailApi', 'Auth\AuthController@validateMailApi');
     Route::post('updateResetPasswordApi', 'Auth\AuthController@updateResetPasswordApi');
         Route::get('membership', 'Auth\AuthController@membership');
+        Route::post('validateMailLogin', 'secusrController@validateMailLogin');
 
     Route::group([
         'middleware' => 'auth:api',

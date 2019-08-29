@@ -68,7 +68,7 @@
                                         <label style="font-size: 9px" class="custom-control-label"
                                             for="termsConditionsCheck1">He leído y acepto los <a
                                                 style="text-decoration-line: underline" target="_blank"
-                                                href="/TerminosCondiciones">Termino y Condiciones </a></label>
+                                                href="/TerminosCondiciones">Termino Condiciones </a></label>
                                     </div>
                                     <div style="display: none" class="lds-ring">
                                         <div></div>

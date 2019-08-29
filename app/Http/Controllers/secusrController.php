@@ -190,6 +190,7 @@ class secusrController extends Controller
                         $plainf->plainfddobp =  $plainfddobp;
                         $plainf->plainftnick = $request->plainftname;
                         $plainf->plainfvimgp = $imageName;
+                        $plainf->plainfbteco = 1;
                         $plainf->conmemscode = $request->conmemscode;
                         $plainf->plainftgder = $request->plainftgder == '' ? 'M' : $request->plainftgder;
                         $plainf->save();
@@ -247,6 +248,8 @@ class secusrController extends Controller
 
                     $plainf->plainfddobp = Carbon::parse($request->plainfddobp)->format('Y-m-d');
                     $plainf->plainftnick = $request->plainftnick;
+                    $plainf->plainfbteco = 1;
+
                     if ($imageNames != "null") {
                         $plainf->plainfvimgp = $imageNames;
                     }

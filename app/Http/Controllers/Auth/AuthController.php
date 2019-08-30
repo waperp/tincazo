@@ -218,6 +218,8 @@ class AuthController extends Controller
             $token->save();
             $plainf = plainf::find($user->plainficode);
             $conmem = DB::table('conmem')->where('conmemscode', $plainf->conmemscode)->first();
+            secusr::where('secusrtmail', $request->secusrtmail)->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                            ->where('plainf.plainfbteco', 0)->update(['plainfbteco' => 1]);
             return response()->json([
                 'access_token' => $tokenResult->accessToken,
                 'token_type'   => 'Bearer',

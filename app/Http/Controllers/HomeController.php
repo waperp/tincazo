@@ -231,7 +231,7 @@ class HomeController extends Controller
         $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTouinfAll = DB::table('touinf')->get();
 
-        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->orderBy('touinfscode','asc')->get();
+        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->orderBy('touinfscode','DESC')->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
        
         $listaToutea     = DB::table('toutea')->get();

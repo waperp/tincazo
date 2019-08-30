@@ -19,6 +19,10 @@ $(".refresh-button-all").on('click', function() {
 $("#shearh-matches-all").on('click', function() {
     matches_all(touinfscode_static);
 });
+$(".refresh-button-matches").on('click', function () {
+    $('#matches_all').empty();
+    matches_all(touinfscode_static);
+});
 function matches_all(touinfscode) {
     $('body').Wload({ text: ' Cargando' })
     var touteatname = $(".buscar").val();

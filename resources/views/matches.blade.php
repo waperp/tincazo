@@ -64,6 +64,14 @@
                         <div class="card">
                             <header class="card__header card__header--has-filter">
                                 <h4>PARTIDOS </h4>
+                                <ul class="category-filter category-filter--featured nav nav-tabs">
+
+                                    <li class="category-filter__item refresh-button-matches"><a
+                                            style="color:#38a9ff;font-size:15px" data-toggle="tab"
+                                            class="category-filter__link active"
+                                            data-category="posts__item--category-2"><i class="fa fa-refresh"></i></a>
+                                    </li>
+                                </ul>
                             </header>
                             <div class="tab-content">
                                 <div class="card__content" style="height: 600px;overflow-y:  auto;">

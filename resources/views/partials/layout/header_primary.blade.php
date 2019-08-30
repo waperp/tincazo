@@ -1,6 +1,6 @@
 <div class="header__primary-inner">
     <div class="header-logo">
-        <a href="_soccer_index.html"><img src="assets/images/soccer/logo.png"
+        <a href="/"><img src="assets/images/soccer/logo.png"
                 srcset="assets/images/soccer/logo@2x.png 2x" alt="Alchemists" class="header-logo__img"></a>
     </div>
     <nav class="main-nav clearfix">

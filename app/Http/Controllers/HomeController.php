@@ -297,7 +297,7 @@ class HomeController extends Controller
         $listaConmen     = DB::table('conmem')->get();
         $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
         $listaTouinfAll = DB::table('touinf')->get();
-        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
+        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->orderBy('touinfscode','DESC')->get();
         $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();

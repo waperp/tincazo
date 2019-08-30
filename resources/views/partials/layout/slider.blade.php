@@ -57,8 +57,8 @@
                     <div class="posts__inner">
                         
                         <h6 class="posts__title">{{ $objSlideTouinf1->touinftname }}</h6>
-                        <time datetime="{{ $objSlideTouinf->touinfdstat }}"
-                            class="posts__date">{{ Carbon\Carbon::parse($objSlideTouinf->touinfdstat)->formatLocalized('%d DE %B %Y') }}</time>
+                        <time datetime="{{ $objSlideTouinf1->touinfdstat }}"
+                            class="posts__date">{{ Carbon\Carbon::parse($objSlideTouinf1->touinfdstat)->formatLocalized('%d DE %B %Y') }}</time>
                     </div>
                 </div>
             </div>

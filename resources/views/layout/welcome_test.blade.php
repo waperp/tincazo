@@ -12,6 +12,10 @@
 	<meta name="keywords" content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca">
 	<meta content="{{ csrf_token() }}" name="_token" />
 	<meta name="robots" content="INDEX,FOLLOW,NOARCHIVE">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
 
 	<!-- Favicons
 	================================================== -->

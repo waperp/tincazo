@@ -11,6 +11,8 @@
 	<meta name="author" content="DOZURE SRL">
 	<meta name="keywords" content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca">
 	<meta content="{{ csrf_token() }}" name="_token" />
+	<meta name="robots" content="INDEX,FOLLOW,NOARCHIVE">
+
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="/favicon.ico">

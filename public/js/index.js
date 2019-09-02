@@ -968,7 +968,7 @@ function editarScoreTofix(toufixicode) {
 
 function validarCampeonFechas() {
     var touinfdstat = $('#fecha-actual-server').val();
-    var touinfscode = $('#session-select-touinfscode').val();
+    var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/validarCampeonFechas',
         type: 'get',
@@ -1461,7 +1461,7 @@ $("#form-agregar-tincazo").submit(function (e) {
     document.getElementById('form-agregar-tincazo-button').disabled = 1;
     var _token = $('input[name=_token]').val();
     e.preventDefault();
-    tougplicode = $('#session-select-tougplicode').val();
+    tougplicode = tougrp.tougplicode;
     toufixsscr1 = $('#agregar-toufixsscr1-tincazo').val();
     toufixsscr2 = $('#agregar-toufixsscr2-tincazo').val();
     toufixicode = $('#agregar-toufixicode-hidden').val();
@@ -1677,7 +1677,7 @@ $(document).on('keyup', '[data-min_max]', function (e) {
 
 function invitar(plainficode) {
     $('#invitar-' + plainficode).empty();
-    var tougrpicode = $('#session-select-tougrpicode').val();
+    var tougrpicode = tougrp.tougrpicode;
     var _token = $('input[name=_token]').val();
     $.ajax({
         url: '/invitarJugador',
@@ -1811,10 +1811,10 @@ function formatState1(state) {
 
 function miCampeon(touttescode) {
     var _token = $('input[name=_token]').val();
-    var tougrpicode = $('#session-select-tougrpicode').val();
-    var tougplicode = $('#session-select-tougplicode').val();
+    var tougrpicode = tougrp.tougrpicode;
+    var tougplicode = tougrp.tougplicode;
     var touinfdstat = $('#fecha-actual-server').val();
-    var touinfscode = $('#session-select-touinfscode').val();
+    var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/insertarCampeon',
         type: 'post',
@@ -1869,7 +1869,7 @@ function miCampeon(touttescode) {
 function estadisticas() {
     // $('#other_champions').empty();
     // $('#jugadores').empty();
-    // var tougrpicode = $('#session-select-tougrpicode').val();
+    // var tougrpicode = tougrp.tougrpicode;
     // $.ajax({
     //     url: '/estadisticas',
     //     type: 'get',
@@ -1919,7 +1919,7 @@ function listaJugadoresCampeon(touttescode) {
         $('#title-equipo-campon').text(touteatname);
     }
     $('#title-image-campeon').attr('src', 'images/' + touteavimgt);
-    var tougrpicode = $('#session-select-tougrpicode').val();
+    var tougrpicode = tougrp.tougrpicode;
     $.ajax({
         url: '/listaJugadoresCampeon',
         type: 'get',
@@ -2088,6 +2088,7 @@ function selected_tournament_group(element, secconnuuid, tougplicode) {
             tougplicode: tougplicode
         },
         success: function (data) {
+            debugger
             window.location.href = '/?q=true';
         }
     });

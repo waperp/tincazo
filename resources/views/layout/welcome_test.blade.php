@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="es">
 
 <head>
 	<!-- Basic Page Needs
 	================================================== -->
-	<title>TINCAZO</title>
+	<title>Juego de Pronósticos Deportivos - Tincazo.com</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Sports Club, League and News HTML Template">
-	<meta name="author" content="Dan Fisher">
-	<meta name="keywords" content="sports club news HTML template">
+	<meta name="description" content="Tincazo.com es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
+	<meta name="author" content="DOZURE SRL">
+	<meta name="keywords" content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca">
 	<meta content="{{ csrf_token() }}" name="_token" />
 	<!-- Favicons
 	================================================== -->
@@ -51,15 +51,15 @@
 	<link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap4.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/buttons.bootstrap4.min.css" />
 	<link href="/css/googleFont.css" rel="stylesheet" />
-	<input type="hidden" value="{{ Session::get('plainficode') }}" id="plainficode-hidden">
-	<input type="hidden" value="{{ Session::get('select-tougrptname') }}" id="session-select-tougrptname">
+	{{-- <input type="hidden" value="{{ Session::get('plainficode') }}" id="plainficode-hidden"> --}}
+	{{-- <input type="hidden" value="{{ Session::get('select-tougrptname') }}" id="session-select-tougrptname">
 	<input type="hidden" value="{{ Session::get('select-tougrpicode') }}" id="session-select-tougrpicode">
 	<input type="hidden" value="{{ Session::get('select-touinfscode') }}" id="session-select-touinfscode">
 	<input type="hidden" value="{{ Session::get('select-tougplicode') }}" id="session-select-tougplicode">
 	<input type="hidden" value="{{ Session::get('select-plainficode') }}" id="session-select-plainficode">
-	<input type="hidden" value="{{ Session::get('select-tougrpschpt') }}" id="session-select-tougrpschpt">
-	<input type="hidden" value="{{ Session::get('select-q') }}" id="session-select-q">
-	<input type="hidden" id="tougrpicode-hidden-filtrer">
+	<input type="hidden" value="{{ Session::get('select-tougrpschpt') }}" id="session-select-tougrpschpt"> --}}
+	{{-- <input type="hidden" value="{{ Session::get('select-q') }}" id="session-select-q"> --}}
+	{{-- <input type="hidden" id="tougrpicode-hidden-filtrer"> --}}
 </head>
 
 <body data-template="template-soccer">

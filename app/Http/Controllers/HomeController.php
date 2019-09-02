@@ -755,7 +755,9 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         return response()->json($groups);
     }
     public function selected_group(Request $request){
-        $tougrp = tougrp::where('secconnuuid',$request->secconnuuid)
+        $tougrp = tougrp::join('tougpl','tougpl.tougrpicode','tougrp.tougrpicode')
+        ->where('tougrp.secconnuuid',$request->secconnuuid)
+        ->where('tougpl.tougplicode',$request->tougplicode)
         ->first();
         Session::put('session_selected_tougrp',$tougrp);
         Session::put('tougrp',$tougrp);

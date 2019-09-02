@@ -48,7 +48,6 @@ class plapreController extends Controller
                 'toufixsscr2' => 'required|numeric|min:0',
                 'toufixsscr1' => 'required|numeric|min:0',
                 'toufixicode' => 'required',
-                'tougplicode' => 'required',
             ]);
             if ($validator->passes()) {
                 $date = Carbon::now();

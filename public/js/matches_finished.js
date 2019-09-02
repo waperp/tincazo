@@ -3,8 +3,8 @@ tusTincazosFinalizados("");
 });
 function tusTincazosFinalizados(shearh) {
     $('#game-result-finalizado').empty();
-    var tougplicode = $('#session-select-tougplicode').val();
-    var touinfscode = $('#session-select-touinfscode').val();
+    var tougplicode = tougrp.tougplicode;
+    var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/tusTincazosFinalizados',
         type: 'get',

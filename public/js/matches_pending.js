@@ -3,8 +3,8 @@ $(document).ready(function () {
 });
 function tusTincazosPendientes(shearh) {
     $('#game-result-pendientes').empty();
-    var tougplicode = $('#session-select-tougplicode').val();
-    var touinfscode = $('#session-select-touinfscode').val();
+    var tougplicode = tougrp.tougplicode;
+    var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/tusTincazosPendientes',
         type: 'get',

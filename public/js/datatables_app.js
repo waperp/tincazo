@@ -9,7 +9,7 @@ var table = $("#tablepociciones").DataTable({
         "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     "pageLength": 25,
     initComplete: function () {
-        var tougrpschpt = $('#session-select-tougrpschpt').val();
+        var tougrpschpt = tougrp.tougrpschpt;
 
         if (tougrpschpt > 0) {
             this.api().columns([2, 3, 4]).visible(false);
@@ -99,7 +99,7 @@ var table = $("#tablepociciones").DataTable({
     ajax: {
         url: '/tablaPosicionesGrupo',
         data: function (d) {
-            var tougrpicode = $('#session-select-tougrpicode').val();
+            var tougrpicode = tougrp.tougrpicode;
             if (tougrpicode > 0) {
                 d.tougrpicode = tougrpicode;
             } else {
@@ -247,7 +247,7 @@ $("#table-pociciones-dia").DataTable({
         url: '/tablaPosicionesPorDia',
         data: function (d) {
             var fecha = $('#date-filtrer-posiciones').val();
-            var tougrpicode = $('#session-select-tougrpicode').val();
+            var tougrpicode = tougrp.tougrpicode;
             d.fecha = fecha;
             d.tougrpicode = tougrpicode;
         }
@@ -319,7 +319,7 @@ var table = $("#tableinvitaciones").DataTable({
     ajax: {
         url: '/tablaInvitacionesGrupo',
         data: function (d) {
-            var tougrpicode = $('#session-select-tougrpicode').val();
+            var tougrpicode = tougrp.tougrpicode;
             if (tougrpicode > 0) {
                 d.tougrpicode = tougrpicode;
             } else {
@@ -938,8 +938,8 @@ var tablesss = $("#table-tincazos-grupo").DataTable({
     ajax: {
         url: '/obtenerPredicciones',
         data: function (d) {
-            var tougrpicode = $('#session-select-tougrpicode').val();
-            var touinfscode = $('#session-select-touinfscode').val();
+            var tougrpicode = tougrp.tougrpicode;
+            var touinfscode = touinf.touinfscode;
             var toufixicode = $('#mostrar-toufixicode-hidden').val();
             if (toufixicode > 0) {
                 d.touinfscode = touinfscode;

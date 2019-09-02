@@ -967,7 +967,6 @@ function editarScoreTofix(toufixicode) {
 }
 
 function validarCampeonFechas() {
-    var touinfdstat = $('#fecha-actual-server').val();
     var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/validarCampeonFechas',
@@ -975,7 +974,6 @@ function validarCampeonFechas() {
         datatype: 'json',
         data: {
             touinfscode: touinfscode,
-            touinfdstat: touinfdstat
         },
         success: function (data) {
             if (data.fecha > 0) {
@@ -1813,7 +1811,6 @@ function miCampeon(touttescode) {
     var _token = $('input[name=_token]').val();
     var tougrpicode = tougrp.tougrpicode;
     var tougplicode = tougrp.tougplicode;
-    var touinfdstat = $('#fecha-actual-server').val();
     var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/insertarCampeon',
@@ -1826,7 +1823,6 @@ function miCampeon(touttescode) {
             tougrpicode: tougrpicode,
             tougplicode: tougplicode,
             touttescode: touttescode,
-            touinfdstat: touinfdstat,
             touinfscode: touinfscode
         },
         success: function (data) {

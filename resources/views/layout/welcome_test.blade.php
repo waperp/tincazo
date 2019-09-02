@@ -7,12 +7,14 @@
 	<title>Tincazo.com - Juego de Pronósticos Deportivos</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Tincazo.com es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
+	<meta name="description"
+		content="Tincazo.com es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
 	<meta name="author" content="DOZURE SRL">
-	<meta name="keywords" content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca">
+	<meta name="keywords"
+		content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca">
 	<meta content="{{ csrf_token() }}" name="_token" />
 	<meta name="robots" content="INDEX,FOLLOW,NOARCHIVE">
-<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="cache-control" content="no-cache" />
 
 	<!-- Favicons
 	================================================== -->
@@ -37,7 +39,7 @@
 	<link href="assets/vendor/slick/slick.css" rel="stylesheet">
 	<!-- Template CSS-->
 	<link href="/css/select2.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/css/select2-bootstrap4.min.css">
+	<link href="/css/select2-bootstrap4.min.css" rel="stylesheet">
 	<link href="assets/css/style-soccer.css" rel="stylesheet">
 	<!-- Custom CSS-->
 	<link href="assets/css/custom.css?css={{ time() }}" rel="stylesheet">
@@ -49,10 +51,10 @@
 	<link rel="stylesheet" type="text/css" href="css/dataTables.colVis.css" />
 	<link rel="stylesheet" type="text/css" href="/css/fixedHeader.dataTables.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/fixedColumns.dataTables.min.css" /> --}}
-	<link rel="stylesheet" type="text/css" href="/css/sweetalert.css" />
-	<link rel="stylesheet" href="/css/jquery.Wload.css">
-	<link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap4.min.css" />
-	<link rel="stylesheet" type="text/css" href="/css/buttons.bootstrap4.min.css" />
+	<link href="/css/sweetalert.css" rel="stylesheet" type="text/css" />
+	<link href="/css/jquery.Wload.css" rel="stylesheet">
+	<link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 	<link href="/css/googleFont.css" rel="stylesheet" />
 	{{-- <input type="hidden" value="{{ Session::get('plainficode') }}" id="plainficode-hidden"> --}}
 	{{-- <input type="hidden" value="{{ Session::get('select-tougrptname') }}" id="session-select-tougrptname">
@@ -67,7 +69,6 @@
 
 <body data-template="template-soccer">
 	<input id="token" name="_token" type="hidden" value="{{ csrf_token() }}" />
-	<input type="hidden" id="fecha-actual-server" value="{{ Carbon\Carbon::now()->toDateString() }}" />
 	<div class="site-wrapper clearfix">
 		<div class="site-overlay"></div>
 		<!-- Header
@@ -245,28 +246,28 @@
 		<!-- Footer / End -->
 		<!-- Login/Register Tabs Modal -->
 		@include('partials.modals.modal-login')
-@include('partials.modals.modal-register')
-@auth
-@if (\Auth::user()->contypscode == 1)
-@include('partials.modals.admin.modal-admin-fixture')
-@include('partials.modals.admin.modal-admin-equipo-plantel')
-@include('partials.modals.admin.modal-admin-add-torneo-equipo')
-@include('partials.modals.admin.modal-admin-add-fixture')
-@include('partials.modals.admin.modal-admin-add-equipo')
-@include('partials.modals.admin.modal-admin-add-torneo')
-@include('partials.modals.admin.modal-admin-add-grupo')
-@include('partials.modals.admin.modal-admin-plantel')
-@include('partials.modals.admin.modal-admin-torneo')
-@include('partials.modals.admin.modal-admin-grupo')
-@endif
-@endauth
-@auth
-@include('partials.modals.user.modal-user-perfil')
-@include('partials.modals.user.modal-user-config-grupo')
-@include('partials.modals.user.modal-user-invitar')
-@endauth
-@include('partials.modals.admin.group.modal-admin-group-grupo')
-@include('partials.partialModal')
+		@include('partials.modals.modal-register')
+		@auth
+		@if (\Auth::user()->contypscode == 1)
+		@include('partials.modals.admin.modal-admin-fixture')
+		@include('partials.modals.admin.modal-admin-equipo-plantel')
+		@include('partials.modals.admin.modal-admin-add-torneo-equipo')
+		@include('partials.modals.admin.modal-admin-add-fixture')
+		@include('partials.modals.admin.modal-admin-add-equipo')
+		@include('partials.modals.admin.modal-admin-add-torneo')
+		@include('partials.modals.admin.modal-admin-add-grupo')
+		@include('partials.modals.admin.modal-admin-plantel')
+		@include('partials.modals.admin.modal-admin-torneo')
+		@include('partials.modals.admin.modal-admin-grupo')
+		@endif
+		@endauth
+		@auth
+		@include('partials.modals.user.modal-user-perfil')
+		@include('partials.modals.user.modal-user-config-grupo')
+		@include('partials.modals.user.modal-user-invitar')
+		@endauth
+		@include('partials.modals.admin.group.modal-admin-group-grupo')
+		@include('partials.partialModal')
 
 		<!-- Login/Register Tabs Modal / End -->
 	</div>
@@ -314,12 +315,12 @@
 	<script src="/js/select2.min.js" type="text/javascript">
 	</script>
 
-<script type="text/javascript">
-    const tougrp = @json(Session::get('tougrp'));
+	<script type="text/javascript">
+		const tougrp = @json(Session::get('tougrp'));
     const touinf = @json(Session::get('touinf'));
     console.log(tougrp);
     console.log(touinf);
-</script>
+	</script>
 	<script src="/js/index.js?v={{ time() }}" type="text/javascript">
 	</script>
 	<script src="/assets/vendor/jpreloader2/js/jpreloader.js" type="text/javascript">
@@ -339,7 +340,7 @@
 	</script>
 	<script src="/js/jquery.Wload.js?v={{ time() }}"></script>
 	<script src="/js/loading-bar.js?v={{ time() }}"></script>
-	
+
 	<script src="/js/progressbar.min.js"></script>
 </body>
 

@@ -6,7 +6,7 @@ use App\toutea;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Session;
 class touteaController extends Controller
 {
     /**
@@ -241,17 +241,20 @@ class touteaController extends Controller
         //     tougrp.touinfscode where plachm.plainficode = ? and tougrp.tougrpicode = ?', [Session::get('plainficode'), $request->tougrpicode]);
         DB::beginTransaction();
         try {
+            $touinfscode = Session::get('select-touinfscode');
+            $tougplicode = Session::get('select-tougplicode');
+            $tougrpicode = Session::get('select-tougrpicode');
             $date        = Carbon::now();
              $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
             ->join('toutte','toufix.touttescod1','toutte.touttescode')
-            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toutte.touinfscode', $touinfscode)
             ->where('toufix.constascode', '>', 1)
             ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
                 ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
-                ->where('plachm.tougplicode', $request->tougplicode)
-                ->where('tougrp.tougrpicode', $request->tougrpicode)->groupBy('plachm.plachmicode')->first();
+                ->where('plachm.tougplicode', $tougplicode)
+                ->where('tougrp.tougrpicode', $tougrpicode)->groupBy('plachm.plachmicode')->first();
             if ($validTorneo->fecha <= 0) {
                 if ($validar != null) {
 
@@ -267,7 +270,7 @@ class touteaController extends Controller
                             'plachmdcrea' => $date->toDateString(),
                             'plachmthour' => $date->toTimeString(),
                             'touttescode' => $request->touttescode,
-                            'tougplicode' => $request->tougplicode,
+                            'tougplicode' => $tougplicode,
                         ]);
                 }
             }

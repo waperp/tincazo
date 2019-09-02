@@ -441,7 +441,7 @@ t2 on toufix.touttescod2 = t2.touttescode
     {
         $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
             ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
-            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toutte.touinfscode', Session::get('select-touinfscode'))
             ->where('toufix.constascode', '>', 1)
             ->first();
 
@@ -478,7 +478,7 @@ t2 on toufix.touttescod2 = t2.touttescode
             JOIN consta ON toufix.constascode = consta.constascode AND consta.confrmicode = 3 
             LEFT JOIN plapre ON toufix.toufixicode = plapre.toufixicode AND plapre.tougplicode = ? 
             WHERE toutte1.touinfscode = ? AND toutte2.touinfscode = ? AND consta.constascode = 1  and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
-            [$request->tougplicode, $request->touinfscode, $request->touinfscode]
+            [Session::get('select-tougplicode'), Session::get('select-touinfscode'), Session::get('select-touinfscode')]
         );
         return response()->json([
             'listaPartidosPendiente' => $listaPartidosPendiente,
@@ -554,7 +554,7 @@ t2 on toufix.touttescod2 = t2.touttescode
             on toufix.constascode = consta.constascode and consta.confrmicode = 3 left join plapre on toufix.toufixicode = plapre.toufixicode and
             plapre.tougplicode = ? Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and consta.constascode = 2
             and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%')",
-            [$request->tougplicode, $request->touinfscode, $request->touinfscode]
+            [Session::get('select-tougplicode'), Session::get('select-touinfscode'), Session::get('select-touinfscode')]
         );
         return response()->json([
             'listaPartidosJuego' => $listaPartidosJuego,
@@ -573,7 +573,7 @@ t2 on toufix.touttescod2 = t2.touttescode
             on toufix.constascode = consta.constascode and consta.confrmicode = 3 left join plapre on toufix.toufixicode = plapre.toufixicode and
             plapre.tougplicode = ? Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and consta.constascode = 3
             and (toutea1.touteatname LIKE '%" . $request->shearh . "%'  or toutea2.touteatname LIKE '%" . $request->shearh . "%') order by toufix.toufixicode desc",
-            [$request->tougplicode, $request->touinfscode, $request->touinfscode]
+            [Session::get('select-tougplicode'), Session::get('select-touinfscode'), Session::get('select-touinfscode')]
         );
 
         return response()->json([
@@ -765,7 +765,7 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         Session::put('select-q', true);
         Session::put('select-tougrpicode', $tougrp->tougrpicode);
         Session::put('select-touinfscode', $tougrp->touinfscode);
-        Session::put('select-tougplicode', $request->tougplicode);
+        Session::put('select-tougplicode', $tougrp->tougplicode);
         Session::put('select-plainficode', $tougrp->plainficode);
         Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
         Session::put('select-tougrpschpt', $tougrp->tougrpschpt);

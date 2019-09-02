@@ -281,6 +281,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('09fbbbb7ba9fcf759f1da35ec2e97037c4b0be65c12c568216b7688bab83bfc7bda8bb6108c1931f',4,6,'tincazo','[]',1,'2019-06-12 20:49:49','2019-06-12 20:49:49','2020-06-12 20:49:49'),
 ('0a6451fdbd93fbc68eadbb3c820087f089d9e67df839bbe3f937300f5ade289c4504a19b1d711aab',7,6,'tincazo','[]',1,'2019-06-22 22:12:50','2019-06-22 22:12:50','2020-06-22 22:12:50'),
 ('0ac90480b12bac1e04ee79e5b36b4fe31b0eb4108a54b7de61000f1e9d2c3960f27450c4872f9bb1',219,6,'tincazo','[]',1,'2019-06-14 20:06:56','2019-06-14 20:06:56','2020-06-14 20:06:56'),
+('0b41c8190498e8e78e925da2e8617770062a4647a3666dba34d4b50563e45d1ef58e4f4dee55ec6f',247,6,'tincazo','[]',1,'2019-09-01 10:53:00','2019-09-01 10:53:00','2020-09-01 10:53:00'),
 ('0b6d9c99e0a194846b15e6be67e680641a2e447b6d6987b46bc025161cd7d3af010b5ec96b425d05',202,6,'tincazo','[]',1,'2019-07-02 20:29:20','2019-07-02 20:29:20','2020-07-02 20:29:20'),
 ('0b8a7845d8090f6a16f43dedf2e0f68a34c77258ab54d5ab3513c1645c1310b563be55afc5c17a2b',7,6,'tincazo','[]',1,'2019-06-19 20:22:40','2019-06-19 20:22:40','2020-06-19 20:22:40'),
 ('0b9d3f8fa336f1ba3cf67b4800a9db6fceea65d78c1a62a9efdc31061c55b695e51a29c6a21cfac9',6,6,'tincazo','[]',0,'2019-07-24 10:01:32','2019-07-24 10:01:32','2020-07-24 10:01:32'),
@@ -353,6 +354,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('23f7ab388323103069a8a7f0ae8a818527db848fbd6099cbacd3279a074dd067249db4b2c34190a5',6,6,'tincazo','[]',1,'2019-06-26 12:05:41','2019-06-26 12:05:41','2020-06-26 12:05:41'),
 ('2403dd0040a02cac6049fb0e3cfd4587f36fa44d5080e8a90d4193363f2ba420231d27831dc16b08',247,6,'tincazo','[]',0,'2019-07-14 14:47:06','2019-07-14 14:47:06','2020-07-14 14:47:06'),
 ('248845fc4aacd89c628a19e16d36fb8459306791dfefece7f7ba09b2d9b16be94debd5ae7a0a79f0',207,6,'tincazo','[]',0,'2019-06-14 11:39:22','2019-06-14 11:39:22','2020-06-14 11:39:22'),
+('24d42e8c1d8f4d2d1dc4da3b030776d06c81a0ed42059f3da7e5f44c64a3a4c278f2a28730b9a01b',6,6,'tincazo','[]',1,'2019-08-30 10:10:33','2019-08-30 10:10:33','2020-08-30 10:10:33'),
 ('24d65d87f44f2d5ea609c51ed5add019a5e53f082db21684ddeea6c7c344a2320f0cfb74522e44a7',29,6,'tincazo','[]',0,'2019-06-08 20:10:26','2019-06-08 20:10:26','2020-06-08 20:10:26'),
 ('259e03e229e2f341f6b68d7748d59661ef377708c83f778d9f736ef341b78d3b545e5e5dbb2f8c7d',222,6,'tincazo','[]',0,'2019-07-02 12:13:54','2019-07-02 12:13:54','2020-07-02 12:13:54'),
 ('26389933d0eb6d97c29d1e442197075863d7972398904e89532e6400e4bb75940030dcd63f7199d5',206,6,'tincazo','[]',0,'2019-06-16 18:59:02','2019-06-16 18:59:02','2020-06-16 18:59:02'),
@@ -375,7 +377,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('2be4996e72d16b04de04fe15272e5757e67f514ecd7886226f1f470c48a6c0bb7f1e5a5d8ba8177a',6,6,'tincazo','[]',1,'2019-06-26 00:13:15','2019-06-26 00:13:15','2020-06-26 00:13:15'),
 ('2c5f0db1b2b8b1c988029a3f095a64d1665513078ab0b8674451b208fe55ec42c7f7c1c1c5eda644',204,6,'tincazo','[]',1,'2019-06-14 11:33:44','2019-06-14 11:33:44','2020-06-14 11:33:44'),
 ('2c8dd3c277f078ea7211ed73e6152c9675c78512558006c73a24f80ecced28e05d2639e533d65fde',6,6,'tincazo','[]',1,'2019-06-05 15:34:36','2019-06-05 15:34:36','2020-06-05 15:34:36'),
-('2ca9398f6bfd49eec416615bdfbf8d76586ce50a92e5c594ecfa58f4b8a059a4134be2523ff79a0a',1,6,'tincazo','[]',0,'2019-07-25 15:09:19','2019-07-25 15:09:19','2020-07-25 15:09:19'),
+('2ca9398f6bfd49eec416615bdfbf8d76586ce50a92e5c594ecfa58f4b8a059a4134be2523ff79a0a',1,6,'tincazo','[]',1,'2019-07-25 15:09:19','2019-07-25 15:09:19','2020-07-25 15:09:19'),
 ('2cd49156729158614151e58847df127a563af8fa3d51a907ae1b3abcc865141981ddf5891cec408c',227,6,'tincazo','[]',1,'2019-06-14 20:11:18','2019-06-14 20:11:18','2020-06-14 20:11:18'),
 ('2d9ff562be1cc104e3e2baeb67f7fb9ca49ca92e486dd3ab70479662ca0444874d61bef666ef2158',6,6,'tincazo','[]',0,'2019-06-25 09:51:29','2019-06-25 09:51:29','2020-06-25 09:51:29'),
 ('2dbd75536744ec47ba12bd33e7fa8e3df0fadf5ff2de4581c26936c45234fb1566799397398d1f1b',5,6,'tincazo','[]',0,'2019-07-24 18:38:17','2019-07-24 18:38:17','2020-07-24 18:38:17'),
@@ -639,6 +641,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('80c0f9ea30aad1f7cfd6323e0cc90683873219170adf7544a926523f7124c020c41f491dd6ce650f',222,6,'tincazo','[]',1,'2019-06-22 14:39:46','2019-06-22 14:39:46','2020-06-22 14:39:46'),
 ('812ed8f94ace929bbac3464b4cd43e06d4ef8065704c62c5f82e47b9661689aac0ce29d345b6d9c6',6,6,'tincazo','[]',0,'2019-07-01 23:16:34','2019-07-01 23:16:34','2020-07-01 23:16:34'),
 ('8178cf1e343601a66e8701993b6b08478bd19a8dcc7809f5cb5feb80167f11f838e4e362976bac5f',217,6,'tincazo','[]',1,'2019-06-14 18:16:34','2019-06-14 18:16:34','2020-06-14 18:16:34'),
+('819e1916c161ad369cce7c3a62299da4f574714eb0d2e40c94c677432d77050521e78484e325837c',6,6,'tincazo','[]',0,'2019-09-02 12:38:41','2019-09-02 12:38:41','2020-09-02 12:38:41'),
 ('81efd9f538b56c1418b711a0f0c7a1079bed96fd50026de8a80d44d42999aa5a348ef857bad6ba89',1,3,'tincazo','[]',0,'2019-05-31 11:14:03','2019-05-31 11:14:03','2020-05-31 11:14:03'),
 ('821b093e6dc416213a114d2d49fe595e6a299d44412049a223b7ab433cff22ea6afbf61e2bdac626',1,6,'tincazo','[]',1,'2019-06-14 14:36:42','2019-06-14 14:36:42','2020-06-14 14:36:42'),
 ('8271ab4eec8d7d039249377a2a42ffa0d846ffa7f9caa40b93560af7c9a49c9fef0630937686a4ee',6,6,'tincazo','[]',1,'2019-07-24 14:20:40','2019-07-24 14:20:40','2020-07-24 14:20:40'),
@@ -702,6 +705,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('985cc1202427748c4f3a693704ef74c7bebd4dc40ab570c2b869ee433f1a15b84fd4296b51ff48cf',62,6,'tincazo','[]',0,'2019-06-11 09:34:10','2019-06-11 09:34:10','2020-06-11 09:34:10'),
 ('986df446694cc9cd70b15afa5dd70300b4194ca40898c70b2ec3b0f0e7f2538606d305abd491bf36',6,6,'tincazo','[]',0,'2019-06-26 10:52:05','2019-06-26 10:52:05','2020-06-26 10:52:05'),
 ('986f77a15c42a7a19c3da241f5a2e27cbd11c4f8ac3884f040b0d353a60ed707ef000acd3f413405',6,6,'tincazo','[]',0,'2019-06-24 10:58:09','2019-06-24 10:58:09','2020-06-24 10:58:09'),
+('98a073634fd034d11319e6d3cd1129a33859be31130898341d3726a547324f92a8029cedd7bf8de7',6,6,'tincazo','[]',0,'2019-08-27 10:22:48','2019-08-27 10:22:48','2020-08-27 10:22:48'),
 ('9960ef5c4414ff3f903a3ff7c303e0662f0017e19eb8cc46a4e94acb757d3d3f9d753e28d16d3db9',219,6,'tincazo','[]',1,'2019-06-16 09:59:13','2019-06-16 09:59:13','2020-06-16 09:59:13'),
 ('99a20caea05ca3d60a9b6cdd2027eef0f8e951db0ef24b1b0ea4ef77e687d005c5fc6936851ef90f',6,6,'tincazo','[]',0,'2019-06-07 09:26:22','2019-06-07 09:26:22','2020-06-07 09:26:22'),
 ('99a34e92007c606de1ccbe32e86fad3be6f511c20e58af5733f2df6af09a2e6a53fb0f043401dff3',234,6,'tincazo','[]',1,'2019-06-23 23:22:31','2019-06-23 23:22:31','2020-06-23 23:22:31'),
@@ -766,7 +770,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('aaada31c4d835d58e14d4dca7209bafc14b35e2b8d7d40a961324d287e7579b6f3854b972c7d5567',222,6,'tincazo','[]',1,'2019-06-20 17:35:39','2019-06-20 17:35:39','2020-06-20 17:35:39'),
 ('aaae3dcd8a29a7682305fd7058fac3dabc1afad874feb8eb6446b680ce99bede0e9846c567722265',223,6,'tincazo','[]',1,'2019-06-25 07:22:49','2019-06-25 07:22:49','2020-06-25 07:22:49'),
 ('aad676464d400ccf95ca8284a1a80ca20069742acedbcb25fa7d9eb5c95b6a2abc72f88ac5703932',6,6,'tincazo','[]',0,'2019-07-24 15:04:24','2019-07-24 15:04:24','2020-07-24 15:04:24'),
-('aae417f51526a751bb204fdfb6a6656d6681e70b4d8db09cd78d5d827fddbccdad7511a59b7b2c66',6,6,'tincazo','[]',0,'2019-07-25 15:27:38','2019-07-25 15:27:38','2020-07-25 15:27:38'),
+('aae417f51526a751bb204fdfb6a6656d6681e70b4d8db09cd78d5d827fddbccdad7511a59b7b2c66',6,6,'tincazo','[]',1,'2019-07-25 15:27:38','2019-07-25 15:27:38','2020-07-25 15:27:38'),
 ('aaeb62e72e63bbbb3887f054ffea9d5646adeb2bc7b01b214f552fc7ab38d08ee008fa9fea17b878',6,6,'tincazo','[]',0,'2019-06-11 16:28:16','2019-06-11 16:28:16','2020-06-11 16:28:16'),
 ('ab4d4b018cc859ed0f645ca27c7373f0a6783fbde3648241bf8c53463dee4dfb27f8b13b8e59a8ef',7,6,'tincazo','[]',1,'2019-06-22 13:00:52','2019-06-22 13:00:52','2020-06-22 13:00:52'),
 ('aba72429f56fb14e8c9363971a2c2b3f5f3fe5c75c03f2b5245f7afc6704e3af4aec51ce6659c6c9',176,6,'tincazo','[]',1,'2019-06-12 20:22:24','2019-06-12 20:22:24','2020-06-12 20:22:24'),
@@ -812,6 +816,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('bc20c039bff18b264f19e356c45ea70b160acc72bfd3269a349dcad5762a598b66443383db901c14',24,6,'tincazo','[]',0,'2019-06-10 15:04:32','2019-06-10 15:04:32','2020-06-10 15:04:32'),
 ('bc30cecc6650a83c92cad97dbe90a688f201968ff4e8a38bd99acab5e8a06180e280a8a4afd090ae',200,6,'tincazo','[]',1,'2019-06-24 18:01:52','2019-06-24 18:01:52','2020-06-24 18:01:52'),
 ('bc7829a94a77c42dc9dd0a2db350c8a89b6fde86223af8d3f341a24ed081997b700e5bb3ed39fcf9',6,6,'tincazo','[]',0,'2019-07-24 09:55:23','2019-07-24 09:55:23','2020-07-24 09:55:23'),
+('bcd82035afc8f1652a52ae2d02cb504f37b840800f0f2bcde3fea9e8fc99df7b6d6bf2e6ad4301be',247,6,'tincazo','[]',0,'2019-09-01 10:55:12','2019-09-01 10:55:12','2020-09-01 10:55:12'),
 ('bcfecec5822a00d6ea3b141e6b2574847e2070f403d9c588c3cd8f84a281432f599d64d0070aa7f6',6,6,'tincazo','[]',0,'2019-06-24 14:16:38','2019-06-24 14:16:38','2020-06-24 14:16:38'),
 ('bdc7ff43a148c8c3082cd5cd4ec22db548d4678dde8c8f6d53f0ab9ecc4c045b4eb4d09856f1ea6b',219,6,'tincazo','[]',1,'2019-06-15 15:32:22','2019-06-15 15:32:22','2020-06-15 15:32:22'),
 ('bdcef8528cc647efb6e117d4430b0466934c6f94b881704fb1938217d0629f8226be7eee919e1cd5',6,6,'tincazo','[]',0,'2019-06-07 10:03:05','2019-06-07 10:03:05','2020-06-07 10:03:05'),
@@ -821,6 +826,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('bfb622b5c9609ba959c9a189e82c2455f1085304f5efdf0d954c18b3020f6c841b588a81fc52abd0',1,6,'tincazo','[]',0,'2019-06-02 14:56:35','2019-06-02 14:56:35','2020-06-02 14:56:35'),
 ('c017ebe5ecd4adea1fb71e5ee57b131c691ad99a9e201e8e5dc2893433ff1273a83a6567204dddc9',222,6,'tincazo','[]',1,'2019-06-18 19:36:30','2019-06-18 19:36:30','2020-06-18 19:36:30'),
 ('c09356f8dffd0ccdedee20765063d9dcd62c4cd43af9627f4075e5597af076d78ad4df24c73d0237',30,6,'tincazo','[]',1,'2019-06-12 11:43:03','2019-06-12 11:43:03','2020-06-12 11:43:03'),
+('c09f29a08b62da8e49312932e134d43d4262a086af2cd4081d609661813da5385f4dfe4d9a86fc8b',1,6,'tincazo','[]',0,'2019-08-27 10:40:25','2019-08-27 10:40:25','2020-08-27 10:40:25'),
 ('c1165cffa86f34e14914eb2d5afd6e08c4a38b4b7a9a78f0a99e5076b6ec7ec5d598f158dc732425',202,6,'tincazo','[]',1,'2019-06-19 20:24:36','2019-06-19 20:24:36','2020-06-19 20:24:36'),
 ('c172f74a8289d17ecf40c746c3ec49480411b3bd7de29ba1dc65589010ede1a330b0425e50c41064',1,6,'tincazo','[]',0,'2019-06-02 17:29:38','2019-06-02 17:29:38','2020-06-02 17:29:38'),
 ('c1bc26fdf3872dbaed3d70bcec11c9df7369e1495ece4a4d40c7cf3bd95e237fe08bf004ae720302',172,6,'tincazo','[]',1,'2019-06-13 08:18:28','2019-06-13 08:18:28','2020-06-13 08:18:28'),
@@ -927,7 +933,7 @@ insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`r
 ('df87d0888f82bbee867ead725bbd88ae5f9d52b73676e6612b58f7511bfdcad2891d0cbcd622d17f',1,6,'tincazo','[]',0,'2019-06-02 17:07:49','2019-06-02 17:07:49','2020-06-02 17:07:49'),
 ('df89b28e546ddd029382f17e254357b32322da713073a1cd76aa94a97e4c4cdeac7a3e0492cdb34a',225,6,'tincazo','[]',1,'2019-06-14 16:28:10','2019-06-14 16:28:10','2020-06-14 16:28:10'),
 ('dfbdd5220638c9a62811743888bd4b4f4ffeb90543e35cdece0928860b7150270b6106ed27ceb1e5',172,6,'tincazo','[]',1,'2019-06-12 20:55:13','2019-06-12 20:55:13','2020-06-12 20:55:13'),
-('dfc37fc3b85f444984b6fe7d4e0c409f773126a0eb9df91469ade069e263849d77aef9b9f1283a73',5,6,'tincazo','[]',0,'2019-07-25 09:49:08','2019-07-25 09:49:08','2020-07-25 09:49:08'),
+('dfc37fc3b85f444984b6fe7d4e0c409f773126a0eb9df91469ade069e263849d77aef9b9f1283a73',5,6,'tincazo','[]',1,'2019-07-25 09:49:08','2019-07-25 09:49:08','2020-07-25 09:49:08'),
 ('dfe31af321d225457b473aacd98efd8c5061e70b047835b1f9d5108710fe85c9f767ed2a9da37bc2',222,6,'tincazo','[]',1,'2019-06-19 13:39:02','2019-06-19 13:39:02','2020-06-19 13:39:02'),
 ('e0fc9a4022a7861f1f4b8bbe49a58172a60224211e3c2240f879a2c95fbc0a0d172eb76b1b499234',222,6,'tincazo','[]',1,'2019-06-15 12:50:09','2019-06-15 12:50:09','2020-06-15 12:50:09'),
 ('e1056c10f454668fb70476e4b1d2ff50516621d4f828813eb9d8d2201e5022f0835c253926344c0c',131,6,'tincazo','[]',1,'2019-06-14 12:08:56','2019-06-14 12:08:56','2020-06-14 12:08:56'),
@@ -1331,12 +1337,12 @@ CREATE TABLE `plainf` (
 /*Data for the table `plainf` */
 
 insert  into `plainf`(`plainficode`,`plainftname`,`plainftnick`,`plainftgder`,`plainfddobp`,`plainfvimgp`,`conmemscode`,`plainfbteco`) values 
-(1,'Dante Rojas Lizondo','Dantesillo rojas','M','1980-10-21','4SqhQ14CDLjVtyJKtlBabS91OzFAuf.jpg',3,0),
+(1,'Dante Rojas Lizondo','Dantesillo rojas','M','1980-10-21','4SqhQ14CDLjVtyJKtlBabS91OzFAuf.jpg',3,1),
 (2,'Pablo Figueroa','Pablo Figueroa','M','2018-06-03','defaultm.jpg',2,0),
 (3,'Milka Goytia Vega','Milka Goytia Vega','M','1976-04-26','defaultf.jpg',2,0),
 (4,'Reyna Goytia Vega','Reyna Goytia Vega','F','1987-04-14','defaultf.jpg',3,0),
 (5,'Gaston Denis','Gaston Denis','M','1952-08-06','1zUE7S3CmGvZ2JJJMgylSXEKL9v9zG.jpg',2,0),
-(6,'Miguel Angel','Miguel Angel','M','2018-06-14','defaultm.jpg',2,0),
+(6,'Miguel Angel','Miguel Angel','M','2018-06-14','defaultm.jpg',2,1),
 (7,'Arminda Lizondo','Arminda Lizondo','M','1955-09-30','obc8mml5pS334LqBv8Rtk9yfSz8X4m.jpg',2,0),
 (8,'Tatiana Goytia Vega','Tatiana Goytia Vega','M','1974-12-20','defaultf.jpg',2,0),
 (9,'Ramiro Goytia Claros','Ramiro Goytia Claros','M','1948-03-28','uSk86DmLg9rTFwSPvgvMQKt63ojxET.png',2,0),
@@ -1556,7 +1562,7 @@ insert  into `plainf`(`plainficode`,`plainftname`,`plainftnick`,`plainftgder`,`p
 (245,'juan.Jorge Liébana.','juan.Jorge Liébana.','M','2019-01-01','defaultm.jpg',2,0),
 (246,'Diego P','Diego P','M','1996-05-03','defaultm.jpg',2,0),
 (247,'as@top.com','as@top.com','M','2019-06-27','defaultm.jpg',2,0),
-(248,'Tincazo Test','Tincazo Test','M','2018-01-01','1ngarYumV8mRTi51SUpt8NQpQJjVfv.jpeg',2,0),
+(248,'Tincazo Test','Tincazo Test','M','2018-01-01','1ngarYumV8mRTi51SUpt8NQpQJjVfv.jpeg',2,1),
 (249,'Fly','Fly','F','2000-01-01','defaultf.jpg',2,0),
 (250,'yfjyfjyc jchgxjycjyc','yfjyfjyc jchgxjycjyc','M','1980-01-01','defaultm.jpg',2,0),
 (251,'fly Flyerson','fly Flyerson','M','2019-07-20','user.png',2,0);
@@ -10163,7 +10169,7 @@ CREATE TABLE `toufix` (
   `toufixspen2` smallint(6) DEFAULT NULL,
   `toufixyxval` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`toufixicode`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
 
 /*Data for the table `toufix` */
 
@@ -10315,7 +10321,16 @@ insert  into `toufix`(`toufixicode`,`toufixdplay`,`toufixthour`,`constascode`,`t
 (145,'2019-08-18','17:15',3,48,53,1,4,0,NULL,NULL,1),
 (146,'2019-08-18','17:15',3,50,58,5,1,0,NULL,NULL,1),
 (147,'2019-08-18','19:30',3,46,49,1,2,0,NULL,NULL,1),
-(148,'2019-08-21','20:00',3,56,54,2,0,0,NULL,NULL,1);
+(148,'2019-08-21','20:00',3,56,54,2,0,0,NULL,NULL,1),
+(149,'2019-08-24','15:00',3,57,54,1,1,0,NULL,NULL,1),
+(150,'2019-08-24','17:15',3,53,56,3,2,0,NULL,NULL,1),
+(151,'2019-08-24','19:30',3,55,59,1,1,0,NULL,NULL,1),
+(152,'2019-08-25','15:00',3,49,50,2,0,0,NULL,NULL,1),
+(153,'2019-08-25','15:00',3,58,48,0,1,0,NULL,NULL,1),
+(154,'2019-08-25','17:15',3,52,46,2,3,0,NULL,NULL,1),
+(155,'2019-08-25','19:30',3,47,51,2,3,0,NULL,NULL,1),
+(156,'2019-08-29','20:00',3,56,58,1,1,0,NULL,NULL,1),
+(157,'2019-08-30','15:00',3,51,53,2,4,0,NULL,NULL,1);
 
 /*Table structure for table `tougpl` */
 
@@ -10734,14 +10749,15 @@ CREATE TABLE `touinf` (
   `touinfvlogt` longtext DEFAULT NULL,
   `touinfbenbl` tinyint(1) NOT NULL,
   PRIMARY KEY (`touinfscode`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `touinf` */
 
 insert  into `touinf`(`touinfscode`,`secconnuuid`,`touinftname`,`touinfdcrea`,`touinfthour`,`touinfsnumt`,`touinfdstat`,`touinfdendt`,`touinfvlogt`,`touinfbenbl`) values 
 (1,'82170761-862b-4fa7-9840-3c9957ae08bc','Mundial Rusia 2018','2018-05-01','10:00:00',32,'2018-06-14','2018-07-15','fifa20181.jpg',1),
 (2,'22170761-862b-4fa7-9840-3c9937ae08bc','Copa America 2019','2019-04-22','15:39:50',12,'2019-06-14','2019-07-08','3Wauv8yd2MsGJdZXFnjK5emIHht1a6.jpeg',1),
-(3,'f3f7450f-a1b0-412d-9efa-bb7b231a37a3','LFPB Clausura 2019','2019-07-11','09:49:37',14,'2019-07-13','2019-12-29','PGG7YCL3tA0brldKP9eEX2PixmE23G.jpg',1);
+(3,'f3f7450f-a1b0-412d-9efa-bb7b231a37a3','LFPB Clausura 2019','2019-07-11','09:49:37',14,'2019-07-13','2019-12-29','PGG7YCL3tA0brldKP9eEX2PixmE23G.jpg',1),
+(4,'e1c92be5-559f-4647-baf8-d22b979082ea','Champions  League 19/20','2019-08-30','11:03:12',32,'2019-09-17','2020-06-21','VvM9rw0xnXxnTXbacQFJeSob9Ajetr.png',1);
 
 /*Table structure for table `toutea` */
 

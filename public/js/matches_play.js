@@ -3,15 +3,13 @@ $(document).ready(function () {
 });
 function tusTincazosJuego(shearh) {
     $('#game-result-juego').empty();
-    var tougplicode = tougrp.tougplicode;
-    var touinfscode = touinf.touinfscode;
+  
     $.ajax({
         url: '/tusTincazosJuego',
         type: 'get',
         dataType: 'json',
         data: {
-            tougplicode: tougplicode,
-            touinfscode: touinfscode,
+            
             shearh: shearh
         },
         success: function (data) {

@@ -967,14 +967,11 @@ function editarScoreTofix(toufixicode) {
 }
 
 function validarCampeonFechas() {
-    var touinfscode = touinf.touinfscode;
     $.ajax({
         url: '/validarCampeonFechas',
         type: 'get',
         datatype: 'json',
-        data: {
-            touinfscode: touinfscode,
-        },
+      
         success: function (data) {
             if (data.fecha > 0) {
                 swal({
@@ -1459,7 +1456,6 @@ $("#form-agregar-tincazo").submit(function (e) {
     document.getElementById('form-agregar-tincazo-button').disabled = 1;
     var _token = $('input[name=_token]').val();
     e.preventDefault();
-    tougplicode = tougrp.tougplicode;
     toufixsscr1 = $('#agregar-toufixsscr1-tincazo').val();
     toufixsscr2 = $('#agregar-toufixsscr2-tincazo').val();
     toufixicode = $('#agregar-toufixicode-hidden').val();
@@ -1473,7 +1469,6 @@ $("#form-agregar-tincazo").submit(function (e) {
         },
         data: {
             plapreicode: plapreicode,
-            tougplicode: tougplicode,
             toufixicode: toufixicode,
             toufixsscr1: toufixsscr1,
             toufixsscr2: toufixsscr2
@@ -1915,13 +1910,11 @@ function listaJugadoresCampeon(touttescode) {
         $('#title-equipo-campon').text(touteatname);
     }
     $('#title-image-campeon').attr('src', 'images/' + touteavimgt);
-    var tougrpicode = tougrp.tougrpicode;
     $.ajax({
         url: '/listaJugadoresCampeon',
         type: 'get',
         dataType: 'json',
         data: {
-            tougrpicode: tougrpicode,
             touttescode: touttescode
         },
         success: function (data) {

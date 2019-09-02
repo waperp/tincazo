@@ -3,15 +3,13 @@ tusTincazosFinalizados("");
 });
 function tusTincazosFinalizados(shearh) {
     $('#game-result-finalizado').empty();
-    var tougplicode = tougrp.tougplicode;
-    var touinfscode = touinf.touinfscode;
+
     $.ajax({
         url: '/tusTincazosFinalizados',
         type: 'get',
         dataType: 'json',
         data: {
-            tougplicode: tougplicode,
-            touinfscode: touinfscode,
+          
             shearh: shearh
         },
         success: function (data) {

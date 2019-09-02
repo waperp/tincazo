@@ -35,7 +35,9 @@ class HomeController extends Controller
     }
     public function matches(Request $request)
     {
-        Session::put('select-q', true);
+        Session::forget('select-q');
+        Session::forget('tougrp');
+        Session::forget('tougpl');
 
         $date = Carbon::now();
         // return  dd$request->ajax();
@@ -218,69 +220,7 @@ class HomeController extends Controller
         Mail::to($request->secusrtmail)->send(new sendValidateMail($secpin));
         return response()->json($secpin);
     }
-    public function test(Request $request)
-    {
-        $date = Carbon::now();
-        // return  dd$request->ajax();
-        if (!$request->has('q')) {
-            Session::forget('select-q');
-        }
-        // return $request->all();
-         Session::get('touinfscode',$request->touinfscode);
-        $listaConmen     = DB::table('conmem')->get();
-        $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
-        $listaTouinfAll = DB::table('touinf')->get();
-
-        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->orderBy('touinfscode','DESC')->get();
-        $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
-       
-        $listaToutea     = DB::table('toutea')->get();
-        $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
-        
-        $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-        
-
-        $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
-            ->where('touinf.touinfscode', Session::get('select-touinfscode'))
-            ->where('touinf.touinfdstat', '>', $date->toDateString())
-            ->first();
-        /*dd($fechaValidar);*/
-
-        $listaEquiposElegir = DB::select(
-            'select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
-        from toutea
-        join toutte on toutea.touteascode = toutte.touteascode
-        join tougrp on toutte.touinfscode = tougrp.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        left join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
-        where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc',
-            [Session::get('select-plainficode'), Session::get('select-tougrpicode'), Session::get('select-tougplicode')]
-        );
-
-        
-        $estadisticas = DB::select('Select toutea.touteavimgt, toutea.touteatname, count(tougpl.tougplicode) as cantidad from toutea join toutte on toutea.touteascode = toutte.touteascode
-        join plachm on toutte.touttescode = plachm.touttescode join tougpl on plachm.tougplicode = tougpl.tougplicode where tougpl.tougrpicode = ?
-        group by  toutea.touteavimgt, toutea.touteatname', [Session::get('select-tougrpicode')]);
-
-        $listaInvitaciones = DB::select('Select tougrp.tougrpicode, tougrp.tougrpvimgg, tougrp.tougrptname, touinf.touinftname
-        from tougrp join tougpl on tougrp.tougrpicode = tougpl.tougrpicode join touinf on tougrp.touinfscode = touinf.touinfscode
-        where tougpl.plainficode = ? and tougpl.constascode = 1', [Session::get('plainficode')]);
-
-        return view('layout.welcome_test', compact(
-            'listaConmen',
-            'listaTouinf',
-            'listaTipoPlantel',
-            'listaInvitaciones',
-            'listaContypEquipos',
-            'listaToutea',
-            'listaEquiposElegir',
-            'estadisticas',
-            'fechaValidar',
-            'listaTouinfSlider',
-            'validarTougrpbchva',
-            'listaTouinfAll'
-        ));
-    }
+   
     public function index(Request $request)
     {
         // return toutea::myChampion()->toSql();
@@ -289,9 +229,7 @@ class HomeController extends Controller
         //  return Session::get('select-tougplicode');
         $date = Carbon::now();
         // return  dd$request->ajax();
-        if (!$request->has('q')) {
-            Session::forget('select-q');
-        }
+        
         // return $request->all();
         // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
@@ -394,14 +332,14 @@ class HomeController extends Controller
     {
         $data = DB::select(
             'Select t1.touteavimgt as touteavimgt1, t1.touteatabrv as touteatabrv1, toufix.toufixsscr1, plapre.plapresscr1, plapre.plapresscr2, toufix.toufixsscr2, t2.touteatabrv as touteatabrv2, 
-t2.touteavimgt as touteavimgt2, plapre.plapresptos
-from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
-(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
-t1 on toufix.touttescod1 = t1.touttescode join
-(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
-t2 on toufix.touttescod2 = t2.touttescode
-where tougpl.plainficode = ? and tougpl.tougrpicode = ? and toufix.constascode in (3) 
-order by toufix.toufixicode desc',
+        t2.touteavimgt as touteavimgt2, plapre.plapresptos
+        from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
+        (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+        t1 on toufix.touttescod1 = t1.touttescode join
+        (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+        t2 on toufix.touttescod2 = t2.touttescode
+        where tougpl.plainficode = ? and tougpl.tougrpicode = ? and toufix.constascode in (3) 
+        order by toufix.toufixicode desc',
             [$request->plainficode, Session::get('select-tougrpicode')]
         );
         return Datatables::of($data)->make(true);
@@ -409,18 +347,21 @@ order by toufix.toufixicode desc',
    
     public function guia()
     {
+        Session::forget('select-q');
+        Session::forget('tougrp');
+        Session::forget('tougpl');
         return view('partials.guia');
     }
     public function tablaInfoPlayerDia(Request $request)
     {
         $data = DB::select(
             'Select t1.touteavimgt as touteavimgt1, t1.touteatabrv as touteatabrv1, toufix.toufixsscr1, plapre.plapresscr1, plapre.plapresscr2, toufix.toufixsscr2, t2.touteatabrv as touteatabrv2, 
-t2.touteavimgt as touteavimgt2, plapre.plapresptos
-from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
-(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
-t1 on toufix.touttescod1 = t1.touttescode join
-(Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
-t2 on toufix.touttescod2 = t2.touttescode
+            t2.touteavimgt as touteavimgt2, plapre.plapresptos
+            from toufix join plapre on toufix.toufixicode = plapre.toufixicode join tougpl on plapre.tougplicode = tougpl.tougplicode join 
+            (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+            t1 on toufix.touttescod1 = t1.touttescode join
+            (Select touttescode, touteatabrv, touteavimgt from toutea join toutte on toutea.touteascode = toutte.touteascode) 
+            t2 on toufix.touttescod2 = t2.touttescode
             where tougpl.plainficode = ? and tougpl.tougrpicode = ? and toufix.constascode in (3) and toufix.toufixdplay = ? 
             order by toufix.toufixicode desc',
             [$request->plainficode, Session::get('select-tougrpicode'), Carbon::parse($request->fecha)->format('Y-m-d')]
@@ -486,7 +427,7 @@ t2 on toufix.touttescod2 = t2.touttescode
     }
     public function matches_all_web(Request $request)
     {
-
+        
         $listaPartidosPendiente = [];
         if (!empty($request->touteatname)) {
             $listaPartidosPendiente = DB::select("select toufix.toufixicode, 
@@ -778,11 +719,17 @@ where secusr.secusrbenbl = 1 and plainf.conmemscode > 1');
         return response()->json($tougrp);
     }
     public function  TerminosCondiciones(){
+        Session::forget('select-q');
+        Session::forget('tougrp');
+        Session::forget('tougpl');
         return view('partials.terminosCondiciones');
         
     }
     public function politica()
     {
+        Session::forget('select-q');
+        Session::forget('tougrp');
+        Session::forget('tougpl');
         return view('partials.politica');
     }
 }

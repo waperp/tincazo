@@ -168,7 +168,7 @@ $(document).ready(function () {
     $("#edit-perfil-image-preview").css("background-size", "cover");
     $("#edit-perfil-image-preview").css("background-position", "center center");
 
-    if (filtre_torneo != "") {
+    if (tougrp && touinf) {
         // $('#row-container').show();
         // $('#slider-index').hide();
         // $('#site-content-intrucciones').hide();
@@ -2036,7 +2036,7 @@ function tougrptname_name_link(tougrptname, tougrpicode, touinfscode, tougplicod
             tougrpschpt: tougrpschpt,
         },
         success: function (data) {
-            window.location.href = '/?q=true';
+            window.location.href = '/';
         }
     });
 }
@@ -2078,7 +2078,7 @@ function selected_tournament_group(element, secconnuuid, tougplicode) {
         },
         success: function (data) {
             debugger
-            window.location.href = '/?q=true';
+            window.location.href = '/';
         }
     });
 }

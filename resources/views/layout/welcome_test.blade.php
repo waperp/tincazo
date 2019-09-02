@@ -4,7 +4,7 @@
 <head>
 	<!-- Basic Page Needs
 	================================================== -->
-	<title>Juego de Pronósticos Deportivos - Tincazo.com</title>
+	<title>Tincazo.com - Juego de Pronósticos Deportivos</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Tincazo.com es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
@@ -13,9 +13,6 @@
 	<meta content="{{ csrf_token() }}" name="_token" />
 	<meta name="robots" content="INDEX,FOLLOW,NOARCHIVE">
 <meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="expires" content="0" />
-<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-<meta http-equiv="pragma" content="no-cache" />
 
 	<!-- Favicons
 	================================================== -->

@@ -47,14 +47,12 @@ class plapreController extends Controller
             $validator = Validator::make($request->all(), [
                 'toufixsscr2' => 'required|numeric|min:0',
                 'toufixsscr1' => 'required|numeric|min:0',
-                'toufixicode' => 'required',
+                'toufixicode' => 'required'
             ]);
             if ($validator->passes()) {
                 $date = Carbon::now();
                 if ($toufix->constascode == 1) {
                     if ($request->plapreicode == null) {
-                    
-
                         $plapre              = new plapre;
                         $plapre->plapredcrea = $date->toDateString();
                         $plapre->plaprethour = $date->toTimeString();
@@ -68,7 +66,8 @@ class plapreController extends Controller
                         $plapre->save();
                         DB::commit();
                         return response()->json(
-                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'insert']);
+                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'insert']
+                        );
                     } else {
                         $plapre = plapre::where('plapreicode', $request->plapreicode)
                             ->where('toufixicode', $request->toufixicode)
@@ -84,36 +83,42 @@ class plapreController extends Controller
                             DB::commit();
                         } else {
                             return response()->json(
-                                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update']);
+                                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'update']
+                            );
                         }
                         return response()->json(
-                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
-
+                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']
+                        );
                     }
                 } else {
                     return response()->json(['message' => 1, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'constascode']);
                 }
             } else {
                 return response()->json(
-                    ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                    ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate']
+                );
             }
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(
-                ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']);
+                ['message' => 0, 'errors' => $e->getMessage(), 'error' => true, 'success' => false, 'types' => 'server']
+            );
         }
     }
     public function validatePartido(Request $request)
     {
-            $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
-            if ($toufix->constascode == 1) {
-                return response()->json(['message' => 'ESTE PARTIDO ESTA DISPONIBLE', 
-                    'errors' =>"NO ERRORS", 'error' => false, 'success' => true, 'types' => 'constascode']);
-             } else {
-                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 
-                        'errors' => "ERRORS", 'error' => true, 'success' => false, 'types' => 'constascode'],401);
-                }
-        
+        $toufix    = DB::table('toufix')->where('toufixicode', $request->toufixicode)->first();
+        if ($toufix->constascode == 1) {
+            return response()->json([
+                'message' => 'ESTE PARTIDO ESTA DISPONIBLE',
+                'errors' => "NO ERRORS", 'error' => false, 'success' => true, 'types' => 'constascode'
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO',
+                'errors' => "ERRORS", 'error' => true, 'success' => false, 'types' => 'constascode'
+            ], 401);
+        }
     }
     public function store_app(Request $request)
     {
@@ -129,8 +134,6 @@ class plapreController extends Controller
                 $date = Carbon::now();
                 if ($toufix->constascode == 1) {
                     if ($request->plapreicode == null) {
-                    
-                        
                         $plapre              = new plapre;
                         $plapre->plapredcrea = $date->toDateString();
                         $plapre->plaprethour = $date->toTimeString();
@@ -144,7 +147,8 @@ class plapreController extends Controller
                         $plapre->save();
                         DB::commit();
                         return response()->json(
-                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'insert']);
+                            ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'insert']
+                        );
                     } else {
                         $plapre = plapre::where('plapreicode', $request->plapreicode)
                             ->where('toufixicode', $request->toufixicode)
@@ -160,24 +164,32 @@ class plapreController extends Controller
                             DB::commit();
                         } else {
                             return response()->json(
-                                ['message' => 'Algo paso mal, intente de nuevo', 
-                                'errors' => "", 'error' => true, 'success' => false, 'types' => 'update'],401);
+                                [
+                                    'message' => 'Algo paso mal, intente de nuevo',
+                                    'errors' => "", 'error' => true, 'success' => false, 'types' => 'update'
+                                ],
+                                401
+                            );
                         }
                         return response()->json(
-                            ['message' => 'Tincazo registrado correctamente', 'errors' => "", 'error' => false, 'success' => true, 'types' => 'update']);
-
+                            ['message' => 'Tincazo registrado correctamente', 'errors' => "", 'error' => false, 'success' => true, 'types' => 'update']
+                        );
                     }
                 } else {
-                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'constascode'],401);
+                    return response()->json(['message' => 'ESTE PARTIDO ESTA EN JUEGO O FINALIZADO', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'constascode'], 401);
                 }
             } else {
                 return response()->json(
-                    ['message' => 'Algo paso mal, intente de nuevo', 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate'],401);
+                    ['message' => 'Algo paso mal, intente de nuevo', 'errors' => $validator->errors()->all(), 'error' => true, 'success' => false, 'types' => 'validate'],
+                    401
+                );
             }
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(
-                ['message' => 'Algo paso mal, intente de nuevo', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'server'],401);
+                ['message' => 'Algo paso mal, intente de nuevo', 'errors' => "", 'error' => true, 'success' => false, 'types' => 'server'],
+                401
+            );
         }
     }
     /**

@@ -1480,6 +1480,13 @@ function invitar(secusrtmail, existUser = false) {
                 });
             } else {
                 $('#tableinvitaciones').DataTable().ajax.reload();
+                swal({
+                    title: "CORRECTO",
+                    text: "Se envio un correo electronico.",
+                    type: "success",
+                    showCancelButton: false,
+                    showConfirmButton: true
+                });
             }
         }
     });
@@ -2144,6 +2151,7 @@ function validateMailInvite(secusrtmail) {
                 });
             } else {
                     invitar(secusrtmail);
+                   
             }
 
         }

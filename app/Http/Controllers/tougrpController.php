@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailInviteUser;
 use App\tougpl;
+use Illuminate\Support\Facades\Mail;
 use App\tougrp;
+use App\secusr;
+use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,12 +67,9 @@ class tougrpController extends Controller
                 DB::commit();
 
                 return response()->json($validateValue);
-
             } else {
                 return response()->json(false);
-
             }
-
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -141,12 +142,9 @@ class tougrpController extends Controller
                     ->where('tougrp.tougrpicode', $tougrp->tougrpicode)
                     ->where('tougpl.plainficode', $request->user()->plainficode)->first();
                 return response()->json(['touinf' => $touinf, 'tougrp' => $tougrp]);
-
             } else {
                 return response()->json(false);
-
             }
-
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -162,29 +160,25 @@ class tougrpController extends Controller
                 tougrp.plainficode = ? and
                 tougpl.tougrpicode = ? group by conmem.conmemsnump', [Session::get('plainficode'), Session::get('select-tougrpicode')]);
             $valueMensabresia = "";
+           
             foreach ($menbresia as $key) {
                 $valueMensabresia = $key->value;
             }
             $validateValue = (int) $valueMensabresia;
 
             if ($validateValue > 0) {
-                $tougpl              = new tougpl;
-                $tougpl->tougrpicode = $request->tougrpicode;
-                $tougpl->constascode = 1;
-                $tougpl->plainficode = $request->plainficode;
-                $tougpl->tougplipwin = 0;
-                $tougpl->tougplsmaxp = 0;
-                $tougpl->tougplsmedp = 0;
-                $tougpl->tougplslowp = 0;
-                $tougpl->save();
+                
+                $tougrp = tougrp::where('tougrpicode', Session::get('select-tougrpicode'))->first();
+                $secusr_inviter = secusr::where('secusricode', \Auth::user()->secusricode)
+                ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                ->first();
+                
+                Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter,Crypt::encryptString($request->secusrtmail), $tougrp));
                 DB::commit();
-                return response()->json($validateValue);
-
+                return response()->json($request->existUser);
             } else {
                 return response()->json(false);
-
             }
-
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -217,12 +211,9 @@ class tougrpController extends Controller
                 $tougpl->save();
                 DB::commit();
                 return response()->json($validateValue);
-
             } else {
                 return response()->json(false);
-
             }
-
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -235,7 +226,7 @@ class tougrpController extends Controller
         try {
 
             $tougpl = tougpl::where('tougrpicode', $request->tougrpicode)
-                ->where('plainficode', Session::get('plainficode'))->first();
+                ->where('plainficode', \Auth::user()->plainficode)->first();
             $tougpl->constascode = $request->constascode;
             $tougpl->save();
 
@@ -303,7 +294,6 @@ class tougrpController extends Controller
                 $tougpl->save();
                 Session::forget('select-tougrpsxval');
                 Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
-
             } else {
                 if ($request->hasFile('tougrpvimgg')) {
                     $imageName = str_random(30) . '.' . $request->file('tougrpvimgg')->getClientOriginalExtension();
@@ -321,8 +311,7 @@ class tougrpController extends Controller
                 $tougrp->tougrpsminp = $request->tougrpsminp;
                 $tougrp->tougrpsxval = $request->tougrpsxval;
 
-                if ($imageName == null) {
-                } else {
+                if ($imageName == null) { } else {
                     $tougrp->tougrpvimgg = $imageName;
                 }
                 $tougrp->save();
@@ -375,10 +364,9 @@ class tougrpController extends Controller
                         $tougrp->tougrpsmedp = $request->tougrpsmedp;
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
-                        $tougrp->tougrpschpt = $request->tougrpschpt;                        
+                        $tougrp->tougrpschpt = $request->tougrpschpt;
                         $tougrp->tougrpbchva = 0;
-                        if ($imageName == null) {
-                        } else {
+                        if ($imageName == null) { } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
@@ -390,8 +378,7 @@ class tougrpController extends Controller
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
                         $tougrp->tougrpbchva = 0;
-                        if ($imageName == null) {
-                        } else {
+                        if ($imageName == null) { } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
@@ -401,17 +388,19 @@ class tougrpController extends Controller
                     }
                 } else {
                     return response()->json(
-                        ['message' => 'No puede cambiar el valor de tougrpbchva', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                        ['message' => 'No puede cambiar el valor de tougrpbchva', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
+                    );
                 }
-
             } else {
                 return response()->json(
-                    ['message' => 0, 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                    ['message' => 0, 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
+                );
             }
 
             DB::commit();
             return response()->json(
-                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+                ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']
+            );
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -456,9 +445,8 @@ class tougrpController extends Controller
                         $tougrp->tougrpsminp = $request->tougrpsminp;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
                         $tougrp->tougrpschpt = $request->tougrpschpt;
-                        
-                        if ($imageName == null) {
-                        } else {
+
+                        if ($imageName == null) { } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
@@ -468,26 +456,26 @@ class tougrpController extends Controller
                         $tougrp->touinfscode = $request->touinfscode;
                         $tougrp->tougrpsxval = $request->tougrpsxval;
 
-                        if ($imageName == null) {
-                        } else {
+                        if ($imageName == null) { } else {
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
-
                     }
                 } else {
                     return response()->json(
-                        ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                        ['message' => 'No puede cambiar el valor de tougrpbchva ', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
+                    );
                 }
-
             } else {
                 return response()->json(
-                    ['message' => 0, 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']);
+                    ['message' => 0, 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
+                );
             }
 
             DB::commit();
             return response()->json(
-                ['message' => $tougrp, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']);
+                ['message' => $tougrp, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']
+            );
         } catch (\Exception $e) {
 
             DB::rollback();
@@ -496,11 +484,9 @@ class tougrpController extends Controller
     }
     public function show($id)
     {
-        $data = tougrp::
-            join('plainf', 'plainf.plainficode', 'tougrp.plainficode')
+        $data = tougrp::join('plainf', 'plainf.plainficode', 'tougrp.plainficode')
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->where('tougrp.tougrpicode', $id)->first();
         return response()->json($data);
-
     }
 }

@@ -1,5 +1,7 @@
 <div class="posts__item posts__item--card posts__item--category-1 card">
-    @if (App\toutea::myChampion()->first() != null && Session::has('plainficode'))
+    @auth
+        
+    @if (App\toutea::myChampion()->first() != null )
     <figure class="posts__thumb">
         <div class="posts__cat">
             <span class="label posts__cat-label">TU CAMPEÓN </span>
@@ -12,7 +14,7 @@
         <h6 id="mi-campeon-name" class="posts__title">{{App\toutea::myChampion()->first()->touteatname }}</h6>
 
     </div>
-    @elseif(App\toutea::myChampion()->first() == null && Session::has('plainficode'))
+    @elseif(App\toutea::myChampion()->first() == null )
     <figure class="posts__thumb">
         <div class="posts__cat">
             <span id="mi-campeon-name" class="label posts__cat-label">TU CAMPEÓN</span>
@@ -26,4 +28,6 @@
     </div>
     @else
     @endif
+    @endauth
+
 </div>

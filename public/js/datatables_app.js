@@ -279,13 +279,21 @@ $("#table-pociciones-dia").DataTable({
         },
     ],
 });
-var table = $("#tableinvitaciones").DataTable({
+var tableinvitaciones = $("#tableinvitaciones").DataTable({
 
     "searching": true,
     "pageLength": 10,
     "paging": true,
     "info": false,
     dom: 'Bfrtip',
+    "columnDefs": [
+        {
+            "targets": [ 1],
+            "visible": false,
+            "searchable": true
+        },
+        
+    ],
     language: {
         // processing: "<img src='/images/db/loading.gif'>",
         processing: "Cargando",
@@ -314,7 +322,7 @@ var table = $("#tableinvitaciones").DataTable({
         }
     },
     processing: true,
-    serverSide: true,
+    serverSide: false,
     buttons: [],
     ajax: {
         url: '/tablaInvitacionesGrupo',
@@ -331,15 +339,11 @@ var table = $("#tableinvitaciones").DataTable({
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
-            return '<figure class="team-meta__logo"><img src="/images/' + full.plainfvimgp + '" alt=""></figure>'
+            return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.plainfvimgp + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.plainftname + '</h6></div></div>'
         }
-    }, {
-        orderable: false,
-        sortable: true,
-        render: function (data, type, full, meta) {
-            return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.plainftname + '</h6></div>'
-        }
-    }, {
+    },  {
+        data: 'secusrtmail'
+    },{
         orderable: true,
         sortable: true,
         render: function (data, type, full, meta) {
@@ -349,7 +353,7 @@ var table = $("#tableinvitaciones").DataTable({
             } else if (full.constascode == 2) {
                 return '<span class="label label-success">ACEPTADA</span>';
             } else if (full.constascode == null) {
-                return "<a id='invitar-" + full.plainficode + "' href='javascript:void(0)' OnClick='invitar(" + full.plainficode + ");' title='INVITAR'><span class='label label-info'>INVITAR</span></a>";
+                return '<a id="invitar-'+ full.secusrtmail +'"  href="javascript:void(0)" OnClick="invitar(\''+ full.secusrtmail + '\',true);" title="INVITAR"><span class="label label-info">INVITAR</span></a>';
             } else {
                 return '<span class="label label-danger">RECHAZADA</span>';
             }
@@ -587,7 +591,7 @@ var tablesss = $("#table-info-player-grupo-dia").DataTable({
     }
 });
 var table = $("#table-admin-torneo").DataTable({
-    
+
     "searching": false,
     "pageLength": 5,
     "paging": true,
@@ -680,7 +684,7 @@ var table = $("#table-admin-torneo").DataTable({
 });
 var table = $("#table-admin-equipo").DataTable({
     colReorder: true,
-   
+
     "searching": true,
     "pageLength": 5,
     "paging": true,
@@ -734,9 +738,9 @@ var table = $("#table-admin-equipo").DataTable({
         sortable: false,
         render: function (data, type, full, meta) {
             return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
-           
+
         }
-    },  {
+    }, {
         orderable: false,
         width: 200,
         sortable: true,
@@ -830,7 +834,7 @@ var table = $("#table-admin-torneo-equipo").DataTable({
         sortable: false,
         render: function (data, type, full, meta) {
             return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
-            
+
         }
     }, {
         data: 'contyptdesc'
@@ -1082,7 +1086,7 @@ $("#table-fixture").DataTable({
         sortable: false,
         render: function (data, type, full, meta) {
             return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname + '</h6></div></div>'
-            
+
         }
     }, {
         orderable: false,
@@ -1098,7 +1102,7 @@ $("#table-fixture").DataTable({
         render: function (data, type, full, meta) {
             return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touteavimgt2 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touteatname2 + '</h6></div></div>'
         }
-    },{
+    }, {
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {

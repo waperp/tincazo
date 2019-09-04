@@ -15,6 +15,7 @@ class secusr extends Authenticatable
     protected $table = 'secusr';
     protected $fillable = [
         'secusrtmail',
+        'secconnuuid',
         'secusrtface',
         'secusrtpass',
         'secusrdregu',

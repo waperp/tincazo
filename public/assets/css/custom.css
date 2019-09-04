@@ -258,7 +258,13 @@ padding-left: 0px !important;
 .nav-tabs {
     border-bottom: 0px solid #ddd !important;
 }
-
+.team-meta__logo img {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 30px;
+}
 .game-result__header>h3:hover {
     color: #38a9ff;
     content: "";

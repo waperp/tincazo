@@ -7,17 +7,17 @@ function removemenu() {
     $('.site-wrapper.clearfix').removeClass('site-wrapper--has-overlay');
 }
 $(document).ready(function () {
-    
+
     $("#secusrtmail").change(debounce(function () {
         var $this = $(this);
-        
+
         document.getElementById('form-login-button-submit').disabled = 1;
         validateMailLogin($this.val());
-        
+
     }, 500));
     $('#secusrtmail').keyup(debounce(function () {
         var $this = $(this);
-        
+
         document.getElementById('form-login-button-submit').disabled = 1;
         validateMailLogin($this.val())
 
@@ -443,224 +443,8 @@ $('#cancelar-equipo').click(function () {
     $('#modal-nuevo-equipo').modal('show');
     $('#modal-admin-add-equipo').modal('hide');
 });
-$("#formStore").submit(function (e) {
-    e.preventDefault();
-    $('.lds-ring').show();
-    var checked = $('#termsConditionsCheck1').is(':checked')
-    // if ($('#termsConditionsCheck1').is(':visible')) {
-    //     if (checked == false) {
-    //         $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
-    //         $('.lds-ring').hide();
-    //         $('#false').show();
-    //         setTimeout(function () {
-    //             $('#false').hide();
-    //             document.getElementById('form-login-button-submit').disabled = 0;
-    //         }, 2500);
-    //         return;
-    //     }
-    // }
-    
-    document.getElementById('form-button-register').disabled = 1;
-    var formData = new FormData();
-    var _token = $('input[name=_token]').val();
-    var plainftname = $('input[name=plainftname]').val();
-    var secusrtmail = $('#register-secusrtmail').val();
-    var secusrtpass = $('#register-secusrtpass').val();
-    //  var plainfddobp = $('input[name=plainfddobp]').val();
-    //  var plainftgder = $("input[name='plainftgder']:checked").val();
-    var conmemscode = $('#selectconmemscode').val();
-    var plainfvimgp = $('input[name=plainfvimgp').prop('files')[0];
-    if (plainfvimgp != null) {
-        var file_size = $('#image-upload')[0].files[0].size / 1024;
-    } else {
-        var file_size = 0;
-    }
-    if (file_size > 1024) {
-        // $("#file_error").html("El tamaño del archivo es mayor que 1 MB");
-        swal({
-            // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
-            title: "El tamaño del archivo",
-            text: "es mayor que 1 MB",
-            type: "error",
-            html: true,
-            showConfirmButton: true,
-            closeOnConfirm: true
-        });
-    } else {
-        formData.append("_token", _token);
-        formData.append("plainftname", plainftname);
-        formData.append("secusrtmail", secusrtmail);
-        formData.append("password", secusrtpass);
-        //  formData.append("plainfddobp", plainfddobp);
-        //  formData.append("plainftgder", plainftgder);
-        formData.append("plainfvimgp", plainfvimgp);
-        formData.append("conmemscode", conmemscode);
-        formData.append("tipo", 0);
-        $.ajax({
-            url: '/secusr',
-            type: 'post',
-            contentType: false, // The content type used when sending data to the server.
-            cache: false, // To unable request pages to be cached
-            processData: false,
-            data: formData,
-            success: function (data) {
-            $('.lds-ring').hide();
 
-                document.getElementById('form-button-register').disabled = 0;
-                if (data.mail == true) {
 
-                    swal({
-                        // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
-                        title: "CORREO DUPLICADO",
-                        text: "EL CORREO: " + " <strong> " + secusrtmail.toUpperCase() + "</strong>" + " YA EXISTE",
-                        type: "error",
-                        html: true,
-                        showConfirmButton: true,
-                        closeOnConfirm: true
-                    });
-                } else {
-                    $('#modal-login-register').modal('hide');
-
-                    window.location.href = "/";
-                    // document.getElementById('form-button-register').disabled = 0;
-                }
-            },
-            error: function (xhr, status, error) {
-
-            }
-        });
-    }
-});
-$("#iniciosession").submit(function (e) {
-    e.preventDefault();
-
-    $('.lds-ring').show();
-    document.getElementById('form-login-button-submit').disabled = 1;
-    
-    var checked = $('#termsConditionsCheck').is(':checked')
-    var ss = $("#myDiv").length
-    var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
-    var secusrtmail_danger = $('#secusrtmail').hasClass('form-control-danger');
-    if ($('#termsConditionsCheck').is(':visible')) {
-        if (checked == false) {
-            $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
-            $('.lds-ring').hide();
-            $('#false').show();
-            setTimeout(function () {
-                $('#false').hide();
-                document.getElementById('form-login-button-submit').disabled = 0;
-            }, 2500);
-            return;
-        }
-    }
-
-    if (secusrtmail_danger == true) {
-        $('#false').text('Estas credenciales no coinciden con nuestros registros');
-        $('.lds-ring').hide();
-        $('#false').show();
-        setTimeout(function () {
-            $('#false').hide();
-            document.getElementById('form-login-button-submit').disabled = 0;
-        }, 2500);
-        return;
-    }
-    $.ajax({
-        url: '/login',
-        type: 'post',
-        datatype: 'json',
-        data: {
-            '_token': $('input[name=_token]').val(),
-            'secusrtmail': $('#secusrtmail').val(),
-            'password': $('#password').val()
-        },
-        success: function (data) {
-            if (data.success == 0) {
-                setTimeout(function () {
-                    $('#true').hide();
-                    $('.lds-ring').hide();
-                    $('#false').text(data.mensaje);
-                    setTimeout(function () {
-                        $('#false').hide();
-                    }, 100);
-                    document.getElementById('form-login-button-submit').disabled = 0;
-                }, 2500);
-            } else {
-                // $('#true').show();
-                // $('#true').text(data.mensaje);
-                setTimeout(function () {
-                    $('.lds-ring').hide();
-                    $('#false').hide();
-                    $('#modal-login-register-tabs').modal('hide');
-
-                    window.location.href = "/";
-                    document.getElementById('form-login-button-submit').disabled = 0;
-                }, 2500);
-            }
-        }
-    });
-});
-function validateMail() {
-    var _token = $('input[name=_token]').val();
-    secusrtmail = $('#secusrtmail').val();
-    $.ajax({
-        url: '/validateMail',
-        type: 'post',
-        dataType: 'json',
-        headers: {
-            'X-CSRF-TOKEN': _token
-        },
-        data: {
-            secusrtmail: secusrtmail
-        },
-        success: function (data) {
-            if (data.mail == false) {
-                $("#secusrtmail").focus();
-                swal({
-                    title: "CORREO INCORRECTO",
-                    text: "El correo: " + " <strong> " + secusrtmail + "</strong>" + " introduccida no existe",
-                    type: "error",
-                    html: true,
-                    showConfirmButton: true,
-                    closeOnConfirm: true
-                });
-                $("#secusrtmail").focus();
-            } else if (data.mail == null) {
-                $("#secusrtmail").focus();
-                swal({
-                    title: "CORREO INCORRECTO",
-                    text: "El correo: " + " <strong> " + secusrtmail + "</strong>" + " introduccida no existe",
-                    type: "error",
-                    html: true,
-                    showConfirmButton: true,
-                    closeOnConfirm: true
-                });
-            } else {
-                $.ajax({
-                    url: '/sendValidateMail',
-                    type: 'post',
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': _token
-                    },
-                    data: {
-                        secusricode: data.secusr.secusricode,
-                        secusrtmail: data.secusr.secusrtmail
-                    },
-                    success: function (data2) {
-                        swal({
-                            title: "CORREO CORRECTO",
-                            text: "Se ha enviado un enalce al correo: " + " <strong> " + secusrtmail + "</strong> <br>" + " para reestablecer su contraseña",
-                            type: "success",
-                            html: true,
-                            showConfirmButton: true,
-                            closeOnConfirm: true
-                        });
-                    }
-                });
-            }
-        }
-    });
-}
 // $("#form-edit-perfil").submit(function(e) {;
 // });
 $("#formgrupo").submit(function (e) {
@@ -971,7 +755,7 @@ function validarCampeonFechas() {
         url: '/validarCampeonFechas',
         type: 'get',
         datatype: 'json',
-      
+
         success: function (data) {
             if (data.fecha > 0) {
                 swal({
@@ -1668,9 +1452,8 @@ $(document).on('keyup', '[data-min_max]', function (e) {
     }
 });
 
-function invitar(plainficode) {
-    $('#invitar-' + plainficode).empty();
-    var tougrpicode = tougrp.tougrpicode;
+function invitar(secusrtmail, existUser = false) {
+    debugger
     var _token = $('input[name=_token]').val();
     $.ajax({
         url: '/invitarJugador',
@@ -1680,8 +1463,8 @@ function invitar(plainficode) {
             'X-CSRF-TOKEN': _token
         },
         data: {
-            tougrpicode: tougrpicode,
-            plainficode: plainficode
+            secusrtmail: secusrtmail,
+            existUser: existUser
         },
         success: function (data) {
             if (data == false) {
@@ -2064,7 +1847,7 @@ function selected_tournament(element, secconnuuid) {
 }
 function selected_tournament_group(element, secconnuuid, tougplicode) {
 
-    
+
     $('.posts__item__groups').removeClass("group__select");
     $(element).addClass("group__select");
     var _token = $('input[name=_token]').val();
@@ -2087,10 +1870,10 @@ function desing_menu_groups(data) {
         var desing_menu_groups = '';
         $.each(data, function (i, item) {
             title = " Participante";
-            if(item.total <= 1){
+            if (item.total <= 1) {
                 title = " Participante";
 
-            }else{
+            } else {
                 title = " Participantes";
 
             }
@@ -2103,7 +1886,7 @@ function desing_menu_groups(data) {
             desing_menu_groups += '<div class="posts__inner">';
             desing_menu_groups += '<h6 class="posts__title pt-2"><a >' + item.tougrptname + '</a></h6>';
             desing_menu_groups += '<div class="posts__cat">';
-            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 9px"> ' + item.total + ' '+title+'</span>';
+            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 9px"> ' + item.total + ' ' + title + '</span>';
             desing_menu_groups += '</div>';
             desing_menu_groups += '</div>';
             desing_menu_groups += '</li>';
@@ -2259,7 +2042,7 @@ function validateMailLogin(secusrtmail) {
             secusrtmail: secusrtmail
         },
         success: function (data) {
-            
+
             if (data.isTermsConditions == true && data.isValidMail == true) {
                 $("#secusrtmail").removeClass('form-control-danger');
                 $("#secusrtmail").addClass('form-control-success');
@@ -2332,3 +2115,42 @@ function validateMailLogin(secusrtmail) {
         }
     });
 }
+function validateMailInvite(secusrtmail) {
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/validateMailInvite',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': _token
+        },
+        data: {
+            secusrtmail: secusrtmail
+        },
+        success: function (data) {
+            debugger
+            if (data.isValidMail === true) {
+               
+                swal({
+                    title: "ADVERTENCIA",
+                    text: "El usuario ya se encuentra registrado.",
+                    type: "info",
+                    showCancelButton: false,
+                    showConfirmButton: true
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        tableinvitaciones.search(secusrtmail).draw();
+                    }
+                });
+            } else {
+                    invitar(secusrtmail);
+            }
+
+        }
+    });
+}
+
+$('#btn-invite-email').click(function () {
+    var email = $('#secusrtmail-invite').val();
+    validateMailInvite(email);
+});

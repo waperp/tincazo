@@ -21,6 +21,7 @@
 Route::get('/', 'HomeController@index')->name('home.index');
 // Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
+Route::get('up', 'HomeController@up');
 Route::get('matches_all_web', 'HomeController@matches_all_web');
 Route::get('selected_tournament', 'HomeController@selected_tournament');
 Route::get('selected_group', 'HomeController@selected_group');
@@ -37,6 +38,7 @@ Route::post('sendValidateMail', 'HomeController@sendValidateMail');
 Route::get('reset/password', 'HomeController@resetPassword');
 Route::post('updateResetPassword', 'HomeController@updateResetPassword');
 Route::post('validateMailLogin', 'secusrController@validateMailLogin');
+Route::post('validateMailInvite', 'secusrController@validateMailInvite');
 
 
 
@@ -69,6 +71,7 @@ Route::get('tableGestionarFixture', 'HomeController@tableGestionarFixture');
 Route::get('tablaInvitacionesGrupo', 'HomeController@tablaInvitacionesGrupo');
 Route::get('tableGestionarGruposAdmin', 'HomeController@tableGestionarGruposAdmin');
 Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
+Route::get('user/invitation/{group}/{user}', 'secusrController@userInvitation');
 
 
 

@@ -175,7 +175,7 @@ class tougrpController extends Controller
                 
                 Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter,Crypt::encryptString($request->secusrtmail), $tougrp));
                 DB::commit();
-                return response()->json($request->existUser);
+                return response()->json($secusr_inviter);
             } else {
                 return response()->json(false);
             }

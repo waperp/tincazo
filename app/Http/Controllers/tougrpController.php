@@ -169,12 +169,12 @@ class tougrpController extends Controller
             if ($validateValue > 0) {
                 
                 $tougrp = tougrp::where('tougrpicode', Session::get('select-tougrpicode'))->first();
-                $secusr_inviter = secusr::select('secusr.secusrtmail','plainf.plainftname')->where('secusricode', \Auth::user()->secusricode)
-                ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                $secusr_inviter = secusr::join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                ->where('secusr.secusricode', \Auth::user()->secusricode)
                 ->first();
-                
-                Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter,Crypt::encryptString($request->secusrtmail), $tougrp));
                 DB::commit();
+                
+                Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname,$secusr_inviter->secusrtmail,Crypt::encryptString($request->secusrtmail), $tougrp));
                 return response()->json($secusr_inviter);
             } else {
                 return response()->json(false);

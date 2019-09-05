@@ -14,14 +14,17 @@ class MailInviteUser extends Mailable implements ShouldQueue
     protected $user_inviter;
     protected $user_invited;
     protected $group;
+    protected $plainftname;
+    protected $secusrtmail;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user_inviter,$user_invited,$group)
+    public function __construct($plainftname,$secusrtmail,$user_invited,$group)
     {
-        $this->user_inviter = $user_inviter;
+        $this->secusrtmail = $secusrtmail;
+        $this->plainftname = $plainftname;
         $this->user_invited = $user_invited;
         $this->group = $group;
     }
@@ -37,7 +40,8 @@ class MailInviteUser extends Mailable implements ShouldQueue
         ->from('tincazo.info@gmail.com')
         ->markdown('emails.mailInviteUser')
         ->with([
-            'user_inviter' => $this->user_inviter,
+            'plainftname' => $this->plainftname,
+            'secusrtmail' => $this->secusrtmail,
             'user_invited' => $this->user_invited,
             'group' =>  $this->group,
         ]);

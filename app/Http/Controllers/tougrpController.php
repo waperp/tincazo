@@ -169,7 +169,7 @@ class tougrpController extends Controller
             if ($validateValue > 0) {
                 
                 $tougrp = tougrp::where('tougrpicode', Session::get('select-tougrpicode'))->first();
-                $secusr_inviter = secusr::where('secusricode', \Auth::user()->secusricode)
+                $secusr_inviter = secusr::select('secusr.secusrtmail','plainf.plainftname')->where('secusricode', \Auth::user()->secusricode)
                 ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
                 ->first();
                 

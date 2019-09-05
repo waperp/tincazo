@@ -21,7 +21,7 @@
 Route::get('/', 'HomeController@index')->name('home.index');
 // Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
-Route::get('up', 'HomeController@up');
+// Route::get('up', 'HomeController@up');
 Route::get('matches_all_web', 'HomeController@matches_all_web');
 Route::get('selected_tournament', 'HomeController@selected_tournament');
 Route::get('selected_group', 'HomeController@selected_group');

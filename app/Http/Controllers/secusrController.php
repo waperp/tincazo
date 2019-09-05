@@ -98,13 +98,13 @@ class secusrController extends Controller
                     DB::commit();
                     return redirect('/');
                 } else {
-                    return 'USUARIO YA EXISTE EN EL GRUPO';
+                    abort(401, 'NO AUTORIZADO');
                 }
             } else if (!$secusr && $tougrp) {
 
                 return view('partials.login.login_invite_user', compact('secusrtmail', 'tougrp'));
             } else {
-                return 'NO EXISTE EL GRUPO';
+                abort(401, 'NO AUTORIZADO');
             }
         } catch (\Exception $e) {
             DB::rollback();

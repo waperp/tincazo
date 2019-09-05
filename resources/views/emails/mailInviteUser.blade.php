@@ -2,7 +2,7 @@
 # TINCAZO.COM
 
 <br>
-Haz sido invitado por parte de <span  style="color:blue">{{ $user_inviter->plainftname }}</span> ({{ $user_inviter->secusrtmail }}) , a jugar en el grupo <span  style="color:blue">{{ $group->tougrptname }}</span>.
+Haz sido invitado por parte de <span style="color:blue">{{ $user_inviter->plainftname }}{{ $user_inviter->plainficode }}</span> ({{ $user_inviter->secusrtmail }}) , a jugar en el grupo <span  style="color:blue">{{ $group->tougrptname }}</span>.
 <br>
     @component('mail::button', 
     ['url' => config('app.url').'/user/invitation/'.$group->secconnuuid.'/'.$user_invited])

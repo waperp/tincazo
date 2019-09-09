@@ -97,6 +97,7 @@ const touinf = @json(Session::get('touinf'));
     @include('partials.modals.admin.modal-admin-add-grupo')
     @include('partials.modals.admin.modal-admin-plantel')
     @include('partials.modals.admin.modal-admin-torneo')
+    @include('partials.modals.admin.modal-admin-grupo')
     @include('partials.modals.admin.modal-admin-edit-fixture-score')
 @endif
 @endauth

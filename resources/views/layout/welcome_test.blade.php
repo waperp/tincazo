@@ -41,18 +41,18 @@
 	<link href="/css/select2-bootstrap4.min.css" rel="stylesheet">
 	<link href="/assets/css/style-soccer.css" rel="stylesheet">
 	<link href="/css/select2.min.css" rel="stylesheet">
-<link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-<link href="/css/sweetalert.css" rel="stylesheet" type="text/css" />
-<link href="/css/jquery.Wload.css" rel="stylesheet">
-<link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-<link href="/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-<link href="/css/googleFont.css" rel="stylesheet" />
+	<link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/sweetalert.css" rel="stylesheet" type="text/css" />
+	<link href="/css/jquery.Wload.css" rel="stylesheet">
+	<link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/googleFont.css" rel="stylesheet" />
 	<!-- Custom CSS-->
 	@section('css')
-		
+
 	@show
 	<link href="/assets/css/custom.css?css={{ time() }}" rel="stylesheet">
-	
+
 </head>
 
 <body data-template="template-soccer">
@@ -82,7 +82,7 @@
 		</header>
 		<!-- Header / End -->
 		<!-- Pushy Panel - Dark -->
-		
+
 		<!-- Pushy Panel - Dark / End -->
 
 		<!-- Hero Slider
@@ -100,12 +100,12 @@
 		================================================== -->
 		@section('footer')
 		@show
-		
+
 		<!-- Footer / End -->
 		<!-- Login/Register Tabs Modal -->
 		@section('modals')
 		@show
-	
+
 		<!-- Login/Register Tabs Modal / End -->
 	</div>
 	{{-- @include('partials.partialModal') --}}
@@ -142,13 +142,13 @@
 	</script>
 	<script src="/js/select2.min.js" type="text/javascript">
 	</script>
-@section('scripts')
-	
-@show
-<script src="/js/jquery.Wload.js?v={{ time() }}"></script>
-<script src="/js/loading-bar.js?v={{ time() }}"></script>
+	@section('scripts')
 
-<script src="/js/progressbar.min.js"></script>
+	@show
+	<script src="/js/jquery.Wload.js?v={{ time() }}"></script>
+	<script src="/js/loading-bar.js?v={{ time() }}"></script>
+
+	<script src="/js/progressbar.min.js"></script>
 </body>
 
 </html>

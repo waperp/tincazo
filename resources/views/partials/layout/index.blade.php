@@ -53,7 +53,7 @@
 @endsection
 @section('footer')
 <footer id="footer" class="footer">
-    @include('partials.footer')
+    @include('partials.layout.footer')
 </footer>
 @endsection
 @section('scripts')
@@ -114,6 +114,5 @@ const touinf = @json(Session::get('touinf'));
 @include('partials.modals.user.modal-user-invitaciones')
 @endauth
 @include('partials.modals.admin.group.modal-admin-group-grupo')
-@include('partials.partialModal')
 
 @endsection

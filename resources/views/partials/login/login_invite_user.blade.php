@@ -30,7 +30,8 @@
                                 <div class="form-group col-6">
                                     <input type="hidden" id="group" value="{{ $tougrp->secconnuuid }}" name="group">
                                     <input readonly class="form-control " id="register-secusrtmail" name="secusrtmail"
-                                        placeholder="Ingrese su correo electronico..." value="{{ $secusrtmail }}" required="" type="email" />
+                                        placeholder="Ingrese su correo electronico..." value="{{ $secusrtmail }}"
+                                        required="" type="email" />
                                 </div>
                                 <div class="form-group col-6">
                                     <input class="form-control " id="register-plainftname" name="plainftname"
@@ -48,7 +49,7 @@
         
                                                 </div>
                                     </div> --}}
-                                    
+
                             <div class="form-group">
                                 <div class="input-group">
                                     <input class="form-control pwd" id="register-secusrtpass" name="secusrtpass"

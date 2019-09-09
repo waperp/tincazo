@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('errors.minimal')
 
-@section('title', __('Unauthorized'))
+@section('title', $title)
 @section('code', '401')
-@section('message', $exception->getMessage() )
+@section('message', $message)

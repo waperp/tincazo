@@ -1467,22 +1467,22 @@ function invitar(secusrtmail, existUser = false) {
             existUser: existUser
         },
         success: function (data) {
-            if (data == false) {
+            if (data.error == true && data.success == false) {
                 $('#tableinvitaciones').DataTable().ajax.reload();
                 swal({
                     // title: "EL CORREO > " + secusrtmail + " YA EXISTE",
                     title: "ADVERTENCIA",
-                    text: "No puede invitar mas jugadores ya que llego al limite de su membresia. ",
+                    text: data.message,
                     type: "info",
                     html: true,
                     showConfirmButton: true,
                     closeOnConfirm: true
                 });
-            } else {
+            } else if (data.error == false  && data.success == true) {
                 $('#tableinvitaciones').DataTable().ajax.reload();
                 swal({
                     title: "CORRECTO",
-                    text: "Se envio un correo electronico.",
+                    text: data.message,
                     type: "success",
                     showCancelButton: false,
                     showConfirmButton: true

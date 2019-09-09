@@ -36,7 +36,7 @@ class MailInviteUser extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('INVITACION A UNIRSE A UN GRUPO EN TINCAZO.COM')
+        return $this->subject('Invitacion a unirse a un grupo en TINCAZO.COM')
         ->from('tincazo.info@gmail.com')
         ->markdown('emails.mailInviteUser')
         ->with([

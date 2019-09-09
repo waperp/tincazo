@@ -4,84 +4,6 @@
 
 @endif
 @if (Session::has('secusricode'))
-<div class="modal fade" id="modal-elegir-campeon" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                    <span aria-hidden="true">
-                        ×
-                    </span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-account-holder">
-                    {{--  <button data-toggle="modal" type="button" data-target="#modal-login-nuevo-grupo" class="btn btn-primary-inverse btn-sm btn-block">Agregar</button> --}}
-                    <div class="modal-account__item" style="flex-basis: 100%;">
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <h5>MI CAMPEÓN</h5>
-                            <aside class="widget widget--sidebar card card--has-table widget-team-stats"
-                                style="height: 450px; overflow-y: scroll;overflow-x: hidden">
-                                {{-- <div class="widget__title card__header">
-                        <h4>ELEGIR CAMPEON</h4>
-                      </div> --}}
-                                <div class="widget__content card__content">
-                                    <ul class="team-stats-box">
-
-                                        @foreach (App\toutea::teamChampions() as $objEquiposELegir)
-
-                                        @if($objEquiposELegir->touttescode != null )
-                                        <li id="li-equipo-selected-{{ $objEquiposELegir->touttescode1 }}"
-                                            onclick="miCampeon({{ $objEquiposELegir->touttescode1 }})"
-                                            class="team-stats__item team-stats__item--clean select-gb">
-                                            <div id="div-circle-selected-{{ $objEquiposELegir->touttescode1 }}"
-                                                class="team-stats__icon team-stats__icon--circle-select">
-                                                <img style="height: 90px"
-                                                    id="img-elegir-equipo-{{ $objEquiposELegir->touttescode1 }}"
-                                                    src="images/{{ $objEquiposELegir->touteavimgt }}" alt=""
-                                                    class="team-stats__icon-primary">
-                                            </div>
-                                            <div id="equipo-elegir-name-{{ $objEquiposELegir->touttescode1 }}"
-                                                class="team-stats__label"
-                                                style="color: black;font-size: 14px;font-weight: 600;">
-                                                {{ $objEquiposELegir->touteatname }}</div>
-                                        </li>
-                                        @else
-                                        <li id="li-equipo-unselected-{{ $objEquiposELegir->touttescode1}}"
-                                            onclick="miCampeon({{ $objEquiposELegir->touttescode1 }})"
-                                            class="team-stats__item team-stats__item--clean">
-                                            <div id="div-circle-unselected-{{ $objEquiposELegir->touttescode1 }}"
-                                                class="team-stats__icon team-stats__icon--circle">
-                                                <img style="height: 90px"
-                                                    id="img-elegir-equipo-{{ $objEquiposELegir->touttescode1 }}"
-                                                    src="images/{{ $objEquiposELegir->touteavimgt }}" alt=""
-                                                    class="team-stats__icon-primary">
-                                            </div>
-                                            <div id="equipo-elegir-name-{{ $objEquiposELegir->touttescode1 }}"
-                                                class="team-stats__label"
-                                                style="color: black;font-size: 14px;font-weight: 600;">
-                                                {{ $objEquiposELegir->touteatname }}</div>
-                                        </li>
-                                        @endif
-
-                                        @endforeach
-
-
-
-                                    </ul>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <!-- Register Form / End -->
-            </div>
-            <!-- Tab: Register / End -->
-        </div>
-    </div>
-</div>
-
 
 <div class="modal fade" id="modal-jugadores-campeon" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg modal--login modal--login-only" role="document">
@@ -125,9 +47,6 @@
         </div>
     </div>
 </div>
-
-
-
 <div class="modal fade" id="modal-nuevo-agregar-tinzaso" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -299,7 +218,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="modal-nuevo-mostrar-tinzaso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
@@ -389,8 +307,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal fade" id="modal-info-player-tinzaso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -427,10 +343,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 <div class="modal fade" id="modal-info-player-tinzaso-dia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -468,7 +380,6 @@
         </div>
     </div>
 </div>
-
 @endif
 @if (Session::has('contypscode'))
 @if (Session::get('contypscode') == 1)

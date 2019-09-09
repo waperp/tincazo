@@ -43,9 +43,9 @@ class secusrController extends Controller
                 ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
                 ->first();
             if ($secusr && $tougrp) {
-
                 $userInGroup = tougpl::where('constascode', 2)->where('tougrpicode', $tougrp->tougrpicode)
                     ->where('plainficode', $secusr->plainficode)->first();
+
                 if (!$userInGroup) {
                     $touinf = touinf::where('touinfscode', $tougrp->touinfscode)->first();
                     $tougpl              = new tougpl;
@@ -98,17 +98,16 @@ class secusrController extends Controller
                     DB::commit();
                     return redirect('/');
                 } else {
-                    abort(401, 'NO AUTORIZADO');
+                    return response()->view('errors.401', ['message' => 'El usuario ya pertenece al grupo', 'title' => 'No Autorizado'], 401);
                 }
             } else if (!$secusr && $tougrp) {
-
                 return view('partials.login.login_invite_user', compact('secusrtmail', 'tougrp'));
             } else {
-                abort(401, 'NO AUTORIZADO');
+                return response()->view('errors.401', ['message' => 'Algo anda mal', 'title' => 'No Autorizado'], 401);
             }
         } catch (\Exception $e) {
             DB::rollback();
-            abort(401, 'NO AUTORIZADO');
+            return response()->view('errors.401', ['message' => 'Algo anda mal', 'title' => 'No Autorizado'], 401);
         }
     }
     /**

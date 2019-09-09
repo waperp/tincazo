@@ -265,6 +265,9 @@ padding-left: 0px !important;
     transform: translateY(-50%);
     height: 30px;
 }
+.select-gb {
+    background-color : grey;
+}
 .game-result__header>h3:hover {
     color: #38a9ff;
     content: "";

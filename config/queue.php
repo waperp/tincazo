@@ -14,9 +14,7 @@ return [
     | Supported: "sync", "database", "beanstalkd", "sqs", "redis", "null"
     |
     */
-
     'default' => env('QUEUE_DRIVER', 'sync'),
-
     /*
     |--------------------------------------------------------------------------
     | Queue Connections
@@ -27,27 +25,22 @@ return [
     | for each back-end shipped with Laravel. You are free to add more.
     |
     */
-
     'connections' => [
-
         'sync' => [
             'driver' => 'sync',
         ],
-
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',
             'queue' => 'default',
             'retry_after' => 90,
         ],
-
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host' => 'localhost',
             'queue' => 'default',
             'retry_after' => 90,
         ],
-
         'sqs' => [
             'driver' => 'sqs',
             'key' => env('SQS_KEY', 'your-public-key'),
@@ -56,7 +49,6 @@ return [
             'queue' => env('SQS_QUEUE', 'your-queue-name'),
             'region' => env('SQS_REGION', 'us-east-1'),
         ],
-
         'redis' => [
             'driver' => 'redis',
             'connection' => 'default',

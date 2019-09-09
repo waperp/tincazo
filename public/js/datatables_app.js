@@ -422,6 +422,7 @@ var tablesss = $("#table-info-player-grupo").DataTable({
     columns: [{
         orderable: false,
         sortable: false,
+        width:50,
         render: function (data, type, full, meta) {
             // return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt1 + '" alt=""></figure>';
             return '<figure class="team-meta__logo_right"><img src="/images/' + full.touteavimgt1 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name_right">' + full.touteatabrv1 + '</h6></div>'
@@ -443,12 +444,12 @@ var tablesss = $("#table-info-player-grupo").DataTable({
     //     }
     // },
     {
-        width: 20,
+        width: 30,
         orderable: false,
         sortable: false,
-        className: 'text-center',
+        className: 'text-center align-middle',
         render: function (data, type, full, meta) {
-            return '<strong style="font-size: 10px;float:left"> ' + full.toufixsscr1 + '</strong>' + '<strong style="font-size: 10px; ;  color:#38a9ff"> ' + full.plapresscr1 + '</strong>' + " - " + '<strong style="font-size: 10px; ;color:#38a9ff"> ' + full.plapresscr2 + '</strong>' + '<strong style="font-size: 10px; float:right"> ' + full.toufixsscr2 + '</strong>';
+            return '<strong style="float:left"> ' + full.toufixsscr1 + '</strong>' + '<strong style="color:#38a9ff"> ' + full.plapresscr1 + '</strong>' + " - " + '<strong style=" ;color:#38a9ff"> ' + full.plapresscr2 + '</strong>' + '<strong style=" float:right"> ' + full.toufixsscr2 + '</strong>';
         }
     },
     //  {
@@ -456,12 +457,14 @@ var tablesss = $("#table-info-player-grupo").DataTable({
     //     orderable: false,
     //     sortable: false, className: 'text-center',
     //     render: function(data, type, full, meta) {
-    //         return '<strong style="font-size: 10px; font-weight:700"> ' + full.toufixsscr2 + '</strong>';
+    //         return '<strong style=" font-weight:700"> ' + full.toufixsscr2 + '</strong>';
     //     }
     // },
     {
+        width:50,
         orderable: false,
         sortable: false,
+        className: 'text-right',
         render: function (data, type, full, meta) {
             // return  full.touteatabrv2 ;
             return '<figure class="team-meta__logo_right"><img src="/images/' + full.touteavimgt2 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name_right">' + full.touteatabrv2 + '</h6></div>'
@@ -478,7 +481,7 @@ var tablesss = $("#table-info-player-grupo").DataTable({
         orderable: false,
         width: 20,
         sortable: false,
-        className: 'text-center',
+        className: 'text-center align-middle',
         data: 'plapresptos'
     }
     ],
@@ -548,43 +551,45 @@ var tablesss = $("#table-info-player-grupo-dia").DataTable({
     columns: [{
         orderable: false,
         sortable: false,
+        width:50,
         render: function (data, type, full, meta) {
             // return '<figure class="team-meta__logo"><img src="/images/' + full.touteavimgt1 + '" alt=""></figure>';
             return '<figure class="team-meta__logo_right"><img src="/images/' + full.touteavimgt1 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name_right">' + full.touteatabrv1 + '</h6></div>'
         }
     }, {
-        width: 20,
+        width: 30,
         orderable: false,
         sortable: false,
-        className: 'text-center',
+        className: 'text-center align-middle',
         render: function (data, type, full, meta) {
-            return '<strong style="font-size: 10px;float:left"> ' + full.toufixsscr1 + '</strong>' + '<strong style="font-size: 10px; ;  color:#38a9ff"> ' + full.plapresscr1 + '</strong>' + " - " + '<strong style="font-size: 10px; ;color:#38a9ff"> ' + full.plapresscr2 + '</strong>' + '<strong style="font-size: 10px; float:right"> ' + full.toufixsscr2 + '</strong>';
+            return '<strong style="float:left"> ' + full.toufixsscr1 + '</strong>' + '<strong style="color:#38a9ff"> ' + full.plapresscr1 + '</strong>' + " - " + '<strong style="color:#38a9ff"> ' + full.plapresscr2 + '</strong>' + '<strong style=" float:right"> ' + full.toufixsscr2 + '</strong>';
         }
     }, {
         orderable: false,
+        width:50,
         sortable: false,
+        className:'text-right',
         render: function (data, type, full, meta) {
             // return  full.touteatabrv2 ;
             return '<figure class="team-meta__logo_right"><img src="/images/' + full.touteavimgt2 + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name_right">' + full.touteatabrv2 + '</h6></div>'
         }
     }, {
         orderable: false,
-        width: 20,
         sortable: false,
-        className: 'text-center',
+        className: 'text-center align-middle',
         data: 'plapresptos'
     }],
     "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
         if (aData.plapresptos > 0) {
             $(nRow.cells[3]).css({
                 'color': '#3c763d',
-                'font-size': '10px',
+                'font-size': '12px',
                 'font-weight': '700'
             });
         } else {
             $(nRow.cells[3]).css({
                 'color': 'red',
-                'font-size': '10px',
+                'font-size': '12px',
                 'font-weight': '700'
             });
         }

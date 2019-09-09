@@ -127,14 +127,14 @@ Description:  You can add your custom CSS here and it will overwrite template st
 
 #tablepociciones>tbody>tr>td {
     padding: 5px 5px !important;
-    font-size: 11px !important;
+    font-size: 12px !important;
 }
 
 #table-pociciones-dia>tbody>tr:hover {
     background-color: #cad0d6 !important;
 }
 
-#table-info-player-grupo>tbody>tr>td {
+/* #table-info-player-grupo>tbody>tr>td {
     padding: 5px 5px !important;
     font-size: 10px !important;
 }
@@ -145,20 +145,20 @@ Description:  You can add your custom CSS here and it will overwrite template st
     border-top: 0px solid #e4e7ed;
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
-}
+} */
 
-#table-info-player-grupo-dia>tbody>tr>td {
+/* #table-info-player-grupo-dia>tbody>tr>td {
     padding: 5px 5px !important;
     font-size: 10px !important;
-}
+} */
 
-#table-info-player-grupo-dia>thead>tr>th, #table-info-player-grupo-dia>thead>tr>td, #table-info-player-grupo-dia>tbody>tr>th, #table-info-player-grupo-dia>tbody>tr>td, #table-info-player-grupo-dia>tfoot>tr>th, #table-info-player-grupo-dia>tfoot>tr>td {
+/* #table-info-player-grupo-dia>thead>tr>th, #table-info-player-grupo-dia>thead>tr>td, #table-info-player-grupo-dia>tbody>tr>th, #table-info-player-grupo-dia>tbody>tr>td, #table-info-player-grupo-dia>tfoot>tr>th, #table-info-player-grupo-dia>tfoot>tr>td {
     padding: 6.5px;
     vertical-align: middle;
     border-top: 0px solid #e4e7ed;
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
-}
+} */
 
 #jprePercentage {
     font-family: "Montserrat", sans-serif;
@@ -187,12 +187,12 @@ Description:  You can add your custom CSS here and it will overwrite template st
   }
 #table-pociciones-dia>tbody>tr>td {
     padding: 5px 5px !important;
-    font-size: 11px !important;
+    font-size: 12px !important;
 }
 
 #table-tincazos-grupo>tbody>tr>td {
     padding: 5px 5px !important;
-    font-size: 11px !important;
+    font-size: 12px !important;
 }
 
 #tablepociciones>tbody>tr:hover {
@@ -1118,7 +1118,7 @@ padding-left: 0px !important;
 @media (min-width: 992px) {
     .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
         padding: 10px 10px;
-        font-size: 11px;
+        font-size: 12px;
     }
 }
 

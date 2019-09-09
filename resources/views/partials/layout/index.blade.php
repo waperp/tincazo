@@ -97,7 +97,7 @@ const touinf = @json(Session::get('touinf'));
     @include('partials.modals.admin.modal-admin-add-grupo')
     @include('partials.modals.admin.modal-admin-plantel')
     @include('partials.modals.admin.modal-admin-torneo')
-    @include('partials.modals.admin.modal-admin-grupo')
+    @include('partials.modals.admin.modal-admin-edit-fixture-score')
 @endif
 @endauth
 @auth
@@ -105,6 +105,12 @@ const touinf = @json(Session::get('touinf'));
 @include('partials.modals.user.modal-user-config-grupo')
 @include('partials.modals.user.modal-user-invitar')
 @include('partials.modals.user.modal-user-elegir-campeon')
+@include('partials.modals.user.modal-user-jugadores-campeones')
+@include('partials.modals.user.modal-user-add-tincazo')
+@include('partials.modals.user.modal-user-tincazos-users')
+@include('partials.modals.user.modal-user-player-info-general')
+@include('partials.modals.user.modal-user-player-info-day')
+@include('partials.modals.user.modal-user-invitaciones')
 @endauth
 @include('partials.modals.admin.group.modal-admin-group-grupo')
 @include('partials.partialModal')

@@ -2,6 +2,7 @@
 Route::group([
     'prefix' => 'auth',
 ], function () {
+
     Route::post('login', 'Auth\AuthController@login')->name('login');
     Route::post('register', 'Auth\AuthController@register');
     Route::resource('secusr', 'secusrController');
@@ -9,8 +10,9 @@ Route::group([
     Route::post('sendPinMailApi', 'Auth\AuthController@sendPinMailApi');
     Route::post('validateMailApi', 'Auth\AuthController@validateMailApi');
     Route::post('updateResetPasswordApi', 'Auth\AuthController@updateResetPasswordApi');
-        Route::get('membership', 'Auth\AuthController@membership');
-        Route::post('validateMailLogin', 'secusrController@validateMailLogin');
+    Route::get('membership', 'Auth\AuthController@membership');
+    Route::post('validateMailLogin', 'secusrController@validateMailLogin');
+    Route::post('validateMailInvite', 'secusrController@validateMailInvite');
 
     Route::group([
         'middleware' => 'auth:api',
@@ -48,6 +50,6 @@ Route::group([
         Route::get('getPositionsGeneralInfoUser', 'Auth\AuthController@getPositionsGeneralInfoUser');
         Route::get('getPositionsGeneralInfoUserDay', 'Auth\AuthController@getPositionsGeneralInfoUserDay');
         Route::get('matches_all_web', 'HomeController@matches_all_web');
+
     });
-    Route::get('tableGroupInvitations', 'Auth\AuthController@tableGroupInvitations');
 });

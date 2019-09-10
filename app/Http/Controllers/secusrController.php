@@ -227,13 +227,13 @@ class secusrController extends Controller
             ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')
             ->where('plainf.plainfbteco', 0)->first();
         if ($secusr && $isTermsConditions) {
-            return response()->json(['isTermsConditions' => true, 'isValidMail' => true, 'message' => 'existe usuario']);
+            return response()->json(['isTermsConditions' => true, 'isValidMail' => true, 'message' => 'El usuario ya se encuentra registrado.']);
         } else if ($secusr && !$isTermsConditions) {
-            return response()->json(['isTermsConditions' => false, 'isValidMail' => true, 'message' => 'no existe usuario']);
+            return response()->json(['isTermsConditions' => false, 'isValidMail' => true, 'message' => 'El usuario no se encuentra registrado.']);
         } else if (!$secusr && $isTermsConditions) {
-            return response()->json(['isTermsConditions' => true, 'isValidMail' => false, 'message' => 'no existe usuario']);
+            return response()->json(['isTermsConditions' => true, 'isValidMail' => false, 'message' => 'El usuario no se encuentra registrado']);
         } else if (!$secusr && !$isTermsConditions) {
-            return response()->json(['isTermsConditions' => false, 'isValidMail' => false, 'message' => 'no existe usuario']);
+            return response()->json(['isTermsConditions' => false, 'isValidMail' => false, 'message' => 'El usuario no se encuentra registrado']);
         }
     }
     public function validateMailInvite(Request $request)
@@ -242,9 +242,9 @@ class secusrController extends Controller
             ->join('plainf', 'secusr.plainficode', 'plainf.plainficode')->first();
 
         if ($secusr) {
-            return response()->json(['isValidMail' => true, 'message' => 'existe usuario', 'data' => $secusr]);
+            return response()->json(['isValidMail' => true, 'message' => 'El usuario se encuentra registrado', 'data' => $secusr]);
         } else {
-            return response()->json(['isValidMail' => false, 'message' => 'no existe usuario', 'data' => $secusr]);
+            return response()->json(['isValidMail' => false, 'message' => 'El usuario no se encuentra registrado ', 'data' => $secusr]);
         }
     }
 

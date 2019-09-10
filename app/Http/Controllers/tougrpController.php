@@ -220,24 +220,41 @@ class tougrpController extends Controller
                 $valueMensabresia = $key->value;
             }
             $validateValue = (int) $valueMensabresia;
-
             if ($validateValue > 0) {
-                $tougpl              = new tougpl;
-                $tougpl->tougrpicode = $request->tougrpicode;
-                $tougpl->constascode = 1;
-                $tougpl->plainficode = $request->plainficode;
-                $tougpl->tougplipwin = 0;
-                $tougpl->tougplsmaxp = 0;
-                $tougpl->tougplsmedp = 0;
-                $tougpl->tougplslowp = 0;
-                $tougpl->save();
+                $tougrp = tougrp::where('tougrpicode', $request->tougrpicode)->first();
+                $secusr_inviter = secusr::join('plainf', 'secusr.plainficode', 'plainf.plainficode')
+                ->where('secusr.secusricode', $request->user()->secusricode)
+                ->first();
+                $userInGroup = tougpl::select(\DB::raw('COUNT(tougpl.plainficode) isgroup'))
+                ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
+                ->join('secusr', 'secusr.plainficode', 'plainf.plainficode')
+                ->where('tougpl.tougrpicode', $request->tougrpicode)
+                ->where('secusr.secusrtmail', $request->secusrtmail)->first();
                 DB::commit();
-                return response()->json($validateValue);
+                // return response()->json($userInGroup);
+                if($userInGroup->isgroup <= 0){
+                    Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname,$secusr_inviter->secusrtmail,Crypt::encryptString($request->secusrtmail), $tougrp));
+                    return response()->json(
+                        ['message' => 'Se envio un correo electronico.', 
+                            'errors' =>'', 'error' => false, 'success' => true, 
+                        'types' => 'validate']
+                    );
+                }else{
+                    return response()->json(
+                        ['message' => 'el correo proporcionado ya pertenece al grupo', 
+                            'errors' =>'', 'error' => true, 'success' => false, 
+                        'types' => 'validate']
+                    );
+                }
+               
             } else {
-                return response()->json(false);
+                return response()->json(
+                    ['message' => 'No puede invitar mas jugadores ya que llego al limite de su membresia.', 
+                        'errors' =>'', 'error' => true, 'success' => false, 
+                    'types' => 'validate']
+                );
             }
         } catch (\Exception $e) {
-
             DB::rollback();
             return response()->json($e->getMessage());
         }

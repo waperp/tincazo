@@ -46,20 +46,22 @@ class AuthController extends Controller
     }
     public function tableGroupInvitations(Request $request)
     {
-        /* $data = DB::select('Select plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick,
-        (Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
-        plainf.plainficode) as constascode
-        from plainf
-        join secusr on plainf.plainficode = secusr.plainficode
-        where secusr.secusrbenbl = 1', [Session::get('select-tougrpicode')]);
-        return Datatables::of($data)->make(true);*/
+        /* $data = DB::select('SELECT plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick, secusr.secusrtmail,
+(SELECT tougpl.constascode FROM tougpl WHERE tougpl.tougrpicode = 56 AND tougpl.plainficode = plainf.plainficode) AS constascode  
+FROM `plainf` 
+INNER JOIN `secusr` ON `plainf`.`plainficode` = `secusr`.`plainficode` 
+WHERE `secusr`.`secusrbenbl` = 1 AND (MATCH (secusr.secusrtmail) 
+AGAINST ('"nocialu_matador@hotmail*"' IN BOOLEAN MODE) OR MATCH (plainf.plainftname) AGAINST ('"nocialu_matador@hotmail*"' IN BOOLEAN MODE) ) ORDER BY `plainf`.`plainftnick` ASC');
+       */
 
-        $data = DB::table('plainf')->selectRaw('plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick,(Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
+        $data = secusr::selectRaw('plainf.plainficode, plainf.plainfvimgp, plainf.plainftname, plainf.plainftnick, secusr.secusrtmail,(Select tougpl.constascode from tougpl where tougpl.tougrpicode = ? and tougpl.plainficode =
             plainf.plainficode) as constascode  ', [$request->tougrpicode])
-            ->join('secusr', 'plainf.plainficode', 'secusr.plainficode')
+            ->join('plainf', 'plainf.plainficode', 'secusr.plainficode')
             ->where('secusr.secusrbenbl', 1)
+            ->whereRaw("(secusr.secusrtmail LIKE ? OR plainf.plainftname LIKE ?)",[$request->secusrtmail."%",$request->secusrtmail."%"])
+            // ->orWhereRaw('MATCH (plainf.plainftname) AGAINST ("?" IN BOOLEAN MODE)', $request->secusrtmail."*")
             ->orderBy('plainf.plainftnick')
-            ->get();
+            ->take(20)->get();
         return response()->json($data);
 
     }

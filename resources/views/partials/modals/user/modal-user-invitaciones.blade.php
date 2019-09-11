@@ -1,3 +1,7 @@
+
+@php
+    $invitaciones = App\tougrp::misInvitaciones();
+@endphp
 <div class="modal fade" id="modal-invitaciones" tabindex="-1" role="dialog">
     <div class="modal-dialog " role="document">
         <div class="modal-content">
@@ -8,7 +12,7 @@
             <div class="modal-body">
                 <div class="card card--has-table">
                     <div class="card__header">
-                        <h4>Mis invitaciones ({{ count($listaInvitaciones) }})</h4>
+                        <h4>Mis invitaciones ({{ count($invitaciones) }})</h4>
                     </div>
                     <div class="card__content">
                         <div class="table-responsive">
@@ -23,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($listaInvitaciones as $objInvitacionesTorneos)
+                                    @foreach ($invitaciones as $objInvitacionesTorneos)
                                     <tr>
                                         <td class="product__photo" style="width: 12%;padding: 5px;">
                                             <figure class="product__thumb">

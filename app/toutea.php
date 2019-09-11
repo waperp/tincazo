@@ -65,4 +65,5 @@ class toutea extends Model
             ->orderBy('toutea.touteatname', 'asc')
             ->get();
     }
+
 }

@@ -77,4 +77,12 @@ class tougrp extends Model
             ->where('touinf.touinfscode', $touinfscode)
             ->get();
     }
+    public function scopeMisInvitaciones($query){
+        return $query->select('tougrp.tougrpicode','tougrp.tougrpvimgg','tougrp.tougrptname','touinf.touinftname')
+        ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
+            ->where('tougpl.plainficode', Session::get('plainficode'))
+            ->where('tougpl.constascode', 1)
+        ->get();
+    }
 }

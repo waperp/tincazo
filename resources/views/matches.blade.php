@@ -19,7 +19,7 @@
                                 </h4>
                             </div>
                             <div class="widget__content card__content">
-                                @foreach($listaTouinf as $objTorneosUsersMenu)
+                                @foreach(App\touinf::tournamentActive()->get() as $objTorneosUsersMenu)
                                 @if ($loop->first)
                                 <ul id="post-torneos" class="posts posts--simple-list">
                                     <li data-touinfscode="{{$objTorneosUsersMenu->touinfscode}}"
@@ -94,7 +94,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

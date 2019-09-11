@@ -11,21 +11,12 @@
 |
 */
 
-// Route::get('/', 'HomeController@index')->middleware('isadminMiddleware1');
-// Route::get('inicio', 'HomeController@index');
-// Route::get('inicio', 'HomeController@inicio')->middleware('isadminMiddleware');
     Route::get('matches', 'HomeController@matches');
-    Route::get('test', 'HomeController@test');
-
 
 Route::get('/', 'HomeController@index')->name('home.index');
-// Route::get('inicio', 'HomeController@index');
 Route::get('inicio', 'HomeController@inicio');
 // Route::get('up', 'HomeController@up');
 Route::get('matches_all_web', 'HomeController@matches_all_web');
-Route::get('selected_tournament', 'HomeController@selected_tournament');
-Route::get('selected_group', 'HomeController@selected_group');
-
 
 Route::post('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
@@ -40,21 +31,26 @@ Route::post('updateResetPassword', 'HomeController@updateResetPassword');
 Route::post('validateMailLogin', 'secusrController@validateMailLogin');
 Route::post('validateMailInvite', 'secusrController@validateMailInvite');
 
-
-
 //Route::get('/cart/success/{data}', array('as' => 'success', 'uses' => 'ShopController@showSuccess'));
-Route::get('comboEquipos/{f1}/{f2}', 'HomeController@comboEquipos');
-Route::get('select2combos/{f1}', 'HomeController@select2combos');
-Route::get('selectMenbresia', 'HomeController@selectMenbresia');
-Route::get('selectResponsable', 'HomeController@selectResponsable');
+Route::get('comboEquipos/{f1}/{f2}', 'Select2Controller@comboEquipos');
+Route::get('select2combos/{f1}', 'Select2Controller@select2combos');
+Route::get('selectMenbresia', 'Select2Controller@selectMenbresia');
+Route::get('selectResponsable', 'Select2Controller@selectResponsable');
+Route::get('selected_tournament', 'Select2Controller@selected_tournament');
+Route::get('selected_group', 'Select2Controller@selected_group');
+
 Route::get('tusTincazosPendientes', 'HomeController@tusTincazosPendientes');
 Route::get('tusTincazosJuego', 'HomeController@tusTincazosJuego');
 Route::get('tusTincazosFinalizados', 'HomeController@tusTincazosFinalizados');
 Route::get('validarCampeonFechas', 'HomeController@validarCampeonFechas');
 Route::get('listaJugadoresCampeon', 'HomeController@listaJugadoresCampeon');
+Route::get('estadisticas', 'HomeController@estadisticas');
+Route::get('Guia', 'HomeController@guia');
+Route::get('PoliticaPrivacidad', 'HomeController@politica');
+Route::get('TerminosCondiciones', 'HomeController@TerminosCondiciones');
+Route::get('obtenerPredicciones', 'HomeController@obtenerPredicciones');
 
 Route::post('actualizarPerfil', 'secusrController@actualizarPerfil');
-Route::post('sessionLink', 'HomeController@sessionLink');
 Route::post('eliminarTorneoEquipo', 'touteaController@eliminarTorneoEquipo');
 Route::post('EstadoEquipoTorneo', 'touteaController@EstadoEquipoTorneo');
 Route::post('aceptarInvitacion', 'tougrpController@aceptarInvitacion');
@@ -66,35 +62,33 @@ Route::post('suspender', 'toufixController@suspender');
 Route::post('procesarPartido', 'toufixController@procesarPartido');
 Route::post('editarScore', 'toufixController@editarScore');
 Route::post('agregarTorneosEquipos', 'touteaController@agregarTorneosEquipos');
-Route::get('tablaPosicionesGrupo', 'HomeController@tablaPosicionesGrupo');
-Route::get('tableGestionarFixture', 'HomeController@tableGestionarFixture');
-Route::get('tablaInvitacionesGrupo', 'HomeController@tablaInvitacionesGrupo');
-Route::get('tableGestionarGruposAdmin', 'HomeController@tableGestionarGruposAdmin');
-Route::get('tablaPosicionesPorDia', 'HomeController@tablaPosicionesPorDia');
+
+Route::get('tablaPosicionesGrupo', 'DatatablesController@tablaPosicionesGrupo');
+Route::get('tableGestionarFixture', 'DatatablesController@tableGestionarFixture');
+Route::get('tablaInvitacionesGrupo', 'DatatablesController@tablaInvitacionesGrupo');
+Route::get('tableGestionarGruposAdmin', 'DatatablesController@tableGestionarGruposAdmin');
+Route::get('tablaPosicionesPorDia', 'DatatablesController@tablaPosicionesPorDia');
+Route::get('tablaAdminTorneosEquipos', 'DatatablesController@tablaAdminTorneosEquipos');
+Route::get('tablaInfoPlayer', 'DatatablesController@tablaInfoPlayer');
+Route::get('tablaInfoPlayerDia', 'DatatablesController@tablaInfoPlayerDia');
+Route::get('tablaAdminEquipos', 'DatatablesController@tablaAdminEquipos');
+Route::get('tablaAdminTorneos', 'DatatablesController@tablaAdminTorneos');
+
+
 Route::get('user/invitation/{group}/{user}', 'secusrController@userInvitation');
 
-
-
-
-Route::get('PoliticaPrivacidad', 'HomeController@politica');
-Route::get('TerminosCondiciones', 'HomeController@TerminosCondiciones');
 Route::post('EquipoChampions', 'touteaController@EquipoChampions');
 Route::post('EquipoChampionsValidate', 'touteaController@EquipoChampionsValidate');
 
-Route::get('Guia', 'HomeController@guia');
-Route::get('tablaAdminTorneos', 'HomeController@tablaAdminTorneos');
+
+
 Route::get('tougrpShow/{f}', 'tougrpController@show');
 Route::get('toufixShow/{f}', 'toufixController@show1');
-Route::get('tablaAdminEquipos', 'HomeController@tablaAdminEquipos');
-Route::get('estadisticas', 'HomeController@estadisticas');
-Route::get('tablaAdminTorneosEquipos', 'HomeController@tablaAdminTorneosEquipos');
-Route::get('tablaInfoPlayer', 'HomeController@tablaInfoPlayer');
-Route::get('tablaInfoPlayerDia', 'HomeController@tablaInfoPlayerDia');
+
 Route::post('updateTougrp', 'tougrpController@updateTougrp')->name('tougrp.updateTougrp');
 Route::post('adminUpdateTougrp', 'tougrpController@adminUpdateTougrp')->name('tougrp.adminUpdateTougrp');
 Route::post('insertarCampeon', 'touteaController@insertarCampeon');
 Route::get('editarPerfil/', array('as' => 'editarPerfil', 'uses' => 'secusrController@editarPerfil'));
-Route::get('obtenerPredicciones', 'HomeController@obtenerPredicciones');
 
 Route::get('mainnav/tournament/{secconnuuid}','touinfController@tableGestionarGruposAdmin')->name('touinf.tournament');
 

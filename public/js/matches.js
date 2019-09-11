@@ -296,3 +296,6 @@ function winner_loser_team2(item) {
     }
 
 }
+function isEmpty(value) {
+    return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+}

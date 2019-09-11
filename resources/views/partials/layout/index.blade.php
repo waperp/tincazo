@@ -69,8 +69,7 @@ const touinf = @json(Session::get('touinf'));
 <script src="/assets/vendor/jpreloader2/js/jpreloader.js" type="text/javascript">
 </script>
 <script src="/js/sum.js" type="text/javascript"></script>
-<script src="/js/matches.js?v={{ time() }}" type="text/javascript">
-</script>
+
 <script src="/js/other_champions.js?v={{ time() }}" type="text/javascript">
 </script>
 <script src="/js/matches_pending.js?v={{ time() }}" type="text/javascript">

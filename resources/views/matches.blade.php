@@ -101,3 +101,7 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+<script src="/js/matches.js?v={{ time() }}" type="text/javascript">
+</script>
+@endsection

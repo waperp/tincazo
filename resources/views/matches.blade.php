@@ -24,7 +24,7 @@
                                 <ul id="post-torneos" class="posts posts--simple-list">
                                     <li data-touinfscode="{{$objTorneosUsersMenu->touinfscode}}"
                                         class="posts__item  post__items__custom post__items__custom__selected"
-                                        onclick="load_matches({{$objTorneosUsersMenu->touinfscode}}, null)">
+                                        onclick="load_matches({{$objTorneosUsersMenu->touinfscode}}, this)">
                                         <figure class="posts__thumb">
                                             <img class="post__items__custom__img post__items__custom__img__selected"
                                                 src="/images/{{ $objTorneosUsersMenu->touinfvlogt }}" alt="">
@@ -102,6 +102,6 @@
 </div>
 @endsection
 @section('scripts')
-<script src="/js/matches.js?v={{ time() }}" type="text/javascript">
-</script>
+    <script src="/js/matches.js?v={{ time() }}" type="text/javascript"></script>
+
 @endsection

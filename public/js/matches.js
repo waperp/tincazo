@@ -233,3 +233,66 @@ function matches_score_type_team2(item) {
         }
     }
 }
+
+function winner_loser_team1(item) {
+
+    if (item.constascode == 1) {
+
+        var toufixsscr1 = '';
+        if (!isEmpty(item.plapreicode)) {
+            if (!isEmpty(item.toufixsscr1)) {
+                toufixsscr1 = item.toufixsscr1;
+            } else {
+                toufixsscr1 = '';
+            }
+
+        } else {
+            toufixsscr1 = '';
+        }
+        if (item.toufixsscr1 > item.toufixsscr2) {
+            return '<span class="game-result__score-result game-result__score-result--winner">' + toufixsscr1 + '</span>';
+        } else if (item.toufixsscr1 < item.toufixsscr2) {
+            return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr1 + '</span>';
+        } else {
+            return '<span class="game-result__score-result game-result__score-result--draw1">' + toufixsscr1 + '</span>';
+        }
+    } else {
+        if (item.toufixsscr1 > item.toufixsscr2) {
+            return '<span class="game-result__score-result game-result__score-result--winner">' + item.toufixsscr1 + '</span>';
+        } else if (item.toufixsscr1 < item.toufixsscr2) {
+            return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr1 + '</span>';
+        } else {
+            return '<span class="game-result__score-result game-result__score-result--draw1">' + item.toufixsscr1 + '</span>';
+        }
+    }
+}
+function winner_loser_team2(item) {
+    if (item.constascode == 1) {
+        var toufixsscr2 = '';
+        if (!isEmpty(item.plapreicode)) {
+            if (!isEmpty(item.toufixsscr1)) {
+                toufixsscr2 = item.toufixsscr2;
+            } else {
+                toufixsscr2 = '';
+            }
+        } else {
+            toufixsscr2 = '';
+        }
+        if (item.toufixsscr2 > item.toufixsscr1) {
+            return '<span class="game-result__score-result game-result__score-result--winner">' + toufixsscr2 + '</span>';
+        } else if (item.toufixsscr2 < item.toufixsscr1) {
+            return '<span class="game-result__score-result game-result__score-result--loser">' + toufixsscr2 + '</span>';
+        } else {
+            return '<span class="game-result__score-result game-result__score-result--draw2">' + toufixsscr2 + '</span>';
+        }
+    } else {
+        if (item.toufixsscr2 > item.toufixsscr1) {
+            return '<span class="game-result__score-result game-result__score-result--winner">' + item.toufixsscr2 + '</span>';
+        } else if (item.toufixsscr2 < item.toufixsscr1) {
+            return '<span class="game-result__score-result game-result__score-result--loser">' + item.toufixsscr2 + '</span>';
+        } else {
+            return '<span class="game-result__score-result game-result__score-result--draw2">' + item.toufixsscr2 + '</span>';
+        }
+    }
+
+}

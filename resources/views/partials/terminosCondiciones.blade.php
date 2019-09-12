@@ -15,7 +15,7 @@
                     <div class="card__content">
                         <div  class="text-justify" class="post__content">
                             <h2 class="text-center">TERMINOS Y CONDICIONES</h2>
-                            <p><strong>TINCAZO.COM</strong> es un producto de la empresa Dozure SRL y el acceso al sitio web y su
+                            <p><strong>TINCAZO.COM</strong> es un producto de la empresa <strong>Dozure S.R.L</strong> y el acceso al sitio web y su
                                 utilización está sujeto a la aceptación y cumplimiento de los términos y
                                 condiciones que se exponen a continuación:</p>
                             <ol>
@@ -101,7 +101,7 @@
                                         que pudieran producir alteraciones en sus sistemas informáticos o en los
                                         documentos electrónicos y archivos almacenados en los archivos
                                         informáticos del USUARIO. </p>
-                                    <li class="font-weight-bold text-dark" value="3"><span>2 </span>CALIDAD</li>
+                                    <li class="font-weight-bold text-dark" value="3"><span>2 </span>PROPIEDAD INTELECTUAL</li>
                                     <p>Mediante el uso de esta página, el <strong>USUARIO y/o VISITANTE</strong> reconoce y acepta que
                                         <strong>TINCAZO.COM</strong> queda excluida de cualquier responsabilidad que pudiera ser causada
                                         por el uso no autorizado de las marcas u otros derechos de propiedad intelectual
@@ -138,7 +138,7 @@
                                 <p>Si necesita comunicarse con Tincazo.com, por favor envie un correo electronico : <br>
                                     <a href="mailto:soporte@tincazo.com">soporte@tincazo.com</a>
                                     <br>
-                                    Gracias por visitar TINCAZO.COM
+                                    Gracias por visitar <strong>TINCAZO.COM</strong>
                                 </p>
                             </ol>
                         </div>

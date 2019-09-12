@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description"
-		content="Tincazo.com es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
+		content="Tincazo es un sitio donde podrás crear tu campeonato de pronósticos, registrar tus tincazos y hacer más entretenido un torneo o partido del deporte que te apasiona. Comparte con amigos, tu frater o familia. Jugar Tincazo es gratis, la diversion no tiene precio.">
 	<meta name="author" content="DOZURE SRL">
 	<meta name="keywords"
 		content="Juego de Pronósticos, Pronósticos deportivos en Bolivia, Campeonato de Pronósticos, Pronósticos de Futbol, Liga Boliviana, Copa Mundial, Copa América, Copa Libertadores, Copa Confederaciones, Copa Sudamericana, Champions League, Liga de Campeones, Campeonato de aciertos en Bolivia, Tincazo, Te Tinca, Tincazo.com, Tu tinca, Tincaso">

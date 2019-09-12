@@ -15,7 +15,7 @@
                     <div class="card__content">
                         <div  class="text-justify" class="post__content">
                             <h2 class="text-center">TERMINOS Y CONDICIONES</h2>
-                            <p><strong>TINCAZO.COM</strong> es un producto de la empresa <strong>Dozure S.R.L</strong> y el acceso al sitio web y su
+                            <p><strong>TINCAZO.COM</strong> es un producto de la empresa <strong>DOZURE S.R.L</strong> y el acceso al sitio web y su
                                 utilización está sujeto a la aceptación y cumplimiento de los términos y
                                 condiciones que se exponen a continuación:</p>
                             <ol>

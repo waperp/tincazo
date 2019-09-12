@@ -17,7 +17,7 @@
                                 <div class="form-group">
                                     <select class="select2 form-control" id="select-torneo-admin-torneos"
                                         style="width: 100%">
-                                        @foreach($listaTouinfAll as $objTorneosEquipos)
+                                        @foreach(App\touinf::all() as $objTorneosEquipos)
                                         <option value="{{$objTorneosEquipos->touinfscode}}">
                                             {{$objTorneosEquipos->touinftname}}
                                         </option>

@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         <select disabled class="select2 form-control" id="selecttorneo-edit"
                                             style="width: 100%" name="touinfscode" required="">
-                                            @foreach($listaTouinfAll as $objTouinf)
+                                            @foreach(App\touinf::all() as $objTouinf)
                                             <option value="{{$objTouinf->touinfscode}}"
                                                 data-image="/{{$objTouinf->touinfvlogt}}">
                                                 {{$objTouinf->touinftname }} </option>
@@ -38,21 +38,21 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""> TINCAZO mayor (Resultado y Marcador)</label>
-                                        <input type="number" min="3" data-toggle="just_number" @if($fechaValidar->fecha
+                                        <input type="number" min="3" data-toggle="just_number" @if(App\touinf::TournamentDateValidate()->fecha
                                         <= 0) readonly @else @endif data-max="100" data-min_max data-min="3"
                                             onKeypress="return isNumberKey(this)" class="form-control" required=""
                                             id="tougrpsmaxp-edit" name="tougrpsmaxp">
                                     </div>
                                     <div class="form-group">
                                         <label for=""> TINCAZO medio (Solo Resultado)</label>
-                                        <input type="number" min="2" data-toggle="just_number" @if($fechaValidar->fecha
+                                        <input type="number" min="2" data-toggle="just_number" @if(App\touinf::TournamentDateValidate()->fecha
                                         <= 0) readonly @else @endif data-max="100" data-min_max data-min="2"
                                             onKeypress="return isNumberKey(this)" class="form-control" required=""
                                             id="tougrpsmedp-edit" name="tougrpsmedp">
                                     </div>
                                     <div class=" form-group">
                                         <label for=""> TINCAZO menor (Uno de los marcadores)</label>
-                                        <input type="number" min="1" data-toggle="just_number" @if($fechaValidar->fecha
+                                        <input type="number" min="1" data-toggle="just_number" @if(App\touinf::TournamentDateValidate()->fecha
                                         <= 0) readonly @else @endif data-max="100" data-min_max data-min="1"
                                             onKeypress="return isNumberKey(this)" class="form-control" required=""
                                             id="tougrpsminp-edit" name="tougrpsminp">
@@ -66,11 +66,12 @@
                                         onKeypress="return isNumberKey(this)" class="form-control" required=""
                                         max="10" id="tougrpsxval-edit" name="tougrpsxval" >
                                     </div>
+
                                     <div class="form-group">
                                         <label for=""> Puntos x Campeon <strong style="color: red">(0 a
                                                 50)</strong></label>
                                         <input type="number" min="0" max="50" data-toggle="just_number"
-                                            @if($fechaValidar->fecha <= 0) readonly @else @endif data-max="50"
+                                            @if(App\touinf::TournamentDateValidate()->fecha <= 0) readonly @else @endif data-max="50"
                                             data-min_max data-min="0" onKeypress="return isNumberKey(this)"
                                             class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt">
                                     </div>

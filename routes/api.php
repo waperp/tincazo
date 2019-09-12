@@ -13,7 +13,6 @@ Route::group([
     Route::get('membership', 'Auth\AuthController@membership');
     Route::post('validateMailLogin', 'secusrController@validateMailLogin');
     Route::post('validateMailInvite', 'secusrController@validateMailInvite');
-
     Route::group([
         'middleware' => 'auth:api',
     ], function () {

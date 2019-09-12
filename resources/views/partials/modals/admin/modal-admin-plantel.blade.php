@@ -16,7 +16,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <select class="select2 form-control" id="select-modal-nuevo-equipo" style="width: 100%">
-                                @foreach($listaTipoPlantel as $onjListaTipoPlante)
+                                @foreach(App\contyp::matchesType() as $onjListaTipoPlante)
                                 <option value="{{$onjListaTipoPlante->contypscode}}">
                                     {{$onjListaTipoPlante->contyptdesc}}
                                 </option>

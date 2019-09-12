@@ -133,55 +133,15 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        // return toutea::myChampion()->toSql();
-        //   return Session::get('select-tougrpicode');
-        //  return Session::get('select-touinfscode');
-        //  return Session::get('select-tougplicode');
         $date = Carbon::now();
-        // return  dd$request->ajax();
-
-        // return $request->all();
-        // Session::put('touinfscode',$request->touinfscode);
         $listaConmen     = DB::table('conmem')->get();
-        $listaTouinf = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->get();
-        $listaTouinfAll = DB::table('touinf')->get();
-        $listaTouinfSlider = DB::table('touinf')->where('touinfdendt', '>', Carbon::now()->toDateString())->orderBy('touinfscode', 'DESC')->get();
-        $listaTipoPlantel = DB::table('contyp')->where('confrmicode', 2)->get();
         $listaToutea     = DB::table('toutea')->get();
         $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
         $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
-        $fechaValidar = DB::table('touinf')->select(DB::raw('count(touinf.touinfscode) as fecha'))
-            ->where('touinf.touinfscode', Session::get('select-touinfscode'))
-            ->where('touinf.touinfdstat', '>', $date->toDateString())
-            ->first();
-        /*dd($fechaValidar);*/
-
-        $listaEquiposElegir = DB::select(
-            'select toutte.touttescode as touttescode1, toutea.touteavimgt, toutea.touteatname, plachm.touttescode
-        from toutea
-        join toutte on toutea.touteascode = toutte.touteascode
-        join tougrp on toutte.touinfscode = tougrp.touinfscode
-        join tougpl on tougrp.tougrpicode = tougpl.tougrpicode
-        left join plachm on toutte.touttescode = plachm.touttescode and plachm.tougplicode = ?
-        where tougrp.tougrpicode = ? and tougpl.tougplicode = ? order by touteatname asc',
-            [
-                Session::get('select-plainficode'),
-                Session::get('select-tougrpicode'), Session::get('select-tougplicode')
-            ]
-        );
-
-
         return view('partials.layout.index', compact(
-            'listaConmen',
-            'listaTouinf',
-            'listaTipoPlantel',
             'listaContypEquipos',
             'listaToutea',
-            // 'listaEquiposElegir',
-            'fechaValidar',
-            'listaTouinfSlider',
             'validarTougrpbchva',
-            'listaTouinfAll'
         ));
     }
   

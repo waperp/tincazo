@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class touinf extends Model
 {
@@ -42,5 +43,17 @@ class touinf extends Model
     public function scopeTournamentActive($query)
     {
         $query->where('touinfdendt', '>=', Carbon::now()->toDateString());
+    }
+    public function scopeTournamentDateValidate($query)
+    {
+       return $query->select(\DB::raw('count(touinf.touinfscode) as fecha'))
+        ->where('touinf.touinfscode', Session::get('select-touinfscode'))
+        ->where('touinf.touinfdstat', '>',  Carbon::now()->toDateString())
+        ->first();
+    }
+    public function scopeTournamentSlider($query)
+    {
+       return $query->where('touinfdendt', '>', Carbon::now()->toDateString())
+       ->orderBy('touinfscode', 'DESC')->get();
     }
 }

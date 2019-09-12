@@ -38,12 +38,7 @@
                                             Bien!
                                         </strong>
                                     </div>
-                                    <div style="display: none" class="lds-ring">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
+                                   
                                     <div class="form-group text-left">
                                         <div class="form-group text-right">
                                             <a class="text-center" OnClick="validateMail()">Olvidastes tu
@@ -60,7 +55,12 @@
                                                     href="/TerminosCondiciones"> Terminos y Condiciones </a> </label>
                                         </div>
                                     </div>
-
+                                    <div style="display: none" class="lds-ring">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
                                     <div class="form-group form-group--submit">
 
                                         <button id="form-login-button-submit" class="btn btn-primary-inverse btn-block"

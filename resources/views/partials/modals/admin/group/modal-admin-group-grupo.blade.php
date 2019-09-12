@@ -35,7 +35,7 @@
                                         <div class="form-group">
                                             <select class="select2 form-control" id="selecttorneo" name="touinfscode"
                                                 required="" style="width: 100%">
-                                                @foreach($listaTouinf as $objTouinf)
+                                                @foreach(App\touinf::tournamentActive()->get() as $objTouinf)
                                                 <option data-image="{{$objTouinf->touinfvlogt}}"
                                                     value="{{$objTouinf->touinfscode}}">
                                                     {{$objTouinf->touinftname }}

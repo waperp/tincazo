@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="modales" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="">INVITACIONES</h4>
@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <!-- Tab panes -->
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
 
                         <div class="input-group input-group-sm">
                             <input id="secusrtmail-invite" type="text" class="form-control"
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table id="tableinvitaciones" style="width: 100%" class="table table-hover table-standings">
+                    <table id="tableinvitaciones" style="width: 100%" class="table table-striped table-hover nowrap">
                         <thead>
                             <tr>
                                 <th>JUGADOR</th>

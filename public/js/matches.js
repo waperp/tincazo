@@ -233,7 +233,6 @@ function matches_score_type_team2(item) {
         }
     }
 }
-
 function winner_loser_team1(item) {
 
     if (item.constascode == 1) {
@@ -245,7 +244,6 @@ function winner_loser_team1(item) {
             } else {
                 toufixsscr1 = '';
             }
-
         } else {
             toufixsscr1 = '';
         }
@@ -294,7 +292,6 @@ function winner_loser_team2(item) {
             return '<span class="game-result__score-result game-result__score-result--draw2">' + item.toufixsscr2 + '</span>';
         }
     }
-
 }
 function isEmpty(value) {
     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;

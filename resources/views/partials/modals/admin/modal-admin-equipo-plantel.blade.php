@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6" style="margin-bottom: 15px">
                         <select class="select2 form-control" id="selectTorneosEquipos" required="" style="width: 100%">
-                            @foreach($listaTouinf as $objTorneosEquipos)
+                            @foreach(App\touinf::tournamentActive()->get() as $objTorneosEquipos)
                             <option value="{{$objTorneosEquipos->touinfscode}}">
                                 {{$objTorneosEquipos->touinftname}}
                             </option>

@@ -1,6 +1,6 @@
 <h2 class="text-center">Política de privacidad</h2>
 <p>
-    TINCAZO es gratuita. Este servicio no tiene costo y está diseñado para ser utilizado de esa manera. <br>
+    <strong>TINCAZO</strong> es gratuita. Este servicio no tiene costo y está diseñado para ser utilizado de esa manera. <br>
     Esta página se utiliza para informar a los visitantes sobre nuestras políticas en cuanto a recopilación, uso y
     divulgación de información personal para cualquierda que decida utilizar nuestro Servicio.
 </p>

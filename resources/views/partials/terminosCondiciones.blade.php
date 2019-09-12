@@ -135,11 +135,11 @@
                                     acciones legales pertinentes, y a las sanciones previstas por este acuerdo.</p>
                                 <li style="list-style-type: none;" class="font-weight-bold text-dark">
                                     <strong>CONTACTENOS</strong> </li>
-                                <p>Si necesita comunicarse con Tincazo.com, por favor envie un correo electronico : <br>
-                                    <a href="mailto:soporte@tincazo.com">soporte@tincazo.com</a>
-                                    <br>
-                                    Gracias por visitar <strong>TINCAZO</strong>
-                                </p>
+                                    <p>Si necesita comunicarse con <strong>TINCAZO</strong>, por favor envie un correo electronico : <br>
+                                        <a href="mailto:soporte@tincazo.com">soporte@tincazo.com</a>
+                                        <br>
+                                        Gracias por visitar <strong>TINCAZO</strong>
+                                    </p>
                             </ol>
                         </div>
                 </article>

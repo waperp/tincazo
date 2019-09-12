@@ -13,7 +13,7 @@
                 <!-- Article -->
                 <article class="card card--lg post post--single">
                     <div class="card__content">
-                        <div class="post__content">
+                        <div class="post__content" class="text-justify">
                             @include('partials.layout.terminoscondiciones')
                         </div>
                 </article>

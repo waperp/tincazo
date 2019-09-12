@@ -1,6 +1,6 @@
 <h2 class="text-center">Política de privacidad</h2>
 <p>
-    <strong>TINCAZO</strong> es gratuita. Este servicio no tiene costo y está diseñado para ser utilizado de esa manera. <br>
+    <strong>TINCAZO</strong> es gratuito. Este servicio no tiene costo y está diseñado para ser utilizado de esa manera. <br>
     Esta página se utiliza para informar a los visitantes sobre nuestras políticas en cuanto a recopilación, uso y
     divulgación de información personal para cualquierda que decida utilizar nuestro Servicio.
 </p>
@@ -31,10 +31,14 @@
     <p>
         Enlace a la política de privacidad de los proveedores de servicios de terceros utilizados por la aplicación
     </p>
+    <p>
+
     <ul>
         <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
         <li><a href="https://onesignal.com/privacy_policy" target="_blank">OneSignal</a></li>
     </ul>
+</p>
+
     <li class="font-weight-bold text-dark text-uppercase">Dato de registro </li>
     <p>
         Queremos informarle que siempre que utilice nuestro Servicio, en caso de error en la aplicación, recopilamos
@@ -65,12 +69,14 @@
     <p>
         Es posible que contratemos a empresas y personas de terceros debido a las siguientes razones:
     </p>
+    <p>
     <ul>
         <li>Para facilitar nuestro Servicio.</li>
         <li>Para proporcionar el Servicio en nuestro nombre.</li>
         <li>Para Servicios relacionados con nuestros Servicios.</li>
         <li>Para ayudarnos a analizar cómo se utiliza nuestro Servicio.</li>
     </ul>
+</p>
     <p>Queremos informar a los usuarios de este Servicio que estos terceros tienen acceso a su Información personal. La
         razón es realizar las tareas asignadas a ellos en nuestro nombre. Sin embargo, están obligados a no divulgar o
         utilizar la información para ningún otro propósito.

@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-md-10 offset-md-1">
         <div class="card">
             <header class="card__header card__header--has-filter">
                 <h4>TUS TINCAZOS</h4>

@@ -28,12 +28,12 @@ class tougrp extends Model
     ];
     public function scopeInvitationsTotal($query)
     {
-            return $query
-                ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
-                ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
-                ->where('tougpl.plainficode', \Auth::user()->plainficode)
-                ->where('tougpl.constascode', 1)
-                ->count();
+        return $query
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+            ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
+            ->where('tougpl.plainficode', \Auth::user()->plainficode)
+            ->where('tougpl.constascode', 1)
+            ->count();
     }
     public function scopeTournamentsWithGroups($query)
     {
@@ -49,7 +49,7 @@ class tougrp extends Model
             $touinfscode = Session::get('session_link_tournament')->touinfscode;
         }
         return $query
-            ->select('tougrp.secconnuuid as secconnuuid1','tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
+            ->select('tougrp.secconnuuid as secconnuuid1', 'tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
             ->where('tougrp.tougrpbenbl', 1)
@@ -68,7 +68,7 @@ class tougrp extends Model
         // and tougpl.plainficode = ? 
         // and tougpl.constascode = 2 and touinf.touinfscode = ?';
         return $query
-            ->select('tougrp.secconnuuid as secconnuuid1','tougrp.*', 'touinf.*','tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
+            ->select('tougrp.secconnuuid as secconnuuid1', 'tougrp.*', 'touinf.*', 'tougpl.tougplicode', \DB::raw('(Select count(tougpl.tougplicode) from tougpl where tougpl.tougrpicode = tougrp.tougrpicode) as total'))
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
             ->where('tougrp.tougrpbenbl', 1)
@@ -77,12 +77,22 @@ class tougrp extends Model
             ->where('touinf.touinfscode', $touinfscode)
             ->get();
     }
-    public function scopeMisInvitaciones($query){
-        return $query->select('tougrp.tougrpicode','tougrp.tougrpvimgg','tougrp.tougrptname','touinf.touinftname')
-        ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
+    public function scopeMisInvitaciones($query)
+    {
+        return $query->select('tougrp.tougrpicode', 'tougrp.tougrpvimgg', 'tougrp.tougrptname', 'touinf.touinftname')
+            ->join('tougpl', 'tougrp.tougrpicode', 'tougpl.tougrpicode')
             ->join('touinf', 'tougrp.touinfscode', 'touinf.touinfscode')
             ->where('tougpl.plainficode', Session::get('plainficode'))
             ->where('tougpl.constascode', 1)
-        ->get();
+            ->get();
+    }
+    public function scopeIsUserGroupAdmin($query)
+    {
+        $isAdmin = $query->select(\DB::raw('COUNT(tougrp.tougrpicode) as isAdmin'))
+            ->where('tougrp.plainficode', Session::get('plainficode'))
+            ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+            ->where('tougrp.touinfscode', Session::get('select-touinfscode'))
+            ->first();
+        return $isAdmin->isAdmin;
     }
 }

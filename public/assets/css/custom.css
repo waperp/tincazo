@@ -1176,7 +1176,21 @@ input.header-mobile__search-control {
     border-color: #292c31;
     color: white;
 }
-
+.content-filter__item > a.content-filter__link.active::before {
+    height: 4px;
+    opacity: 1;
+}
+.content-filter__item > .nav-link.active  {
+    color: #31404b;
+     background-color: #fff; 
+     border-color: transparent; 
+     border-left: 0px solid #e4e7ed;
+}
+.nav-item.content-filter__item .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
 @media (min-width: 992px) {
     .nav-account .nav-account__item.has-children ul {
         list-style: none;

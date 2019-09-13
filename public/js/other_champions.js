@@ -34,7 +34,7 @@ function other_champions() {
                              imagen = 'images/champions.png';
         
                         }
-                album__item += '<div id="touttescode-'+ item.touttescode +'"  data-touttebenbl="' + data[i].touttebenbl + '" data-touteavimgt=" '+ data[i].touteavimgt +' " data-toutetname=" '+ data[i].touteatname +' " onclick="listaJugadoresCampeon('+ data[i].touttescode +')" style="cursor: help" class="album__item col-6 col-sm-3	col-md-4 col-lg-4 col-xl-4">';
+                album__item += '<div id="touttescode-'+ item.touttescode +'"  data-touttebenbl="' + data[i].touttebenbl + '" data-touteavimgt=" '+ data[i].touteavimgt +' " data-toutetname=" '+ data[i].touteatname +' " onclick="listaJugadoresCampeon('+ data[i].touttescode +')" style="cursor: help" class="album__item col-6 col-sm-3	col-md-3 col-lg-2 col-xl-2">';
                     album__item += '<div style="'+album__item__holder+'" class="album__item-holder">';
                         album__item += '<a  class="album__item-link mp_gallery">';
                             album__item += '<figure style="border-radius:10px;" class="album__thumb">';

@@ -11,7 +11,7 @@
                         <h4 class="text-center">REGISTRATE AHORA!</h4>
                     </div>
                     <div class="card__content">
-                        <div class="content col-md-6 offset-md-3 mb-1">
+                        <div class="content col-md-6 offset-md-3 mb-4">
                             <div id="image-preview" style="height: 200px;padding: 5px !important" class="image-preview">
                                 <label for="image-upload" class="image-label" id="image-label">
                                     Tu Foto

@@ -76,7 +76,7 @@
                 </div>
             </li>
             @endif
-            @if(Session::has('plainficode') && Session::has('session-admin-tougrp'))
+            {{-- @if(Session::has('plainficode') && Session::has('session-admin-tougrp'))
             @if (Session::get('session-admin-tougrp') == true)
             <li class="mitorneo_li">
                 <a class="mitorneo">{{ Session::get('select-tougrptname') }}</a>
@@ -99,7 +99,7 @@
                 </ul>
             </li>
             @endif
-            @endif
+            @endif --}}
         </ul>
         <a href="#" class="pushy-panel__toggle">
             <span class="pushy-panel__line"></span>

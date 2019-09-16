@@ -1211,14 +1211,14 @@ input.header-mobile__search-control {
     }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .sponsors {
-        margin-top: -16px;
+        margin-top: -24px;
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
-        padding: 35px 0 20px 0;
+        padding: 35px 0 47px 0;
     }
-}
+} */
 
 @media (min-width: 992px) {
     .nav-account .nav-account__item.has-children:hover ul {

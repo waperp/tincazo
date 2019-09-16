@@ -1,5 +1,5 @@
 <aside class="widget card widget--sidebar widget-standings">
-	<div class="widget__title card__header card__header--has-btn" style="padding: 12px 24px">
+	<div class="widget__title card__header card__header--has-btn" >
 		<h4> TABLA GENERAL</h4>
 	</div>
 	<div class="widget__content card__content p-2">

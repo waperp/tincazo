@@ -1,5 +1,5 @@
 <aside class="widget widget--sidebar card widget-popular-posts">
-    <div class="widget__title card__header" style="padding: 12px 24px">
+    <div class="widget__title card__header" >
         <h4>TABLA POR DIA</h4>
     </div>
     <div class="row">

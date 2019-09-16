@@ -98,14 +98,7 @@ var table = $("#tablepociciones").DataTable({
     },
     ajax: {
         url: '/tablaPosicionesGrupo',
-        data: function (d) {
-            var tougrpicode = tougrp.tougrpicode;
-            if (tougrpicode > 0) {
-                d.tougrpicode = tougrpicode;
-            } else {
-                d.tougrpicode = 0;
-            }
-        }
+        
     },
     columns: [{
         className: 'padding-pos',
@@ -247,9 +240,7 @@ $("#table-pociciones-dia").DataTable({
         url: '/tablaPosicionesPorDia',
         data: function (d) {
             var fecha = $('#date-filtrer-posiciones').val();
-            var tougrpicode = tougrp.tougrpicode;
             d.fecha = fecha;
-            d.tougrpicode = tougrpicode;
         }
     },
     columns: [
@@ -326,14 +317,7 @@ var tableinvitaciones = $("#tableinvitaciones").DataTable({
     buttons: [],
     ajax: {
         url: '/tablaInvitacionesGrupo',
-        data: function (d) {
-            var tougrpicode = tougrp.tougrpicode;
-            if (tougrpicode > 0) {
-                d.tougrpicode = tougrpicode;
-            } else {
-                d.tougrpicode = 0;
-            }
-        }
+      
     },
     columns: [{
         orderable: false,

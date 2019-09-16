@@ -19,6 +19,6 @@ class contyp extends Model
     }
     public function scopeMatchesType($query)
     {
-        $query->where('confrmicode', 2)->get();
+        return $query->where('confrmicode', 2)->get();
     }
 }

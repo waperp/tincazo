@@ -947,16 +947,10 @@ var tablesss = $("#table-tincazos-grupo").DataTable({
     ajax: {
         url: '/obtenerPredicciones',
         data: function (d) {
-            var tougrpicode = tougrp.tougrpicode;
-            var touinfscode = touinf.touinfscode;
             var toufixicode = $('#mostrar-toufixicode-hidden').val();
             if (toufixicode > 0) {
-                d.touinfscode = touinfscode;
-                d.tougrpicode = tougrpicode;
                 d.toufixicode = toufixicode;
             } else {
-                d.touinfscode = null;
-                d.tougrpicode = null;
                 d.toufixicode = null;
             }
         }

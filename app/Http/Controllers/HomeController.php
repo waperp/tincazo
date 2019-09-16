@@ -325,7 +325,8 @@ class HomeController extends Controller
         on toufix.constascode = consta.constascode and consta.confrmicode = 3 join plapre on toufix.toufixicode = plapre.toufixicode join tougpl
         on plapre.tougplicode = tougpl.tougplicode join plainf on tougpl.plainficode = plainf.plainficode and tougpl.tougrpicode = ?
         Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and toufix.toufixicode = ? and toufix.constascode > 1 order by plainf.plainftnick',
-            [Session::get('select-tougrpicode'), Session::get('select-touinfscode'), Session::get('select-touinfscode'), $request->toufixicode]
+            [Session::get('select-tougrpicode'), Session::get('select-touinfscode'), 
+            Session::get('select-touinfscode'), $request->toufixicode]
         );
 
         return Datatables::of($data)->make(true);

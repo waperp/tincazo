@@ -296,3 +296,78 @@ function winner_loser_team2(item) {
 function isEmpty(value) {
     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
+
+function selected_tournament(element, secconnuuid) {
+    if (element) {
+        $('.posts__item__tournament').removeClass("tournament__select");
+        $(element).addClass("tournament__select");
+        $('#list_groups').empty();
+        $('.lds-spinner').removeClass('d-none').show();
+    }
+
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/selected_tournament',
+        type: 'get',
+        dataType: 'json',
+        data: {
+            secconnuuid: secconnuuid,
+        },
+        success: function (data) {
+            desing_menu_groups(data);
+        }
+    });
+}
+function selected_tournament_group(element, secconnuuid, tougplicode) {
+
+
+    $('.posts__item__groups').removeClass("group__select");
+    $(element).addClass("group__select");
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/selected_group',
+        type: 'get',
+        dataType: 'json',
+        data: {
+            secconnuuid: secconnuuid,
+            tougplicode: tougplicode
+        },
+        success: function (data) {
+            debugger
+            window.location.href = '/';
+        }
+    });
+}
+function desing_menu_groups(data) {
+    setTimeout(function () {
+        var desing_menu_groups = '';
+        $.each(data, function (i, item) {
+            title = " Participante";
+            if (item.total <= 1) {
+                title = " Participante";
+
+            } else {
+                title = " Participantes";
+
+            }
+            desing_menu_groups += '<li class="posts__item posts__item--category-group posts__item--category-group-' + item.tougrpicode + ' posts__item__groups" style="cursor: pointer;" onclick=selected_tournament_group(this,"' + item.secconnuuid1 + '",' + item.tougplicode + ')>';
+            desing_menu_groups += ' <figure class="posts__thumb">';
+            desing_menu_groups += '<a>';
+            desing_menu_groups += '<img src="/images/' + item.tougrpvimgg + '" class="img-thumbnail img-thumbnail-primary" style="width: 50px ; height: auto;border-top-right-radius: 50%;border-bottom-right-radius: 50%;"/>';
+            desing_menu_groups += '</a>';
+            desing_menu_groups += '</figure>';
+            desing_menu_groups += '<div class="posts__inner">';
+            desing_menu_groups += '<h6 class="posts__title pt-2"><a >' + item.tougrptname + '</a></h6>';
+            desing_menu_groups += '<div class="posts__cat">';
+            desing_menu_groups += '<span class="label posts__cat-label badge-primary" style="font-size: 9px"> ' + item.total + ' ' + title + '</span>';
+            desing_menu_groups += '</div>';
+            desing_menu_groups += '</div>';
+            desing_menu_groups += '</li>';
+            $('.lds-spinner').addClass('d-none').hide();
+
+        });
+        $('#list_groups').append(desing_menu_groups);
+        $('.posts__item--category-group-' + tougrp.tougrpicode).addClass('group__select');
+    }, 1000);
+
+}

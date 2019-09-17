@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\sendValidateMail;
-use Webpatser\Uuid\Uuid;
+use Session;
+use Validator;
 use App\plainf;
 use App\secpin;
 use App\secusr;
@@ -11,21 +11,21 @@ use App\tougrp;
 use App\touinf;
 use App\toutea;
 use Carbon\Carbon;
-use Illuminate\Contracts\Encryption\DecryptException;
+use Webpatser\Uuid\Uuid;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
+use App\Mail\sendValidateMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Session;
-use Validator;
+use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class HomeController extends Controller
 {
 
     public function up(Request $request)
-    { 
+    {
         // $secusr = secusr::all();
         // foreach ($secusr as $key) {
         //    $key->secconnuuid = Uuid::generate(4)->string;
@@ -37,7 +37,7 @@ class HomeController extends Controller
         Session::forget('select-q');
         Session::forget('tougrp');
         Session::forget('tougpl');
- 
+
         return view('matches');
     }
     public function validateMail(Request $request)
@@ -144,7 +144,7 @@ class HomeController extends Controller
             'validarTougrpbchva',
         ));
     }
-  
+
     public function guia()
     {
         Session::forget('select-q');
@@ -294,7 +294,7 @@ class HomeController extends Controller
             'listaPartidosFinalizados' => $listaPartidosFinalizados,
         ]);
     }
-   
+
     public function listaJugadoresCampeon(Request $request)
     {
         $data = DB::select('Select plainf.plainfvimgp, plainf.plainftnick from plachm join tougpl on plachm.tougplicode = tougpl.tougplicode
@@ -311,8 +311,8 @@ class HomeController extends Controller
 
         return response()->json($estadisticas);
     }
-    
-   
+
+
     public function obtenerPredicciones(Request $request)
     {
 
@@ -325,15 +325,14 @@ class HomeController extends Controller
         on toufix.constascode = consta.constascode and consta.confrmicode = 3 join plapre on toufix.toufixicode = plapre.toufixicode join tougpl
         on plapre.tougplicode = tougpl.tougplicode join plainf on tougpl.plainficode = plainf.plainficode and tougpl.tougrpicode = ?
         Where toutte1.touinfscode = ? and toutte2.touinfscode = ? and toufix.toufixicode = ? and toufix.constascode > 1 order by plainf.plainftnick',
-            [Session::get('select-tougrpicode'), Session::get('select-touinfscode'), 
-            Session::get('select-touinfscode'), $request->toufixicode]
+            [Session::get('select-tougrpicode'), Session::get('select-touinfscode'), Session::get('select-touinfscode'), $request->toufixicode]
         );
 
         return Datatables::of($data)->make(true);
     }
-  
-   
-   
+
+
+
     public function  TerminosCondiciones()
     {
         Session::forget('select-q');

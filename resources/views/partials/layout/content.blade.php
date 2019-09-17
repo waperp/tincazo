@@ -71,7 +71,7 @@
 
                             <div class="form-group col-6">
                                 <label for="">Nombre del torneo</label>
-                                <input type="text" class="form-control" required="" name="tougrptname"
+                                <input type="text" class="form-control" value="{{ Session::get('tougrp')->tougrptname }}" required="" name="tougrptname"
                                     id="tougrptname-edit">
                             </div>
                             <div class="form-group col-6">
@@ -80,7 +80,7 @@
                                     @if(App\touinf::TournamentDateValidate()->fecha
                                 <= 0) readonly @else @endif data-max="100" data-min_max data-min="3"
                                     onKeypress="return isNumberKey(this)" class="form-control" required=""
-                                    id="tougrpsmaxp-edit" name="tougrpsmaxp">
+                                    id="tougrpsmaxp-edit" name="tougrpsmaxp" value="{{ Session::get('tougrp')->tougrpsmaxp }}" >
                             </div>
                         </div>
                         <div class="form-row">
@@ -90,7 +90,7 @@
                                     @if(App\touinf::TournamentDateValidate()->fecha
                                 <= 0) readonly @else @endif data-max="100" data-min_max data-min="2"
                                     onKeypress="return isNumberKey(this)" class="form-control" required=""
-                                    id="tougrpsmedp-edit" name="tougrpsmedp">
+                                    id="tougrpsmedp-edit" name="tougrpsmedp" value="{{ Session::get('tougrp')->tougrpsmedp }}">
                             </div>
 
                             <div class="form-group  col-6">
@@ -99,7 +99,7 @@
                                     @if(App\touinf::TournamentDateValidate()->fecha
                                 <= 0) readonly @else @endif data-max="100" data-min_max data-min="1"
                                     onKeypress="return isNumberKey(this)" class="form-control" required=""
-                                    id="tougrpsminp-edit" name="tougrpsminp">
+                                    id="tougrpsminp-edit" name="tougrpsminp" value="{{ Session::get('tougrp')->tougrpsminp }}">
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
                                 readonly @else @endif @endif
                                 min="1" data-toggle="just_number" data-max="10" data-min_max data-min="1"
                                 onKeypress="return isNumberKey(this)" class="form-control" required=""
-                                max="10" id="tougrpsxval-edit" name="tougrpsxval" >
+                                max="10" id="tougrpsxval-edit" name="tougrpsxval" value="{{ Session::get('tougrp')->tougrpsxval }}">
                             </div>
 
                             <div class="form-group col-6">
@@ -120,7 +120,7 @@
                                 <input type="number" min="0" max="50" data-toggle="just_number"
                                     @if(App\touinf::TournamentDateValidate()->fecha <= 0) readonly @else @endif
                                     data-max="50" data-min_max data-min="0" onKeypress="return isNumberKey(this)"
-                                    class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt">
+                                    class="form-control" required="" id="tougrpschpt-edit" name="tougrpschpt" value="{{ Session::get('tougrp')->tougrpschpt }}">
                             </div>
                         </div>
                         <div class="form-row">

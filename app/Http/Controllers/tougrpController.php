@@ -379,9 +379,9 @@ class tougrpController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
-                'tougrpicode' => 'required',
+                // 'tougrpicode' => 'required',
                 'tougrptname' => 'required',
-                'touinfscode' => 'required',
+                // 'touinfscode' => 'required',
                 'tougrpsmaxp' => 'required|numeric|integer|min:3|max:100',
                 'tougrpsmedp' => 'required|numeric|integer|min:2|max:100',
                 'tougrpsminp' => 'required|numeric|integer|min:1|max:100',
@@ -409,9 +409,12 @@ class tougrpController extends Controller
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
-                        Session::forget('select-tougrpsxval');
-                        Session::put('select-tougrptname', $request->tougrptname);
-                        Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
+                        $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
+                        ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                        ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                        ->first();
+                        Session::put('tougrp', $tougrpshow);
+                        // Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
                     } else {
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
@@ -421,9 +424,11 @@ class tougrpController extends Controller
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
-                        Session::forget('select-tougrpsxval');
-                        Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
-                        Session::put('select-tougrptname', $request->tougrptname);
+                        $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
+                        ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                        ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                        ->first();
+                        Session::put('tougrp', $tougrpshow);
                     }
                 } else {
                     return response()->json(
@@ -459,9 +464,9 @@ class tougrpController extends Controller
             }
             // return response()->json($request->all());
             $validator = Validator::make($request->all(), [
-                'tougrpicode' => 'required',
+                // 'tougrpicode' => 'required',
                 'tougrptname' => 'required',
-                'touinfscode' => 'required',
+                // 'touinfscode' => 'required',
                 'tougrpsmaxp' => 'required|numeric|min:3|max:100',
                 'tougrpsmedp' => 'required|numeric|min:2|max:100',
                 'tougrpsminp' => 'required|numeric|min:1|max:100',

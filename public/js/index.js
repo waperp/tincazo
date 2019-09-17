@@ -143,24 +143,24 @@ $(document).ready(function () {
 
     selectResponsable();
 
-    var filtre_torneo = window.getParameterByName('q');
+    // var filtre_torneo = window.getParameterByName('q');
 
-    if (tougrp && touinf) {
-        var torneo = tougrp.tougrptname;
+    // if (tougrp && touinf) {
+    //     var torneo = tougrp.tougrptname;
 
-        var touinfscode = tougrp.touinfscode;
-        var tougrpicode = tougrp.tougrpicode;
-        var plainficodeurl = tougrp.plainficode;
-        var plainficodehidden = $('#plainficode-hidden').val();
-        // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
+    //     var touinfscode = tougrp.touinfscode;
+    //     var tougrpicode = tougrp.tougrpicode;
+    //     var plainficodeurl = tougrp.plainficode;
+    //     var plainficodehidden = $('#plainficode-hidden').val();
+    //     // var imagen = document.getElementById('image-torneo-' + tougrp.tougrpicode);
 
-        var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
-        var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
-        var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
-        var tougrpsminp = $('#tougrpsminp' + tougrpicode).val();
-        var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
-        var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
-    }
+    //     var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
+    //     var tougrpsmaxp = $('#tougrpsmaxp' + tougrpicode).val();
+    //     var tougrpsmedp = $('#tougrpsmedp' + tougrpicode).val();
+    //     var tougrpsminp = $('#tougrpsminp' + tougrpicode).val();
+    //     var tougrpsxval = $('#tougrpsxval' + tougrpicode).val();
+    //     var tougrpschpt = $('#tougrpschpt' + tougrpicode).val();
+    // }
 
     $('#tablepociciones_filter lable input').addClass('modify'); // <-- add this line
     // <-- add this line
@@ -192,21 +192,21 @@ $(document).ready(function () {
         $("#image-preview3").css("background-image", "url('images/" + tougrp.tougrpvimgg + "')");
         $("#image-preview3").css("background-size", "cover");
         $("#image-preview3").css("background-position", "center center");
-        $('#tougrpsmaxp-edit').val(tougrp.tougrpsmaxp);
-        $('#tougrpsmedp-edit').val(tougrp.tougrpsmedp);
-        $('#tougrpsminp-edit').val(tougrp.tougrpsminp);
-        $('#tougrpsxval-edit').val(tougrp.tougrpsxval);
-        $('#tougrpschpt-edit').val(tougrp.tougrpschpt);
-        $('#tougrptname-edit').val(tougrp.tougrptname);
-        $('#touinfscode-edit-hidden').val(tougrp.touinfscode);
-        $('#tougrpicode-edit-hidden').val(tougrp.tougrpicode);
+        // $('#tougrpsmaxp-edit').val(tougrp.tougrpsmaxp);
+        // $('#tougrpsmedp-edit').val(tougrp.tougrpsmedp);
+        // $('#tougrpsminp-edit').val(tougrp.tougrpsminp);
+        // $('#tougrpsxval-edit').val(tougrp.tougrpsxval);
+        // $('#tougrpschpt-edit').val(tougrp.tougrpschpt);
+        // $('#tougrptname-edit').val(tougrp.tougrptname);
+        // $('#touinfscode-edit-hidden').val(tougrp.touinfscode);
+        // $('#tougrpicode-edit-hidden').val(tougrp.tougrpicode);
 
         $('#selecttorneo-edit').val(tougrp.touinfscode).trigger('change');
         $("#imagetorneo-edit").attr("src", imgs.src);
     } else {
         // $('#site-content-intrucciones').show();
         // $('#row-container').hide();
-        $('.mitorneo_li').hide();
+        // $('.mitorneo_li').hide();
         // $('#grupo-li-player-group').hide();
     }
     $("#selecttorneo").select2({
@@ -1160,8 +1160,8 @@ $("#formgrupoconfig").submit(function (e) {
     var formData = new FormData();
     var _token = $('input[name=_token]').val();
     var tougrptname = $('input[name=tougrptname]').val();
-    var tougrpicode = $('#tougrpicode-edit-hidden').val();
-    var touinfscode = $('#touinfscode-edit-hidden').val();
+    // var tougrpicode = $('#tougrpicode-edit-hidden').val();
+    // var touinfscode = $('#touinfscode-edit-hidden').val();
     var tougrpsmaxp = $('input[name=tougrpsmaxp]').val();
     var tougrpsmedp = $('input[name=tougrpsmedp]').val();
     var tougrpsminp = $('input[name=tougrpsminp]').val();
@@ -1170,8 +1170,8 @@ $("#formgrupoconfig").submit(function (e) {
     // var touinfscode = $('#selecttorneo-edit').val();
     var tougrpvimgg = $('input[name=tougrpvimgg2').prop('files')[0];
     formData.append("tougrptname", tougrptname);
-    formData.append("touinfscode", touinfscode);
-    formData.append("tougrpicode", tougrpicode);
+    // formData.append("touinfscode", touinfscode);
+    // formData.append("tougrpicode", tougrpicode);
     formData.append("tougrpvimgg", tougrpvimgg);
     formData.append("tougrpsmaxp", tougrpsmaxp);
     formData.append("tougrpsmedp", tougrpsmedp);
@@ -1197,8 +1197,8 @@ $("#formgrupoconfig").submit(function (e) {
         //     tougrpicode: tougrpicode
         // },
         success: function (data) {
-
-            window.location.reload();
+debugger
+            // window.location.reload();
         },
     });
 });
@@ -1594,9 +1594,7 @@ function formatState1(state) {
 
 function miCampeon(touttescode) {
     var _token = $('input[name=_token]').val();
-    var tougrpicode = tougrp.tougrpicode;
-    var tougplicode = tougrp.tougplicode;
-    var touinfscode = touinf.touinfscode;
+    
     $.ajax({
         url: '/insertarCampeon',
         type: 'post',
@@ -1605,10 +1603,7 @@ function miCampeon(touttescode) {
             'X-CSRF-TOKEN': _token
         },
         data: {
-            tougrpicode: tougrpicode,
-            tougplicode: tougplicode,
             touttescode: touttescode,
-            touinfscode: touinfscode
         },
         success: function (data) {
             if (data.fecha > 0) {

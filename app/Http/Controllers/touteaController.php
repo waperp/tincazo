@@ -55,7 +55,6 @@ class touteaController extends Controller
                 $toutea->touteatabrv = $request->touteatabrv;
                 $toutea->touteavimgt = $imageName;
                 $toutea->contypscode = $request->contypscode;
-                $toutea->contypscode = $request->contypscode;
                 $toutea->save();
             } else {
                 if ($request->hasFile('touteavimgt')) {

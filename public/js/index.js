@@ -1197,6 +1197,7 @@ $("#formgrupoconfig").submit(function (e) {
         //     tougrpicode: tougrpicode
         // },
         success: function (data) {
+            debugger
             window.location.reload();
         },
     });

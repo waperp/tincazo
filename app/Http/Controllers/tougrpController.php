@@ -431,6 +431,17 @@ class tougrpController extends Controller
                         Session::put('tougrp', $tougrpshow);
                     }
                 } else {
+                    $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
+                    $tougrp->tougrptname = $request->tougrptname;
+                    if ($imageName == null) { } else {
+                        $tougrp->tougrpvimgg = $imageName;
+                    }
+                    $tougrp->save();
+                    $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
+                    ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                    ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                    ->first();
+                    Session::put('tougrp', $tougrpshow);
                     return response()->json(
                         ['message' => 'No puede cambiar el valor de tougrpbchva', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
                     );

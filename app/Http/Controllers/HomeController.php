@@ -70,6 +70,7 @@ class HomeController extends Controller
                     $secusr->secusrtpass = Hash::make($request->confirmPassword);
                     $secusr->save();
                     $plainf = plainf::find($secusr->plainficode);
+                    \Auth::loginUsingId($secusr->secusricode);
                     Session::put('secusrtmail', $secusr->secusrtmail);
                     Session::put('secusricode', $secusr->secusricode);
                     Session::put('plainficode', $secusr->plainficode);

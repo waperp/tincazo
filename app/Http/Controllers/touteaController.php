@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+
 class touteaController extends Controller
 {
     /**
@@ -134,67 +135,61 @@ class touteaController extends Controller
     {
         $data = DB::table('toutte')->select(DB::raw('count(toutte.touteascode) as cantidad'))->where('toutte.touteascode', $request->touteascode)->first();
         return response()->json($data->cantidad);
-
     }
     public function tieneDatosFix(Request $request)
     {
         $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as cantidad'))
             ->where('toufix.touttescod1', $request->touttescode)->orWhere('toufix.touttescod2', $request->touttescode)->first();
         return response()->json($data->cantidad);
-
     }
     public function eliminarTorneoEquipo(Request $request)
     {
         // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);
         $data = DB::table('toutte')->where('toutte.touteascode', $request->touteascode)->where('toutte.touinfscode', $request->touinfscode)->delete();
         return response()->json($data);
-
     }
-     public function EstadoEquipoTorneo(Request $request)
+    public function EstadoEquipoTorneo(Request $request)
     {
         // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);
         $data = DB::table('toutte')
-        ->where('toutte.touteascode', $request->touteascode)
-        ->where('toutte.touinfscode', $request->touinfscode)
-        ->where('toutte.touttescode', $request->touttescode)
-        ->update([
-            'touttebenbl' => 0
-        ]);
+            ->where('toutte.touteascode', $request->touteascode)
+            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toutte.touttescode', $request->touttescode)
+            ->update([
+                'touttebenbl' => 0
+            ]);
         return response()->json($data);
-
     }
     public function EquipoChampions(Request $request)
     {
         // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);
         $data = DB::table('toutte')
-        ->where('toutte.touteascode', $request->touteascode)
-        ->where('toutte.touinfscode', $request->touinfscode)
-        ->where('toutte.touttescode', $request->touttescode)
-        ->update([
-            'touttebisch' => 1,
-            'touttebenbl' => 0
-        ]);
+            ->where('toutte.touteascode', $request->touteascode)
+            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toutte.touttescode', $request->touttescode)
+            ->update([
+                'touttebisch' => 1,
+                'touttebenbl' => 0
+            ]);
 
- $data = DB::table('toutte')
- ->where('toutte.touteascode', '<>',$request->touteascode)
- ->where('toutte.touinfscode', $request->touinfscode)
- ->update([
-     'touttebenbl' => 0
- ]);
+        // $data = DB::table('toutte')
+        //     ->where('toutte.touteascode', '<>', $request->touteascode)
+        //     ->where('toutte.touinfscode', $request->touinfscode)
+        //     ->update([
+        //         'touttebenbl' => 0
+        //     ]);
 
         return response()->json($data);
-
     }
     public function EquipoChampionsValidate(Request $request)
     {
         // $data = DB::select('Select count(toutte.touteascode) as cantidad from toutte where toutte.touteascode = ?',[$id]);
         $data = DB::table('toutte')->select(\DB::raw('count(toutte.touteascode) as touttesteam'))
-        ->where('toutte.touteascode','<>', $request->touteascode)
-        ->where('toutte.touinfscode', $request->touinfscode)
-        ->where('toutte.touttebenbl', 1)
-        ->first();
+            ->where('toutte.touteascode', '<>', $request->touteascode)
+            ->where('toutte.touinfscode', $request->touinfscode)
+            ->where('toutte.touttebenbl', 1)
+            ->first();
         return response()->json($data->touttesteam);
-
     }
     public function agregarTorneosEquipos(Request $request)
     {
@@ -213,25 +208,23 @@ class touteaController extends Controller
     }
     public function validateDateChampions(Request $request)
     {
-         $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as validate'))
-            ->join('toutte','toufix.touttescod1','toutte.touttescode')
+        $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as validate'))
+            ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
             ->where('toutte.touinfscode', $request->touinfscode)
             ->where('toufix.constascode', '>', 1)
             ->first();
-             if ($data->validate <= 0) {
-                return response()->json([
-                    'success' => $data->validate,
-                    'message' => "se puede elegir el campeon"
-                ]);
-
-                
-            }else{
-                return response()->json([
-                    'success' => $data->validate,
-                    'message' =>"No puede elegir un campeón, el torneo ya ha comenzado"
-                ],401);
-            }
-     }
+        if ($data->validate <= 0) {
+            return response()->json([
+                'success' => $data->validate,
+                'message' => "se puede elegir el campeon"
+            ]);
+        } else {
+            return response()->json([
+                'success' => $data->validate,
+                'message' => "No puede elegir un campeón, el torneo ya ha comenzado"
+            ], 401);
+        }
+    }
     public function insertarCampeon(Request $request)
     {
         // $validar = DB::select('Select count(plachm.plachmicode) from plachm
@@ -244,11 +237,11 @@ class touteaController extends Controller
             $tougplicode = Session::get('select-tougplicode');
             $tougrpicode = Session::get('select-tougrpicode');
             $date        = Carbon::now();
-             $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
-            ->join('toutte','toufix.touttescod1','toutte.touttescode')
-            ->where('toutte.touinfscode', $touinfscode)
-            ->where('toufix.constascode', '>', 1)
-            ->first();
+            $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+                ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+                ->where('toutte.touinfscode', $touinfscode)
+                ->where('toufix.constascode', '>', 1)
+                ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
                 ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
@@ -262,7 +255,6 @@ class touteaController extends Controller
                         ->update([
                             'touttescode' => $request->touttescode,
                         ]);
-
                 } else {
                     $data = DB::table('plachm')
                         ->insert([
@@ -282,7 +274,7 @@ class touteaController extends Controller
             return response()->json($e->getMessage());
         }
     }
-     public function pushChampions(Request $request)
+    public function pushChampions(Request $request)
     {
         // $validar = DB::select('Select count(plachm.plachmicode) from plachm
         //     join toutte on plachm.touttescode = toutte.touttescode
@@ -296,11 +288,11 @@ class touteaController extends Controller
             //     ->where('touinf.touinfscode', $request->touinfscode)
             //     ->where('touinf.touinfdstat', '>', $request->touinfdstat)
             //     ->first();
-             $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
-            ->join('toutte','toufix.touttescod1','toutte.touttescode')
-            ->where('toutte.touinfscode', $request->touinfscode)
-            ->where('toufix.constascode', '>', 1)
-            ->first();
+            $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+                ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+                ->where('toutte.touinfscode', $request->touinfscode)
+                ->where('toufix.constascode', '>', 1)
+                ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
                 ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
@@ -316,7 +308,6 @@ class touteaController extends Controller
                         ->update([
                             'touttescode' => $request->touttescode,
                         ]);
-
                 } else {
                     $data = DB::table('plachm')
                         ->insert([
@@ -329,15 +320,15 @@ class touteaController extends Controller
                 DB::commit();
                 return response()->json([
                     'success' => true,
-                    'message' =>"Campeon insertado"
+                    'message' => "Campeon insertado"
 
                 ]);
-            }else{
+            } else {
                 return response()->json([
                     'success' => false,
-                    'message' =>"No se puede elegir el campeon por que el torneo ya ha comenzado"
+                    'message' => "No se puede elegir el campeon por que el torneo ya ha comenzado"
 
-                ],401);
+                ], 401);
             }
 
             return response()->json($validTorneo);

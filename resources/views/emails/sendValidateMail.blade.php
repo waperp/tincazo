@@ -55,7 +55,7 @@
                                                                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <a class="button button-primary" href="http://tincazo.com/reset/password?utm_ref={{ $data->secusrtmail }}&utm_source={{encrypt( $data->secusricode )}}&utm_value={{encrypt( $data->secpininump )}}" target="_blank">
+                                                                                            <a class="button button-primary" href="{{ config('app.url')}}/reset/password?utm_ref={{ $data->secusrtmail }}&utm_source={{encrypt( $data->secusricode )}}&utm_value={{encrypt( $data->secpininump )}}" target="_blank">
                                                                                                 Haz click Aquí
                                                                                             </a>
                                                                                         </td>

@@ -89,7 +89,7 @@ class DatatablesController extends Controller
             ->join('toutte', 'toutte.touteascode', 'toutea.touteascode')
             ->join('touinf', 'toutte.touinfscode', 'touinf.touinfscode')
 
-            ->where('contyp.confrmicode', 2)->where('touinf.touinfscode', $request->touinfscode)->get();
+            ->where('contyp.confrmicode', 2)->where('touinf.touinfscode', $request->touinfscode)->orderBy('toutea.touteatname')->get();
         return Datatables::of($data)->make(true);
     }
     public function tablaInfoPlayer(Request $request)

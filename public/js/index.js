@@ -1541,7 +1541,6 @@ $('#select-torneo-admin-torneos').on('select2:selecting', function (e) {
 $('#select-torneo-admin-torneos').on('select2:unselecting', function (e) {
     $('#admin-gestionar-grupo-touinftname').val(null);
 });
-
 function comboEquipos(touinfscode, contypscode) {
     $("#select-torneo-equipo").select2({
         placeholder: "Filtrar equipo",

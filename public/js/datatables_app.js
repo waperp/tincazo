@@ -861,6 +861,14 @@ var table = $("#table-admin-torneo-equipo").DataTable({
     }],
     buttons: [
         {
+            className: 'btn-success',
+            text: '<i class="fa fa-refresh"></i>',
+            titleAttr: 'Refrescar Datos',
+            action: function (e, dt, node, config) {
+                dt.ajax.reload();
+            }
+        },
+        {
             className: 'btn-sm',
             text: 'AGREGAR',
             action: function (e, dt, node, config) {

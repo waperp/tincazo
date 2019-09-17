@@ -55,6 +55,7 @@ class touteaController extends Controller
                 $toutea->touteatabrv = $request->touteatabrv;
                 $toutea->touteavimgt = $imageName;
                 $toutea->contypscode = $request->contypscode;
+                $toutea->contypscode = $request->contypscode;
                 $toutea->save();
             } else {
                 if ($request->hasFile('touteavimgt')) {
@@ -204,13 +205,12 @@ class touteaController extends Controller
             $data = DB::table('toutte')->insert([
                 'touinfscode' => $request->touinfscode,
                 'touteascode' => $value,
+                'touttebenbl' => 1,
+                'touttebisch' => 0
 
             ]);
         }
         return response()->json($data);
-
-        return response()->json($request->all());
-
     }
     public function validateDateChampions(Request $request)
     {

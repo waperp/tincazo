@@ -8,6 +8,7 @@ $("#iniciosession").submit(function (e) {
     var ss = $("#myDiv").length
     var secusrtmail_success = $('#secusrtmail').hasClass('form-control-success');
     var secusrtmail_danger = $('#secusrtmail').hasClass('form-control-danger');
+    debugger
     if ($('#termsConditionsCheck').is(':visible')) {
         if (checked == false) {
             $('#false').text('Debe aceptar los Terminos & condiciones para poder ingresar');
@@ -41,14 +42,17 @@ $("#iniciosession").submit(function (e) {
             'password': $('#password').val()
         },
         success: function (data) {
+            debugger
             if (data.success == 0) {
                 setTimeout(function () {
                     $('#true').hide();
                     $('.lds-ring').hide();
                     $('#false').text(data.mensaje);
+                    $('#false').show();
+
                     setTimeout(function () {
                         $('#false').hide();
-                    }, 100);
+                    }, 2500);
                     document.getElementById('form-login-button-submit').disabled = 0;
                 }, 2500);
             } else {

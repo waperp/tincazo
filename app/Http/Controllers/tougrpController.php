@@ -396,7 +396,6 @@ class tougrpController extends Controller
             if ($validator->passes()) {
                 if ($validTougrpbchva->tougrpbchva == 1) {
                     if ($dateValid->fecha > 0) {
-
                         $tougrp              = tougrp::find(Session::get('select-tougrpicode'));
                         $tougrp->tougrptname = $request->tougrptname;
                         $tougrp->tougrpsmaxp = $request->tougrpsmaxp;

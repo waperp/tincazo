@@ -37,8 +37,17 @@ class HomeController extends Controller
         Session::forget('select-q');
         Session::forget('tougrp');
         Session::forget('tougpl');
-
-        return view('matches');
+        $date = Carbon::now();
+        $listaConmen     = DB::table('conmem')->get();
+        $listaToutea     = DB::table('toutea')->get();
+        $validarTougrpbchva = DB::table('tougrp')->where('tougrpicode', Session::get('select-tougrpicode'))->first();
+        $listaContypEquipos = DB::table('contyp')->whereConfrmicode(2)->get();
+        return view('matches', compact(
+            'listaContypEquipos',
+            'listaToutea',
+            'validarTougrpbchva',
+        ));
+        // return view('matches');
     }
     public function validateMail(Request $request)
     {

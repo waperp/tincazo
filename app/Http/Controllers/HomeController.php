@@ -164,11 +164,14 @@ class HomeController extends Controller
     }
     public function validarCampeonFechas(Request $request)
     {
-        $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
-            ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
-            ->where('toutte.touinfscode', Session::get('select-touinfscode'))
-            ->where('toufix.constascode', '>', 1)
-            ->first();
+        // $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+        //     ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+        //     ->where('toutte.touinfscode', Session::get('select-touinfscode'))
+        //     ->where('toufix.constascode', '>', 1)
+        //     ->first();
+        $data = DB::table('touadm')
+        ->where('touadm.touinfscode', Session::get('select-touinfscode'))
+        ->first();
 
         //             Select count(toufix.toufixicode) from toufix
         //             join toutte on toufix.touttescod1 = toutte.touttescode

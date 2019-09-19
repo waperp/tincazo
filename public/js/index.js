@@ -757,7 +757,7 @@ function validarCampeonFechas() {
         datatype: 'json',
 
         success: function (data) {
-            if (data.fecha > 0) {
+            if (data.touadmbench == 0) {
                 swal({
                     title: "No se puede elegir el campeon por que el torneo ya ha comenzado",
                     type: "error",
@@ -1605,7 +1605,7 @@ function miCampeon(touttescode) {
             touttescode: touttescode,
         },
         success: function (data) {
-            if (data.fecha > 0) {
+            if (data.touadmbench ==0) {
                 $('#modal-elegir-campeon').modal('hide');
                 swal({
                     title: "No se puede elegir el campeon por que el torneo ya ha comenzado",
@@ -2156,3 +2156,23 @@ $('#btn-invite-email').click(function () {
     var email = $('#secusrtmail-invite').val();
     validateMailInvite(email);
 });
+
+function touadm_tornament(touinfscode, touadmbench){
+    var _token = $('input[name=_token]').val();
+    $.ajax({
+        url: '/touadm/'+touinfscode,
+        type: 'PATCH',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': _token
+        },
+        data: {
+            touinfscode: touinfscode,
+            touadmbench: touadmbench
+        },
+        success: function (data) {
+            debugger
+            $('#table-admin-torneo').DataTable().ajax.reload();
+        }
+    });
+}

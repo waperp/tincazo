@@ -208,12 +208,16 @@ class touteaController extends Controller
     }
     public function validateDateChampions(Request $request)
     {
-        $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as validate'))
-            ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
-            ->where('toutte.touinfscode', $request->touinfscode)
-            ->where('toufix.constascode', '>', 1)
-            ->first();
-        if ($data->validate <= 0) {
+        $data = DB::table('touadm')->select('touadmbench as validate')
+        ->where('touadm.touinfscode', $request->touinfscode)
+        ->first();
+
+        // $data = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as validate'))
+        //     ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+        //     ->where('toutte.touinfscode', $request->touinfscode)
+        //     ->where('toufix.constascode', '>', 1)
+        //     ->first();
+        if ($data->validate == 1) {
             return response()->json([
                 'success' => $data->validate,
                 'message' => "se puede elegir el campeon"
@@ -237,17 +241,20 @@ class touteaController extends Controller
             $tougplicode = Session::get('select-tougplicode');
             $tougrpicode = Session::get('select-tougrpicode');
             $date        = Carbon::now();
-            $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
-                ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
-                ->where('toutte.touinfscode', $touinfscode)
-                ->where('toufix.constascode', '>', 1)
-                ->first();
+            // $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+            //     ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+            //     ->where('toutte.touinfscode', $touinfscode)
+            //     ->where('toufix.constascode', '>', 1)
+            //     ->first();
+            $validTorneo = DB::table('touadm')
+            ->where('touadm.touinfscode', $touinfscode)
+            ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
                 ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
                 ->where('plachm.tougplicode', $tougplicode)
                 ->where('tougrp.tougrpicode', $tougrpicode)->groupBy('plachm.plachmicode')->first();
-            if ($validTorneo->fecha <= 0) {
+            if ($validTorneo->touadmbench == 1) {
                 if ($validar != null) {
 
                     $data = DB::table('plachm')
@@ -288,18 +295,21 @@ class touteaController extends Controller
             //     ->where('touinf.touinfscode', $request->touinfscode)
             //     ->where('touinf.touinfdstat', '>', $request->touinfdstat)
             //     ->first();
-            $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
-                ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
-                ->where('toutte.touinfscode', $request->touinfscode)
-                ->where('toufix.constascode', '>', 1)
-                ->first();
+            // $validTorneo = DB::table('toufix')->select(DB::raw('count(toufix.toufixicode) as fecha'))
+            //     ->join('toutte', 'toufix.touttescod1', 'toutte.touttescode')
+            //     ->where('toutte.touinfscode', $request->touinfscode)
+            //     ->where('toufix.constascode', '>', 1)
+            //     ->first();
+            $validTorneo = DB::table('touadm')->select('touadmbench as fecha')
+            ->where('touadm.touinfscode', $request->touinfscode)
+            ->first();
             $validar = DB::table('plachm')->select(DB::raw('count(plachm.plachmicode) as tiene'), 'plachm.plachmicode')
                 ->join('toutte', 'plachm.touttescode', 'toutte.touttescode')
                 ->join('tougrp', 'toutte.touinfscode', 'tougrp.touinfscode')
                 ->where('plachm.tougplicode', $request->tougplicode)
                 ->where('tougrp.tougrpicode', $request->tougrpicode)->groupBy('plachm.plachmicode')->first();
             // return response()->json($validar);
-            if ($validTorneo->fecha <= 0) {
+            if ($validTorneo->fecha == 1) {
                 if ($validar != null) {
                     // return response()->json("si");
 

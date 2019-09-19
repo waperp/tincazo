@@ -629,17 +629,6 @@ var table = $("#table-admin-torneo").DataTable({
             return '<div class="team-meta"><figure class="team-meta__logo"><img src="/images/' + full.touinfvlogt + '" alt=""></figure><div class="team-meta__info"><h6 class="team-meta__name">' + full.touinftname + '</h6></div></div>'
         }
     },
-    // }, {
-    //     width: "5%",
-    //     data: 'touinfscode'
-    // }, {
-    //     orderable: false,
-    //     width: 200,
-    //     sortable: true,
-    //     render: function (data, type, full, meta) {
-    //         return '<div class="team-meta__info"><h6 class="team-meta__name">' + full.touinftname + '</h6></div>'
-    //     }
-    // }, 
     {
         orderable: false,
         width: 105,
@@ -657,10 +646,28 @@ var table = $("#table-admin-torneo").DataTable({
         orderable: false,
         sortable: false,
         render: function (data, type, full, meta) {
+            if(full.touadmbench == 1){
+                return "<tr><a class='btn-eliminar' OnClick='touadm_tornament(" + full.touinfscode + ",0);' title='ELIMINAR'><i class='fa fa-times-circle'></i></a></tr>";
+            }else{
+                return "<tr><a class='btn-estado' OnClick='touadm_tornament(" + full.touinfscode + ",1);' title='RETIRAR'><i class='fa fa-minus-circle'></i></a></tr>";
+            }
+        }
+    },{
+        width: 30,
+        orderable: false,
+        sortable: false,
+        render: function (data, type, full, meta) {
             return "<tr><a class='btn-edit' OnClick='EditarTorneo(" + full.touinfscode + ");' title='EDITAR'><i class='fa fa-pencil-square'></i></a></tr>";
         }
     }],
     buttons: [{
+        className: 'btn-success',
+        text: '<i class="fa fa-refresh"></i>',
+        titleAttr: 'Refrescar Datos',
+        action: function (e, dt, node, config) {
+            dt.ajax.reload();
+        }
+    },{
         text: 'AGREGAR',
         className: 'btn btn-primary-inverse btn-sm',
         action: function (e, dt, node, config) {

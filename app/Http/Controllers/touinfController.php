@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\touadm;
 use App\touinf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,10 +32,10 @@ class touinfController extends Controller
     }
     public function selectTournament(Request $request, $secconnuuid)
     {
-        $touinf = touinf::where('secconnuuid',$secconnuuid)->first();
-        if($touinf){
-            Session::put('session_link_tournament',$touinf);
-        }else{
+        $touinf = touinf::where('secconnuuid', $secconnuuid)->first();
+        if ($touinf) {
+            Session::put('session_link_tournament', $touinf);
+        } else {
             Session::forget('session_link_tournament');
         }
         return redirect()->route('home.index');
@@ -70,6 +71,12 @@ class touinfController extends Controller
                 $touinf->touinfvlogt = $imageName;
                 $touinf->touinfbenbl = 1;
                 $touinf->save();
+                $touadm = new touadm;
+                $touadm->touinfscode = $touinf->touinfscode;
+                $touadm->touadmbench = 1;
+                $touadm->touadmbenpt = 1;
+                $touadm->save();
+
             } else {
                 if ($request->hasFile('touinfvlogt')) {
 
@@ -84,10 +91,16 @@ class touinfController extends Controller
                 $touinf->touinfsnumt = $request->touinfsnumt;
                 $touinf->touinfdstat = Carbon::parse($request->touinfdstat)->format('Y-m-d');
                 $touinf->touinfdendt = Carbon::parse($request->touinfdendt)->format('Y-m-d');
+                $touinf->save();
+                $touadm = new touadm;
+                $touadm->touinfscode = $touinf->touinfscode;
+                $touadm->touadmbench = 1;
+                $touadm->touadmbenpt = 1;
+
                 if ($imageName != "null") {
                     $touinf->touinfvlogt = $imageName;
                 }
-                $touinf->save();
+                $touadm->save();
             }
 
             DB::commit();
@@ -120,9 +133,7 @@ class touinfController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-
-    }
+    { }
 
     /**
      * Update the specified resource in storage.

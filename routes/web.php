@@ -101,3 +101,4 @@ Route::resource('touinf','touinfController');
 Route::resource('toutea','touteaController');
 Route::resource('plapre','plapreController');
 Route::resource('toufix','toufixController');
+Route::resource('touadm','touadmController');

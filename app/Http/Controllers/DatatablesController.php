@@ -133,7 +133,7 @@ class DatatablesController extends Controller
     }
     public function tablaAdminTorneos(Request $request)
     {
-        $data = DB::table('touinf')->get();
+        $data = DB::table('touinf')->select('touinf.*','touadm.touadmbench','touadm.touadmbenpt')->join('touadm','touinf.touinfscode','touadm.touinfscode')->get();
         return Datatables::of($data)->make(true);
     }
 }

@@ -20,7 +20,8 @@
                                     <th>COMIENZA</th>
                                     <th>TERMINA</th>
                                     <th>EQUIPOS</th>
-                                    <TH></TH>
+                                    <th></th>
+                                    <th></th>
 
                                 </tr>
                             </thead>

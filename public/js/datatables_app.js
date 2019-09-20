@@ -1199,7 +1199,7 @@ $("#table-admin-gestionar-grupos").DataTable({
         }
     },
     processing: true,
-    serverSide: true,
+    // serverSide: true,
     buttons: [{
         text: 'AGREGAR',
         className: 'btn btn-primary-inverse btn-sm',
@@ -1236,6 +1236,7 @@ $("#table-admin-gestionar-grupos").DataTable({
     ajax: {
         url: '/tableGestionarGruposAdmin',
         data: function (d) {
+            debugger
             var touinfscode = $('#select-torneo-admin-torneos').val();
             d.touinfscode = touinfscode;
         }

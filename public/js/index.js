@@ -251,7 +251,7 @@ $(document).ready(function () {
         allowClear: true,
     });
     $('#selectTorneosEquipos').val(0).trigger('change');
-    $('#select-torneo-admin-torneos').val(0).trigger('change');
+    $('#select-torneo-admin-torneos').val(null);
     $('#select-modal-nuevo-equipo').val(0).trigger('change');
     $('#contypscode1').val(null).trigger('change');
     // $('#selectconmemscode').val(1).trigger('change');

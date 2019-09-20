@@ -160,45 +160,50 @@ class tougrpController extends Controller
                 tougrp.plainficode = ? and
                 tougpl.tougrpicode = ? group by conmem.conmemsnump', [Session::get('plainficode'), Session::get('select-tougrpicode')]);
             $valueMensabresia = "";
-           
+
             foreach ($menbresia as $key) {
                 $valueMensabresia = $key->value;
             }
             $validateValue = (int) $valueMensabresia;
 
             if ($validateValue > 0) {
-                
+
                 $tougrp = tougrp::where('tougrpicode', Session::get('select-tougrpicode'))->first();
                 $secusr_inviter = secusr::join('plainf', 'secusr.plainficode', 'plainf.plainficode')
-                ->where('secusr.secusricode', \Auth::user()->secusricode)
-                ->first();
+                    ->where('secusr.secusricode', \Auth::user()->secusricode)
+                    ->first();
                 $userInGroup = tougpl::select(\DB::raw('COUNT(tougpl.plainficode) isgroup'))
-                ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
-                ->join('secusr', 'secusr.plainficode', 'plainf.plainficode')
-                ->where('tougpl.tougrpicode', Session::get('select-tougrpicode'))
-                ->where('secusr.secusrtmail', $request->secusrtmail)->first();
+                    ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
+                    ->join('secusr', 'secusr.plainficode', 'plainf.plainficode')
+                    ->where('tougpl.tougrpicode', Session::get('select-tougrpicode'))
+                    ->where('secusr.secusrtmail', $request->secusrtmail)->first();
                 DB::commit();
                 // return response()->json($userInGroup);
-                if($userInGroup->isgroup <= 0){
-                    Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname,$secusr_inviter->secusrtmail,Crypt::encryptString($request->secusrtmail), $tougrp));
+                if ($userInGroup->isgroup <= 0) {
+                    Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname, $secusr_inviter->secusrtmail, Crypt::encryptString($request->secusrtmail), $tougrp));
                     return response()->json(
-                        ['message' => 'Se envio un correo electronico.', 
-                            'errors' =>'', 'error' => false, 'success' => true, 
-                        'types' => 'validate']
+                        [
+                            'message' => 'Se envio un correo electronico.',
+                            'errors' => '', 'error' => false, 'success' => true,
+                            'types' => 'validate'
+                        ]
                     );
-                }else{
+                } else {
                     return response()->json(
-                        ['message' => 'el correo proporcionado ya pertenece al grupo', 
-                            'errors' =>'', 'error' => true, 'success' => false, 
-                        'types' => 'validate']
+                        [
+                            'message' => 'el correo proporcionado ya pertenece al grupo',
+                            'errors' => '', 'error' => true, 'success' => false,
+                            'types' => 'validate'
+                        ]
                     );
                 }
-               
             } else {
                 return response()->json(
-                    ['message' => 'No puede invitar mas jugadores ya que llego al limite de su membresia.', 
-                        'errors' =>'', 'error' => true, 'success' => false, 
-                    'types' => 'validate']
+                    [
+                        'message' => 'No puede invitar mas jugadores ya que llego al limite de su membresia.',
+                        'errors' => '', 'error' => true, 'success' => false,
+                        'types' => 'validate'
+                    ]
                 );
             }
         } catch (\Exception $e) {
@@ -223,35 +228,40 @@ class tougrpController extends Controller
             if ($validateValue > 0) {
                 $tougrp = tougrp::where('tougrpicode', $request->tougrpicode)->first();
                 $secusr_inviter = secusr::join('plainf', 'secusr.plainficode', 'plainf.plainficode')
-                ->where('secusr.secusricode', $request->user()->secusricode)
-                ->first();
+                    ->where('secusr.secusricode', $request->user()->secusricode)
+                    ->first();
                 $userInGroup = tougpl::select(\DB::raw('COUNT(tougpl.plainficode) isgroup'))
-                ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
-                ->join('secusr', 'secusr.plainficode', 'plainf.plainficode')
-                ->where('tougpl.tougrpicode', $request->tougrpicode)
-                ->where('secusr.secusrtmail', $request->secusrtmail)->first();
+                    ->join('plainf', 'tougpl.plainficode', 'plainf.plainficode')
+                    ->join('secusr', 'secusr.plainficode', 'plainf.plainficode')
+                    ->where('tougpl.tougrpicode', $request->tougrpicode)
+                    ->where('secusr.secusrtmail', $request->secusrtmail)->first();
                 DB::commit();
                 // return response()->json($userInGroup);
-                if($userInGroup->isgroup <= 0){
-                    Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname,$secusr_inviter->secusrtmail,Crypt::encryptString($request->secusrtmail), $tougrp));
+                if ($userInGroup->isgroup <= 0) {
+                    Mail::to($request->secusrtmail)->send(new MailInviteUser($secusr_inviter->plainftname, $secusr_inviter->secusrtmail, Crypt::encryptString($request->secusrtmail), $tougrp));
                     return response()->json(
-                        ['message' => 'Se envio un correo electronico.', 
-                            'errors' =>'', 'error' => false, 'success' => true, 
-                        'types' => 'validate']
+                        [
+                            'message' => 'Se envio un correo electronico.',
+                            'errors' => '', 'error' => false, 'success' => true,
+                            'types' => 'validate'
+                        ]
                     );
-                }else{
+                } else {
                     return response()->json(
-                        ['message' => 'el correo proporcionado ya pertenece al grupo', 
-                            'errors' =>'', 'error' => true, 'success' => false, 
-                        'types' => 'validate']
+                        [
+                            'message' => 'el correo proporcionado ya pertenece al grupo',
+                            'errors' => '', 'error' => true, 'success' => false,
+                            'types' => 'validate'
+                        ]
                     );
                 }
-               
             } else {
                 return response()->json(
-                    ['message' => 'No puede invitar mas jugadores ya que llego al limite de su membresia.', 
-                        'errors' =>'', 'error' => true, 'success' => false, 
-                    'types' => 'validate']
+                    [
+                        'message' => 'No puede invitar mas jugadores ya que llego al limite de su membresia.',
+                        'errors' => '', 'error' => true, 'success' => false,
+                        'types' => 'validate'
+                    ]
                 );
             }
         } catch (\Exception $e) {
@@ -409,9 +419,10 @@ class tougrpController extends Controller
                         }
                         $tougrp->save();
                         $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
-                        ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
-                        ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
-                        ->first();
+                            ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                            ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                            ->first();
+                        DB::commit();
                         Session::put('tougrp', $tougrpshow);
                         // Session::put('select-tougrpsxval', $tougrp->tougrpsxval);
                     } else {
@@ -423,10 +434,11 @@ class tougrpController extends Controller
                             $tougrp->tougrpvimgg = $imageName;
                         }
                         $tougrp->save();
+                        DB::commit();
                         $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
-                        ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
-                        ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
-                        ->first();
+                            ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                            ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                            ->first();
                         Session::put('tougrp', $tougrpshow);
                     }
                 } else {
@@ -436,10 +448,11 @@ class tougrpController extends Controller
                         $tougrp->tougrpvimgg = $imageName;
                     }
                     $tougrp->save();
+                    DB::commit();
                     $tougrpshow = tougrp::join('tougpl', 'tougpl.tougrpicode', 'tougrp.tougrpicode')
-                    ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
-                    ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
-                    ->first();
+                        ->where('tougrp.tougrpicode', Session::get('select-tougrpicode'))
+                        ->where('tougpl.tougplicode', Session::get('select-tougplicode'))
+                        ->first();
                     Session::put('tougrp', $tougrpshow);
                     return response()->json(
                         ['message' => 'No puede cambiar el valor de tougrpbchva', 'errors' => $validator->errors(), 'error' => true, 'success' => false, 'types' => 'validate']
@@ -451,7 +464,6 @@ class tougrpController extends Controller
                 );
             }
 
-            DB::commit();
             return response()->json(
                 ['message' => 0, 'errors' => $validator->errors()->all(), 'error' => false, 'success' => true, 'types' => 'update']
             );

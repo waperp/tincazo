@@ -154,7 +154,7 @@ const touinf = @json(Session::get('touinf'));
 @include('partials.modals.user.modal-user-jugadores-campeones')
 @include('partials.modals.user.modal-user-add-tincazo')
 @include('partials.modals.user.modal-user-tincazos-users')
-@include('partials.modals.user.modal-userplayer-info-general')
+@include('partials.modals.user.modal-user-player-info-general')
 @include('partials.modals.user.modal-user-player-info-day')
 @include('partials.modals.user.modal-user-invitaciones')
 @endauth
